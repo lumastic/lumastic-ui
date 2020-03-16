@@ -1,9 +1,12 @@
 const path = require("path");
 
+const getEntries = () => ({ "lib/Button/index": "./src/components/Button" });
+
+const entries = getEntries();
+
 module.exports = {
-  entry: {
-    index: "./index.js"
-  },
+  mode: "development",
+  entry: entries,
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "[name].js",
