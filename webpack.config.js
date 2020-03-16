@@ -1,9 +1,8 @@
 const path = require("path");
-const rules = require("./config/webpack.rules");
 
 module.exports = {
   entry: {
-    index: "./src/index.js"
+    index: "./index.js"
   },
   output: {
     path: path.resolve(__dirname, "build"),
@@ -15,6 +14,39 @@ module.exports = {
     "react-dom": "react-dom"
   },
   module: {
-    rules
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, "src"),
+        exclude: /(node_modules|bower_components|build)/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: "[local]"
+              }
+            }
+          },
+          {
+            loader: "postcss-loader"
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-sprite-loader"
+      }
+    ]
   }
 };
