@@ -1,6 +1,6 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["html", "prettier", "react-hooks"],
+  "plugins": ["html", "prettier", "react-hooks", "jest"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
