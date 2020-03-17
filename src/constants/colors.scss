@@ -1,0 +1,26 @@
+$primary: #249cf4;
+$primaryLight: lighten($primary, 5%);
+$primaryDark: darken($primary, 5%);
+
+$secondary: #79c6ff;
+$secondaryLight: lighten($secondary, 5%);
+$secondaryDark: darken($secondary, 5%);
+
+$grey: #c9c9c9;
+$greyLight: lighten($grey, 10%);
+$greyDark: darken($grey, 5%);
+
+$red: #cf0000;
+$redLight: lighten($red, 5%);
+$redDark: darken($red, 2%);
+
+$green: green;
+$greenLight: lighten($green, 5%);
+$greenDark: darken($green, 2%);
+
+$yellow: #ffcb22;
+$yellowLight: lighten($yellow, 5%);
+$yellowDark: darken($yellow, 7%);
+$yellowText: darken($yellowDark, 30%);
+
+$accent: #fec82a;

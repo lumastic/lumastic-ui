@@ -1,0 +1,175 @@
+@import "../../constants/colors";
+
+.button {
+  /* // SAME FOR ALL */
+  box-sizing: border-box;
+  font-weight: 500;
+  border-radius: 6px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &:focus {
+    outline: none;
+  }
+  /* // SIZE: DEFAULT */
+  padding: 0.2rem 1rem;
+  line-height: 1.75;
+  font-size: 0.9rem;
+  /* // SIZE: BIG */
+  &.big {
+    padding: 0.35rem 2rem;
+    font-size: 1rem;
+  }
+  /* // SIZE: FULL-WIDTH */
+  &.full-width {
+    width: 100%;
+  }
+  /* // VARIANT: DEFAULT */
+  border: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+  &:hover {
+    background-color: rgba($grey, 0.3);
+    cursor: pointer;
+  }
+  &:active {
+    background-color: rgba($greyDark, 0.5);
+  }
+  &.primary {
+    color: $primaryDark;
+    &:hover {
+      background-color: rgba($primary, 0.2);
+    }
+    &:active {
+      background-color: rgba($primary, 0.4);
+    }
+  }
+  &.secondary {
+    color: $secondaryDark;
+    &:hover {
+      background-color: rgba($secondary, 0.2);
+    }
+    &:active {
+      background-color: rgba($secondary, 0.4);
+    }
+  }
+  &.red {
+    color: $red;
+    &:hover {
+      background-color: rgba($redLight, 0.2);
+    }
+    &:active {
+      background-color: rgba($redLight, 0.4);
+    }
+  }
+  &.green {
+    color: $green;
+    &:hover {
+      background-color: rgba($green, 0.2);
+    }
+    &:active {
+      background-color: rgba($green, 0.4);
+    }
+  }
+  &.yellow {
+    color: darken($yellow, 12%);
+    &:hover {
+      background-color: rgba($yellow, 0.2);
+    }
+    &:active {
+      background-color: rgba($yellow, 0.4);
+    }
+  }
+  /* // VARIANT: OUTLINED */
+  &.outlined {
+    border: 1px solid;
+    border-color: $grey;
+    &.primary {
+      border-color: $primary;
+    }
+    &.secondary {
+      border-color: $secondary;
+    }
+    &.red {
+      border-color: $red;
+    }
+    &.green {
+      border-color: $green;
+    }
+    &.yellow {
+      border-color: darken($yellow, 12%);
+    }
+  }
+  /* // VARIANT: CONTAINED */
+  &.contained {
+    color: white;
+    background-color: $primary;
+    &:hover {
+      background-color: $primaryLight;
+    }
+    &:active {
+      background-color: $primaryDark;
+    }
+    &.secondary {
+      background-color: $secondaryDark;
+      &:hover {
+        background-color: $secondaryLight;
+      }
+      &:active {
+        background-color: $secondary;
+      }
+    }
+    &.red {
+      background-color: $red;
+      &:hover {
+        background-color: $redLight;
+      }
+      &:active {
+        background-color: $redDark;
+      }
+    }
+    &.green {
+      background-color: $green;
+      &:hover {
+        background-color: $greenLight;
+      }
+      &:active {
+        background-color: $greenDark;
+      }
+    }
+    &.yellow {
+      color: $yellowText;
+      background-color: $yellow;
+      &:hover {
+        background-color: $yellowLight;
+      }
+      &:active {
+        background-color: $yellowDark;
+      }
+    }
+  }
+
+  /* // ICON: DEFAULT */
+  i,
+  svg {
+    margin-right: 0.75rem;
+    font-weight: 400;
+  }
+
+  /* // DISABLED */
+  &:disabled {
+    color: $grey;
+    border: none;
+    &:hover,
+    &:active {
+      background-color: unset;
+      cursor: unset;
+    }
+    &.contained {
+      background-color: lighten($greyLight, 5%);
+    }
+  }
+}
