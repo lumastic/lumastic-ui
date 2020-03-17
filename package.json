@@ -41,6 +41,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "node-sass": "^4.13.1",
+    "postcss-autoreset": "^2.0.2",
+    "postcss-initial": "^3.0.2",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",

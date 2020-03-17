@@ -5,22 +5,25 @@ import classNames from "../../helpers/classNames";
 
 const Button = ({
   children,
-  width,
-  variant = "contained",
-  color,
-  icon,
-  size,
-  onClick,
-  disabled,
+  className,
   type = "button",
+  variant = "default",
+  color = "primary",
+  fullWidth,
+  size,
+  disabled,
+  onClick,
   ...rest
 }) => (
   <button
     className={classNames(
+      className,
       style.button,
-      style[size],
+      style[color],
       style[variant],
-      style[width]
+      { [style[size]]: size },
+      { [style["full-width"]]: fullWidth },
+      { [style.disabled]: disabled }
     )}
     onClick={onClick}
     disabled={disabled}
@@ -33,7 +36,14 @@ const Button = ({
 
 Button.propTypes = {
   children: PropTypes.element,
-  type: PropTypes.oneOf(["submit", "reset", "button"])
+  className: PropTypes.string,
+  type: PropTypes.oneOf(["submit", "reset", "button"]),
+  variant: PropTypes.oneOf(["default", "contained", "outlined"]),
+  color: PropTypes.oneOf(["primary", "secondary", "red", "green", "yellow"]),
+  fullWidth: PropTypes.bool,
+  size: PropTypes.oneOf(["big", "small"]),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 export { Button };

@@ -12,7 +12,6 @@ const classNames = (...classes) => {
         break;
     }
   });
-  console.log(classnames);
   return classnames.join(" ");
 };
 
