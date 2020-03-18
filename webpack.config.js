@@ -1,6 +1,6 @@
 const path = require("path");
 
-const getEntries = () => ({ "lib/Button/index": "./src/components/Button" });
+const getEntries = () => ({ "Button/index": "./src/components/Button" });
 
 const entries = getEntries();
 

@@ -35,7 +35,7 @@ const Button = ({
 );
 
 Button.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   className: PropTypes.string,
   type: PropTypes.oneOf(["submit", "reset", "button"]),
   variant: PropTypes.oneOf(["default", "contained", "outlined"]),

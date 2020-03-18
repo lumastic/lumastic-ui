@@ -1,3 +1,31 @@
-```jsx
-<Button>Button</Button>
+Basic Usage
+
+```jsx padded
+<Button>Basic</Button>
+<Button variant={"contained"}>Contained</Button>
+<Button variant={"outlined"}>OUtlined</Button>
+<Button disabled>Disabled</Button>
+```
+
+Colors
+
+```jsx padded
+<Button variant={"contained"}>Primary</Button>
+<Button color={"secondary"} variant={"contained"}>Secondary</Button>
+<Button color={"red"} variant={"contained"}>red</Button>
+<Button color={"green"} variant={"contained"}>Green</Button>
+<Button color={"yellow"} variant={"contained"}>Yellow</Button>
+```
+
+With Icons
+
+```jsx padded
+<Button>Basic</Button>
+<Button variant={"contained"}>Contained</Button>
+<Button variant={"outlined"}>OUtlined</Button>
+```
+
+Source:
+
+```js { "file": "./Button.js" }
 ```

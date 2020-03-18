@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx styleguidist server",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "",
@@ -40,6 +40,8 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.1.0",
     "node-sass": "^4.13.1",
     "postcss-autoreset": "^2.0.2",
     "postcss-initial": "^3.0.2",
@@ -58,7 +60,8 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|less|svg)$": "identity-obj-proxy"
-    }
+      "\\.(scss|less|svg)$": "identity-obj-proxy"
+    },
+    "rootDir": "src"
   }
 }
