@@ -19,6 +19,16 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 </IconButton>;
 ```
 
+#### `setSize`
+
+```jsx
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+<IconButton color={"primary"} variant={"contained"} setSize={"2rem"}>
+  <FontAwesomeIcon icon={faStar} />
+</IconButton>;
+```
+
 Source:
 
 ```js { "file": "./IconButton.js" }
