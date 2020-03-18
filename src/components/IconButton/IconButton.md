@@ -19,12 +19,12 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 </IconButton>;
 ```
 
-#### `setSize`
+#### `setSize` prop can be used to override default sizes
 
 ```jsx
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-<IconButton color={"primary"} variant={"contained"} setSize={"2rem"}>
+<IconButton color={"primary"} variant={"contained"} setSize={"1.75rem"}>
   <FontAwesomeIcon icon={faStar} />
 </IconButton>;
 ```
