@@ -6,6 +6,6 @@ import { COMPONENT_NAME } from ".";
 describe("COMPONENT_NAME tests", () => {
   test("Can mount", () => {
     render(<COMPONENT_NAME>Test</COMPONENT_NAME>);
-    expect(screen.queryByText("Test")).toBeTruthy();
+    expect(screen.queryByTestId("COMPONENT_LOWER")).toBeTruthy();
   });
 });

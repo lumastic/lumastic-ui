@@ -2,9 +2,10 @@
   "name": "lumastic-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/*",
   "scripts": {
     "start": "npx styleguidist server",
+    "new": "cd scripts && ./createComp.sh",
     "build": "webpack",
     "test": "jest --watch"
   },
@@ -19,6 +20,9 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
     "autoprefixer": "^9.7.4",

@@ -5,8 +5,8 @@ import classNames from "../../helpers/classNames";
 import { Button } from "../Button";
 
 const IconButton = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.iconbutton)}>
-    <Button {...rest}>
+  <div className={classNames(className, style["icon-button-container"])}>
+    <Button {...rest} className={style.icon}>
       <div className={style["button-icon"]}>{children}</div>
     </Button>
   </div>

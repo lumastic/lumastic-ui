@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Button } from ".";
+import { Type } from ".";
 
-describe("Button tests", () => {
+describe("Type tests", () => {
   test("Can mount", () => {
-    render(<Button>Test</Button>);
-    expect(screen.queryByTestId("button")).toBeTruthy();
+    render(<Type>Test</Type>);
+    expect(screen.queryByTestId("type")).toBeTruthy();
   });
 });

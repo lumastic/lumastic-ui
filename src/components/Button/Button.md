@@ -1,4 +1,4 @@
-Basic Usage
+#### Basic Usage
 
 ```jsx padded
 <Button>Basic</Button>
@@ -7,7 +7,7 @@ Basic Usage
 <Button disabled>Disabled</Button>
 ```
 
-Colors
+#### Colors
 
 ```jsx padded
 <Button variant={"contained"}>Primary</Button>
@@ -15,14 +15,19 @@ Colors
 <Button color={"red"} variant={"contained"}>red</Button>
 <Button color={"green"} variant={"contained"}>Green</Button>
 <Button color={"yellow"} variant={"contained"}>Yellow</Button>
+<Button color={"grey"}>Grey</Button>
 ```
 
-With Icons
+#### With Icons
 
 ```jsx padded
-<Button>Basic</Button>
-<Button variant={"contained"}>Contained</Button>
-<Button variant={"outlined"}>OUtlined</Button>
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
+<Button variant={"contained"}>
+  <FontAwesomeIcon icon={faCoffee} />
+  Primary
+</Button>;
 ```
 
 Source:

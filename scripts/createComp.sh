@@ -15,7 +15,7 @@ touch $path/$1.md
 sed -e "s/COMPONENT_NAME/$1/g" ./snippets/Snippet.md > $path/$1.md
 
 touch $path/$1.test.js
-sed -e "s/COMPONENT_NAME/$1/g" ./snippets/Snippet.test.js > $path/$1.test.js
+sed -e "s/COMPONENT_NAME/$1/g" -e "s/COMPONENT_LOWER/$lower/g" ./snippets/Snippet.test.js > $path/$1.test.js
 
 touch $path/index.js
 sed -e "s/COMPONENT_NAME/$1/g" ./snippets/index.js > $path/index.js

@@ -10,7 +10,29 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      base: "'Roboto', 'Arial', 'sans-serif'"
+      base: "'brandon-grotesque', 'sans-serif'"
+    },
+    color: {
+      link: "white",
+      linkHover: "#c5e7ff",
+      sidebarBackground: "#249cf4"
+    }
+  },
+  title: "Lumastic UI",
+  styles: {
+    Code: {
+      code: {
+        backgroundColor: "rgba(0,0,0,0.7)",
+        color: "white",
+        padding: "0.25em 0.4em 0.15em",
+        borderRadius: "4px",
+        fontSize: "0.9em"
+      }
+    },
+    Logo: {
+      logo: {
+        color: "white"
+      }
     }
   },
   updateExample: (props, exampleFilePath) => {

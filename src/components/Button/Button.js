@@ -28,6 +28,7 @@ const Button = ({
     onClick={onClick}
     disabled={disabled}
     type={type || "button"}
+    data-testid="button"
     {...rest}
   >
     {children}
@@ -39,7 +40,14 @@ Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(["submit", "reset", "button"]),
   variant: PropTypes.oneOf(["default", "contained", "outlined"]),
-  color: PropTypes.oneOf(["primary", "secondary", "red", "green", "yellow"]),
+  color: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "red",
+    "green",
+    "yellow",
+    "grey"
+  ]),
   fullWidth: PropTypes.bool,
   size: PropTypes.oneOf(["big", "small"]),
   disabled: PropTypes.bool,

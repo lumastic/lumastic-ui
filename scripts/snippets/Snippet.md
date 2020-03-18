@@ -1,3 +1,7 @@
+### COMPONENT_NAME does this
+
+#### Basic Usage
+
 ```jsx
 <COMPONENT_NAME>COMPONENT_NAME</COMPONENT_NAME>
 ```
