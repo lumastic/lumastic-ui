@@ -14,7 +14,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 ```jsx
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-<IconButton color={"primary"} variant={"outlined"}>
+<IconButton color={"primary"} variant={"contained"} size={"big"}>
   <FontAwesomeIcon icon={faStar} />
 </IconButton>;
 ```

@@ -4,9 +4,15 @@ import style from "./IconButton.scss";
 import classNames from "../../helpers/classNames";
 import { Button } from "../Button";
 
-const IconButton = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style["icon-button-container"])}>
-    <Button {...rest} className={style.icon}>
+const IconButton = ({ children, className, size, ...rest }) => (
+  <div
+    className={classNames(
+      className,
+      style["icon-button-container"],
+      style[size]
+    )}
+  >
+    <Button size={size} {...rest} className={style.icon}>
       <div className={style["button-icon"]}>{children}</div>
     </Button>
   </div>
@@ -14,6 +20,7 @@ const IconButton = ({ children, className, ...rest }) => (
 
 IconButton.propTypes = {
   children: PropTypes.node,
+  size: PropTypes.oneOf(["big", "small"]),
   className: PropTypes.string
 };
 

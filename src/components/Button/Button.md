@@ -7,7 +7,7 @@
 <Button disabled>Disabled</Button>
 ```
 
-#### Colors
+#### `colors`
 
 ```jsx padded
 <Button variant={"contained"}>Primary</Button>
@@ -16,6 +16,14 @@
 <Button color={"green"} variant={"contained"}>Green</Button>
 <Button color={"yellow"} variant={"contained"}>Yellow</Button>
 <Button color={"grey"}>Grey</Button>
+```
+
+#### `size`
+
+```jsx padded
+<Button variant={"contained"} size={"big"}>
+  Primary
+</Button>
 ```
 
 #### With Icons

@@ -25,6 +25,10 @@
   display: inline-block;
   width: 0.875rem;
   height: 0.875rem;
+  &.big {
+    width: 1rem;
+    height: 1rem;
+  }
   overflow: visible;
   button {
     position: absolute;
