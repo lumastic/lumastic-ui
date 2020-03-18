@@ -3,6 +3,7 @@
 ```jsx
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 <IconButton color={"grey"}>
   <FontAwesomeIcon icon={faTrash} />
 </IconButton>;

@@ -33,6 +33,11 @@ module.exports = {
       logo: {
         color: "white"
       }
+    },
+    Pre: {
+      pre: {
+        fontSize: "0.7rem"
+      }
     }
   },
   updateExample: (props, exampleFilePath) => {
