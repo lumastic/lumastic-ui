@@ -1,17 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./Modal.scss";
-import classNames from "../../helpers/classNames";
+import ReactDOM from "react-dom";
 
-const Modal = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.modal)} data-testid={"modal"} {...rest}>
-    {children}
-  </div>
-);
+const Modal = ({ isShowing, disablePortal, children }) => {
+  const component = <>{children}</>;
+  if (isShowing) {
+    if (disablePortal) {
+      return component;
+    }
+    return ReactDOM.createPortal(component, document.body);
+  }
+  return null;
+};
 
 Modal.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  isShowing: PropTypes.bool,
+  disablePortal: PropTypes.bool
 };
 
 export { Modal };
