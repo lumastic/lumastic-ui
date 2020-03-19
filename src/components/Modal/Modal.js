@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 
-const Modal = ({ isShowing, disablePortal, children }) => {
+const Modal = ({ isShowing = false, disablePortal = false, children }) => {
   const component = <>{children}</>;
   if (isShowing) {
     if (disablePortal) {
