@@ -14,7 +14,7 @@
   justify-content: center;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   &:focus {
-    outline: none;
+    outline: 1px dotted $secondaryLight;
   }
   /* // SIZE: DEFAULT */
   padding: 0.3em 1.1em;

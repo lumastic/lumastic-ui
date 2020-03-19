@@ -2,7 +2,11 @@ const path = require("path");
 const fs = require("fs");
 
 module.exports = {
-  components: "src/components/**/*.js",
+  components: [
+    "src/components/**/*.js",
+    "src/layouts/**/*.js",
+    "src/templates/**/*.js"
+  ],
   ignore: [
     "src/components/**/index.js",
     "src/components/**/*.test.js",
