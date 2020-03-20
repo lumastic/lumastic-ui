@@ -3,7 +3,7 @@
 #### Basic Usage
 
 ```jsx
-<TextInput />
+<TextInput name={"test"} />
 ```
 
 Source:
