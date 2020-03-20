@@ -1,21 +1,22 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
-import style from "./AppBar.scss";
+import style from "./Alert.scss";
 import classNames from "../../helpers/classNames";
 
-const AppBar = forwardRef(({ children, className }, ref) => (
+const Alert = forwardRef(({ children, className, ...rest }, ref) => (
   <div
-    className={classNames(className, style.appbar)}
-    data-testid="appbar"
+    className={classNames(className, style.alert)}
+    data-testid="alert"
     ref={ref}
+    {...rest}
   >
     {children}
   </div>
 ));
 
-AppBar.propTypes = {
+Alert.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string
 };
 
-export { AppBar };
+export { Alert };

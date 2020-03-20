@@ -1,2 +1,13 @@
 .popup {
+  position: fixed;
+  z-index: 9997;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+.popup-trigger {
+  display: inline-block;
 }

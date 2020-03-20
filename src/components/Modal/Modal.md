@@ -1,12 +1,4 @@
-#### Modals are an interface used to build components like `Dialog`, `Popover`, and `Tooltip`
-
-#### Basic Usage
-
-```jsx
-<Modal isShowing disablePortal>
-  Modal
-</Modal>
-```
+#### Modals are an interface used to build components like `Dialog`, `Popoup`, and `Tooltip`
 
 Source:
 

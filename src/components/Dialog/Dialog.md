@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { Type } from "../Type";
 const [isShowing, toggle] = useModal();
 <>
-  <Button variant={"contained"} onClick={toggle} size={"small"}>
+  <Button variant={"contained"} onClick={() => toggle()} size={"small"}>
     Show Dialog
   </Button>
   <Dialog isShowing={isShowing} hide={toggle}>

@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Popover } from ".";
+import { Alert } from ".";
 
-describe("Popover tests", () => {
+describe("Alert tests", () => {
   test("Can mount", () => {
-    render(<Popover>Test</Popover>);
-    expect(screen.queryByTestId("popover")).toBeTruthy();
+    render(<Alert>Test</Alert>);
+    expect(screen.queryByTestId("alert")).toBeTruthy();
   });
 });

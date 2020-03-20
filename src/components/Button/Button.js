@@ -1,38 +1,44 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import style from "./Button.scss";
 import classNames from "../../helpers/classNames";
 
-const Button = ({
-  children,
-  className,
-  type = "button",
-  variant = "default",
-  color = "primary",
-  fullWidth,
-  size,
-  disabled,
-  onClick,
-  ...rest
-}) => (
-  <button
-    className={classNames(
+const Button = forwardRef(
+  (
+    {
+      children,
       className,
-      style.button,
-      style[color],
-      style[variant],
-      { [style[size]]: size },
-      { [style["full-width"]]: fullWidth },
-      { [style.disabled]: disabled }
-    )}
-    onClick={onClick}
-    disabled={disabled}
-    type={type || "button"}
-    data-testid="button"
-    {...rest}
-  >
-    {children}
-  </button>
+      type = "button",
+      variant = "default",
+      color = "primary",
+      fullWidth,
+      size,
+      disabled,
+      onClick,
+      ...rest
+    },
+    ref
+  ) => (
+    <button
+      className={classNames(
+        className,
+        style.button,
+        style[color],
+        style[variant],
+        { [style[size]]: size },
+        { [style["full-width"]]: fullWidth },
+        { [style.disabled]: disabled }
+      )}
+      onClick={onClick}
+      disabled={disabled}
+      type={type || "button"}
+      data-testid="button"
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </button>
+  )
 );
 
 Button.propTypes = {

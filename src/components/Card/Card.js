@@ -1,18 +1,21 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import style from "./Card.scss";
 import classNames from "../../helpers/classNames";
 
-const Card = ({ children, className, noSidePadding = false, ...rest }) => (
-  <div
-    className={classNames(className, style.card, {
-      [style["no-side-padding"]]: noSidePadding
-    })}
-    data-testid="card"
-    {...rest}
-  >
-    {children}
-  </div>
+const Card = forwardRef(
+  ({ children, className, noSidePadding = false, ...rest }, ref) => (
+    <div
+      className={classNames(className, style.card, {
+        [style["no-side-padding"]]: noSidePadding
+      })}
+      data-testid="card"
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </div>
+  )
 );
 
 Card.propTypes = {
