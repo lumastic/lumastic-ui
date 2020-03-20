@@ -10,7 +10,9 @@ const [isShowing, toggle] = useModal();
     Show Dialog
   </Button>
   <Dialog isShowing={isShowing} hide={toggle}>
-    <Type>Yay! Click the close button or anywhere outside to close me!</Type>
+    <Type align={"center"}>
+      Yay! Click the close button or anywhere outside to close me!
+    </Type>
   </Dialog>
 </>;
 ```

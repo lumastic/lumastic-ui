@@ -14,6 +14,7 @@ const Type = ({
   caption,
   overline,
   size,
+  align = "left",
   tag,
   color = "normal"
 }) => {
@@ -27,6 +28,7 @@ const Type = ({
         { [style.h2]: h2 },
         { [style.h3]: h3 },
         { [style.h4]: h4 },
+        style[align],
         { [style.caption]: caption },
         { [style.overline]: overline },
         style[color]
@@ -49,6 +51,7 @@ Type.propTypes = {
   caption: PropTypes.bool,
   overline: PropTypes.bool,
   size: PropTypes.string,
+  align: PropTypes.oneOf(["center", "left", "right"]),
   tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "p", "span", "div"]),
   color: PropTypes.oneOf(["normal", "primary", "red", "green", "grey"])
 };
