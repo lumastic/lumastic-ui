@@ -5,7 +5,7 @@ import { Dialog } from ".";
 
 describe("Dialog tests", () => {
   test("Can mount", () => {
-    render(<Dialog>Test</Dialog>);
-    expect(screen.queryByTestId("dialog")).toBeTruthy();
+    render(<Dialog isShowing>Test</Dialog>);
+    expect(screen.queryByText("Test")).toBeTruthy();
   });
 });

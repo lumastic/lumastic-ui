@@ -22,7 +22,10 @@
 
 ```jsx padded
 <Button variant={"contained"} size={"big"}>
-  Primary
+  Big
+</Button>
+<Button variant={"contained"} size={"small"}>
+  Small
 </Button>
 ```
 
