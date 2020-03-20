@@ -30,6 +30,20 @@
 </Type>
 ```
 
+#### `align`
+
+```jsx
+<Type>
+  Left
+</Type>
+<Type align={"center"}>
+  Center
+</Type>
+<Type align={"right"}>
+  Right
+</Type>
+```
+
 #### `tag` changes what HTML tag the text renders as
 
 ```jsx
