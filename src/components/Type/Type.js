@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import style from "./Type.scss";
 import classNames from "../../helpers/classNames";
-import getTag from "../../helpers/getTag";
+import getTag from "./helpers/getTag";
 
 const Type = forwardRef(
   (

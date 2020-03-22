@@ -3,7 +3,11 @@
 #### Basic Usage
 
 ```jsx
-<Tooltip>Tooltip</Tooltip>
+import { Button } from "../Button";
+
+<Tooltip label={"Label"}>
+  <Button>Tooltip</Button>
+</Tooltip>;
 ```
 
 Source:
