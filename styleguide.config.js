@@ -3,9 +3,9 @@ const fs = require("fs");
 
 module.exports = {
   components: [
-    "src/components/**/*.js",
-    "src/layouts/**/*.js",
-    "src/templates/**/*.js"
+    "src/components/*/*.js",
+    "src/layouts/*/*.js",
+    "src/templates/*/*.js"
   ],
   ignore: [
     "src/components/**/index.js",
