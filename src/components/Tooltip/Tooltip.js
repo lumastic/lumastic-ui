@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, createElement } from "react";
 import PropTypes from "prop-types";
 import style from "./Tooltip.scss";
 import classNames from "../../helpers/classNames";
@@ -11,7 +11,8 @@ const Tooltip = ({
   children,
   className,
   label,
-  noDelay = false
+  noDelay = false,
+  render
 }) => {
   const [showing, setShowing] = useState(false);
   const tooltipRef = useRef(null);
@@ -23,7 +24,6 @@ const Tooltip = ({
     const element = elementRef.current;
     if (tooltip && element) {
       const [toolTop, toolLeft] = tooltipPosition(position, element, tooltip);
-
       tooltip.style.top = `${toolTop}px`;
       tooltip.style.left = `${toolLeft}px`;
       tooltip.style.opacity = 1;
@@ -58,11 +58,15 @@ const Tooltip = ({
             [style["no-delay"]]: noDelay
           })}
         >
-          <div
-            className={classNames(className, style.tooltip, style[position])}
-          >
-            <Type caption>{label}</Type>
-          </div>
+          {render ? (
+            createElement(render, { children: label })
+          ) : (
+            <div
+              className={classNames(className, style.tooltip, style[position])}
+            >
+              <Type caption>{label}</Type>
+            </div>
+          )}
         </div>
       </Modal>
     </>
@@ -74,7 +78,8 @@ Tooltip.propTypes = {
   label: PropTypes.string,
   noDelay: PropTypes.bool,
   className: PropTypes.string,
-  position: PropTypes.oneOf(["top", "bottom", "left", "right"])
+  position: PropTypes.oneOf(["top", "bottom", "left", "right"]),
+  render: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
 };
 
 export { Tooltip };

@@ -6,27 +6,27 @@
 import { Button } from "../Button";
 
 <Tooltip label={"Label"}>
-  <Button>Tooltip</Button>
+  <Button variant={"contained"}>Tooltip</Button>
 </Tooltip>;
 ```
 
 #### `position` changes the tooltips orientation around the element
 
-```jsx
+```jsx padded
 import { Button } from "../Button";
 
 <>
   <Tooltip label={"Tooltip on bottom"}>
-    <Button>Bottom</Button>
+    <Button variant={"contained"}>Bottom</Button>
   </Tooltip>
   <Tooltip label={"Tooltip on top"} position={"top"}>
-    <Button>Top</Button>
+    <Button variant={"contained"}>Top</Button>
   </Tooltip>
   <Tooltip label={"Tooltip on left"} position={"left"}>
-    <Button>Left</Button>
+    <Button variant={"contained"}>Left</Button>
   </Tooltip>
   <Tooltip label={"Tooltip on right"} position={"right"}>
-    <Button>Right</Button>
+    <Button variant={"contained"}>Right</Button>
   </Tooltip>
 </>;
 ```
@@ -37,7 +37,18 @@ import { Button } from "../Button";
 import { Button } from "../Button";
 
 <Tooltip label={"Without Delay"} noDelay>
-  <Button>No Delay</Button>
+  <Button variant={"contained"}>No Delay</Button>
+</Tooltip>;
+```
+
+#### `render` allows for tooltip to be rendered by custom component
+
+```jsx
+import { Button } from "../Button";
+import { CustomTooltip } from "./helpers/CustomTooltip";
+
+<Tooltip label={"Without Delay"} render={CustomTooltip}>
+  <Button variant={"contained"}>Custom Component</Button>
 </Tooltip>;
 ```
 

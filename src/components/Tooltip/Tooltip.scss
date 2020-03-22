@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+$backgroundColor: rgba(0, 0, 0, 0.8);
 
 .tooltip-element {
   display: inline-block;
@@ -15,7 +16,7 @@
   border-radius: 6px;
   padding: 0.2rem 0.7rem;
   color: lighten($greyLight, 10%);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: $backgroundColor;
   &::after {
     content: " ";
     position: absolute;
@@ -26,24 +27,24 @@
     left: 50%;
     margin-left: -5px;
     bottom: 100%;
-    border-color: transparent transparent rgba(0, 0, 0, 0.7) transparent;
+    border-color: transparent transparent $backgroundColor transparent;
   }
   &.top::after {
     left: 50%;
     margin-left: -5px;
     top: 100%;
-    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+    border-color: $backgroundColor transparent transparent transparent;
   }
   &.right::after {
     top: 50%;
     right: 100%;
     margin-top: -5px;
-    border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+    border-color: transparent $backgroundColor transparent transparent;
   }
   &.left::after {
     top: 50%;
     left: 100%;
     margin-top: -5px;
-    border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+    border-color: transparent transparent transparent $backgroundColor;
   }
 }
