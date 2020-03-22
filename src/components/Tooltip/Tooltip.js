@@ -3,17 +3,32 @@ import PropTypes from "prop-types";
 import style from "./Tooltip.scss";
 import classNames from "../../helpers/classNames";
 import { Modal } from "../Modal";
+import { Type } from "../Type/Type";
+import tooltipPosition from "../../helpers/tooltipPosition";
 
-const Tooltip = ({ children, className, label }) => {
+const Tooltip = ({
+  position = "bottom",
+  children,
+  className,
+  label,
+  noDelay = false
+}) => {
   const [showing, setShowing] = useState(false);
   const tooltipRef = useRef(null);
   const elementRef = useRef(null);
 
   useEffect(() => {
-    if (showing) {
-      console.log("Showing");
+    if (!(tooltipRef && elementRef)) return;
+    const tooltip = tooltipRef.current;
+    const element = elementRef.current;
+    if (tooltip && element) {
+      const [toolTop, toolLeft] = tooltipPosition(position, element, tooltip);
+
+      tooltip.style.top = `${toolTop}px`;
+      tooltip.style.left = `${toolLeft}px`;
+      tooltip.style.opacity = 1;
     }
-  }, [showing]);
+  }, [showing, position, tooltipRef, elementRef]);
 
   const onMouseEnter = () => {
     setShowing(true);
@@ -36,9 +51,18 @@ const Tooltip = ({ children, className, label }) => {
       >
         {children}
       </div>
-      <Modal isShowing={showing} disablePortal>
-        <div ref={tooltipRef} className={classNames(className, style.tooltip)}>
-          {label}
+      <Modal isShowing={showing}>
+        <div
+          ref={tooltipRef}
+          className={classNames(style["tooltip-content"], {
+            [style["no-delay"]]: noDelay
+          })}
+        >
+          <div
+            className={classNames(className, style.tooltip, style[position])}
+          >
+            <Type caption>{label}</Type>
+          </div>
         </div>
       </Modal>
     </>
@@ -48,7 +72,9 @@ const Tooltip = ({ children, className, label }) => {
 Tooltip.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
-  className: PropTypes.string
+  noDelay: PropTypes.bool,
+  className: PropTypes.string,
+  position: PropTypes.oneOf(["top", "bottom", "left", "right"])
 };
 
 export { Tooltip };

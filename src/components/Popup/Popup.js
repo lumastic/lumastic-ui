@@ -4,7 +4,7 @@ import classNames from "../../helpers/classNames";
 import useModal from "../../hooks/useModal";
 import useOffclick from "../../hooks/useOffclick/useOffclick";
 import PopupContext from "./helpers/PopupContext";
-import popupPosition from "./helpers/popupPosition";
+import popupPosition from "../../helpers/popupPosition";
 import style from "./Popup.scss";
 
 const Popup = ({
