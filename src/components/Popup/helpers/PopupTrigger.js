@@ -6,13 +6,11 @@ import style from "../Popup.scss";
 const PopupTrigger = ({ children }) => {
   const { toggle, setTrigger } = useContext(PopupContext);
 
-  const handleClick = e => {
-    e.preventDefault();
+  const handleClick = () => {
     toggle();
   };
 
   const handleEnter = e => {
-    e.preventDefault();
     if (e.keyCode === 13) {
       toggle();
     }

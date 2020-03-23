@@ -11,7 +11,9 @@ const Popup = ({
   anchor = { v: "bottom", h: "center" },
   transform = { v: "top", h: "center" },
   children,
-  className
+  className,
+  onOpen,
+  onClose
 }) => {
   const [trigger, setTrigger] = useState(null);
   const [popup, setPopup] = useState(null);
@@ -39,6 +41,16 @@ const Popup = ({
       popup.style.opacity = 1;
     }
   }, [isShowing, anchor, transform, trigger, popup]);
+
+  useEffect(() => {
+    if (isShowing) {
+      if (onOpen) onOpen();
+    } else {
+      if (trigger) trigger.focus();
+      if (onClose) onClose();
+    }
+  }, [isShowing, onOpen, onClose, trigger]);
+
   return (
     <PopupContext.Provider value={popoverProviderValue}>
       <div
@@ -66,7 +78,9 @@ Popup.propTypes = {
   transform: PropTypes.shape({
     v: PropTypes.oneOf(["top", "center", "bottom"]),
     h: PropTypes.oneOf(["left", "center", "right"])
-  })
+  }),
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func
 };
 
 export { Popup, PopupContext };

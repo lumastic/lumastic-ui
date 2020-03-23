@@ -1,2 +1,36 @@
+@import "../../styles/colors.scss";
+
 .select {
+  border: 1px solid $grey;
+  border-radius: 6px;
+  padding: 0.25rem 0.75rem;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    border-color: $greyText;
+    cursor: pointer;
+  }
+}
+.select-options {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  .select-option {
+    padding: 0.5rem 1.25rem;
+    &[aria-selected="true"] {
+      background-color: lighten($greyLight, 6%);
+    }
+    &:focus {
+      outline: none;
+      &:not([aria-selected="true"]) {
+        background-color: lighten($greyLight, 9%);
+      }
+    }
+    &:hover {
+      &:not([aria-selected="true"]) {
+        background-color: lighten($greyLight, 9%);
+      }
+      cursor: pointer;
+    }
+  }
 }

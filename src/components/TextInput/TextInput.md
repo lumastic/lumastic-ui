@@ -3,7 +3,7 @@
 #### Basic Usage
 
 ```jsx
-<TextInput name={"test"} />
+<TextInput name={"Text Input"} />
 ```
 
 #### `placeholder` defaults to `name` if not specified

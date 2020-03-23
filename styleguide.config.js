@@ -63,6 +63,6 @@ module.exports = {
   getComponentPathLine: componentPath => {
     const name = path.basename(componentPath, ".js");
     const dir = `lumastic-ui/${name}`;
-    return `import ${name} from "${dir}";`;
+    return `import { ${name} } from "${dir}";`;
   }
 };
