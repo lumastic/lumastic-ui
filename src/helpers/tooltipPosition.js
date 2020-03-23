@@ -31,7 +31,6 @@ const tooltipPosition = (position, element, tooltip) => {
     default:
       break;
   }
-  console.log(top, left);
   return [top, left];
 };
 

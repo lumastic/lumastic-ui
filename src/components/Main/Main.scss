@@ -1,5 +1,7 @@
+@import "../../styles/colors.scss";
+
 .main {
-  background-color: #f4f4f4;
+  background-color: $background;
   width: 100%;
   height: 100%;
 }
