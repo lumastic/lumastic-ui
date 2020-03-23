@@ -50,7 +50,13 @@ const Select = ({
 
   return (
     <>
-      <input type="hidden" id={id} name={name} value={selected} />
+      <input
+        type="hidden"
+        id={id}
+        name={name}
+        value={selected}
+        onChange={onChange}
+      />
       <SelectContext.Provider value={contextValue}>
         <Popup
           onOpen={focusOpen}

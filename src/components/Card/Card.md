@@ -3,7 +3,10 @@
 #### Basic Usage
 
 ```jsx
-<Card>Card</Card>
+import { Type } from "../Type";
+<Card>
+  <Type>This is a basic card</Type>
+</Card>;
 ```
 
 Source:
