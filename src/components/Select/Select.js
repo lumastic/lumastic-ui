@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "../../helpers/classNames";
 import SelectContext from "./helpers/SelectContext";
@@ -6,10 +6,13 @@ import style from "./Select.scss";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { SelectOptions } from "./helpers/SelectOptions";
 import { SelectOption } from "./helpers/SelectOption";
+import { DownArrow } from "../../icons/DownArrow/DownArrow";
+import { Type } from "../Type";
 
 const Select = ({
   defaultValue,
   id,
+  label,
   name,
   children,
   className,
@@ -33,19 +36,21 @@ const Select = ({
     const selectedOption = selectOptions.querySelector(
       "[aria-selected='true']"
     );
-    selectedOption.focus();
+    if (selectedOption) {
+      selectedOption.focus();
+    } else {
+      selectOptions.firstChild.focus();
+    }
     if (onOpen) onOpen();
   };
 
+  useEffect(() => {
+    if (onChange) onChange(selected);
+  }, [selected, onChange]);
+
   return (
     <>
-      <input
-        type="hidden"
-        id={id}
-        name={name}
-        value={selected}
-        onChange={onChange}
-      />
+      <input type="hidden" id={id} name={name} value={selected} />
       <SelectContext.Provider value={contextValue}>
         <Popup
           onOpen={focusOpen}
@@ -59,7 +64,14 @@ const Select = ({
               data-testid="select"
               ref={triggerRef}
             >
-              {options[selected]}
+              {options[selected] || (
+                <div className={style.label}>
+                  <Type>{label}</Type>
+                </div>
+              )}
+              <div className={style["select-arrow"]}>
+                <DownArrow />
+              </div>
             </div>
           </PopupTrigger>
           <PopupContent render={SelectOptions}>
@@ -78,6 +90,7 @@ const Select = ({
 
 Select.propTypes = {
   className: PropTypes.string,
+  label: PropTypes.string,
   children: PropTypes.node,
   defaultValue: PropTypes.string,
   name: PropTypes.string,
