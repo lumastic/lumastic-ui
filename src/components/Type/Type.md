@@ -6,6 +6,7 @@
 <Type h3>Heading 3</Type>
 <Type h4>Heading 4</Type>
 <Type>Body</Type>
+<Type body2>Body2</Type>
 <Type caption>Caption</Type>
 <Type overline>Overline</Type>
 ```

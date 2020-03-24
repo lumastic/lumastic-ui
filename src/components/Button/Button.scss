@@ -87,6 +87,15 @@
       background-color: rgba($yellow, 0.4);
     }
   }
+  &.light {
+    color: $lightText;
+    &:hover {
+      background-color: rgba($backgroundLight, 0.2);
+    }
+    &:active {
+      background-color: rgba($backgroundLight, 0.4);
+    }
+  }
   /* // VARIANT: OUTLINED */
   &.outlined {
     border: 1px solid;
@@ -145,7 +154,6 @@
       }
     }
     &.yellow {
-      color: $yellowText;
       background-color: $yellow;
       &:hover {
         background-color: $yellowLight;

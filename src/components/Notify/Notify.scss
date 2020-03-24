@@ -1,0 +1,37 @@
+@import "../../styles/colors.scss";
+
+.notify {
+  z-index: 9997;
+  position: fixed;
+  top: 0.5rem;
+  right: -100%;
+  min-width: 250px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: right 1s ease-in-out;
+  .notify-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .text {
+      flex-grow: 1;
+    }
+    .close-button {
+      flex-grow: 0;
+      align-self: center;
+    }
+  }
+  .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 1.5px solid rgba($backgroundLight, 0.4);
+  }
+  &.mount {
+    right: 0.75rem;
+  }
+}

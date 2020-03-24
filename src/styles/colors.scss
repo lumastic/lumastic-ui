@@ -1,3 +1,10 @@
+@function rgba-to-rgb($rgba, $background: #fff) {
+  @return mix(
+    rgb(red($rgba), green($rgba), blue($rgba)),
+    $background,
+    alpha($rgba) * 100%
+  );
+}
 $primary: #249cf4;
 $primaryLight: lighten($primary, 5%);
 $primaryDark: darken($primary, 5%);
@@ -15,14 +22,13 @@ $red: #cf0000;
 $redLight: lighten($red, 5%);
 $redDark: darken($red, 2%);
 
-$green: green;
+$green: #00a01b;
 $greenLight: lighten($green, 5%);
 $greenDark: darken($green, 2%);
 
-$yellow: #ffcb22;
+$yellow: #ff9900;
 $yellowLight: lighten($yellow, 5%);
 $yellowDark: darken($yellow, 7%);
-$yellowText: darken($yellowDark, 30%);
 
 $lightText: lighten($greyLight, 10%);
 

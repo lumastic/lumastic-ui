@@ -15,6 +15,7 @@ const Type = forwardRef(
       h4,
       caption,
       overline,
+      body2,
       size,
       align = "left",
       tag,
@@ -36,6 +37,7 @@ const Type = forwardRef(
           style[align],
           { [style.caption]: caption },
           { [style.overline]: overline },
+          { [style.body2]: body2 },
           style[color]
         )}
         style={{ fontSize: size }}
@@ -58,6 +60,7 @@ Type.propTypes = {
   h4: PropTypes.bool,
   caption: PropTypes.bool,
   overline: PropTypes.bool,
+  body2: PropTypes.bool,
   size: PropTypes.string,
   align: PropTypes.oneOf(["center", "left", "right"]),
   tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "p", "span", "div"]),
