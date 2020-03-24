@@ -1,22 +1,22 @@
-import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
-import style from "./Alert.scss";
+import React from "react";
 import classNames from "../../helpers/classNames";
+import style from "./Alert.scss";
 
-const Alert = forwardRef(({ children, className, ...rest }, ref) => (
+const Alert = ({ children, className, type = "info" }) => (
   <div
-    className={classNames(className, style.alert)}
+    className={classNames(className, style.alert, style[type])}
     data-testid="alert"
-    ref={ref}
-    {...rest}
+    role="alert"
   >
     {children}
   </div>
-));
+);
 
 Alert.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
+  type: PropTypes.oneOf(["error", "warning", "success", "info"])
 };
 
 export { Alert };

@@ -3,7 +3,7 @@
 #### Basic Usage
 
 ```jsx
-<Alert>Alert</Alert>
+<Alert>Test</Alert>
 ```
 
 Source:

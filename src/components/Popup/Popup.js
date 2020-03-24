@@ -45,11 +45,8 @@ const Popup = ({
   useEffect(() => {
     if (isShowing) {
       if (onOpen) onOpen();
-    } else {
-      if (trigger) trigger.focus();
-      if (onClose) onClose();
-    }
-  }, [isShowing, onOpen, onClose, trigger]);
+    } else if (onClose) onClose();
+  }, [isShowing, onOpen, onClose]);
 
   return (
     <PopupContext.Provider value={popoverProviderValue}>

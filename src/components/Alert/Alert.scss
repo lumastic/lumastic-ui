@@ -1,2 +1,12 @@
+@import "../../styles/colors.scss";
+
 .alert {
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // z-index: 9997;
+  display: flex;
+  padding: 0.5rem 1rem;
+  background-color: $grey;
+  border-radius: 6px;
 }
