@@ -28,7 +28,7 @@ const Notify = ({ children, className, severity, id, fixed }) => {
   }, [time, mount, stop, fixed]);
 
   useEffect(() => {
-    if (time >= 10000) {
+    if (time >= 7000) {
       setMount(false);
       setTimeout(() => {
         notifyDispatch({ type: "remove", id });
@@ -76,7 +76,7 @@ const Notify = ({ children, className, severity, id, fixed }) => {
         </div>
       </Alert>
       <hr
-        style={{ width: `${(time / 10000) * 100}%` }}
+        style={{ width: `${(time / 7000) * 100}%` }}
         className={style.progress}
       />
     </div>
