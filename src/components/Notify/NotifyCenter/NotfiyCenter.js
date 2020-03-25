@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React, { useReducer, useMemo } from "react";
 import NotifyContext from "./NotifyContext";
 import { Notify } from "../Notify";
+import { Modal } from "../../Modal";
+import style from "./NotifyCenter.scss";
 
 const NotifyCenter = ({ children, initialNotifications = [] }) => {
   const notifyReducer = (state, action) => {
@@ -27,9 +29,13 @@ const NotifyCenter = ({ children, initialNotifications = [] }) => {
   return (
     <NotifyContext.Provider value={notifyCenterValue}>
       {children}
-      {notifications.map(notification => (
-        <Notify key={notification.id} {...notification} />
-      ))}
+      <Modal isShowing={notifications.length > 0}>
+        <div className={style["notify-center"]}>
+          {notifications.map(notification => (
+            <Notify key={notification.id} {...notification} />
+          ))}
+        </div>
+      </Modal>
     </NotifyContext.Provider>
   );
 };

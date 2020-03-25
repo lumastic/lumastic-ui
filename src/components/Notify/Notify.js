@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import ReactDOM from "react-dom";
 import style from "./Notify.scss";
 import classNames from "../../helpers/classNames";
 import { Alert } from "../Alert";
-import NotifyContext from "./NotifyCenter/NotifyContext";
 import { IconButton } from "../IconButton";
 import { Type } from "../Type";
 import { Times } from "../../icons/Times/Times";
+import { useNotify } from "./NotifyCenter";
 
-const Notify = ({ children, className, severity, id }) => {
+const Notify = ({ children, className, severity, id, fixed }) => {
   const [mount, setMount] = useState(false);
   const [time, setTime] = useState(0);
   const [stop, setStop] = useState(false);
-  const { notifyDispatch } = useContext(NotifyContext);
+  const { notifyDispatch } = useNotify();
   useEffect(() => {
     setTimeout(() => {
       setMount(true);
@@ -21,12 +20,12 @@ const Notify = ({ children, className, severity, id }) => {
   }, []);
 
   useEffect(() => {
-    if (mount && !stop) {
+    if (mount && !stop && !fixed) {
       setTimeout(() => {
         setTime(old => old + 25);
       }, 25);
     }
-  }, [time, mount, stop]);
+  }, [time, mount, stop, fixed]);
 
   useEffect(() => {
     if (time >= 10000) {
@@ -52,9 +51,11 @@ const Notify = ({ children, className, severity, id }) => {
     }, 400);
   };
 
-  return ReactDOM.createPortal(
+  return (
     <div
-      className={classNames(className, style.notify, { [style.mount]: mount })}
+      className={classNames(className, style.notify, {
+        [style.mount]: mount
+      })}
       data-testid="notify"
       onMouseEnter={stopTimer}
       onMouseLeave={startTimer}
@@ -78,8 +79,7 @@ const Notify = ({ children, className, severity, id }) => {
         style={{ width: `${(time / 10000) * 100}%` }}
         className={style.progress}
       />
-    </div>,
-    document.body
+    </div>
   );
 };
 
@@ -87,6 +87,7 @@ Notify.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   id: PropTypes.number,
+  fixed: PropTypes.bool,
   severity: PropTypes.oneOf(["error", "warning", "success", "info"])
 };
 
