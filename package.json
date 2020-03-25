@@ -5,7 +5,9 @@
   "main": "build/*",
   "scripts": {
     "start": "npx styleguidist server",
-    "new": "cd scripts && ./createComp.sh",
+    "new": "cd scripts && ./createComponent.sh",
+    "new:template": "cd scripts && ./createTemplate.sh",
+    "new:layout": "cd scripts && ./createLayout.sh",
     "build": "webpack",
     "test": "jest --watch"
   },

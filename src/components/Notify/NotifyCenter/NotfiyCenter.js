@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useReducer, useMemo } from "react";
 import NotifyContext from "./NotifyContext";
-import { Notify } from "../Notify";
+import { Notify } from "..";
 import { Modal } from "../../Modal";
 import style from "./NotifyCenter.scss";
 

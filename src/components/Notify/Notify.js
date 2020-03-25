@@ -6,7 +6,7 @@ import { Alert } from "../Alert";
 import { IconButton } from "../IconButton";
 import { Type } from "../Type";
 import { Times } from "../../icons/Times/Times";
-import { useNotify } from "./NotifyCenter";
+import { useNotify } from ".";
 
 const Notify = ({ children, className, severity, id, fixed }) => {
   const [mount, setMount] = useState(false);

@@ -1,2 +1,3 @@
 export { Notify } from "./Notify";
-export { NotifyCenter, useNotify } from "./NotifyCenter";
+export { NotifyCenter } from "./NotifyCenter";
+export { useNotify } from "./NotifyCenter/useNotify";
