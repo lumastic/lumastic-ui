@@ -9,9 +9,9 @@ const NotifyCenter = ({ children, initialNotifications = [] }) => {
   const notifyReducer = (state, action) => {
     switch (action.type) {
       case "add":
-        return state.concat({ id: Date.now(), ...action.payload });
+        return state.concat({ id: Date.now(), ...action.props });
       case "remove":
-        return state.filter(n => n.id !== action.payload);
+        return state.filter(n => n.id !== action.id);
       default:
         return state;
     }

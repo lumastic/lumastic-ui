@@ -31,7 +31,7 @@ const Notify = ({ children, className, severity, id, fixed }) => {
     if (time >= 10000) {
       setMount(false);
       setTimeout(() => {
-        notifyDispatch({ type: "remove", payload: id });
+        notifyDispatch({ type: "remove", id });
       }, 400);
     }
   }, [time, notifyDispatch, id]);
@@ -47,7 +47,7 @@ const Notify = ({ children, className, severity, id, fixed }) => {
   const close = () => {
     setMount(false);
     setTimeout(() => {
-      notifyDispatch({ type: "remove", payload: id });
+      notifyDispatch({ type: "remove", id });
     }, 400);
   };
 

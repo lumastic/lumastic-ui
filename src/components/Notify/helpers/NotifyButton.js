@@ -12,8 +12,8 @@ const NotifyButton = ({ children, color = "primary", severity = "info" }) => {
     notifyDispatch({
       // type of function ["add", "remove"]
       type: "add",
-      // payload of Notify props
-      payload: {
+      // Notify props
+      props: {
         children: `${severity.toUpperCase()} Notification`,
         severity
       }
