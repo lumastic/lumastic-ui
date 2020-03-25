@@ -49,6 +49,23 @@ const [value, setValue] = useState("Test");
 </>;
 ```
 
+#### Size changes based on `Option`s
+
+```jsx
+import { Option } from "../Option";
+import { Type } from "../Type";
+<>
+  <Select defaultValue={"first"}>
+    <Option name={"first"}>
+      <Type body2>First</Type>
+    </Option>
+    <Option name={"second"}>
+      <Type>Second</Type>
+    </Option>
+  </Select>
+</>;
+```
+
 Source:
 
 ```js { "file": "./Select.js" }
