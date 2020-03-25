@@ -4,14 +4,10 @@ const fs = require("fs");
 module.exports = {
   components: [
     "src/components/*/*.js",
-    "src/layouts/*/*.js",
-    "src/templates/*/*.js"
+    "src/templates/*/*.js",
+    "src/layouts/*/*.js"
   ],
-  ignore: [
-    "src/components/**/index.js",
-    "src/components/**/*.test.js",
-    "src/components/**/examples/*"
-  ],
+  ignore: ["src/*/**/index.js", "src/*/**/*.test.js", "src/*/**/examples/*"],
   theme: {
     fontFamily: {
       base: "'brandon-grotesque', 'sans-serif'"

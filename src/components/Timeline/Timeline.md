@@ -1,9 +1,7 @@
-### Timeline does this
-
 #### Basic Usage
 
 ```jsx
-<Timeline>Timeline</Timeline>
+<Timeline />
 ```
 
 Source:

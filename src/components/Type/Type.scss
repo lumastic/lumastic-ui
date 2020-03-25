@@ -1,80 +1,70 @@
 @import url("https://use.typekit.net/frt5uuv.css");
 @import "../../styles/colors";
 
-p,
-div,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  &.type {
-    margin: 0;
-    padding: 0;
-    line-height: 1.4;
-    font-family: brandon-grotesque, sans-serif;
-    font-weight: normal;
-    font-size: 1rem;
+.type {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  &.h1,
+  &.h2,
+  &.h3,
+  &.h4,
+  &.overline {
+    font-family: atten-round-new, brandon-grotesque, sans-serif;
+    font-weight: bold;
+  }
+  &.h1 {
+    font-size: 3rem;
+  }
+  &.h2 {
+    font-size: 1.9rem;
+  }
+  &.h3 {
+    font-size: 1.6rem;
+  }
+  &.h4 {
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+  }
+  &.caption {
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
-    &.h1,
-    &.h2,
-    &.h3,
-    &.h4,
-    &.overline {
-      font-family: atten-round-new, brandon-grotesque, sans-serif;
-      font-weight: bold;
-    }
-    &.h1 {
-      font-size: 3rem;
-    }
-    &.h2 {
-      font-size: 1.9rem;
-    }
-    &.h3 {
-      font-size: 1.6rem;
-    }
-    &.h4 {
-      font-size: 1.3rem;
-      letter-spacing: 0.04em;
-    }
-    &.caption {
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
-      font-weight: lighter;
-    }
-    &.body2 {
-      font-size: 0.8rem;
-    }
-    &.overline {
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    &.primary {
-      color: $primaryDark;
-    }
-    &.red {
-      color: $redDark;
-    }
-    &.green {
-      color: $greenDark;
-    }
-    &.grey {
-      color: $greyText;
-    }
-    &.white {
-      color: $lightText;
-    }
-    &.left {
-      text-align: left;
-    }
-    &.center {
-      text-align: center;
-    }
-    &.right {
-      text-align: right;
-    }
+    font-weight: lighter;
+  }
+  &.body2 {
+    font-size: 0.8rem;
+  }
+  &.overline {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  &.primary {
+    color: $primaryDark;
+  }
+  &.red {
+    color: $redDark;
+  }
+  &.green {
+    color: $greenDark;
+  }
+  &.grey {
+    color: $greyText;
+  }
+  &.white {
+    color: $lightText;
+  }
+  &.left {
+    text-align: left;
+  }
+  &.center {
+    text-align: center;
+  }
+  &.right {
+    text-align: right;
   }
 }

@@ -1,0 +1,11 @@
+.label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .label-text {
+    flex-grow: 1;
+  }
+  .label-action {
+    flex-grow: 0;
+  }
+}
