@@ -29,6 +29,16 @@ import { NotifyButton } from "./helpers/NotifyButton";
 </NotifyCenter>;
 ```
 
+#### `fixed` dispatches a notification that stays onscreen until dismissed programatically or by the user
+
+```jsx padded
+import { NotifyCenter } from ".";
+import { NotifyButton } from "./helpers/NotifyButton";
+<NotifyCenter>
+  <NotifyButton fixed>Fixed Notify</NotifyButton>
+</NotifyCenter>;
+```
+
 #### How to dispatch notifications
 
 ```js { "file": "./helpers/NotifyButton.js" }
