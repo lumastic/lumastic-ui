@@ -1,0 +1,40 @@
+.button {
+  &.icon {
+    flex: 0 0 auto;
+    overflow: visible;
+    text-align: center;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    i,
+    svg {
+      margin-right: 0;
+    }
+    .button-icon {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
+.icon-button-container {
+  position: relative;
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  &.big {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  overflow: visible;
+  button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -0.685em;
+    margin-left: -0.75em;
+  }
+}

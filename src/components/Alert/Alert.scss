@@ -1,0 +1,41 @@
+@import "../../styles/colors.scss";
+
+.alert {
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // z-index: 9997;
+  display: flex;
+  padding: 0.5rem 1rem;
+  background-color: $grey;
+  border-radius: 6px;
+  &.filled {
+    color: $lightText;
+    &.info {
+      background-color: $primary;
+    }
+    &.success {
+      background-color: $green;
+    }
+    &.warning {
+      background-color: $yellow;
+    }
+    &.error {
+      background-color: $red;
+    }
+  }
+  &.normal {
+    &.info {
+      background-color: rgba-to-rgb(rgba($primary, 0.2));
+    }
+    &.success {
+      background-color: rgba-to-rgb(rgba($green, 0.25));
+    }
+    &.warning {
+      background-color: rgba-to-rgb(rgba($yellow, 0.3));
+    }
+    &.error {
+      background-color: rgba-to-rgb(rgba($red, 0.3));
+    }
+  }
+}

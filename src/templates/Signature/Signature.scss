@@ -1,0 +1,13 @@
+.signature {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .sig-seal {
+    display: inline-flex;
+    flex-grow: 0;
+    margin-right: 0.75rem;
+  }
+  .sig-text {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,21 @@
+@import "../../styles/colors.scss";
+
+.textinput {
+  font-family: brandon-grotesque, sans-serif;
+  font-style: normal;
+  line-height: 0;
+  padding-bottom: 0.1em;
+  font-size: 1em;
+  border: none;
+  border-bottom: 1px solid $grey;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  &:focus {
+    outline: none;
+    border-color: $primaryDark;
+  }
+  &:hover:not(:focus) {
+    outline: none;
+    border-color: $greyText;
+  }
+}

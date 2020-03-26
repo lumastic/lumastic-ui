@@ -1,0 +1,42 @@
+@import "../../styles/colors.scss";
+
+.point {
+  display: inline-block;
+  position: relative;
+  align-items: center;
+  font-size: 0.875rem;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+  }
+  &.border {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: $background;
+  }
+  &.primary {
+    color: $primary;
+  }
+  &.light {
+    color: $secondaryLight;
+  }
+  &.red {
+    color: $red;
+  }
+  &.green {
+    color: $green;
+  }
+  &.grey {
+    color: $greyDark;
+  }
+  &.small {
+    font-size: 0.65rem;
+  }
+}

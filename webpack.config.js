@@ -1,6 +1,6 @@
 const path = require("path");
 
-const getEntries = () => ({ "lib/Button/index": "./src/components/Button" });
+const getEntries = () => ({ "Button/index": "./src/components/Button" });
 
 const entries = getEntries();
 
@@ -27,7 +27,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           {
             loader: "style-loader"
@@ -43,6 +43,9 @@ module.exports = {
           },
           {
             loader: "postcss-loader"
+          },
+          {
+            loader: "sass-loader"
           }
         ]
       },

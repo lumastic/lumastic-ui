@@ -1,0 +1,54 @@
+@import "../../styles/colors.scss";
+
+.select {
+  border: 1px solid $grey;
+  border-radius: 6px;
+  padding: 0.25rem 0.75rem;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &:hover {
+    border-color: $greyText;
+    cursor: pointer;
+    .select-arrow {
+      color: $greyText;
+    }
+  }
+  .select-arrow {
+    display: inline-flex;
+    margin-left: 1rem;
+    align-self: center;
+    justify-self: center;
+    font-size: 0.6rem;
+    color: lighten($greyText, 10%);
+  }
+  .label {
+    color: $greyText;
+  }
+}
+.select-options {
+  background-color: $backgroundLight;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 10rem;
+  .select-option {
+    padding: 0.5rem 1.25rem;
+    &[aria-selected="true"] {
+      background-color: lighten($greyLight, 12%);
+    }
+    &:focus {
+      outline: none;
+      &:not([aria-selected="true"]) {
+        background-color: lighten($greyLight, 15%);
+      }
+    }
+    &:hover {
+      &:not([aria-selected="true"]) {
+        background-color: lighten($greyLight, 18%);
+      }
+      cursor: pointer;
+    }
+  }
+}

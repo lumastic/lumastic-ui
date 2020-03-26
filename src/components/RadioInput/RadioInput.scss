@@ -1,0 +1,16 @@
+@import "../../styles/colors.scss";
+
+.radioinput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  input {
+    flex-grow: 0;
+    margin: 0;
+    margin-right: 0.5rem;
+    background-color: $primary;
+  }
+  .label {
+    flex-grow: 1;
+  }
+}
