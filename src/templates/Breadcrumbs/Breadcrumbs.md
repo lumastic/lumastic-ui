@@ -1,4 +1,4 @@
-### Breadcrumbs does this
+#### Breadcrumbs seperates each one of it's children with a `Slash`
 
 #### Basic Usage
 
