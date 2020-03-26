@@ -4,10 +4,13 @@
 
 ```jsx
 import { Sparks } from "../../icons/Sparks";
+import { Type } from "../../components/Type";
 <Breadcrumbs>
-  <div>Bread</div>
-  <div>Crumbs</div>
-  <Sparks />
+  <Type>Bread</Type>
+  <Type>Crumbs</Type>
+  <Type>
+    <Sparks /> Spark
+  </Type>
 </Breadcrumbs>;
 ```
 
