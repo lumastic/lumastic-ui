@@ -6,8 +6,8 @@ import style from "./Select.scss";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { SelectOptions } from "./helpers/SelectOptions";
 import { SelectOption } from "./helpers/SelectOption";
-import { DownArrow } from "../../icons/DownArrow/DownArrow";
 import { Type } from "../Type";
+import { ArrowDown } from "../../icons/ArrowDown";
 
 const Select = ({
   defaultValue,
@@ -76,7 +76,7 @@ const Select = ({
                 </div>
               )}
               <div className={style["select-arrow"]}>
-                <DownArrow />
+                <ArrowDown />
               </div>
             </div>
           </PopupTrigger>

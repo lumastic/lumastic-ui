@@ -8,9 +8,9 @@
     "new": "cd scripts && ./createComponent.sh",
     "new:template": "cd scripts && ./createTemplate.sh",
     "new:layout": "cd scripts && ./createLayout.sh",
+    "new:icon": "cd scripts && ./createIcon.sh",
     "build": "webpack",
-    "test": "jest --watch",
-    "svg": "cd scripts && ./svgr.sh"
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "",

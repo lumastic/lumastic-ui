@@ -1,11 +1,7 @@
 import React from "react";
-import style from "./Times.scss";
+import { Icon } from "../Icon";
+import icon from "./Times.svg";
 
-const Times = () => (
-  <svg viewBox="0 0 32 32" className={style.times}>
-    <line x1="4" y1="28" x2="28" y2="4" />
-    <line x1="4" y1="4" x2="28" y2="28" />
-  </svg>
-);
+const Times = () => <Icon icon={icon} />;
 
 export { Times };

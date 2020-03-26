@@ -36,17 +36,17 @@
   .select-option {
     padding: 0.5rem 1.25rem;
     &[aria-selected="true"] {
-      background-color: lighten($greyLight, 6%);
+      background-color: lighten($greyLight, 12%);
     }
     &:focus {
       outline: none;
       &:not([aria-selected="true"]) {
-        background-color: lighten($greyLight, 9%);
+        background-color: lighten($greyLight, 15%);
       }
     }
     &:hover {
       &:not([aria-selected="true"]) {
-        background-color: lighten($greyLight, 9%);
+        background-color: lighten($greyLight, 18%);
       }
       cursor: pointer;
     }
