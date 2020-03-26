@@ -2,7 +2,7 @@ import React, { Children } from "react";
 import PropTypes from "prop-types";
 import style from "./Breadcrumbs.scss";
 import classNames from "../../helpers/classNames";
-import { Slash } from "../../components/Slash";
+import { Slash } from "../../icons/Slash";
 
 const Breadcrumbs = ({ children, className }) => {
   const childCount = Children.count(children);
