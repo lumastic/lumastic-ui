@@ -51,7 +51,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: "svg-sprite-loader"
+        loader: "@svgr/webpack"
       }
     ]
   }
