@@ -1,30 +1,24 @@
-import React from "react";
+import React, { Children } from "react";
 import PropTypes from "prop-types";
 import style from "./Signature.scss";
 import classNames from "../../helpers/classNames";
-import { Avatar } from "../../components/Avatar";
-import { Type } from "../../components/Type";
 
-const Signature = ({
-  children,
-  className,
-  src = "https://cdn.lumastic.com/defaultAvatar.png",
-  alt = "User Avatar"
-}) => (
-  <div
-    className={classNames(className, style.signature)}
-    data-testid="signature"
-  >
-    <Avatar className={style["sig-avatar"]} src={src} alt={alt} />
-    <Type className={style["sig-text"]}>{children}</Type>
-  </div>
-);
+const Signature = ({ children, className }) => {
+  const twoChildren = Children.toArray(children);
+  return (
+    <div
+      className={classNames(className, style.signature)}
+      data-testid="signature"
+    >
+      <div className={style["sig-seal"]}>{twoChildren[0]}</div>
+      <div className={style["sig-text"]}>{twoChildren[1]}</div>
+    </div>
+  );
+};
 
 Signature.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
-  src: PropTypes.string,
-  alt: PropTypes.string
+  className: PropTypes.string
 };
 
 export { Signature };

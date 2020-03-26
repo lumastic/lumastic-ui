@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  .sig-avatar {
+  .sig-seal {
+    display: inline-flex;
     flex-grow: 0;
     margin-right: 0.75rem;
   }
