@@ -3,7 +3,10 @@
 #### Basic Usage
 
 ```jsx
-<Breadcrumbs>Breadcrumbs</Breadcrumbs>
+<Breadcrumbs>
+  <div>Bread</div>
+  <div>Crumbs</div>
+</Breadcrumbs>
 ```
 
 Source:
