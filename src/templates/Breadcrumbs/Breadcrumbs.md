@@ -3,10 +3,12 @@
 #### Basic Usage
 
 ```jsx
+import { Sparks } from "../../icons/Sparks";
 <Breadcrumbs>
   <div>Bread</div>
   <div>Crumbs</div>
-</Breadcrumbs>
+  <Sparks />
+</Breadcrumbs>;
 ```
 
 Source:
