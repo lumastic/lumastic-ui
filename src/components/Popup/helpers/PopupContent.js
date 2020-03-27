@@ -1,9 +1,10 @@
-import React, { useContext, createElement } from "react";
 import PropTypes from "prop-types";
-import PopupContext from "./PopupContext";
+import React, { createElement, useContext } from "react";
+import classNames from "../../../helpers/classNames";
 import { Modal } from "../../Modal";
 import style from "../Popup.scss";
-import classNames from "../../../helpers/classNames";
+import PopupContext from "./PopupContext";
+import { PopupEscape } from "./PopupEscape";
 
 const PopupContent = ({ children, className, render }) => {
   const { isShowing, setPopup } = useContext(PopupContext);
@@ -17,6 +18,7 @@ const PopupContent = ({ children, className, render }) => {
           <div className={classNames(className, style.popup)}>{children}</div>
         )}
       </div>
+      <PopupEscape />
     </Modal>
   );
 };

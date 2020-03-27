@@ -8,12 +8,16 @@
   box-sizing: border-box;
   &:focus {
     outline: 1px dotted $secondaryLight;
+    background-color: lighten($greyLight, 15%);
   }
   &:hover {
     background-color: lighten($greyLight, 18%);
     cursor: pointer;
   }
   &:active {
-    background-color: lighten($greyLight, 15%);
+    background-color: lighten($greyLight, 12%);
+  }
+  &.active {
+    background-color: rgba($secondaryLight, 0.2);
   }
 }

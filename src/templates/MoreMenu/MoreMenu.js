@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./MoreMenu.scss";
 import { IconButton } from "../../components/IconButton";
 import { EllipsisV } from "../../icons/EllipsisV";
 import { Popup, PopupTrigger, PopupContent } from "../../components/Popup";
-import { Menu } from "../../components/Menu";
+import { PopupMenu } from "../../components/PopupMenu";
 
 const MoreMenu = ({ children, size, setSize, position = "left", ...rest }) => (
   <Popup
@@ -16,9 +15,7 @@ const MoreMenu = ({ children, size, setSize, position = "left", ...rest }) => (
         <EllipsisV />
       </IconButton>
     </PopupTrigger>
-    <PopupContent className={style["more-menu"]}>
-      <Menu>{children}</Menu>
-    </PopupContent>
+    <PopupContent render={PopupMenu}>{children}</PopupContent>
   </Popup>
 );
 
