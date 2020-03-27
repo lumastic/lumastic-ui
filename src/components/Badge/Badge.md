@@ -1,9 +1,50 @@
-### Badge does this
-
 #### Basic Usage
 
 ```jsx
-<Badge>Badge</Badge>
+import { Avatar } from "../Avatar";
+<Badge>
+  <Avatar />
+</Badge>;
+```
+
+#### `color`
+
+```jsx padded
+import { Avatar } from "../Avatar";
+<>
+  <Badge>
+    <Avatar />
+  </Badge>
+  <Badge color={"secondary"}>
+    <Avatar />
+  </Badge>
+  <Badge color={"yellow"}>
+    <Avatar />
+  </Badge>
+  <Badge color={"red"}>
+    <Avatar />
+  </Badge>
+</>;
+```
+
+#### `anchor`
+
+```jsx padded
+import { Avatar } from "../Avatar";
+<>
+  <Badge anchor={{ v: "top", h: "left" }}>
+    <Avatar />
+  </Badge>
+  <Badge anchor={{ v: "top", h: "right" }}>
+    <Avatar />
+  </Badge>
+  <Badge anchor={{ v: "bottom", h: "right" }}>
+    <Avatar />
+  </Badge>
+  <Badge anchor={{ v: "bottom", h: "left" }}>
+    <Avatar />
+  </Badge>
+</>;
 ```
 
 Source:
