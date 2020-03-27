@@ -1,0 +1,19 @@
+@import "../../../styles/colors.scss";
+
+.menuitem {
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  &:focus {
+    outline: 1px dotted $secondaryLight;
+  }
+  &:hover {
+    background-color: lighten($greyLight, 18%);
+    cursor: pointer;
+  }
+  &:active {
+    background-color: lighten($greyLight, 15%);
+  }
+}

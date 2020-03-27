@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import PopupContext from "./PopupContext";
 import { Modal } from "../../Modal";
 import style from "../Popup.scss";
+import classNames from "../../../helpers/classNames";
 
-const PopupContent = ({ children, render }) => {
+const PopupContent = ({ children, className, render }) => {
   const { isShowing, setPopup } = useContext(PopupContext);
 
   return (
@@ -13,7 +14,7 @@ const PopupContent = ({ children, render }) => {
         {render ? (
           createElement(render, { children })
         ) : (
-          <div className={style.popup}>{children}</div>
+          <div className={classNames(className, style.popup)}>{children}</div>
         )}
       </div>
     </Modal>
@@ -22,6 +23,7 @@ const PopupContent = ({ children, render }) => {
 
 PopupContent.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   render: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
 };
 

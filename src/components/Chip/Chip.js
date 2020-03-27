@@ -30,7 +30,7 @@ const Chip = ({ className, color = "primary", symbol, label, onRemove }) => (
 
 Chip.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf(["primary, grey"]),
+  color: PropTypes.oneOf(["primary", "grey"]),
   symbol: PropTypes.node,
   label: PropTypes.node,
   onRemove: PropTypes.func
