@@ -1,6 +1,5 @@
 const path = require("path");
-
-const getEntries = () => ({ "Button/index": "./src/components/Button" });
+const { getEntries } = require("./getEntries");
 
 const entries = getEntries();
 

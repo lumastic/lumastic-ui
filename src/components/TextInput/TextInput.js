@@ -12,6 +12,7 @@ const TextInput = ({ name, value, id, placeholder, className, ...rest }) => (
     placeholder={name || placeholder}
     className={classNames(className, style.textinput, "type")}
     data-testid="textinput"
+    spellCheck
     {...rest}
   />
 );

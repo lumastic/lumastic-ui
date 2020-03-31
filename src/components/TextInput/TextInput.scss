@@ -1,7 +1,8 @@
+@import "../../styles/fonts.scss";
 @import "../../styles/colors.scss";
 
 .textinput {
-  font-family: brandon-grotesque, sans-serif;
+  font-family: $bodyFont;
   font-style: normal;
   line-height: 0;
   padding-bottom: 0.1em;
