@@ -1,9 +1,9 @@
 {
   "name": "lumastic-ui",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "The UI framework for lumastic applications and extensions",
   "main": "build/*",
-  "repository": "git://lumastic/lumastic-ui",
+  "repository": "https://github.com/lumastic/lumastic-ui",
   "scripts": {
     "start": "npx styleguidist server",
     "new": "cd scripts && ./createComponent.sh",
@@ -11,7 +11,8 @@
     "new:layout": "cd scripts && ./createLayout.sh",
     "new:icon": "cd scripts && ./createIcon.sh",
     "build": "webpack",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "publish": "webpack && npm publish"
   },
   "keywords": [],
   "author": "",
