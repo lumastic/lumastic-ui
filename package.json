@@ -1,8 +1,9 @@
 {
   "name": "lumastic-ui",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "The UI framework for lumastic applications and extensions",
   "main": "build/*",
+  "repository": "git://lumastic/lumastic-ui",
   "scripts": {
     "start": "npx styleguidist server",
     "new": "cd scripts && ./createComponent.sh",
