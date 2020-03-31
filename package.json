@@ -1,6 +1,6 @@
 {
   "name": "lumastic-ui",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "The UI framework for lumastic applications and extensions",
   "main": "build/*",
   "repository": "https://github.com/lumastic/lumastic-ui",
