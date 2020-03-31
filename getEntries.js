@@ -6,7 +6,7 @@ const createEntries = source => {
   readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => {
-      entries[`${dirent.name}/index.js`] = `${source}/${dirent.name}`;
+      entries[`${dirent.name}/index`] = `${source}/${dirent.name}`;
       return null;
     });
   return entries;
