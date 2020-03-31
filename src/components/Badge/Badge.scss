@@ -1,0 +1,39 @@
+@import "../../styles/colors.scss";
+
+.badged {
+  position: relative;
+  display: inline-flex;
+  .badge {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    &.border {
+      border: 2px solid $backgroundLight;
+    }
+    &.green {
+      background-color: $green;
+    }
+    &.red {
+      background-color: $red;
+    }
+    &.yellow {
+      background-color: $yellow;
+    }
+    &.secondary {
+      background-color: $secondary;
+    }
+    &.top {
+      top: -2px;
+    }
+    &.bottom {
+      bottom: -2px;
+    }
+    &.left {
+      left: -0.25rem;
+    }
+    &.right {
+      right: -0.25rem;
+    }
+  }
+}

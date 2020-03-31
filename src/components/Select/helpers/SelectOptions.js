@@ -6,6 +6,7 @@ const SelectOptions = ({ children }) => {
   const optionsRef = useRef();
 
   const handleArrows = e => {
+    console.log(optionsRef);
     const selectedOption = optionsRef.current.querySelector(
       "[aria-selected='true']"
     );

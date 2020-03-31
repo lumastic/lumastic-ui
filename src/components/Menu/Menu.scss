@@ -1,0 +1,8 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  min-width: 10rem;
+  .menu-label {
+    padding-left: 1.25rem;
+  }
+}

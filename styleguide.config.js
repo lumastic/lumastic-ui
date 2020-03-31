@@ -10,7 +10,7 @@ module.exports = {
   ignore: ["src/*/**/index.js", "src/*/**/*.test.js", "src/*/**/examples/*"],
   theme: {
     fontFamily: {
-      base: "'brandon-grotesque', 'sans-serif'"
+      base: "'Roboto', 'sans-serif'"
     },
     color: {
       link: "white",

@@ -1,6 +1,5 @@
 const path = require("path");
-
-const getEntries = () => ({ "Button/index": "./src/components/Button" });
+const { getEntries } = require("./getEntries");
 
 const entries = getEntries();
 
@@ -37,7 +36,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[local]"
+                localIdentName: "[name]__[local]"
               }
             }
           },
