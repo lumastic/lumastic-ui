@@ -4,10 +4,9 @@ const { getEntries } = require("./getEntries");
 const entries = getEntries();
 
 module.exports = {
-  mode: "development",
   entry: entries,
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     libraryTarget: "commonjs2"
   },
@@ -20,7 +19,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.resolve(__dirname, "src"),
-        exclude: /(node_modules|bower_components|build)/,
+        exclude: /(node_modules|bower_components|dist)/,
         use: {
           loader: "babel-loader"
         }

@@ -1,8 +1,7 @@
 {
   "name": "lumastic-ui",
-  "version": "0.2.0",
+  "version": "0.2.16",
   "description": "The UI framework for lumastic applications and extensions",
-  "main": "build/*",
   "repository": "https://github.com/lumastic/lumastic-ui",
   "scripts": {
     "start": "npx styleguidist server",
@@ -10,12 +9,13 @@
     "new:template": "cd scripts && ./createTemplate.sh",
     "new:layout": "cd scripts && ./createLayout.sh",
     "new:icon": "cd scripts && ./createIcon.sh",
-    "build": "webpack",
+    "build": "webpack && yarn cp:package",
     "test": "jest --watch",
-    "publish": "webpack && npm publish"
+    "cp:package": "cp -rf package.json dist",
+    "dist": "cd dist && yarn publish"
   },
   "keywords": [],
-  "author": "",
+  "author": "Headfake Digital, LLC",
   "license": "ISC",
   "peerDependencies": {
     "react": "^16.13.0",
