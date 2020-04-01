@@ -4,13 +4,13 @@ import style from "./AppBar.scss";
 import classNames from "../../helpers/classNames";
 
 const AppBar = forwardRef(({ children, className }, ref) => (
-  <div
+  <header
     className={classNames(className, style.appbar)}
     data-testid="appbar"
     ref={ref}
   >
     {children}
-  </div>
+  </header>
 ));
 
 AppBar.propTypes = {

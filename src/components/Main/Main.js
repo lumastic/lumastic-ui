@@ -4,9 +4,9 @@ import style from "./Main.scss";
 import classNames from "../../helpers/classNames";
 
 const Main = ({ children, className }) => (
-  <div className={classNames(className, style.main)} data-testid="main">
+  <main className={classNames(className, style.main)} data-testid="main">
     {children}
-  </div>
+  </main>
 );
 
 Main.propTypes = {

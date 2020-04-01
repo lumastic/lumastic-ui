@@ -1,0 +1,12 @@
+@import "../../styles/colors.scss";
+
+.sidenav {
+  box-sizing: border-box;
+  background-color: $primary;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.25rem;
+}

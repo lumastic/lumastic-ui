@@ -1,0 +1,32 @@
+@import "../../styles/colors.scss";
+
+.naviconbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  width: 1.75em;
+  height: 1.75em;
+  background-color: transparent;
+  color: lighten($secondary, 15%);
+  transition: all 100ms ease-in-out;
+  &:focus {
+    outline: 1px dotted lighten($secondary, 15%);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover:not(.active) {
+    background-color: rgba($backgroundLight, 0.25);
+  }
+  &:active:not(.active) {
+    background-color: rgba($backgroundLight, 0.5);
+  }
+  &.active {
+    background-color: $backgroundLight;
+    color: $primary;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+}

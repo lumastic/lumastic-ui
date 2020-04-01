@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Sidebar } from ".";
+import { SideNav } from ".";
 
-describe("Sidebar tests", () => {
+describe("SideNav tests", () => {
   test("Can mount", () => {
-    render(<Sidebar>Test</Sidebar>);
-    expect(screen.queryByTestId("sidebar")).toBeTruthy();
+    render(<SideNav>Test</SideNav>);
+    expect(screen.queryByTestId("sidenav")).toBeTruthy();
   });
 });
