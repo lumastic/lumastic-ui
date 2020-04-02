@@ -3,7 +3,7 @@
 ```jsx
 import { Option } from "../Option";
 import { Type } from "../Type";
-<Select label={"Select an item"}>
+<Select placeholder={"Select an item"}>
   <Option name={"first"}>
     <Type>First</Type>
   </Option>

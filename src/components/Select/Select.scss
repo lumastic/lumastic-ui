@@ -20,7 +20,7 @@
     margin-left: 1rem;
     align-self: center;
     justify-self: center;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     color: lighten($greyText, 10%);
   }
   .label {
@@ -36,7 +36,7 @@
   .select-option {
     padding: 0.5rem 1.25rem;
     &[aria-selected="true"] {
-      background-color: lighten($greyLight, 12%);
+      background-color: rgba($primaryLight, 0.2);
     }
     &:focus {
       outline: none;
@@ -45,7 +45,7 @@
       }
     }
     &:hover {
-      &:not([aria-selected="true"]) {
+      &:not(:focus):not([aria-selected="true"]) {
         background-color: lighten($greyLight, 18%);
       }
       cursor: pointer;

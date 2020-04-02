@@ -6,21 +6,34 @@ const SelectOptions = ({ children }) => {
   const optionsRef = useRef();
 
   const handleArrows = e => {
-    console.log(optionsRef);
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
     const selectedOption = optionsRef.current.querySelector(
       "[aria-selected='true']"
     );
-    const focusedElement = document.activeElement || selectedOption;
-    const nextEl = focusedElement.nextSibling;
-    const prevEl = focusedElement.previousSibling;
+    let focusedElement;
+    if (optionsRef.current.contains(document.activeElement)) {
+      focusedElement = document.activeElement;
+    } else if (selectedOption) {
+      focusedElement = selectedOption;
+    }
+    const nextEl = focusedElement ? focusedElement.nextSibling : null;
+    const prevEl = focusedElement ? focusedElement.previousSibling : null;
     switch (e.key) {
       case "ArrowUp":
         e.preventDefault();
-        if (prevEl) prevEl.focus();
+        if (prevEl) {
+          prevEl.focus();
+        } else {
+          optionsRef.current.firstChild.focus();
+        }
         break;
       case "ArrowDown":
         e.preventDefault();
-        if (nextEl) nextEl.focus();
+        if (nextEl) {
+          nextEl.focus();
+        } else {
+          optionsRef.current.firstChild.focus();
+        }
         break;
       default:
         break;

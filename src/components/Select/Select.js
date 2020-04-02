@@ -12,7 +12,7 @@ import { ArrowDown } from "../../icons/ArrowDown";
 const Select = ({
   defaultValue,
   id,
-  label,
+  placeholder,
   name,
   children,
   className,
@@ -30,20 +30,6 @@ const Select = ({
     setOptions
   ]);
 
-  const focusOpen = () => {
-    // Set focus on first element
-    const selectOptions = triggerRef.current.parentNode.nextSibling.firstChild;
-    const selectedOption = selectOptions.querySelector(
-      "[aria-selected='true']"
-    );
-    if (selectedOption) {
-      selectedOption.focus();
-    } else {
-      selectOptions.firstChild.focus();
-    }
-    if (onOpen) onOpen();
-  };
-
   useEffect(() => {
     if (onChange) onChange(selected);
   }, [selected, onChange]);
@@ -59,7 +45,7 @@ const Select = ({
       />
       <SelectContext.Provider value={contextValue}>
         <Popup
-          onOpen={focusOpen}
+          onOpen={onOpen}
           onClose={onClose}
           anchor={{ v: "top", h: "left" }}
           transform={{ v: "top", h: "left" }}
@@ -72,7 +58,7 @@ const Select = ({
             >
               {options[selected] || (
                 <div className={style.label}>
-                  <Type>{label}</Type>
+                  <Type>{placeholder}</Type>
                 </div>
               )}
               <div className={style["select-arrow"]}>
@@ -96,7 +82,7 @@ const Select = ({
 
 Select.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.string,
+  placeholder: PropTypes.string,
   children: PropTypes.node,
   defaultValue: PropTypes.string,
   name: PropTypes.string,

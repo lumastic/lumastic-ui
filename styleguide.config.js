@@ -2,10 +2,23 @@ const path = require("path");
 const fs = require("fs");
 
 module.exports = {
-  components: [
-    "src/components/*/*.js",
-    "src/templates/*/*.js",
-    "src/layouts/*/*.js"
+  sections: [
+    {
+      name: "Components",
+      components: "src/components/*/*.js"
+    },
+    {
+      name: "Templates",
+      components: "src/templates/*/*.js"
+    },
+    {
+      name: "Views",
+      components: "src/views/*/*.js"
+    },
+    {
+      name: "Layouts",
+      components: "src/layouts/*/*.js"
+    }
   ],
   ignore: ["src/*/**/index.js", "src/*/**/*.test.js", "src/*/**/examples/*"],
   theme: {

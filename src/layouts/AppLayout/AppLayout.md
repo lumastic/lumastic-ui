@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-import { SideNav } from "../../components/SideNav";
+import { SideNav } from "../../views/SideNav";
 import { AppBar } from "../../components/AppBar";
 import { Main } from "../../components/Main";
 <AppLayout>

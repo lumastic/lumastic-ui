@@ -18,7 +18,7 @@ const Option = ({ children, name }) => {
 
 Option.propTypes = {
   children: PropTypes.node,
-  name: PropTypes.string
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export { Option };

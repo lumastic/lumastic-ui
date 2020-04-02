@@ -7,6 +7,7 @@
     "start": "npx styleguidist server",
     "new": "cd scripts && ./createComponent.sh",
     "new:template": "cd scripts && ./createTemplate.sh",
+    "new:view": "cd scripts && ./createView.sh",
     "new:layout": "cd scripts && ./createLayout.sh",
     "new:icon": "cd scripts && ./createIcon.sh",
     "build": "webpack && yarn cp:package",

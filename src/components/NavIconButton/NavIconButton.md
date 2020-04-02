@@ -2,7 +2,7 @@
 
 ```jsx
 import { Sparks } from "../../icons/Sparks";
-import { SideNav } from "../SideNav";
+import { SideNav } from "../../views/SideNav";
 <SideNav>
   <NavIconButton>
     <Sparks />
@@ -14,7 +14,7 @@ import { SideNav } from "../SideNav";
 
 ```jsx
 import { Sparks } from "../../icons/Sparks";
-import { SideNav } from "../SideNav";
+import { SideNav } from "../../views/SideNav";
 <SideNav>
   <NavIconButton active>
     <Sparks />

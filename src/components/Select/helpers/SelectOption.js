@@ -35,7 +35,7 @@ const SelectOption = ({ children, name }) => {
 
 SelectOption.propTypes = {
   children: PropTypes.node,
-  name: PropTypes.string
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export { SelectOption };
