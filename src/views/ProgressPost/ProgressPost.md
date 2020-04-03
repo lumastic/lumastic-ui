@@ -2,6 +2,7 @@
 
 ```jsx
 <ProgressPost
+  canComment
   spark={{ title: "Spark Title" }}
   post={{
     content: "Post content",

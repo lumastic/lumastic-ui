@@ -2,8 +2,8 @@
 
 .divider {
   border: none;
-  height: 1px;
+  border-top: 1px solid $grey;
+  box-sizing: border-box;
   margin: 0;
   flex-shrink: 0;
-  background-color: $grey;
 }

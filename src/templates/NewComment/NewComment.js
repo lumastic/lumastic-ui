@@ -2,16 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./NewComment.scss";
 import classNames from "../../helpers/classNames";
+import { TextInput } from "../../components/TextInput";
+import { Avatar } from "../../components/Avatar";
 
-const NewComment = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.newcomment)} data-testid={"newcomment"} {...rest}>
-    {children}
+const NewComment = ({ post = {}, user = {} }) => (
+  <div className={style.newcomment}>
+    <Avatar src={user.avatarURL} size="small" className={style.avatar} />
+    <TextInput placeholder="Post a comment..." />
   </div>
 );
 
 NewComment.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  post: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export { NewComment };
