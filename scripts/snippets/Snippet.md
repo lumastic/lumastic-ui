@@ -1,5 +1,3 @@
-### COMPONENT_NAME does this
-
 #### Basic Usage
 
 ```jsx

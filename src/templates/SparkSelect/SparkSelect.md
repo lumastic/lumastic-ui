@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-const sparks = [{ name: "Spark 1" }, { name: "Spark 2" }];
+const sparks = [{ title: "Spark 1" }, { title: "Spark 2" }];
 <SparkSelect sparks={sparks}>SparkSelect</SparkSelect>;
 ```
 

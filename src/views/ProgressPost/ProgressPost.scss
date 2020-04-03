@@ -1,0 +1,17 @@
+.progresspost {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 0.4rem;
+}
+
+.postheader {
+  display: flex;
+  align-items: center;
+  .crumbs {
+    flex-grow: 1;
+  }
+  .time {
+    flex-grow: 0;
+    margin-left: 0.5rem;
+  }
+}

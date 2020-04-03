@@ -56,7 +56,7 @@
 #### `size` allows for custom font sizes
 
 ```jsx
-<Type size={"0.6rem"}>In case you want very small text</Type>
+<Type setSize={"0.6rem"}>In case you want very small text</Type>
 ```
 
 Source:

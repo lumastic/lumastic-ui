@@ -16,7 +16,7 @@ const Type = forwardRef(
       caption,
       overline,
       body2,
-      size,
+      setSize,
       align = "left",
       tag,
       color = "normal",
@@ -40,7 +40,7 @@ const Type = forwardRef(
           { [style.body2]: body2 },
           style[color]
         )}
-        style={{ fontSize: size }}
+        style={{ fontSize: setSize }}
         data-testid="type"
         ref={ref}
         {...rest}
@@ -61,7 +61,7 @@ Type.propTypes = {
   caption: PropTypes.bool,
   overline: PropTypes.bool,
   body2: PropTypes.bool,
-  size: PropTypes.string,
+  setSize: PropTypes.string,
   align: PropTypes.oneOf(["center", "left", "right"]),
   tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "p", "span", "div"]),
   color: PropTypes.oneOf(["normal", "primary", "red", "green", "grey"])
