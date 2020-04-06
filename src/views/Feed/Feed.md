@@ -1,9 +1,13 @@
-### Feed does this
-
 #### Basic Usage
 
 ```jsx
-<Feed>Feed</Feed>
+import { ProgressPost } from "../ProgressPost";
+import { postNoComments, postWithComments } from "../../helpers/postdb";
+<Feed>
+  <ProgressPost spark={{ title: "Spark Title" }} post={postNoComments} />
+  <ProgressPost spark={{ title: "Spark Title" }} post={postWithComments} />
+  <ProgressPost spark={{ title: "Spark Title" }} post={postNoComments} />
+</Feed>;
 ```
 
 Source:

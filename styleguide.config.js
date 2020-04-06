@@ -51,6 +51,11 @@ module.exports = {
       pre: {
         fontSize: "0.7rem"
       }
+    },
+    Playground: {
+      preview: {
+        backgroundColor: "#f4f4f4"
+      }
     }
   },
   updateExample: (props, exampleFilePath) => {
