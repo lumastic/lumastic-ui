@@ -10,7 +10,7 @@
 
 ```jsx padded
 <Avatar setSize={"5rem"} />
-<Avatar size={"large"} />
+<Avatar size={"big"} />
 <Avatar />
 <Avatar size={"small"} />
 ```
@@ -18,7 +18,7 @@
 #### `shadow` prop isolates avatar from its context on the page
 
 ```jsx padded
-<Avatar size={"large"} shadow />
+<Avatar size={"big"} shadow />
 ```
 
 Source:

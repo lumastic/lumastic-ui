@@ -3,10 +3,27 @@
 .sidenav {
   box-sizing: border-box;
   background-color: $primary;
-  height: 100%;
+  height: 100vh;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  .navbutton {
+    margin-bottom: 0.75rem;
+  }
+  .logo {
+    color: $accent;
+    font-size: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    margin-top: 0.25rem;
+  }
+  .user {
+    margin-top: 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
