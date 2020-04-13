@@ -1,5 +1,5 @@
-import { drew } from "./userdb";
-import { drewComment, keithComment } from "./commentdb";
+import { drew } from "./user.db";
+import { drewComment, keithComment } from "./comment.db";
 
 export const postWithComments = {
   content: "This is a post with comments",

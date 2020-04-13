@@ -1,4 +1,4 @@
-import { drew, keith } from "./userdb";
+import { drew, keith } from "./user.db";
 
 export const drewComment = {
   content: "This is a comment from Drew",

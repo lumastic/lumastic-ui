@@ -7,3 +7,8 @@ export const keith = {
   name: "Keith",
   avatarURL: "https://cdn.lumastic.com/1i7w_cc9-bkgyjxqjskt8qtqhmv4nd"
 };
+
+export const atishay = {
+  name: "Atishay",
+  avatarURL: "https://cdn.lumastic.com/defaultAvatar.png"
+};
