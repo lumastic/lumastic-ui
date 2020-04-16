@@ -75,5 +75,8 @@
       "\\.(scss|less|svg)$": "identity-obj-proxy"
     },
     "rootDir": "src"
+  },
+  "dependencies": {
+    "emojibase": "^4.0.1"
   }
 }
