@@ -1,7 +1,17 @@
 #### Basic Usage
 
 ```jsx
-<Emoji>Emoji</Emoji>
+import { Type } from "../Type";
+<Type>
+  This is an emoji
+  <Emoji
+    emoji={{
+      annotation: "grinning face",
+      unicode: "😀",
+      emoticon: ":D"
+    }}
+  />
+</Type>;
 ```
 
 Source:

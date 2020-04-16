@@ -25,6 +25,20 @@ const getEmojisByGroup = () =>
     })
     .catch(e => console.log(e));
 
+const getEmoji = shortcode =>
+  fetchFromCDN("en/compact.json", VERSION, { local: true })
+    .then(compact => {
+      const emojo = compact.find(emoji => {
+        let shortMatch = false;
+        emoji.shortcodes.forEach(code => {
+          if (shortcode === code) shortMatch = true;
+        });
+        return shortMatch;
+      });
+      return emojo;
+    })
+    .catch(e => console.log(e));
+
 const searchEmoji = searchString =>
   fetchFromCDN("en/compact.json", VERSION, { local: true })
     .then(compact => {
@@ -49,4 +63,4 @@ const searchEmoji = searchString =>
     })
     .catch(e => console.log(e));
 
-export { getEmojisByGroup, searchEmoji };
+export { getEmojisByGroup, searchEmoji, getEmoji };

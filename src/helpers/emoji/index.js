@@ -1,1 +1,1 @@
-export { getEmojisByGroup, searchEmoji } from "./emoji.js";
+export { getEmojisByGroup, getEmoji, searchEmoji } from "./emoji.js";

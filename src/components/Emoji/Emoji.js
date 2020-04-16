@@ -3,14 +3,19 @@ import PropTypes from "prop-types";
 import style from "./Emoji.scss";
 import classNames from "../../helpers/classNames";
 
-const Emoji = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.emoji)} data-testid={"emoji"} {...rest}>
-    {children}
-  </div>
+const Emoji = ({ emoji = {}, className }) => (
+  <span
+    className={classNames(className, style.emoji)}
+    role="img"
+    aria-label={emoji.annotation}
+    aria-hidden={!emoji.annotation}
+    data-testid="emoji"
+  >
+    {emoji.unicode || emoji.emoticon}
+  </span>
 );
-
 Emoji.propTypes = {
-  children: PropTypes.node,
+  emoji: PropTypes.object,
   className: PropTypes.string
 };
 
