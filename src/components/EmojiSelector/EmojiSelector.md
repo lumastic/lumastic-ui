@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<EmojiSelector onSelect={emoji => console.log(emoji)} />
+<EmojiSelector onSelect={emoji => alert(JSON.stringify(emoji))} />
 ```
 
 Source:
