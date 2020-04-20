@@ -39,7 +39,6 @@ const EmojiSelector = ({ className, onSelect }) => {
     [onSelect]
   );
 
-  if (!emojis) return null;
   return (
     <div
       className={classNames(className, style.emojiselector)}

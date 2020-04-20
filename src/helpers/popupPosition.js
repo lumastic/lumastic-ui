@@ -58,6 +58,15 @@ const popupPosition = (anchor, transform, trig, popup) => {
     default:
       break;
   }
+  if (popLeft <= 0) {
+    console.log("Negative popLeft", popLeft);
+    popLeft = 0;
+  } else if (popWidth + trigX > window.innerWidth) {
+    console.log(popWidth + trigX, window.innerWidth);
+    console.log("Off right by", popWidth + trigX - window.innerWidth);
+    popLeft -= popWidth + trigX - window.innerWidth + 20;
+  }
+
   return [popTop, popLeft];
 };
 

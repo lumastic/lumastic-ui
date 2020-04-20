@@ -2,7 +2,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: min-content auto;
-  grid-template-rows: min-content auto;
+  grid-template-rows: max-content auto;
   grid-template-areas:
     "sidebar appbar"
     "sidebar main";

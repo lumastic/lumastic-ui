@@ -11,6 +11,8 @@ const AddEmoji = ({ className, onSelect, color = "grey" }) => (
   <Popup
     className={classNames(className, style.addemoji)}
     data-testid="addemoji"
+    anchor={{ v: "bottom", h: "left" }}
+    transform={{ v: "top", h: "left" }}
   >
     <PopupTrigger>
       <IconButton color={color} buttonClass={style.button}>
