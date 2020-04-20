@@ -13,7 +13,9 @@ const Chip = ({ className, color = "primary", symbol, label, onRemove }) => (
   >
     <div className={style.symbol}>{symbol}</div>
     <div className={style.label}>
-      <Type body2>{label}</Type>
+      <Type body2 tag="div">
+        {label}
+      </Type>
     </div>
     {onRemove ? (
       <IconButton

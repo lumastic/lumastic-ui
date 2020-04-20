@@ -5,15 +5,19 @@ import classNames from "../../helpers/classNames";
 import { Button } from "../Button";
 
 const IconButton = forwardRef(
-  ({ children, className, size, setSize, ...rest }, ref) => (
+  ({ children, className, buttonClass, size, setSize, ...rest }, ref) => (
     <div
-      className={classNames(style["icon-button-container"], style[size])}
+      className={classNames(
+        className,
+        style["icon-button-container"],
+        style[size]
+      )}
       style={{ width: setSize, height: setSize }}
     >
       <Button
         size={size}
         {...rest}
-        className={classNames(className, style.icon)}
+        className={classNames(buttonClass, style.icon)}
         style={{ fontSize: setSize }}
         ref={ref}
       >
@@ -27,6 +31,7 @@ IconButton.propTypes = {
   children: PropTypes.node,
   size: PropTypes.oneOf(["big", "small"]),
   className: PropTypes.string,
+  buttonClass: PropTypes.string,
   setSize: PropTypes.string
 };
 
