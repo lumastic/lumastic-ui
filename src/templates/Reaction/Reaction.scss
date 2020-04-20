@@ -1,5 +1,21 @@
+@import "../../styles/colors.scss";
+
 .reaction {
+  display: inline-flex;
   .emoji {
     font-size: 0.875rem;
+  }
+  &:focus {
+    outline: 1px dotted $secondaryLight;
+  }
+  .chip {
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba-to-rgb(rgba($greyDark, 0.3));
+    }
+    &:active {
+      background-color: rgba-to-rgb(rgba($greyDark, 0.5));
+    }
   }
 }
