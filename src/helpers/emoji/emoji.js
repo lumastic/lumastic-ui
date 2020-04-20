@@ -1,7 +1,7 @@
 import { fetchFromCDN } from "emojibase";
 import groups from "./data/groups.json";
 
-const VERSION = "5.0.1";
+const VERSION = "4.0.1";
 
 const getEmojisByGroup = () =>
   fetchFromCDN("en/compact.json", VERSION, { local: true })

@@ -42,6 +42,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
+    "emojibase": "^4.0.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
@@ -76,7 +77,5 @@
     },
     "rootDir": "src"
   },
-  "dependencies": {
-    "emojibase": "^4.0.1"
-  }
+  "dependencies": {}
 }

@@ -15,7 +15,7 @@ const Emoji = ({ emoji = {}, className }) => (
   </span>
 );
 Emoji.propTypes = {
-  emoji: PropTypes.object,
+  emoji: PropTypes.object.isRequired,
   className: PropTypes.string
 };
 

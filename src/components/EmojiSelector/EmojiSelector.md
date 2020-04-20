@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<EmojiSelector>EmojiSelector</EmojiSelector>
+<EmojiSelector onSelect={emoji => console.log(emoji)} />
 ```
 
 Source:

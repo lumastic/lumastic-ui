@@ -5,7 +5,15 @@ import { Emoji } from ".";
 
 describe("Emoji tests", () => {
   test("Can mount", () => {
-    render(<Emoji>Test</Emoji>);
+    render(
+      <Emoji
+        emoji={{
+          annotation: "grinning face",
+          unicode: "😀",
+          emoticon: ":D"
+        }}
+      />
+    );
     expect(screen.queryByTestId("emoji")).toBeTruthy();
   });
 });
