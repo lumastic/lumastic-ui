@@ -1,13 +1,41 @@
-import { drew } from "./user.db";
+import { drew, keith, atishay } from "./user.db";
 import { drewComment, keithComment } from "./comment.db";
 
 export const postWithComments = {
   content: "This is a post with comments",
   createdBy: drew,
-  comments: [drewComment, keithComment]
+  comments: [drewComment, keithComment],
+  reactions: [
+    {
+      emoji: {
+        annotation: "thumbs up",
+        group: 1,
+        hexcode: "1F44D",
+        order: 280,
+        shortcodes: ["thumbsup", "+1", "yes"],
+        tags: ["+1", "hand", "thumb", "up"],
+        unicode: "👍️"
+      },
+      reactors: [keith, atishay]
+    }
+  ]
 };
 
 export const postNoComments = {
   content: "This is a post without comments",
-  createdBy: drew
+  createdBy: drew,
+  reactions: [
+    {
+      emoji: {
+        annotation: "thumbs up",
+        group: 1,
+        hexcode: "1F44D",
+        order: 280,
+        shortcodes: ["thumbsup", "+1", "yes"],
+        tags: ["+1", "hand", "thumb", "up"],
+        unicode: "👍️"
+      },
+      reactors: [keith, atishay]
+    }
+  ]
 };

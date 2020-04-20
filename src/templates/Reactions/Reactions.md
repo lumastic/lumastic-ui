@@ -3,7 +3,8 @@
 #### Basic Usage
 
 ```jsx
-<Reactions>Reactions</Reactions>
+import { postWithComments } from "../../helpers/post.db.js";
+<Reactions reactions={postWithComments.reactions} canReact />;
 ```
 
 Source:

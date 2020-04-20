@@ -16,7 +16,7 @@ import { drew, keith, atishay } from "../../helpers/user.db.js";
 />;
 ```
 
-#### `reacted`
+#### `canReact` & `reacted` allow for additional interactions
 
 ```jsx
 import { drew, keith, atishay } from "../../helpers/user.db.js";
@@ -32,10 +32,13 @@ import { drew, keith, atishay } from "../../helpers/user.db.js";
   }}
   reactors={[drew, keith, atishay]}
   userReacted
+  canReact
 />;
 ```
 
-#### `onClick`
+#### `onClick` handler allow for interacting with the `Reaction`
+
+**NOTE**: `userReacted` is the **_second_** argument passed to the `onClick` handler
 
 ```jsx
 import { drew, keith, atishay } from "../../helpers/user.db.js";
@@ -60,8 +63,6 @@ import { drew, keith, atishay } from "../../helpers/user.db.js";
   canReact
 />;
 ```
-
-**NOTE**: `userReacted` is the **_second_** argument passed to the `onClick` handler
 
 Source:
 

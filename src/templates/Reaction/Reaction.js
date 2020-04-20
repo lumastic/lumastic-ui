@@ -25,7 +25,8 @@ const Reaction = ({
   return (
     <div
       role="button"
-      tabIndex={0}
+      aria-hidden={!canReact}
+      tabIndex={canReact ? 0 : null}
       className={classNames(className, style.reaction)}
       data-testid="reaction"
       onClick={canReact ? handleClick : null}
@@ -35,6 +36,9 @@ const Reaction = ({
         className={classNames(
           {
             [style.reacted]: userReacted
+          },
+          {
+            [style.reactable]: canReact
           },
           style.chip
         )}
