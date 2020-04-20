@@ -9,21 +9,17 @@ const Reaction = ({
   className,
   emoji,
   reactors,
-  onRemove,
   onClick,
-  canRemove
+  canReact,
+  userReacted
 }) => {
   const handleClick = e => {
-    if (onClick) onClick(e);
+    if (onClick) onClick(e, userReacted);
   };
   const handleEnter = e => {
     if (e.keyCode === 13) {
-      handleClick();
+      handleClick(e, userReacted);
     }
-  };
-  const handleRemove = e => {
-    e.stopPropagation();
-    if (onRemove && canRemove) onRemove(e);
   };
 
   return (
@@ -32,15 +28,19 @@ const Reaction = ({
       tabIndex={0}
       className={classNames(className, style.reaction)}
       data-testid="reaction"
-      onClick={handleClick}
-      onKeyDown={handleEnter}
+      onClick={canReact ? handleClick : null}
+      onKeyDown={canReact ? handleEnter : null}
     >
       <Chip
-        className={style.chip}
+        className={classNames(
+          {
+            [style.reacted]: userReacted
+          },
+          style.chip
+        )}
         symbol={<Emoji emoji={emoji} className={style.emoji} />}
         label={`${reactors.length}`}
-        color="grey"
-        onRemove={canRemove ? handleRemove : null}
+        color={userReacted ? "primary" : "grey"}
       />
     </div>
   );
@@ -50,9 +50,9 @@ Reaction.propTypes = {
   className: PropTypes.string,
   emoji: PropTypes.object,
   reactors: PropTypes.array,
-  onRemove: PropTypes.func,
-  canRemove: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  canReact: PropTypes.bool,
+  userReacted: PropTypes.bool
 };
 
 export { Reaction };
