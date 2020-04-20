@@ -13,7 +13,7 @@ const AddEmoji = ({ className, onSelect, color = "grey" }) => (
     data-testid="addemoji"
   >
     <PopupTrigger>
-      <IconButton color={color} size="big">
+      <IconButton color={color} className={style.button}>
         <EmojiPlus />
       </IconButton>
     </PopupTrigger>

@@ -28,8 +28,8 @@ const ProgressPost = ({ spark = {}, post = {}, canComment = false }) => (
       <Type tag="div">{post.content}</Type>
       <div className={style.postreactions}>
         <Reactions />
-        {(post.comments || canComment) && <Divider />}
       </div>
+      {(post.comments || canComment) && <Divider />}
       {(post.comments || canComment) && (
         <Comments comments={post.comments} canComment={canComment} />
       )}

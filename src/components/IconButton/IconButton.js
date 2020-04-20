@@ -7,17 +7,13 @@ import { Button } from "../Button";
 const IconButton = forwardRef(
   ({ children, className, size, setSize, ...rest }, ref) => (
     <div
-      className={classNames(
-        className,
-        style["icon-button-container"],
-        style[size]
-      )}
+      className={classNames(style["icon-button-container"], style[size])}
       style={{ width: setSize, height: setSize }}
     >
       <Button
         size={size}
         {...rest}
-        className={style.icon}
+        className={classNames(className, style.icon)}
         style={{ fontSize: setSize }}
         ref={ref}
       >
