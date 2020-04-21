@@ -17,7 +17,8 @@ const ProgressPost = ({
   post = {},
   canComment = false,
   reactionClick,
-  reactionSelect
+  reactionSelect,
+  createComment
 }) => (
   <div className={style.postcontainer} data-testid="progresspost">
     <Point className={style.point} withBorder />
@@ -51,7 +52,11 @@ const ProgressPost = ({
       </div>
       {(post.comments || canComment) && <Divider />}
       {(post.comments || canComment) && (
-        <Comments comments={post.comments} canComment={canComment} />
+        <Comments
+          comments={post.comments}
+          canComment={canComment}
+          createComment={createComment}
+        />
       )}
     </Card>
   </div>
@@ -62,7 +67,8 @@ ProgressPost.propTypes = {
   post: PropTypes.object.isRequired,
   canComment: PropTypes.bool,
   reactionClick: PropTypes.func,
-  reactionSelect: PropTypes.func
+  reactionSelect: PropTypes.func,
+  createComment: PropTypes.func
 };
 
 export { ProgressPost };
