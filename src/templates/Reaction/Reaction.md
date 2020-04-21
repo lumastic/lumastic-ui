@@ -1,65 +1,34 @@
 #### Basic Usage
 
 ```jsx
-import { drew, keith, atishay } from "../../helpers/user.db.js";
-<Reaction
-  emoji={{
-    annotation: "waving hand",
-    group: 1,
-    hexcode: "1F44B",
-    order: 163,
-    shortcodes: ["wave"],
-    tags: ["hand", "wave", "waving"],
-    unicode: "👋"
-  }}
-  reactors={[drew, keith, atishay]}
-/>;
+import { postWithComments } from "../../helpers/post.db.js";
+<Reaction reaction={postWithComments.reactions[0]} />;
 ```
 
-#### `canReact` & `reacted` allow for additional interactions
+#### `canReact` allows the chip to be interactable. `userReacted` highlights its styling
 
 ```jsx
-import { drew, keith, atishay } from "../../helpers/user.db.js";
-<Reaction
-  emoji={{
-    annotation: "waving hand",
-    group: 1,
-    hexcode: "1F44B",
-    order: 163,
-    shortcodes: ["wave"],
-    tags: ["hand", "wave", "waving"],
-    unicode: "👋"
-  }}
-  reactors={[drew, keith, atishay]}
-  userReacted
-  canReact
-/>;
+import { postWithComments } from "../../helpers/post.db.js";
+<Reaction reaction={postWithComments.reactions[0]} userReacted canReact />;
 ```
 
-#### `onClick` handler allow for interacting with the `Reaction`
-
-**NOTE**: `userReacted` is the **_second_** argument passed to the `onClick` handler
+#### `onClick` handles interactions
 
 ```jsx
-import { drew, keith, atishay } from "../../helpers/user.db.js";
+import { postWithComments } from "../../helpers/post.db.js";
+import { useState } from "react";
+const [reactState, setReact] = useState(false);
 <Reaction
-  emoji={{
-    annotation: "waving hand",
-    group: 1,
-    hexcode: "1F44B",
-    order: 163,
-    shortcodes: ["wave"],
-    tags: ["hand", "wave", "waving"],
-    unicode: "👋"
-  }}
-  reactors={[drew, keith, atishay]}
-  onClick={(e, reacted) =>
+  reaction={postWithComments.reactions[0]}
+  onClick={(id, reacted) => {
     alert(
-      `You clicked the reaction - it's current state is ${
+      `You clicked the reaction - it's ID is ${id}.  It should be set to ${
         reacted ? "reacted" : "not reacted"
       }`
-    )
-  }
+    );
+    setReact(reacted);
+  }}
+  userReacted={reactState}
   canReact
 />;
 ```

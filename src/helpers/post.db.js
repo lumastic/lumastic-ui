@@ -7,6 +7,7 @@ export const postWithComments = {
   comments: [drewComment, keithComment],
   reactions: [
     {
+      id: 1,
       emoji: {
         annotation: "thumbs up",
         group: 1,
@@ -26,6 +27,7 @@ export const postNoComments = {
   createdBy: drew,
   reactions: [
     {
+      id: 2,
       emoji: {
         annotation: "thumbs up",
         group: 1,

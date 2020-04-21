@@ -7,18 +7,17 @@ import { Chip } from "../../components/Chip";
 
 const Reaction = ({
   className,
-  emoji,
-  reactors,
+  reaction = {},
   onClick,
   canReact,
   userReacted
 }) => {
-  const handleClick = e => {
-    if (onClick) onClick(e, userReacted);
+  const handleClick = () => {
+    if (onClick) onClick(reaction.id, !userReacted);
   };
   const handleEnter = e => {
     if (e.keyCode === 13) {
-      handleClick(e, userReacted);
+      handleClick();
     }
   };
 
@@ -42,8 +41,8 @@ const Reaction = ({
           },
           style.chip
         )}
-        symbol={<Emoji emoji={emoji} className={style.emoji} />}
-        label={`${reactors.length}`}
+        symbol={<Emoji emoji={reaction.emoji} className={style.emoji} />}
+        label={`${reaction.reactors.length}`}
         color={userReacted ? "primary" : "grey"}
       />
     </div>
@@ -52,8 +51,7 @@ const Reaction = ({
 
 Reaction.propTypes = {
   className: PropTypes.string,
-  emoji: PropTypes.object,
-  reactors: PropTypes.array,
+  reaction: PropTypes.object,
   onClick: PropTypes.func,
   canReact: PropTypes.bool,
   userReacted: PropTypes.bool

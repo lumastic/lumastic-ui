@@ -5,15 +5,20 @@ import classNames from "../../helpers/classNames";
 import { AddEmoji } from "../AddEmoji/AddEmoji";
 import { Reaction } from "../Reaction/Reaction";
 
-const Reactions = ({ className, reactions = [], canReact }) => (
+const Reactions = ({
+  className,
+  reactions = [],
+  reactionHandler,
+  canReact
+}) => (
   <div
     className={classNames(className, style.reactions)}
     data-testid="reactions"
   >
     {reactions.map(reaction => (
       <Reaction
-        emoji={reaction.emoji}
-        reactors={reaction.reactors}
+        reaction={reaction}
+        onClick={(id, shouldReact) => reactionHandler(id, shouldReact)}
         canReact={canReact}
       />
     ))}
@@ -24,7 +29,8 @@ const Reactions = ({ className, reactions = [], canReact }) => (
 Reactions.propTypes = {
   className: PropTypes.string,
   canReact: PropTypes.bool,
-  reactions: PropTypes.array
+  reactions: PropTypes.array,
+  reactionHandler: PropTypes.func
 };
 
 export { Reactions };
