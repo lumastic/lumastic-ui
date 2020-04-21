@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, memo } from "react";
 import classNames from "../../helpers/classNames";
 import { getEmojisByGroup, searchEmoji } from "../../helpers/emoji";
 import { Emoji } from "../Emoji";
