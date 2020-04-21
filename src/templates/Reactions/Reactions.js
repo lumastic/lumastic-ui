@@ -4,6 +4,7 @@ import style from "./Reactions.scss";
 import classNames from "../../helpers/classNames";
 import { AddEmoji } from "../AddEmoji/AddEmoji";
 import { Reaction } from "../Reaction/Reaction";
+import recommendReactions from "./helpers/recommendReactions.json";
 
 const Reactions = ({
   className,
@@ -22,7 +23,7 @@ const Reactions = ({
         canReact={canReact}
       />
     ))}
-    {canReact ? <AddEmoji /> : null}
+    {canReact ? <AddEmoji recommended={recommendReactions} /> : null}
   </div>
 );
 

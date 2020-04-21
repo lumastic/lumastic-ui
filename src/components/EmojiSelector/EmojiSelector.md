@@ -7,7 +7,7 @@
 #### `recommended`
 
 ```jsx
-import recommendedReactions from "./helpers/recommendReactions.json";
+import recommendedReactions from "../../templates/Reactions/helpers/recommendReactions.json";
 <EmojiSelector
   onSelect={emoji => alert(JSON.stringify(emoji))}
   recommended={recommendedReactions}

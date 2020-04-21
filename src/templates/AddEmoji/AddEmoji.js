@@ -7,7 +7,7 @@ import { IconButton } from "../../components/IconButton";
 import { EmojiPlus } from "../../icons/EmojiPlus";
 import { EmojiSelector } from "../../components/EmojiSelector";
 
-const AddEmoji = ({ className, onSelect, color = "grey" }) => (
+const AddEmoji = ({ className, onSelect, recommended, color = "grey" }) => (
   <Popup
     className={classNames(className, style.addemoji)}
     data-testid="addemoji"
@@ -20,7 +20,7 @@ const AddEmoji = ({ className, onSelect, color = "grey" }) => (
       </IconButton>
     </PopupTrigger>
     <PopupContent className={style.popup}>
-      <EmojiSelector onSelect={onSelect} />
+      <EmojiSelector onSelect={onSelect} recommended={recommended} />
     </PopupContent>
   </Popup>
 );
@@ -28,6 +28,7 @@ const AddEmoji = ({ className, onSelect, color = "grey" }) => (
 AddEmoji.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
+  recommended: PropTypes.array,
   onSelect: PropTypes.func
 };
 
