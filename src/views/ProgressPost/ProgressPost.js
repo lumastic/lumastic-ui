@@ -5,12 +5,20 @@ import { Divider } from "../../components/Divider";
 import { Type } from "../../components/Type";
 import { Point } from "../../components/Point";
 import { Comments } from "../../templates/Comments";
-import { Reactions } from "../../templates/Reactions";
+import { Reaction } from "../../templates/Reaction";
+import { AddEmoji } from "../../templates/AddEmoji";
+import recommendReactions from "./helpers/recommendReactions.json";
 import { SparkCrumbs } from "../../templates/SparkCrumbs";
 import style from "./ProgressPost.scss";
 import formatTime from "../../helpers/formatTime";
 
-const ProgressPost = ({ spark = {}, post = {}, canComment = false }) => (
+const ProgressPost = ({
+  spark = {},
+  post = {},
+  canComment = false,
+  reactionClick,
+  reactionSelect
+}) => (
   <div className={style.postcontainer} data-testid="progresspost">
     <Point className={style.point} withBorder />
     <Card className={style.progresspost}>
@@ -27,7 +35,19 @@ const ProgressPost = ({ spark = {}, post = {}, canComment = false }) => (
       </div>
       <Type tag="div">{post.content}</Type>
       <div className={style.postreactions}>
-        <Reactions reactions={post.reactions} canReact={canComment} />
+        {post.reactions.map(reaction => (
+          <Reaction
+            reaction={reaction}
+            onClick={reactionClick}
+            canReact={canComment}
+          />
+        ))}
+        {canComment ? (
+          <AddEmoji
+            recommended={recommendReactions}
+            onSelect={reactionSelect}
+          />
+        ) : null}
       </div>
       {(post.comments || canComment) && <Divider />}
       {(post.comments || canComment) && (
@@ -40,7 +60,9 @@ const ProgressPost = ({ spark = {}, post = {}, canComment = false }) => (
 ProgressPost.propTypes = {
   spark: PropTypes.object.isRequired,
   post: PropTypes.object.isRequired,
-  canComment: PropTypes.bool
+  canComment: PropTypes.bool,
+  reactionClick: PropTypes.func,
+  reactionSelect: PropTypes.func
 };
 
 export { ProgressPost };
