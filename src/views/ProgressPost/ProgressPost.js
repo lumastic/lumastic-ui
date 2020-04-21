@@ -4,7 +4,8 @@ import { Card } from "../../components/Card";
 import { Divider } from "../../components/Divider";
 import { Type } from "../../components/Type";
 import { Point } from "../../components/Point";
-import { Comments } from "../../templates/Comments";
+import { Comment } from "../../templates/Comment";
+import { NewComment } from "../../templates/NewComment";
 import { Reaction } from "../../templates/Reaction";
 import { AddEmoji } from "../../templates/AddEmoji";
 import recommendReactions from "./helpers/recommendReactions.json";
@@ -52,11 +53,18 @@ const ProgressPost = ({
       </div>
       {(post.comments || canComment) && <Divider />}
       {(post.comments || canComment) && (
-        <Comments
-          comments={post.comments}
-          canComment={canComment}
-          createComment={createComment}
-        />
+        <div className={style.comments}>
+          {canComment && (
+            <NewComment post={post} createComment={createComment} />
+          )}
+          {post.comments.map((comment, key) => (
+            <Comment
+              comment={comment}
+              createdBy={comment.createdBy}
+              key={comment.id || key}
+            />
+          ))}
+        </div>
       )}
     </Card>
   </div>
