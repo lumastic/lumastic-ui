@@ -1,5 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
+import CurrentUserContext from "./CurrentUserContext";
 
-const useCurrentUser = () => ({ currentUser: {} });
+const useCurrentUser = () => {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  if (!currentUser) {
+    return { currentUser: {} };
+  }
+  return { currentUser, setCurrentUser };
+};
 
 export default useCurrentUser;
