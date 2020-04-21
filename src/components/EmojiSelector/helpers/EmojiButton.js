@@ -11,6 +11,11 @@ const EmojiButton = memo(({ emoji, setSelect, onSelect }) => (
     onMouseEnter={() => setSelect(emoji)}
     onMouseLeave={() => setSelect()}
     onClick={() => onSelect(emoji)}
+    onKeyDown={e => {
+      if (e.keyCode === 13) {
+        onSelect(emoji);
+      }
+    }}
   >
     <Emoji emoji={emoji} />
   </div>

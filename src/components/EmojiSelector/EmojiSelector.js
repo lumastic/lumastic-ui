@@ -12,7 +12,11 @@ import style from "./EmojiSelector.scss";
 import defaultEmoji from "./helpers/defaultEmoji.json";
 import { Divider } from "../Divider";
 
-const EmojiSelector = ({ className, onSelect, recommended }) => {
+const EmojiSelector = ({
+  className,
+  onSelect = emoji => alert(`You clicked ${emoji.unicode}`),
+  recommended
+}) => {
   const [emojis, setEmojis] = useState();
   const [searchResults, setSearchResults] = useState([]);
   const [selected, setSelected] = useState(defaultEmoji);
