@@ -1,0 +1,68 @@
+[
+  {
+    "annotation": "thumbs up",
+    "group": 1,
+    "hexcode": "1F44D",
+    "order": 280,
+    "shortcodes": ["thumbsup", "+1", "yes"],
+    "tags": ["+1", "hand", "thumb", "up"],
+    "unicode": "👍️"
+  },
+  {
+    "annotation": "clapping hands",
+    "group": 1,
+    "hexcode": "1F44F",
+    "order": 316,
+    "shortcodes": ["clap"],
+    "tags": ["clap", "hand"],
+    "unicode": "👏"
+  },
+  {
+    "annotation": "red heart",
+    "group": 0,
+    "hexcode": "2764",
+    "order": 134,
+    "shortcodes": ["heart"],
+    "tags": ["heart"],
+    "unicode": "❤️",
+    "emoticon": "<3"
+  },
+  {
+    "annotation": "astonished face",
+    "group": 0,
+    "hexcode": "1F632",
+    "order": 73,
+    "shortcodes": ["astonished"],
+    "tags": ["astonished", "face", "shocked", "totally"],
+    "unicode": "😲",
+    "emoticon": ":o"
+  },
+  {
+    "annotation": "rolling on the floor laughing",
+    "group": 0,
+    "hexcode": "1F923",
+    "order": 7,
+    "shortcodes": ["entertained", "rofl"],
+    "tags": ["face", "floor", "laugh", "rolling"],
+    "unicode": "🤣",
+    "emoticon": ":'D"
+  },
+  {
+    "annotation": "sad but relieved face",
+    "group": 0,
+    "hexcode": "1F625",
+    "order": 80,
+    "shortcodes": ["hopeful"],
+    "tags": ["disappointed", "face", "relieved", "whew"],
+    "unicode": "😥"
+  },
+  {
+    "annotation": "raising hands",
+    "group": 1,
+    "hexcode": "1F64C",
+    "order": 322,
+    "shortcodes": ["raised_hands"],
+    "tags": ["celebration", "gesture", "hand", "hooray", "raised"],
+    "unicode": "🙌"
+  }
+]

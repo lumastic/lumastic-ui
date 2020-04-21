@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import classNames from "../../helpers/classNames";
 import { getEmojisByGroup, searchEmoji } from "../../helpers/emoji";
 import { Emoji } from "../Emoji";
+import { EmojiButton } from "./helpers/EmojiButton";
 import { Search } from "../Search";
 import { Type } from "../Type";
 import { GroupedEmojiList } from "./helpers/GroupedEmojiList";
@@ -11,7 +12,7 @@ import style from "./EmojiSelector.scss";
 import defaultEmoji from "./helpers/defaultEmoji.json";
 import { Divider } from "../Divider";
 
-const EmojiSelector = ({ className, onSelect }) => {
+const EmojiSelector = ({ className, onSelect, recommended }) => {
   const [emojis, setEmojis] = useState();
   const [searchResults, setSearchResults] = useState([]);
   const [selected, setSelected] = useState(defaultEmoji);
@@ -51,6 +52,24 @@ const EmojiSelector = ({ className, onSelect }) => {
           className={style["search-box"]}
         />
       </div>
+      {recommended ? (
+        <>
+          <Divider />
+          <div className={style.recommended}>
+            <div className={style.emojis}>
+              {recommended.map(emoji => (
+                <EmojiButton
+                  key={emoji.order}
+                  emoji={emoji}
+                  setSelect={selectEmoji}
+                  onSelect={handleSelection}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      ) : null}
+
       {/* <div className={style.menu}>Tab Menu</div> */}
       <Divider />
       <div className={style.scrollcontainer}>
@@ -90,7 +109,8 @@ const EmojiSelector = ({ className, onSelect }) => {
 
 EmojiSelector.propTypes = {
   className: PropTypes.string,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  recommended: PropTypes.array
 };
 
 export { EmojiSelector };
