@@ -27,7 +27,7 @@ const ProgressPost = ({
       <div className={style.postheader}>
         <SparkCrumbs
           spark={spark}
-          avatarURL={post.createdBy.avatarURL}
+          organization={post.createdBy}
           className={style.crumbs}
           small
         />

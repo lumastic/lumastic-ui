@@ -4,17 +4,33 @@ import { Avatar } from "../../components/Avatar";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { SparkSignature } from "../SparkSignature";
 import withLink from "../../helpers/router/withLink";
+import { Tooltip } from "../../components/Tooltip";
 
-const SparkCrumbs = ({ className, avatarURL, spark = {}, small = false }) => (
+const SparkCrumbs = ({
+  className,
+  organization = {},
+  spark = {},
+  small = false
+}) => (
   <Breadcrumbs className={className}>
-    <Avatar src={avatarURL} />
-    {withLink(<SparkSignature spark={spark} small={small} />, { to: "#!" })}
+    {withLink(
+      <Tooltip
+        label={
+          organization.username || organization.name || "Organization name"
+        }
+        position="top"
+      >
+        <Avatar src={organization.avatarURL} />
+      </Tooltip>,
+      { to: "/user" }
+    )}
+    {withLink(<SparkSignature spark={spark} small={small} />, { to: "/spark" })}
   </Breadcrumbs>
 );
 
 SparkCrumbs.propTypes = {
   className: PropTypes.string,
-  avatarURL: PropTypes.string,
+  organization: PropTypes.object,
   spark: PropTypes.object.isRequired,
   small: PropTypes.bool
 };
