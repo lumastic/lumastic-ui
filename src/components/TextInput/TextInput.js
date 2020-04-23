@@ -3,16 +3,22 @@ import PropTypes from "prop-types";
 import style from "./TextInput.scss";
 import classNames from "../../helpers/classNames";
 
-const TextInput = ({ name, value, id, placeholder, className, ...rest }) => (
+const TextInput = ({
+  name,
+  placeholder,
+  className,
+  register,
+  setValue,
+  ...rest
+}) => (
   <input
     type="text"
     name={name}
-    value={value}
-    id={id}
-    placeholder={name || placeholder}
-    className={classNames(className, style.textinput, "type")}
+    placeholder={placeholder || name}
+    className={classNames(className, style.textinput)}
     data-testid="textinput"
     spellCheck
+    ref={register}
     {...rest}
   />
 );
@@ -22,7 +28,8 @@ TextInput.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.string
+  register: PropTypes.func,
+  setValue: PropTypes.func
 };
 
 export { TextInput };

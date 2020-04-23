@@ -37,11 +37,12 @@ const ProgressPost = ({
       </div>
       <Type tag="div">{post.content}</Type>
       <div className={style.postreactions}>
-        {post.reactions.map(reaction => (
+        {post.reactions.map((reaction, key) => (
           <Reaction
             reaction={reaction}
             onClick={reactionClick}
             canReact={canComment}
+            key={reaction.id || key}
           />
         ))}
         {canComment ? (

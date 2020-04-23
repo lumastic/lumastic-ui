@@ -11,11 +11,12 @@ import { ArrowDown } from "../../icons/ArrowDown";
 
 const Select = ({
   defaultValue,
-  id,
   placeholder,
   name,
   children,
   className,
+  register,
+  setValue,
   onChange,
   onClose,
   onOpen
@@ -31,18 +32,17 @@ const Select = ({
   ]);
 
   useEffect(() => {
+    if (register) register({ name: "select" });
+  }, [register]);
+
+  useEffect(() => {
     if (onChange) onChange(selected);
-  }, [selected, onChange]);
+    if (setValue) setValue(name, selected);
+  }, [selected, onChange, setValue, name]);
 
   return (
     <>
-      <input
-        type="hidden"
-        id={id}
-        name={name}
-        value={selected}
-        onChange={onChange}
-      />
+      {/* <input type="text" hidden name={name} register={register} /> */}
       <SelectContext.Provider value={contextValue}>
         <Popup
           onOpen={onOpen}
@@ -86,7 +86,8 @@ Select.propTypes = {
   children: PropTypes.node,
   defaultValue: PropTypes.string,
   name: PropTypes.string,
-  id: PropTypes.string,
+  register: PropTypes.func,
+  setValue: PropTypes.func,
   onChange: PropTypes.func,
   onClose: PropTypes.func,
   onOpen: PropTypes.func

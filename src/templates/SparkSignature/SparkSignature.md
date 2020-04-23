@@ -3,7 +3,10 @@
 #### Basic Usage
 
 ```jsx
-<SparkSignature>SparkSignature</SparkSignature>
+import { BrowserRouter } from "react-router-dom";
+<BrowserRouter>
+  <SparkSignature>SparkSignature</SparkSignature>
+</BrowserRouter>;
 ```
 
 Source:
