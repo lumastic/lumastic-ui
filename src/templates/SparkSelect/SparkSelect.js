@@ -6,10 +6,23 @@ import { Option } from "../../components/Option";
 import { Select } from "../../components/Select";
 import { SparkSignature } from "../SparkSignature";
 
-const SparkSelect = ({ sparks = [], avatarURL }) => (
+const SparkSelect = ({
+  sparks = [],
+  avatarURL,
+  defaultValue,
+  onChange,
+  onOpen,
+  onClose
+}) => (
   <Breadcrumbs>
     <Avatar src={avatarURL} />
-    <Select placeholder="Select a spark...">
+    <Select
+      placeholder="Select a spark..."
+      defaultValue={defaultValue}
+      onChange={onChange}
+      onOpen={onOpen}
+      onClose={onClose}
+    >
       {sparks.map((spark, key) => (
         <Option key={spark.id || key} name={spark.id || key}>
           <SparkSignature spark={spark} />
@@ -21,7 +34,11 @@ const SparkSelect = ({ sparks = [], avatarURL }) => (
 
 SparkSelect.propTypes = {
   sparks: PropTypes.array,
-  avatarURL: PropTypes.string
+  avatarURL: PropTypes.string,
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func
 };
 
 export { SparkSelect };
