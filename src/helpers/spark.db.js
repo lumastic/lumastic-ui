@@ -7,6 +7,7 @@ export const spark1 = {
     "This is a spark description. This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }],
   followers: [keith, atishay],
+  collaborators: [keith, atishay],
   posts: []
 };
 
@@ -17,6 +18,7 @@ export const spark2 = {
     "This is a spark description. This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }],
   followers: [drew, atishay],
+  collaborators: [drew, atishay],
   posts: []
 };
 
@@ -27,5 +29,6 @@ export const spark3 = {
     "This is a spark description. This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }, { name: "Hacking" }],
   followers: [keith, drew],
+  collaborators: [keith, drew],
   posts: []
 };

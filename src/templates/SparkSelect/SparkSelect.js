@@ -5,17 +5,20 @@ import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { Option } from "../../components/Option";
 import { Select } from "../../components/Select";
 import { SparkSignature } from "../SparkSignature";
+import { Tooltip } from "../../components/Tooltip";
 
 const SparkSelect = ({
   sparks = [],
-  avatarURL,
+  organization = {},
   defaultValue,
   onChange,
   onOpen,
   onClose
 }) => (
   <Breadcrumbs>
-    <Avatar src={avatarURL} />
+    <Tooltip position="top" label={organization.name || "Organization Name"}>
+      <Avatar src={organization.avatarURL} />
+    </Tooltip>
     <Select
       placeholder="Select a spark..."
       defaultValue={defaultValue}
@@ -34,7 +37,7 @@ const SparkSelect = ({
 
 SparkSelect.propTypes = {
   sparks: PropTypes.array,
-  avatarURL: PropTypes.string,
+  organization: PropTypes.object,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   onOpen: PropTypes.func,

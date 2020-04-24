@@ -3,11 +3,16 @@
 .avatargroup {
   display: inline-flex;
   align-items: center;
-  div:not(:first-child) {
-    margin-left: -0.5rem;
-    border: 2px solid $backgroundLight;
+  .avatar {
+    &:not(:first-child) {
+      margin-left: -0.5rem;
+      border: 2px solid $backgroundLight;
+      border-radius: 50%;
+    }
+    display: inline-flex;
   }
   .more {
+    margin-left: -0.5rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -15,6 +20,8 @@
     overflow: hidden;
     height: 0.5rem;
     width: 0.5rem;
+
+    border: 2px solid $backgroundLight;
     border-radius: 50%;
     background-color: $greyLight;
   }

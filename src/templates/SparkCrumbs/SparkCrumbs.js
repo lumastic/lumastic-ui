@@ -14,12 +14,7 @@ const SparkCrumbs = ({
 }) => (
   <Breadcrumbs className={className}>
     {withLink(
-      <Tooltip
-        label={
-          organization.username || organization.name || "Organization name"
-        }
-        position="top"
-      >
+      <Tooltip label={organization.name || "Organization name"} position="top">
         <Avatar src={organization.avatarURL} />
       </Tooltip>,
       { to: "/user" }

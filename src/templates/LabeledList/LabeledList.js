@@ -5,10 +5,10 @@ import { Label } from "../../components/Label";
 // import style from "./LabeledList.scss";
 
 const LabeledList = ({ children, className, label, right }) => (
-  <List className={className}>
+  <>
     <Label right={right}>{label}</Label>
-    {children}
-  </List>
+    <List className={className}>{children}</List>
+  </>
 );
 
 LabeledList.propTypes = {

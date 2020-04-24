@@ -2,10 +2,10 @@
 
 ```jsx
 import { spark1 } from "../../helpers/spark.db.js";
-<SparkSignature spark={spark1} />;
+<SparkInfo spark={spark1} />;
 ```
 
 Source:
 
-```js { "file": "./SparkSignature.js" }
+```js { "file": "./SparkInfo.js" }
 ```

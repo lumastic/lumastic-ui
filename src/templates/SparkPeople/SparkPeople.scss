@@ -1,0 +1,17 @@
+.avatar-row {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-template-columns: min-content;
+  column-gap: 0.5rem;
+  align-items: center;
+}
+.actionrow {
+  display: flex;
+  align-items: center;
+  .left {
+    flex-grow: 1;
+  }
+  .right {
+    flex-grow: 0;
+  }
+}

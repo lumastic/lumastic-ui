@@ -1,7 +1,8 @@
 #### Basic Usage
 
 ```jsx
-<SparkCrumbs spark={{ title: "Spark Title" }} />
+import { spark1 } from "../../helpers/spark.db.js";
+<SparkCrumbs spark={spark1} organization={spark1.createdBy} />;
 ```
 
 Source:

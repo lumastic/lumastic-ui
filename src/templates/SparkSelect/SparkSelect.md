@@ -1,8 +1,11 @@
 #### Basic Usage
 
 ```jsx
-const sparks = [{ title: "Spark 1" }, { title: "Spark 2" }];
-<SparkSelect sparks={sparks}>SparkSelect</SparkSelect>;
+import { spark1, spark2 } from "../../helpers/spark.db.js";
+const sparks = [spark1, spark2];
+<SparkSelect sparks={sparks} organization={spark1.createdBy}>
+  SparkSelect
+</SparkSelect>;
 ```
 
 Source:
