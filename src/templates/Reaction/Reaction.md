@@ -1,21 +1,21 @@
 #### Basic Usage
 
 ```jsx
-import { postWithComments } from "../../helpers/post.db.js";
+import { postWithComments } from "../../data/post.db.js";
 <Reaction reaction={postWithComments.reactions[0]} />;
 ```
 
 #### `canReact` allows the chip to be interactable. `userReacted` highlights its styling
 
 ```jsx
-import { postWithComments } from "../../helpers/post.db.js";
+import { postWithComments } from "../../data/post.db.js";
 <Reaction reaction={postWithComments.reactions[0]} userReacted canReact />;
 ```
 
 #### `onClick` handles interactions
 
 ```jsx
-import { postWithComments } from "../../helpers/post.db.js";
+import { postWithComments } from "../../data/post.db.js";
 import { useState } from "react";
 const [reactState, setReact] = useState(false);
 <Reaction

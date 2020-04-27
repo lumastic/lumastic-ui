@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-import { spark1 } from "../../helpers/spark.db.js";
+import { spark1 } from "../../data/spark.db.js";
 <SparkCrumbs spark={spark1} organization={spark1.createdBy} />;
 ```
 

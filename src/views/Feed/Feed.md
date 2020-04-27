@@ -2,7 +2,7 @@
 
 ```jsx
 import { ProgressPost } from "../ProgressPost";
-import { postNoComments, postWithComments } from "../../helpers/post.db.js";
+import { postNoComments, postWithComments } from "../../data/post.db.js";
 <Feed>
   <ProgressPost spark={{ title: "Spark Title" }} post={postNoComments} />
   <ProgressPost spark={{ title: "Spark Title" }} post={postWithComments} />

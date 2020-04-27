@@ -9,6 +9,7 @@
     "new:template": "cd scripts && ./createTemplate.sh",
     "new:view": "cd scripts && ./createView.sh",
     "new:layout": "cd scripts && ./createLayout.sh",
+    "new:form": "cd scripts && ./createForm.sh",
     "new:icon": "cd scripts && ./createIcon.sh",
     "build": "webpack && yarn cp:package",
     "test": "jest --watch",

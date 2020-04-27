@@ -21,6 +21,10 @@ module.exports = {
     {
       name: "Layouts",
       components: "src/layouts/*/*.js"
+    },
+    {
+      name: "Forms",
+      components: "src/forms/*/*.js"
     }
   ],
   ignore: ["src/*/**/index.js", "src/*/**/*.test.js", "src/*/**/examples/*"],
