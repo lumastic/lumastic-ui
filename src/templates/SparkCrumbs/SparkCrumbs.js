@@ -3,7 +3,7 @@ import React from "react";
 import { Avatar } from "../../components/Avatar";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { SparkSignature } from "../SparkSignature";
-import withLink from "../../helpers/router/withLink";
+import withLink from "../../helpers/withLink";
 import { Tooltip } from "../../components/Tooltip";
 
 const SparkCrumbs = ({

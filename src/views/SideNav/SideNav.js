@@ -9,30 +9,38 @@ import { Compass } from "../../icons/Compass";
 import { Bell } from "../../icons/Bell";
 import { NavIconButton } from "../../components/NavIconButton";
 import { Avatar } from "../../components/Avatar";
+import withLink from "../../helpers/withLink";
+import {
+  homeRoute,
+  mySparksRoute,
+  exploreRoute,
+  notificationsRoute,
+  profileRoute
+} from "../../routes";
 
 const SideNav = ({ className }) => (
   <nav className={classNames(className, style.sidenav)} data-testid="sidenav">
     <div className={style.logo}>
       <Logo />
     </div>
-    <NavIconButton active className={style.navbutton}>
+    <NavIconButton to={homeRoute} exact className={style.navbutton}>
       <Home />
     </NavIconButton>
 
-    <NavIconButton className={style.navbutton}>
+    <NavIconButton to={mySparksRoute} className={style.navbutton}>
       <Sparks />
     </NavIconButton>
 
-    <NavIconButton className={style.navbutton}>
+    <NavIconButton to={exploreRoute} className={style.navbutton}>
       <Compass />
     </NavIconButton>
 
-    <NavIconButton className={style.navbutton}>
+    <NavIconButton to={notificationsRoute} className={style.navbutton}>
       <Bell />
     </NavIconButton>
 
     <div className={style.user}>
-      <Avatar shadow size="big" />
+      {withLink(<Avatar shadow size="big" />, { to: profileRoute() })}
     </div>
   </nav>
 );

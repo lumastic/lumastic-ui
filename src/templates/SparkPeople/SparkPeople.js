@@ -9,7 +9,7 @@ import { List } from "../../components/List";
 import { Avatar } from "../../components/Avatar";
 import { AvatarGroup } from "../../components/AvatarGroup";
 import { Tooltip } from "../../components/Tooltip";
-import withLink from "../../helpers/router/withLink";
+import withLink from "../../helpers/withLink";
 
 const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
   <Card className={classNames(className, style.sparkinfo)}>
@@ -40,8 +40,12 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
         <div className={style.actionrow}>
           <div className={style.left}>
             <AvatarGroup>
-              {spark.followers.map(follower => (
-                <Tooltip label={follower.name} position="top">
+              {spark.followers.map((follower, index) => (
+                <Tooltip
+                  label={follower.name}
+                  position="top"
+                  key={follower.id || index}
+                >
                   {withLink(
                     <Avatar src={follower.avatarURL} key={follower.id} />,
                     { to: "#!" }

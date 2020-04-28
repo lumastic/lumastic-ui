@@ -1,24 +1,37 @@
+/* eslint-disable react/no-children-prop */
+
 import React from "react";
 import PropTypes from "prop-types";
+import { Route } from "react-router-dom";
 import style from "./NavIconButton.scss";
 import classNames from "../../helpers/classNames";
 
-const NavIconButton = ({ children, className, active, ...rest }) => (
-  <button
-    className={classNames(className, style.naviconbutton, {
-      [style.active]: active
-    })}
-    data-testid="naviconbutton"
-    {...rest}
-  >
-    {children}
-  </button>
+const NavIconButton = ({ children, className, to, exact }) => (
+  <Route
+    path={to}
+    exact={exact}
+    children={({ match, history }) => (
+      <button
+        className={classNames(className, style.naviconbutton, {
+          [style.active]: match
+        })}
+        data-testid="naviconbutton"
+        onClick={() => history.push(to || to[0])}
+      >
+        {children}
+      </button>
+    )}
+  />
 );
 
 NavIconButton.propTypes = {
   children: PropTypes.node,
-  active: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
+  exact: PropTypes.bool
 };
 
 export { NavIconButton };
