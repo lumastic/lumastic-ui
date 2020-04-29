@@ -5,7 +5,7 @@ import classNames from "../../helpers/classNames";
 import { Logo } from "../../icons/Logo";
 import { Sparks } from "../../icons/Sparks";
 import { Home } from "../../icons/Home";
-import { Compass } from "../../icons/Compass";
+import { MagnifyingGlass } from "../../icons/MagnifyingGlass";
 import { Bell } from "../../icons/Bell";
 import { NavIconButton } from "../../components/NavIconButton";
 import { Avatar } from "../../components/Avatar";
@@ -32,7 +32,7 @@ const SideNav = ({ className }) => (
     </NavIconButton>
 
     <NavIconButton to={exploreRoute} className={style.navbutton}>
-      <Compass />
+      <MagnifyingGlass />
     </NavIconButton>
 
     <NavIconButton to={notificationsRoute} className={style.navbutton}>

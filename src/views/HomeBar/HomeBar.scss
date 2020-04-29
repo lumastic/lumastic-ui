@@ -1,0 +1,21 @@
+.homebar {
+}
+.container {
+  display: grid;
+  align-items: center;
+  grid-auto-flow: column;
+  grid-template-columns: 3fr 2fr;
+}
+.searchBtn {
+  display: none;
+}
+@media (max-width: 768px) {
+  .search {
+    display: none;
+  }
+  .searchBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
