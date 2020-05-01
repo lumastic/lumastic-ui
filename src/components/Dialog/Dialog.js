@@ -1,10 +1,10 @@
 import React, { useRef, createContext } from "react";
 import PropTypes from "prop-types";
-import style from "./Dialog.scss";
-import classNames from "../../helpers/classNames";
 import { Modal } from "../Modal";
 import { IconButton } from "../IconButton";
 import { Times } from "../../icons/Times";
+import style from "./Dialog.scss";
+import classNames from "../../helpers/classNames";
 import useOffclick from "../../hooks/useOffclick/useOffclick";
 
 const DialogContext = createContext();

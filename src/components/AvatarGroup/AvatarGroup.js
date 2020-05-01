@@ -1,8 +1,8 @@
 import React, { Children } from "react";
 import PropTypes from "prop-types";
-import style from "./AvatarGroup.scss";
 import classNames from "../../helpers/classNames";
 import { Type } from "../Type";
+import style from "./AvatarGroup.scss";
 
 const AvatarGroup = ({ children, className, more }) => (
   <div

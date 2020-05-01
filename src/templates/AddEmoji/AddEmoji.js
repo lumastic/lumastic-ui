@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./AddEmoji.scss";
-import classNames from "../../helpers/classNames";
 import { Popup, PopupContent, PopupTrigger } from "../../components/Popup";
 import { IconButton } from "../../components/IconButton";
 import { EmojiPlus } from "../../icons/EmojiPlus";
 import { EmojiSelector } from "../../components/EmojiSelector";
+import style from "./AddEmoji.scss";
+import classNames from "../../helpers/classNames";
 
 const AddEmoji = ({ className, onSelect, recommended, color = "grey" }) => (
   <Popup

@@ -19,15 +19,15 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
         <div className={style.actionrow}>
           <div className={style.left}>
             <AvatarGroup>
-              {spark.collaborators.map(collaborator => (
-                <Tooltip label={collaborator.name} position="top">
-                  {withLink(
-                    <Avatar
-                      src={collaborator.avatarURL}
-                      key={collaborator.id}
-                    />,
-                    { to: "#!" }
-                  )}
+              {spark.collaborators.map((collaborator, index) => (
+                <Tooltip
+                  label={collaborator.name}
+                  position="top"
+                  key={collaborator.id || index}
+                >
+                  {withLink(<Avatar src={collaborator.avatarURL} />, {
+                    to: "#!"
+                  })}
                 </Tooltip>
               ))}
             </AvatarGroup>

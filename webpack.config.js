@@ -29,7 +29,27 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader"
+            loader: "style-loader",
+            options: {
+              injectType: "styleTag"
+              // insert: function insertAtTop(element) {
+              //   const head = document.querySelector("head");
+              //   // eslint-disable-next-line no-underscore-dangle
+              //   const lastInsertedElement =
+              //     window._lastElementInsertedByStyleLoader;
+
+              //   if (!lastInsertedElement) {
+              //     head.insertBefore(element, head.firstChild);
+              //   } else if (lastInsertedElement) {
+              //     head.insertBefore(element, lastInsertedElement);
+              //   } else {
+              //     head.appendChild(element);
+              //   }
+
+              //   // eslint-disable-next-line no-underscore-dangle
+              //   window._lastElementInsertedByStyleLoader = element;
+              // }
+            }
           },
           {
             loader: "css-loader",

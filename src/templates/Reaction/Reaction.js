@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./Reaction.scss";
-import classNames from "../../helpers/classNames";
 import { Emoji } from "../../components/Emoji";
 import { Chip } from "../../components/Chip";
+import style from "./Reaction.scss";
+import classNames from "../../helpers/classNames";
 
 const Reaction = ({
   className,

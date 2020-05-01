@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Avatar } from "../../components/Avatar";
 import { Type } from "../../components/Type";
+import { Tooltip } from "../../components/Tooltip";
 import formatTime from "../../helpers/formatTime";
 import style from "./Comment.scss";
-import { Tooltip } from "../../components/Tooltip";
 
 const Comment = ({ comment = {}, createdBy = {} }) => (
   <div className={style.comment} data-testid="comment">

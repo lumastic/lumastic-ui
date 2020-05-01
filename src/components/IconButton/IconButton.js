@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
+import { Button } from "../Button";
 import style from "./IconButton.scss";
 import classNames from "../../helpers/classNames";
-import { Button } from "../Button";
 
 const IconButton = forwardRef(
   ({ children, className, buttonClass, size, setSize, ...rest }, ref) => (

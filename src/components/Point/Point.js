@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Dot } from "../../icons/Dot";
 import style from "./Point.scss";
 import classNames from "../../helpers/classNames";
-import { Dot } from "../../icons/Dot/Dot";
 
 const Point = ({
   className,

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import style from "./Notify.scss";
-import classNames from "../../helpers/classNames";
 import { Alert } from "../Alert";
 import { IconButton } from "../IconButton";
 import { Type } from "../Type";
 import { Times } from "../../icons/Times/Times";
 import { useNotify } from ".";
+import style from "./Notify.scss";
+import classNames from "../../helpers/classNames";
 
 const Notify = ({ children, className, severity, id, fixed }) => {
   const [mount, setMount] = useState(false);

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./Label.scss";
 import { Type } from "../Type";
+import style from "./Label.scss";
 import classNames from "../../helpers/classNames";
 
 const Label = ({ children, className, right }) => (

@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./SparkInfo.scss";
-import classNames from "../../helpers/classNames";
 import { Card } from "../../components/Card";
 import { Label } from "../../components/Label";
 import { Type } from "../../components/Type";
 import { List } from "../../components/List";
 import { Tag } from "../Tag";
+import style from "./SparkInfo.scss";
+import classNames from "../../helpers/classNames";
 
 const SparkInfo = ({ spark = {}, className }) => (
   <Card className={classNames(className, style.sparkinfo)}>

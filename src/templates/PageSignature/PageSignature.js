@@ -8,7 +8,7 @@ import { Signature } from "../Signature";
 const PageSignature = ({ icon, title }) => (
   <Signature>
     <span className={style.icon}>{icon}</span>
-    <Type h3>{title}</Type>
+    <Type h4>{title}</Type>
   </Signature>
 );
 

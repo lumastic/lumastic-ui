@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
+import { Label } from "../Label";
 import style from "./Menu.scss";
 import classNames from "../../helpers/classNames";
-import { Label } from "../Label";
 
 const Menu = forwardRef(({ children, className, label }, ref) => (
   <div

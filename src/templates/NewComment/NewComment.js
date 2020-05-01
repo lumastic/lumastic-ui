@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./NewComment.scss";
-import classNames from "../../helpers/classNames";
 import { TextInput } from "../../components/TextInput";
 import { Avatar } from "../../components/Avatar";
-import useCurrentUser from "../../hooks/useCurrentUser";
 import { Form } from "../../components/Form";
 import { IconButton } from "../../components/IconButton";
 import { PaperAirplane } from "../../icons/PaperAirplane";
+import useCurrentUser from "../../hooks/useCurrentUser";
+import style from "./NewComment.scss";
+import classNames from "../../helpers/classNames";
 
 const NewComment = ({ createComment }) => {
   const { currentUser } = useCurrentUser();

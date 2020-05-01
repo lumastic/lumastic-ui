@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+@import "../../styles/sizes.scss";
 
 .sidenav {
   box-sizing: border-box;
@@ -10,20 +11,41 @@
   padding: 0.5rem;
   .navbutton {
     margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .logo {
     color: $accent;
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    margin-top: 0.25rem;
+    margin-bottom: 1rem;
   }
   .user {
-    margin-top: 1.75rem;
+    margin-top: auto;
+    margin-bottom: 0.5rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+}
+@media (max-width: $tablet) {
+  .sidenav {
+    flex-direction: row;
+    align-items: center;
+    height: min-content;
+    padding: 0.25rem 0;
+    .logo {
+      display: none;
+    }
+    .user {
+      display: none;
+    }
+    .navbutton {
+      flex-grow: 1;
+      margin: 0;
+    }
   }
 }

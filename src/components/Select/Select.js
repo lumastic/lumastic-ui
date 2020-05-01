@@ -1,13 +1,13 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import classNames from "../../helpers/classNames";
 import SelectContext from "./helpers/SelectContext";
-import style from "./Select.scss";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { SelectOptions } from "./helpers/SelectOptions";
 import { SelectOption } from "./helpers/SelectOption";
 import { Type } from "../Type";
 import { ArrowDown } from "../../icons/ArrowDown";
+import classNames from "../../helpers/classNames";
+import style from "./Select.scss";
 
 const Select = ({
   defaultValue,

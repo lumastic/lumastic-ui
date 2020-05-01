@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./Chip.scss";
-import classNames from "../../helpers/classNames";
 import { IconButton } from "../IconButton";
 import { Type } from "../Type";
 import { Times } from "../../icons/Times";
+import style from "./Chip.scss";
+import classNames from "../../helpers/classNames";
 
 const Chip = ({ className, color = "primary", symbol, label, onRemove }) => (
   <div

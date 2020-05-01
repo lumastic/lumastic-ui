@@ -8,10 +8,10 @@ import { Comment } from "../../templates/Comment";
 import { NewComment } from "../../templates/NewComment";
 import { Reaction } from "../../templates/Reaction";
 import { AddEmoji } from "../../templates/AddEmoji";
-import recommendReactions from "./helpers/recommendReactions.json";
 import { SparkCrumbs } from "../../templates/SparkCrumbs";
-import style from "./ProgressPost.scss";
+import recommendReactions from "./helpers/recommendReactions.json";
 import formatTime from "../../helpers/formatTime";
+import style from "./ProgressPost.scss";
 
 const ProgressPost = ({
   spark = {},

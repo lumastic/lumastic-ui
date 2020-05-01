@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import style from "./PopupMenu.scss";
 import { Menu } from "../Menu";
+import style from "./PopupMenu.scss";
 
 const PopupMenu = ({ children }) => {
   const menuRef = useRef();

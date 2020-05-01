@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Avatar } from "../../components/Avatar";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
+import { Tooltip } from "../../components/Tooltip";
 import { SparkSignature } from "../SparkSignature";
 import withLink from "../../helpers/withLink";
-import { Tooltip } from "../../components/Tooltip";
 
 const SparkCrumbs = ({
   className,

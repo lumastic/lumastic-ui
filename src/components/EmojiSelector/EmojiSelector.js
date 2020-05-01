@@ -8,9 +8,9 @@ import { Search } from "../Search";
 import { Type } from "../Type";
 import { GroupedEmojiList } from "./helpers/GroupedEmojiList";
 import { SearchedEmojiList } from "./helpers/SearchedEmojiList";
+import { Divider } from "../Divider";
 import style from "./EmojiSelector.scss";
 import defaultEmoji from "./helpers/defaultEmoji.json";
-import { Divider } from "../Divider";
 
 const EmojiSelector = ({
   className,

@@ -34,8 +34,8 @@ const getEntries = () => {
   return {
     ...createEntries(components),
     ...createEntries(templates),
-    ...createEntries(layouts),
     ...createEntries(views),
+    ...createEntries(layouts),
     [`routes/index`]: `${path.resolve(__dirname, "src/routes")}/index.js`,
     ...createIconEntries(icons)
   };
