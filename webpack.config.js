@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { getEntries } = require("./getEntries");
 
 const entries = getEntries();
@@ -15,6 +16,14 @@ module.exports = {
     "react-dom": "react-dom",
     "react-router-dom": "react-router-dom"
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+  ],
   module: {
     rules: [
       {
@@ -32,23 +41,6 @@ module.exports = {
             loader: "style-loader",
             options: {
               injectType: "styleTag"
-              // insert: function insertAtTop(element) {
-              //   const head = document.querySelector("head");
-              //   // eslint-disable-next-line no-underscore-dangle
-              //   const lastInsertedElement =
-              //     window._lastElementInsertedByStyleLoader;
-
-              //   if (!lastInsertedElement) {
-              //     head.insertBefore(element, head.firstChild);
-              //   } else if (lastInsertedElement) {
-              //     head.insertBefore(element, lastInsertedElement);
-              //   } else {
-              //     head.appendChild(element);
-              //   }
-
-              //   // eslint-disable-next-line no-underscore-dangle
-              //   window._lastElementInsertedByStyleLoader = element;
-              // }
             }
           },
           {
@@ -56,7 +48,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[name]__[local]"
+                localIdentName: "[path][name]__[local]"
               }
             }
           },
