@@ -1,11 +1,10 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { getEntries } = require("./getEntries");
 
 const entries = getEntries();
 
 module.exports = {
-  entry: entries,
+  entry: { index: "./src/index.js" },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -16,14 +15,6 @@ module.exports = {
     "react-dom": "react-dom",
     "react-router-dom": "react-router-dom"
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ],
   module: {
     rules: [
       {
@@ -40,7 +31,7 @@ module.exports = {
           {
             loader: "style-loader",
             options: {
-              injectType: "styleTag"
+              injectType: "singletonStyleTag"
             }
           },
           {
@@ -48,7 +39,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[path][name]__[local]"
+                localIdentName: "[name]__[local]"
               }
             }
           },

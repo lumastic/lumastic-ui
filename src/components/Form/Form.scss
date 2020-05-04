@@ -4,7 +4,10 @@
   display: grid;
   grid-auto-flow: row;
   grid-template-rows: min-content;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
+}
+.general {
+  margin-bottom: 0.75rem;
 }
 .debugger {
   background-color: white;

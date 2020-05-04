@@ -11,6 +11,7 @@
     "new:layout": "cd scripts && ./createLayout.sh",
     "new:form": "cd scripts && ./createForm.sh",
     "new:icon": "cd scripts && ./createIcon.sh",
+    "index": "cd scripts && ./index.sh",
     "build": "webpack && yarn cp:package",
     "test": "jest --watch",
     "cp:package": "cp -rf package.json dist",
@@ -82,5 +83,8 @@
       "\\.(scss|less|svg)$": "identity-obj-proxy"
     },
     "rootDir": "src"
+  },
+  "dependencies": {
+    "yup": "^0.28.5"
   }
 }

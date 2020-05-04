@@ -1,8 +1,9 @@
-import React, { createElement, Children, useState } from "react";
-import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { FormContext, useForm } from "react-hook-form";
+import { Type, Alert } from "..";
+
 import style from "./Form.scss";
-import classNames from "../../helpers/classNames";
 
 const Form = ({
   defaultValues,
@@ -12,41 +13,36 @@ const Form = ({
   onSubmit = data => alert(JSON.stringify(data)),
   debug
 }) => {
-  const { register, setValue, getValues, handleSubmit } = useForm({
+  const methods = useForm({
     defaultValues,
     validationSchema
   });
-  const [values, setValues] = useState(getValues());
+  const [values, setValues] = useState(methods.getValues());
+  const submitHandler = (data, e) => onSubmit(data, e, { ...methods });
   return (
-    <>
+    <FormContext {...methods}>
+      {!methods.errors.general || (
+        <Alert severity="error" className={style.general}>
+          <Type body2>{methods.errors.general?.message}</Type>
+        </Alert>
+      )}
       <form
         className={className || style.form}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={methods.handleSubmit(submitHandler)}
       >
-        {Children.map(children, child => (
-          <>
-            {child.props.name
-              ? createElement(child.type, {
-                  ...child.props,
-                  register,
-                  setValue,
-                  key: child.props.name
-                })
-              : child}
-          </>
-        ))}
+        {children}
       </form>
 
       {debug ? (
         <div className={style.debugger}>
-          <pre onClick={() => setValues(getValues())}>
+          <pre onClick={() => setValues(methods.getValues())}>
             DEBUGGER: Click to Refresh
             <br />
             {JSON.stringify(values, null, 2) || null}
           </pre>
         </div>
       ) : null}
-    </>
+    </FormContext>
   );
 };
 
