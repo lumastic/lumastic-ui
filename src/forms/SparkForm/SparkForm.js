@@ -25,11 +25,16 @@ const sparkSchema = yup.object().shape({
   description: yup.string(),
   visibility: yup.string().required("This field is required")
 });
-const SparkForm = ({ organizations = [], license = false, onSubmit }) => (
+const SparkForm = ({
+  organizations = [],
+  license = false,
+  onSubmit,
+  defaultValues = {}
+}) => (
   <Form
     onSubmit={onSubmit}
     validationSchema={sparkSchema}
-    defaultValues={{ visibility: "public" }}
+    defaultValues={{ visibility: "public", ...defaultValues }}
   >
     <div className={style.header}>
       <div>
@@ -92,7 +97,8 @@ const SparkForm = ({ organizations = [], license = false, onSubmit }) => (
 SparkForm.propTypes = {
   organizations: PropTypes.array,
   license: PropTypes.bool,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  defaultValues: PropTypes.object
 };
 
 export { SparkForm };
