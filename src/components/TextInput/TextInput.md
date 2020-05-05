@@ -3,20 +3,14 @@
 #### Basic Usage
 
 ```jsx
-import { Form } from "..";
-<Form>
-  <TextInput name={"Text Input"} />
-</Form>;
+<TextInput name={"Text Input"} />
 ```
 
 #### `placeholder` defaults to `name` if not specified
 
 ```jsx
-import { Form } from "..";
-<Form>
   <TextInput name={"Name as placeholder"} />
   <TextInput placeholder={"Placeholder text"} />
-</Form>;
 ```
 
 Source:

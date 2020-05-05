@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<SignupForm>SignupForm</SignupForm>
+<SignupForm onSubmit={data => alert(JSON.stringify(data))} />
 ```
 
 Source:

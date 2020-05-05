@@ -19,6 +19,7 @@ const TextInput = ({ name, type, placeholder, className, ...rest }) => {
         className={classNames(className, style.textinput)}
         data-testid="textinput"
         spellCheck
+        autoComplete="on"
         ref={register || null}
         {...rest}
       />
