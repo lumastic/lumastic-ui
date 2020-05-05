@@ -13,6 +13,8 @@ export const mySparksRoute = "/sparks";
 
 export const exploreRoute = "/explore";
 
+export const upgradeRoute = "/pro";
+
 export const notificationsRoute = "/notifications";
 
 const baseSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") =>

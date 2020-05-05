@@ -18,6 +18,7 @@ import { Signature } from "../../templates";
 import style from "./SparkForm.scss";
 import classNames from "../../helpers/classNames";
 import withLink from "../../helpers/withLink";
+import { upgradeRoute } from "../../routes/routes";
 
 const sparkSchema = yup.object().shape({
   owner: yup.string().required("This field is required"),
@@ -85,7 +86,8 @@ const SparkForm = ({
         withLink(
           <Type caption color="primary">
             Upgrade Now
-          </Type>
+          </Type>,
+          { to: upgradeRoute }
         )}
     </RadioInput>
     <Button variant="contained" type="submit">
