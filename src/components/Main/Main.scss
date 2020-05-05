@@ -1,6 +1,13 @@
 @import "../../styles/colors.scss";
+@import "../../styles/sizes.scss";
 
 .main {
   background-color: $background;
   padding: 0.5rem 1rem;
+}
+
+@media (max-width: $tablet) {
+  .main {
+    padding: 0.25rem 0.5rem;
+  }
 }

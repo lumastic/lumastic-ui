@@ -13,7 +13,7 @@ const Comment = ({ comment = {}, createdBy = {} }) => (
     </Tooltip>
     <div className={style.content}>
       <Type color="grey" caption setSize="0.7rem">
-        {createdBy.name} • {formatTime({ time: comment.createAt })}
+        {createdBy.name} • {formatTime({ time: comment.createdAt })}
       </Type>
       <Type tag="div">{comment.content}</Type>
     </div>

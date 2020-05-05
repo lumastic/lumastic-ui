@@ -13,7 +13,7 @@ import classNames from "../../helpers/classNames";
 const HomeBar = ({ children, className, ...rest }) => (
   <AppBar>
     <Container className={style.container}>
-      <PageSignature icon={<Home />} title="Latest Updates" />
+      <PageSignature icon={<Home />} title="Home" />
       <Search placeholder="Search..." className={style.search} />
       <div className={style.searchBtn}>
         <IconButton color="grey" size="big">

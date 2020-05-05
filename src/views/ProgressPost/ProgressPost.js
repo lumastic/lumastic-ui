@@ -32,7 +32,7 @@ const ProgressPost = ({
           small
         />
         <Type color="grey" className={style.time} tag="div" setSize="0.7rem">
-          {formatTime({ time: post.createAt })}
+          {formatTime({ time: post.createdAt })}
         </Type>
       </div>
       <Type tag="div">{post.content}</Type>
