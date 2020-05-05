@@ -1,5 +1,5 @@
 #!/bin/bash
-paths=(../src/components ../src/templates ../src/views ../src/layouts ../src/forms)
+paths=(../src/components ../src/templates ../src/views ../src/layouts ../src/forms ../src/icons)
 for path in ${paths[@]}; do 
   > $path/index.js
   for d in "$path"/*/; do
