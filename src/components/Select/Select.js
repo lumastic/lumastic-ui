@@ -32,8 +32,8 @@ const Select = ({
   ]);
 
   useEffect(() => {
-    if (register) register({ name: "select" });
-  }, [register]);
+    if (register) register({ name });
+  }, [register, name]);
 
   useEffect(() => {
     if (onChange) onChange(selected);

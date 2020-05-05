@@ -1,5 +1,6 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { useFormContext } from "react-hook-form";
 import style from "./RadioInput.scss";
 import classNames from "../../helpers/classNames";
 
@@ -9,28 +10,28 @@ const RadioInput = ({
   id,
   name,
   disabled,
-  isChecked,
   value,
-  register,
   ...rest
-}) => (
-  <div
-    className={classNames(className, style.radioinput)}
-    data-testid="radioinput"
-  >
-    <input
-      type="radio"
-      value={value}
-      id={id}
-      name={name}
-      disabled={disabled}
-      checked={isChecked}
-      ref={register}
-      {...rest}
-    />
-    <div className={classNames(style.label, "type")}>{children}</div>
-  </div>
-);
+}) => {
+  const { register } = useFormContext();
+  return (
+    <div
+      className={classNames(className, style.radioinput)}
+      data-testid="radioinput"
+    >
+      <input
+        type="radio"
+        value={value}
+        id={id}
+        name={name}
+        disabled={disabled}
+        ref={register}
+        {...rest}
+      />
+      <div className={classNames(style.label, "type")}>{children}</div>
+    </div>
+  );
+};
 RadioInput.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
