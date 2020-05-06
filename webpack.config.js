@@ -4,7 +4,13 @@ const { getEntries } = require("./getEntries");
 const entries = getEntries();
 
 module.exports = {
-  entry: { index: "./src/index.js" },
+  entry: {
+    index: "./src/index.js",
+    "icons/index": "./src/icons",
+    "routes/index": "./src/routes",
+    "helpers/index": "./src/helpers"
+    // "hooks/index": "./src/hooks"
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",

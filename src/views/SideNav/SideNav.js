@@ -18,7 +18,7 @@ import {
 import style from "./SideNav.scss";
 import classNames from "../../helpers/classNames";
 
-const SideNav = ({ className }) => (
+const SideNav = ({ className, currentUser = {} }) => (
   <nav className={classNames(className, style.sidenav)} data-testid="sidenav">
     <div className={style.logo}>
       <Logo />
@@ -48,13 +48,16 @@ const SideNav = ({ className }) => (
     </div>
 
     <div className={style.user}>
-      {withLink(<Avatar shadow size="big" />, { to: profileRoute() })}
+      {withLink(<Avatar shadow size="big" src={currentUser.avatarURL} />, {
+        to: profileRoute(currentUser.username)
+      })}
     </div>
   </nav>
 );
 
 SideNav.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  currentUser: PropTypes.object
 };
 
 export { SideNav };

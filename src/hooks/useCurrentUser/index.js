@@ -1,3 +1,2 @@
-import useCurrentUser from "./useCurrentUser";
-
-export default useCurrentUser;
+export { useCurrentUser } from "./useCurrentUser";
+export { UserContext } from "./UserContext";

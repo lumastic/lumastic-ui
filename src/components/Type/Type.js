@@ -64,7 +64,15 @@ Type.propTypes = {
   setSize: PropTypes.string,
   align: PropTypes.oneOf(["center", "left", "right"]),
   tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "p", "span", "div"]),
-  color: PropTypes.oneOf(["normal", "primary", "red", "green", "grey"])
+  color: PropTypes.oneOf([
+    "normal",
+    "primary",
+    "secondary",
+    "accent",
+    "red",
+    "green",
+    "grey"
+  ])
 };
 
 export { Type };
