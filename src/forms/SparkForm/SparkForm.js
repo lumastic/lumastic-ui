@@ -1,25 +1,22 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import * as yup from "yup";
 import {
-  Form,
-  TextInput,
-  Label,
-  Button,
-  Select,
-  Option,
-  Type,
   Avatar,
+  Button,
+  Form,
+  Label,
+  Link,
+  Option,
   RadioInput,
-  Link
+  Select,
+  TextInput,
+  Type
 } from "../../components";
-import { Users } from "../../icons/Users";
-import { UserLock } from "../../icons/UserLock";
+import { UserLock, Users } from "../../icons";
+import { upgradeRoute } from "../../routes";
 import { Signature } from "../../templates";
-import withLink from "../../helpers/withLink";
-import { upgradeRoute } from "../../routes/routes";
 import style from "./SparkForm.scss";
-import classNames from "../../helpers/classNames";
 
 const sparkSchema = yup.object().shape({
   owner: yup.string().required("This field is required"),
@@ -41,7 +38,10 @@ const SparkForm = ({
     <div className={style.header}>
       <div>
         <Label>Owner</Label>
-        <Select name="owner" defaultValue={organizations[0].id}>
+        <Select
+          name="owner"
+          defaultValue={organizations[0] && organizations[0].id}
+        >
           {organizations.map((org, index) => (
             <Option name={org.id} key={index}>
               <Signature>
@@ -54,7 +54,7 @@ const SparkForm = ({
       </div>
       <div>
         <Label>Title</Label>
-        <TextInput name="title" placeholder="Name your project..." />
+        <TextInput name="title" placeholder="Give it a name..." />
       </div>
     </div>
 
@@ -86,7 +86,7 @@ const SparkForm = ({
       {license || (
         <Link to={upgradeRoute}>
           <Type caption color="primary">
-            Upgrade Now
+            Buy us coffee and upgrade now!
           </Type>
         </Link>
       )}

@@ -10,7 +10,7 @@ const TextInput = ({ name, type, placeholder, className, ...rest }) => {
   return (
     <>
       <Type caption color="red">
-        {!errors || errors[name]?.message}
+        {errors && errors[name]?.message}
       </Type>
       <input
         type={type || "text"}

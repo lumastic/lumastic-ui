@@ -1,19 +1,20 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { AppBar } from "../../components/AppBar";
-import { Container } from "../../components/Container";
-import { Home } from "../../icons/Home";
-import { MagnifyingGlass } from "../../icons/MagnifyingGlass";
-import { IconButton } from "../../components/IconButton";
-import { Search } from "../../components/Search";
-import { PageSignature } from "../../templates/PageSignature";
+import React from "react";
+import {
+  AppBar,
+  Avatar,
+  Container,
+  IconButton,
+  Search,
+  Link
+} from "../../components";
 import { useUser } from "../../hooks";
+import { Home, MagnifyingGlass } from "../../icons";
+import { profileRoute } from "../../routes";
+import { PageSignature } from "../../templates";
 import style from "./HomeBar.scss";
-import { Avatar } from "../../components";
-import withLink from "../../helpers/withLink";
-import { profileRoute } from "../../routes/routes";
 
-const HomeBar = ({ children, className, ...rest }) => {
+const HomeBar = () => {
   const { avatarURL, username } = useUser();
   return (
     <AppBar>
@@ -28,16 +29,15 @@ const HomeBar = ({ children, className, ...rest }) => {
               <MagnifyingGlass />
             </IconButton>
           </div>
-          {withLink(<Avatar src={avatarURL} />, { to: profileRoute(username) })}
+          <Link to={profileRoute(username)}>
+            <Avatar src={avatarURL} />
+          </Link>
         </div>
       </Container>
     </AppBar>
   );
 };
 
-HomeBar.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
-};
+HomeBar.propTypes = {};
 
 export { HomeBar };

@@ -1,7 +1,13 @@
 #### Basic Usage
 
 ```jsx
-<NewSparkDialog>NewSparkDialog</NewSparkDialog>
+import { Link, Button } from "../..";
+<>
+  <NewSparkDialog />
+  <Link to={"/create/spark"} button>
+    <Button>New Spark</Button>
+  </Link>
+</>;
 ```
 
 Source:

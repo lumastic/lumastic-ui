@@ -5,9 +5,9 @@ import { Avatar } from "../../components/Avatar";
 import { Form } from "../../components/Form";
 import { IconButton } from "../../components/IconButton";
 import { PaperAirplane } from "../../icons/PaperAirplane";
+import { useUser } from "../..";
 import style from "./NewComment.scss";
 import classNames from "../../helpers/classNames";
-import { useUser } from "../..";
 
 const NewComment = ({ onSubmit }) => {
   const { avatarURL } = useUser();

@@ -1,17 +1,34 @@
-import React from "react";
 import PropTypes from "prop-types";
-import style from "./NewSparkDialog.scss";
-import classNames from "../../helpers/classNames";
+import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { Dialog, Type } from "../../components";
+import { SparkForm } from "../../forms";
+import { createSparkRoute } from "../../routes";
 
-const NewSparkDialog = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.newsparkdialog)} data-testid={"newsparkdialog"} {...rest}>
-    {children}
-  </div>
-);
+const NewSparkDialog = ({ onSubmit, organizations, license }) => {
+  const history = useHistory();
+  const location = useLocation();
+  const hide = () => {
+    history.goBack();
+  };
+  return (
+    <Dialog isShowing={location.pathname === createSparkRoute} hide={hide}>
+      <Type h2 align="center">
+        Create Spark
+      </Type>
+      <SparkForm
+        onSubmit={onSubmit}
+        organizations={organizations}
+        license={license}
+      />
+    </Dialog>
+  );
+};
 
 NewSparkDialog.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  onSubmit: PropTypes.func,
+  organizations: PropTypes.array,
+  license: PropTypes.bool
 };
 
 export { NewSparkDialog };

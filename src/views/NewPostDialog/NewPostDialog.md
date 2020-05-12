@@ -1,7 +1,13 @@
 #### Basic Usage
 
 ```jsx
-<NewPostDialog>NewPostDialog</NewPostDialog>
+import { Link, Button } from "../..";
+<>
+  <NewPostDialog />
+  <Link to={"/create/post"} button>
+    <Button>New Post</Button>
+  </Link>
+</>;
 ```
 
 Source:

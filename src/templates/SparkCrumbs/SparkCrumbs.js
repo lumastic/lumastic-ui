@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Avatar } from "../../components/Avatar";
-import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { Tooltip } from "../../components/Tooltip";
+import { Avatar, Link, Breadcrumbs, Tooltip } from "../../components";
 import { SparkSignature } from "../SparkSignature";
-import withLink from "../../helpers/withLink";
+import { profileRoute, viewSparkRoute } from "../../routes";
 
 const SparkCrumbs = ({
   className,
@@ -13,13 +11,14 @@ const SparkCrumbs = ({
   small = false
 }) => (
   <Breadcrumbs className={className}>
-    {withLink(
+    <Link to={profileRoute(organization.name)}>
       <Tooltip label={organization.name || "Organization name"} position="top">
         <Avatar src={organization.avatarURL} />
-      </Tooltip>,
-      { to: "/user" }
-    )}
-    {withLink(<SparkSignature spark={spark} small={small} />, { to: "/spark" })}
+      </Tooltip>
+    </Link>
+    <Link to={viewSparkRoute(organization.name, spark.id)}>
+      <SparkSignature spark={spark} small={small} />
+    </Link>
   </Breadcrumbs>
 );
 

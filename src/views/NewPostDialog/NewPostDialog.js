@@ -1,17 +1,28 @@
-import React from "react";
 import PropTypes from "prop-types";
-import style from "./NewPostDialog.scss";
-import classNames from "../../helpers/classNames";
+import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { Dialog, Type } from "../../components";
+import { PostForm } from "../../forms";
+import { createPostRoute } from "../../routes";
 
-const NewPostDialog = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.newpostdialog)} data-testid={"newpostdialog"} {...rest}>
-    {children}
-  </div>
-);
+const NewPostDialog = ({ onSubmit }) => {
+  const history = useHistory();
+  const location = useLocation();
+  const hide = () => {
+    history.goBack();
+  };
+  return (
+    <Dialog isShowing={location.pathname === createPostRoute} hide={hide}>
+      <Type h2 align="center">
+        Create Post
+      </Type>
+      <PostForm onSubmit={onSubmit} />
+    </Dialog>
+  );
+};
 
 NewPostDialog.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  onSubmit: PropTypes.func
 };
 
 export { NewPostDialog };

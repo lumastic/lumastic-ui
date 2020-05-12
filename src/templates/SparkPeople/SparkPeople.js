@@ -1,15 +1,17 @@
-import React from "react";
 import PropTypes from "prop-types";
-import style from "./SparkPeople.scss";
+import React from "react";
+import {
+  Avatar,
+  AvatarGroup,
+  Card,
+  Label,
+  Link,
+  List,
+  Tooltip
+} from "../../components";
 import classNames from "../../helpers/classNames";
-import { Card } from "../../components/Card";
-import { Label } from "../../components/Label";
-import { Button } from "../../components/Button";
-import { List } from "../../components/List";
-import { Avatar } from "../../components/Avatar";
-import { AvatarGroup } from "../../components/AvatarGroup";
-import { Tooltip } from "../../components/Tooltip";
-import withLink from "../../helpers/withLink";
+import style from "./SparkPeople.scss";
+import { profileRoute } from "../../routes";
 
 const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
   <Card className={classNames(className, style.sparkinfo)}>
@@ -25,9 +27,9 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
                   position="top"
                   key={collaborator.id || index}
                 >
-                  {withLink(<Avatar src={collaborator.avatarURL} />, {
-                    to: "#!"
-                  })}
+                  <Link to={profileRoute(collaborator.username)}>
+                    <Avatar src={collaborator.avatarURL} />
+                  </Link>
                 </Tooltip>
               ))}
             </AvatarGroup>
@@ -46,10 +48,9 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
                   position="top"
                   key={follower.id || index}
                 >
-                  {withLink(
-                    <Avatar src={follower.avatarURL} key={follower.id} />,
-                    { to: "#!" }
-                  )}
+                  <Link to={profileRoute(follower.username)}>
+                    <Avatar src={follower.avatarURL} key={follower.id} />
+                  </Link>
                 </Tooltip>
               ))}
             </AvatarGroup>
