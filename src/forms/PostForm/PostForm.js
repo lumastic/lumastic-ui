@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import * as yup from "yup";
 import {
   Form,
   TextInput,
@@ -14,6 +15,12 @@ import { SparkSelect, Signature } from "../../templates";
 import { PaperAirplane } from "../../icons";
 import style from "./PostForm.scss";
 
+const postSchema = yup.object().shape({
+  content: yup.string().required("This field is required"),
+  spark: yup.string().required("This field is required"),
+  type: yup.string().required("This field is required")
+});
+
 const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
   const user = useUser();
   return (
@@ -21,6 +28,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
       onSubmit={onSubmit}
       defaultValues={defaultValues}
       className={style.form}
+      validationSchema={postSchema}
     >
       <SparkSelect
         small

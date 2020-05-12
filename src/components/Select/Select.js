@@ -21,10 +21,11 @@ const Select = ({
   onClose,
   onOpen
 }) => {
-  const { register, setValue } = useFormContext();
+  const { register, setValue, errors } = useFormContext();
   const [selected, setSelected] = useState(defaultValue);
   const [options, setOptions] = useState([]);
   const triggerRef = useRef();
+  console.log(errors);
 
   const contextValue = useMemo(() => ({ selected, setSelected, setOptions }), [
     selected,
@@ -38,7 +39,7 @@ const Select = ({
 
   useEffect(() => {
     if (onChange) onChange(selected);
-    if (setValue) setValue(name, selected);
+    if (selected && setValue) setValue(name, selected, true);
   }, [selected, onChange, setValue, name]);
 
   return (
@@ -53,7 +54,9 @@ const Select = ({
         >
           <PopupTrigger>
             <div
-              className={classNames(className, style.select)}
+              className={classNames(className, style.select, {
+                [style.error]: errors && errors[name]
+              })}
               data-testid="select"
               ref={triggerRef}
             >
