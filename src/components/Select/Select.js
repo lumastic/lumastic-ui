@@ -14,6 +14,7 @@ const Select = ({
   defaultValue,
   placeholder,
   name,
+  small = false,
   children,
   className,
   onChange,
@@ -58,7 +59,7 @@ const Select = ({
             >
               {options[selected] || (
                 <div className={style.label}>
-                  <Type>{placeholder}</Type>
+                  <Type body2={small}>{placeholder}</Type>
                 </div>
               )}
               <div className={style["select-arrow"]}>
@@ -85,6 +86,7 @@ Select.propTypes = {
   placeholder: PropTypes.string,
   children: PropTypes.node,
   defaultValue: PropTypes.any,
+  small: PropTypes.bool,
   name: PropTypes.string,
   onChange: PropTypes.func,
   onClose: PropTypes.func,

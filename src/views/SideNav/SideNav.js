@@ -61,7 +61,7 @@ const SideNav = ({ className }) => (
           </NavIconButton>
         </PopupTrigger>
         <PopupContent render={PopupMenu}>
-          <Link button to="/poop">
+          <Link button to={createSparkRoute}>
             <MenuItem>
               <Signature>
                 <SparkPlus />
@@ -69,12 +69,14 @@ const SideNav = ({ className }) => (
               </Signature>
             </MenuItem>
           </Link>
-          <MenuItem>
-            <Signature>
-              <PostPlus />
-              <Type>New Post</Type>
-            </Signature>
-          </MenuItem>
+          <Link button to={createPostRoute}>
+            <MenuItem>
+              <Signature>
+                <PostPlus />
+                <Type>New Post</Type>
+              </Signature>
+            </MenuItem>
+          </Link>
         </PopupContent>
       </Popup>
     </div>

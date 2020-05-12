@@ -1,16 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Avatar } from "../../components/Avatar";
-import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { Option } from "../../components/Option";
-import { Select } from "../../components/Select";
-import { SparkSignature } from "../SparkSignature";
-import { Tooltip } from "../../components/Tooltip";
+import { SparkSignature } from "..";
+import { Avatar, Breadcrumbs, Option, Select, Tooltip } from "../../components";
 
 const SparkSelect = ({
   sparks = [],
   organization = {},
   defaultValue,
+  name,
+  small,
   onChange,
   onOpen,
   onClose
@@ -22,13 +20,15 @@ const SparkSelect = ({
     <Select
       placeholder="Select a spark..."
       defaultValue={defaultValue}
+      name={name}
+      small={small}
       onChange={onChange}
       onOpen={onOpen}
       onClose={onClose}
     >
       {sparks.map((spark, key) => (
         <Option key={spark.id || key} name={spark.id || key}>
-          <SparkSignature spark={spark} />
+          <SparkSignature spark={spark} small={small} />
         </Option>
       ))}
     </Select>
@@ -38,6 +38,8 @@ const SparkSelect = ({
 SparkSelect.propTypes = {
   sparks: PropTypes.array,
   organization: PropTypes.object,
+  name: PropTypes.string.isRequired,
+  small: PropTypes.bool,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   onOpen: PropTypes.func,

@@ -9,9 +9,12 @@ const TextInput = ({ name, type, placeholder, className, ...rest }) => {
   const { register, errors } = useFormContext();
   return (
     <>
-      <Type caption color="red">
-        {errors && errors[name]?.message}
-      </Type>
+      {errors && errors[name] && (
+        <Type caption color="red">
+          {errors[name]?.message}
+        </Type>
+      )}
+
       <input
         type={type || "text"}
         name={name}

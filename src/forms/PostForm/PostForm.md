@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<PostForm>PostForm</PostForm>
+<PostForm />
 ```
 
 Source:

@@ -13,9 +13,6 @@ const NewPostDialog = ({ onSubmit }) => {
   };
   return (
     <Dialog isShowing={location.pathname === createPostRoute} hide={hide}>
-      <Type h2 align="center">
-        Create Post
-      </Type>
       <PostForm onSubmit={onSubmit} />
     </Dialog>
   );
