@@ -84,10 +84,8 @@ Select.propTypes = {
   className: PropTypes.string,
   placeholder: PropTypes.string,
   children: PropTypes.node,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.any,
   name: PropTypes.string,
-  register: PropTypes.func,
-  setValue: PropTypes.func,
   onChange: PropTypes.func,
   onClose: PropTypes.func,
   onOpen: PropTypes.func

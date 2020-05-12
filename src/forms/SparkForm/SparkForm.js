@@ -10,7 +10,8 @@ import {
   Option,
   Type,
   Avatar,
-  RadioInput
+  RadioInput,
+  Link
 } from "../../components";
 import { Users } from "../../icons/Users";
 import { UserLock } from "../../icons/UserLock";
@@ -82,13 +83,13 @@ const SparkForm = ({
           ? "You control who can see and collaborate on this spark."
           : "You need a pro account to create private sparks."}
       </Type>
-      {license ||
-        withLink(
+      {license || (
+        <Link to={upgradeRoute}>
           <Type caption color="primary">
             Upgrade Now
-          </Type>,
-          { to: upgradeRoute }
-        )}
+          </Type>
+        </Link>
+      )}
     </RadioInput>
     <Button variant="contained" type="submit">
       Save

@@ -10,6 +10,7 @@ const Button = forwardRef(
       className,
       type = "button",
       variant = "default",
+      shadow = false,
       color = "primary",
       fullWidth,
       size,
@@ -27,7 +28,8 @@ const Button = forwardRef(
         style[variant],
         { [style[size]]: size },
         { [style["full-width"]]: fullWidth },
-        { [style.disabled]: disabled }
+        { [style.disabled]: disabled },
+        { [style.shadow]: shadow }
       )}
       onClick={onClick}
       disabled={disabled}
@@ -46,12 +48,14 @@ Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(["submit", "reset", "button"]),
   variant: PropTypes.oneOf(["default", "contained", "outlined"]),
+  shadow: PropTypes.bool,
   color: PropTypes.oneOf([
     "primary",
     "secondary",
     "red",
     "green",
     "yellow",
+    "accent",
     "grey",
     "light"
   ]),

@@ -135,6 +135,15 @@
         background-color: $secondary;
       }
     }
+    &.accent {
+      background-color: $accent;
+      &:hover {
+        background-color: lighten($accent, 10%);
+      }
+      &:active {
+        background-color: lighten($accent, 5%);
+      }
+    }
     &.red {
       background-color: $red;
       &:hover {
@@ -162,6 +171,9 @@
         background-color: $yellowDark;
       }
     }
+  }
+  &.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
 
   /* // ICON: DEFAULT */

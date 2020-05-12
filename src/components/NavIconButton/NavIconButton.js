@@ -13,10 +13,10 @@ const NavIconButton = ({ children, className, to, exact }) => (
     children={({ match, history }) => (
       <button
         className={classNames(className, style.naviconbutton, {
-          [style.active]: match
+          [style.active]: to && match
         })}
         data-testid="naviconbutton"
-        onClick={() => history.push(to || to[0])}
+        onClick={() => to && history.push(to || to[0])}
       >
         {children}
       </button>

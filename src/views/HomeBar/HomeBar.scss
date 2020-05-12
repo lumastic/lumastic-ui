@@ -8,6 +8,13 @@
   grid-auto-flow: column;
   grid-template-columns: 3fr 2fr;
 }
+.right {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto min-content;
+  align-items: center;
+  column-gap: 0.5rem;
+}
 .searchBtn {
   display: none;
 }

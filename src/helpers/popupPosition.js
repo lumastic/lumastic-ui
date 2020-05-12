@@ -38,10 +38,10 @@ const popupPosition = (anchor, transform, trig, popup) => {
     case "top":
       break;
     case "center":
-      popTop += popHeight / 2;
+      popTop -= popHeight / 2;
       break;
     case "bottom":
-      popTop += popHeight;
+      popTop -= popHeight;
       break;
     default:
       break;

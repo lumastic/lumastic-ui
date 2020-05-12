@@ -7,20 +7,23 @@ import { IconButton } from "../../components/IconButton";
 import { PaperAirplane } from "../../icons/PaperAirplane";
 import style from "./NewComment.scss";
 import classNames from "../../helpers/classNames";
+import { useUser } from "../..";
 
-const NewComment = ({ createComment, currentUser = {} }) => (
-  <Form className={style.newcomment}>
-    <Avatar src={currentUser.avatarURL} size="small" className={style.avatar} />
-    <TextInput name="comment" placeholder="Post a comment..." />
-    <IconButton size="big" type="submit">
-      <PaperAirplane />
-    </IconButton>
-  </Form>
-);
+const NewComment = ({ onSubmit }) => {
+  const { avatarURL } = useUser();
+  return (
+    <Form className={style.newcomment}>
+      <Avatar src={avatarURL} size="small" className={style.avatar} />
+      <TextInput name="comment" placeholder="Post a comment..." />
+      <IconButton size="big" type="submit">
+        <PaperAirplane />
+      </IconButton>
+    </Form>
+  );
+};
 
 NewComment.propTypes = {
-  createComment: PropTypes.func,
-  currentUser: PropTypes.object
+  onSubmit: PropTypes.func
 };
 
 export { NewComment };
