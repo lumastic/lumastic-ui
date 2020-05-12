@@ -25,7 +25,6 @@ const Select = ({
   const [selected, setSelected] = useState(defaultValue);
   const [options, setOptions] = useState([]);
   const triggerRef = useRef();
-  console.log(errors);
 
   const contextValue = useMemo(() => ({ selected, setSelected, setOptions }), [
     selected,
