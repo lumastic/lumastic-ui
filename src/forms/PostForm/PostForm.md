@@ -1,7 +1,8 @@
 #### Basic Usage
 
 ```jsx
-<PostForm />
+import { spark1 } from "../../data/spark.db.js";
+<PostForm sparks={[spark1]} />;
 ```
 
 Source:

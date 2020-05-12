@@ -73,6 +73,9 @@
   &.right {
     text-align: right;
   }
+  &.gutter-bottom {
+    margin-bottom: 0.5em;
+  }
   svg {
     position: relative;
     top: 0.25em;

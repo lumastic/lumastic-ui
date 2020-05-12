@@ -16,6 +16,7 @@ const Type = forwardRef(
       caption,
       overline,
       body2,
+      gutterBottom,
       setSize,
       align = "left",
       tag,
@@ -38,6 +39,7 @@ const Type = forwardRef(
           { [style.caption]: caption },
           { [style.overline]: overline },
           { [style.body2]: body2 },
+          { [style["gutter-bottom"]]: gutterBottom },
           style[color]
         )}
         style={{ fontSize: setSize }}
@@ -60,6 +62,7 @@ Type.propTypes = {
   h4: PropTypes.bool,
   caption: PropTypes.bool,
   overline: PropTypes.bool,
+  gutterBottom: PropTypes.bool,
   body2: PropTypes.bool,
   setSize: PropTypes.string,
   align: PropTypes.oneOf(["center", "left", "right"]),

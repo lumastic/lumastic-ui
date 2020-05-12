@@ -13,7 +13,7 @@ const NewSparkDialog = ({ onSubmit, organizations, license }) => {
   };
   return (
     <Dialog isShowing={location.pathname === createSparkRoute} hide={hide}>
-      <Type h2 align="center">
+      <Type h2 align="center" gutterBottom>
         Create Spark
       </Type>
       <SparkForm
