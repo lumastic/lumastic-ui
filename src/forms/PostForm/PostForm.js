@@ -72,7 +72,13 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
             <Option name="issue">
               <Signature>
                 <Point color="red" />
-                <Type body2>Help!</Type>
+                <Type body2>Help</Type>
+              </Signature>
+            </Option>
+            <Option name="resolved">
+              <Signature>
+                <Point color="green" />
+                <Type body2>Solved</Type>
               </Signature>
             </Option>
           </Select>

@@ -5,7 +5,7 @@ import { Dialog, Type } from "../../components";
 import { PostForm } from "../../forms";
 import { createPostRoute } from "../../routes";
 
-const NewPostDialog = ({ onSubmit }) => {
+const NewPostDialog = ({ onSubmit, sparks = [] }) => {
   const history = useHistory();
   const location = useLocation();
   const hide = () => {
@@ -13,13 +13,14 @@ const NewPostDialog = ({ onSubmit }) => {
   };
   return (
     <Dialog isShowing={location.pathname === createPostRoute} hide={hide}>
-      <PostForm onSubmit={onSubmit} />
+      <PostForm sparks={sparks} onSubmit={onSubmit} />
     </Dialog>
   );
 };
 
 NewPostDialog.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  sparks: PropTypes.array
 };
 
 export { NewPostDialog };
