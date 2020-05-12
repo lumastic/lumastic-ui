@@ -19,7 +19,9 @@ const TextInput = ({ name, type, placeholder, className, ...rest }) => {
         type={type || "text"}
         name={name}
         placeholder={placeholder || name}
-        className={classNames(className, style.textinput)}
+        className={classNames(className, style.textinput, {
+          [style.error]: errors && errors[name]
+        })}
         data-testid="textinput"
         spellCheck
         autoComplete="on"
