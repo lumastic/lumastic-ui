@@ -7,12 +7,14 @@ import {
   Button,
   Select,
   Option,
+  Link,
   Type,
   Point
 } from "../../components";
 import { useUser } from "../../hooks";
-import { SparkSelect, Signature } from "../../templates";
+import { SparkSelect, Signature, SparkCrumbs } from "../../templates";
 import { PaperAirplane } from "../../icons";
+import { createSparkRoute } from "../../routes";
 import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
@@ -23,6 +25,16 @@ const postSchema = yup.object().shape({
 
 const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
   const user = useUser();
+  if (sparks.length === 0)
+    return (
+      <>
+        <Link to={createSparkRoute}>
+          <Type align="center" color="primary">
+            Create a spark to join the conversation
+          </Type>
+        </Link>
+      </>
+    );
   return (
     <Form
       onSubmit={onSubmit}
@@ -30,12 +42,17 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
       className={style.form}
       validationSchema={postSchema}
     >
-      <SparkSelect
-        small
-        name="spark"
-        organization={{ ...user }}
-        sparks={sparks}
-      />
+      {sparks.length > 1 && (
+        <SparkSelect
+          small
+          name="spark"
+          organization={{ ...user }}
+          sparks={sparks}
+        />
+      )}
+      {sparks.length === 1 && (
+        <SparkCrumbs small spark={sparks[0]} organization={{ ...user }} />
+      )}
 
       <TextInput name="content" placeholder="What's the latests..." />
       <div className={style.bottom}>
@@ -55,7 +72,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
             <Option name="issue">
               <Signature>
                 <Point color="red" />
-                <Type body2>Help</Type>
+                <Type body2>Help!</Type>
               </Signature>
             </Option>
           </Select>

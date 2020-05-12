@@ -1,7 +1,10 @@
 .link {
   text-decoration: none;
   color: unset;
-  display: inline-flex;
+  &.inline {
+    display: inline-flex;
+  }
+
   &:hover {
     text-decoration: underline;
   }

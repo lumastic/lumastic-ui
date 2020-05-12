@@ -4,11 +4,16 @@ import { Link as RouterLink, useHistory } from "react-router-dom";
 import style from "./Link.scss";
 import classNames from "../../helpers/classNames";
 
-const Link = ({ children, className, button = false, to }) => {
+const Link = ({ children, className, button = false, to, inline }) => {
   const history = useHistory();
   if (!button) {
     return (
-      <RouterLink to={to} className={classNames(style.link, className)}>
+      <RouterLink
+        to={to}
+        className={classNames(style.link, className, {
+          [style.inline]: inline
+        })}
+      >
         {children}
       </RouterLink>
     );
@@ -28,7 +33,8 @@ Link.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   to: PropTypes.string.isRequired,
-  button: PropTypes.bool
+  button: PropTypes.bool,
+  inline: PropTypes.bool
 };
 
 export { Link };
