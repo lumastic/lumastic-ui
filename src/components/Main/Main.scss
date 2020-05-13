@@ -5,6 +5,15 @@
   background-color: $background;
   padding: 0.5rem 1rem;
   overflow-y: auto;
+  &.loading {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .spinner {
+      margin: 2rem;
+    }
+  }
 }
 
 @media (max-width: $tablet) {
