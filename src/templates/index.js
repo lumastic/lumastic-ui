@@ -2,6 +2,7 @@ export * from "./AddEmoji";
 export * from "./BoardCard";
 export * from "./Comment";
 export * from "./LabeledList";
+export * from "./LoadingScreen";
 export * from "./MoreMenu";
 export * from "./NewComment";
 export * from "./PageSignature";

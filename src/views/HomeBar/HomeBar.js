@@ -29,7 +29,7 @@ const HomeBar = () => {
               <MagnifyingGlass />
             </IconButton>
           </div>
-          <Link to={profileRoute(username)}>
+          <Link to={profileRoute(username)} inline>
             <Avatar src={avatarURL} />
           </Link>
         </div>

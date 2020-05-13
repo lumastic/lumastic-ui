@@ -1,18 +1,21 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { Dialog, Type } from "../../components";
+import { Dialog } from "../../components";
 import { PostForm } from "../../forms";
-import { createPostRoute } from "../../routes";
+import { createPostRoute, homeRoute } from "../../routes";
 
 const NewPostDialog = ({ onSubmit, sparks = [] }) => {
   const history = useHistory();
   const location = useLocation();
   const hide = () => {
-    history.goBack();
+    history.push(location.state?.from || homeRoute);
   };
   return (
-    <Dialog isShowing={location.pathname === createPostRoute} hide={hide}>
+    <Dialog
+      isShowing={location.pathname === createPostRoute.pathname}
+      hide={hide}
+    >
       <PostForm sparks={sparks} onSubmit={onSubmit} />
     </Dialog>
   );

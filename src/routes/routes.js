@@ -20,14 +20,20 @@ export const mySparksRoute = "/sparks";
 const baseSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") =>
   `/${orgName}/spark/${sparkId}`;
 
-export const createSparkRoute = "/create/spark";
+export const createSparkRoute = {
+  pathname: "/create/spark",
+  state: { modal: true }
+};
 
 export const viewSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") =>
   baseSparkRoute(orgName, sparkId);
 
 // POST ROUTES
 
-export const createPostRoute = "/create/post";
+export const createPostRoute = {
+  pathname: "/create/post",
+  state: { modal: true }
+};
 
 // BOARD ROUTES
 export const viewBoardRoute = (

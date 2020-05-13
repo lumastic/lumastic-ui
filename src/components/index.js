@@ -17,6 +17,7 @@ export * from "./IconButton";
 export * from "./Label";
 export * from "./Link";
 export * from "./List";
+export * from "./LoadingSpinner";
 export * from "./Main";
 export * from "./Menu";
 export * from "./Modal";

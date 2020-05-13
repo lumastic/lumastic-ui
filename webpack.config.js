@@ -1,7 +1,4 @@
 const path = require("path");
-const { getEntries } = require("./getEntries");
-
-const entries = getEntries();
 
 module.exports = {
   entry: {

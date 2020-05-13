@@ -6,10 +6,14 @@ import classNames from "../../helpers/classNames";
 
 const Link = ({ children, className, button = false, to, inline }) => {
   const history = useHistory();
+  const toObj = typeof to === "string" ? { pathname: to } : to;
   if (!button) {
     return (
       <RouterLink
-        to={to}
+        to={location => ({
+          ...toObj,
+          state: { ...toObj?.state, from: location }
+        })}
         className={classNames(style.link, className, {
           [style.inline]: inline
         })}
@@ -22,7 +26,10 @@ const Link = ({ children, className, button = false, to, inline }) => {
     cloneElement(c, {
       onClick: () => {
         if (c.props.onClick) c.props.onClick();
-        history.push(to);
+        history.push({
+          ...toObj,
+          state: { ...toObj?.state, from: history.location }
+        });
       }
     })
   );
@@ -32,7 +39,7 @@ const Link = ({ children, className, button = false, to, inline }) => {
 Link.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.any.isRequired,
   button: PropTypes.bool,
   inline: PropTypes.bool
 };

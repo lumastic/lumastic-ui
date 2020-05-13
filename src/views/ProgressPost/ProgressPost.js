@@ -37,7 +37,7 @@ const ProgressPost = ({
       </div>
       <Type tag="div">{post.content}</Type>
       <div className={style.postreactions}>
-        {post.reactions.map((reaction, key) => (
+        {post.reactions?.map((reaction, key) => (
           <Reaction
             reaction={reaction}
             onClick={reactionClick}
@@ -58,7 +58,7 @@ const ProgressPost = ({
           {canComment && (
             <NewComment post={post} createComment={createComment} />
           )}
-          {post.comments.map((comment, key) => (
+          {post.comments?.map((comment, key) => (
             <Comment
               comment={comment}
               createdBy={comment.createdBy}

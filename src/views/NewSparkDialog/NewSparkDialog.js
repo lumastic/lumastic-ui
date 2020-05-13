@@ -3,16 +3,19 @@ import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { Dialog, Type } from "../../components";
 import { SparkForm } from "../../forms";
-import { createSparkRoute } from "../../routes";
+import { createSparkRoute, homeRoute } from "../../routes";
 
 const NewSparkDialog = ({ onSubmit, organizations, license }) => {
   const history = useHistory();
   const location = useLocation();
   const hide = () => {
-    history.goBack();
+    history.push(location.state?.from || homeRoute);
   };
   return (
-    <Dialog isShowing={location.pathname === createSparkRoute} hide={hide}>
+    <Dialog
+      isShowing={location.pathname === createSparkRoute.pathname}
+      hide={hide}
+    >
       <Type h2 align="center" gutterBottom>
         Create Spark
       </Type>
