@@ -4,9 +4,14 @@ import { LoadingSpinner } from "..";
 import style from "./Main.scss";
 import classNames from "../../helpers/classNames";
 
-const Main = ({ children, className, loading = false }) => (
+const Main = ({ children, className, loading = false, twothirds = false }) => (
   <main
-    className={classNames(className, style.main, { [style.loading]: loading })}
+    className={classNames(
+      className,
+      style.main,
+      { [style.loading]: loading },
+      { [style.twothirds]: !loading && twothirds }
+    )}
     data-testid="main"
   >
     {loading ? <LoadingSpinner className={style.spinner} /> : children}
@@ -16,7 +21,8 @@ const Main = ({ children, className, loading = false }) => (
 Main.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  twothirds: PropTypes.bool
 };
 
 export { Main };

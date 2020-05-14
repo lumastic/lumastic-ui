@@ -1,7 +1,15 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { SparkSignature } from "..";
-import { Avatar, Breadcrumbs, Option, Select, Tooltip } from "../../components";
+import {
+  Avatar,
+  Breadcrumbs,
+  Option,
+  Select,
+  Tooltip,
+  Link
+} from "../../components";
+import { profileRoute } from "../../routes";
 
 const SparkSelect = ({
   sparks = [],
@@ -14,9 +22,12 @@ const SparkSelect = ({
   onClose
 }) => (
   <Breadcrumbs>
-    <Tooltip position="top" label={organization.name || "Organization Name"}>
-      <Avatar src={organization.avatarURL} />
-    </Tooltip>
+    <Link to={profileRoute(organization.name)} inline>
+      <Tooltip position="top" label={organization.name || "Organization Name"}>
+        <Avatar src={organization.avatarURL} />
+      </Tooltip>
+    </Link>
+
     <Select
       placeholder="Select a spark..."
       defaultValue={defaultValue}

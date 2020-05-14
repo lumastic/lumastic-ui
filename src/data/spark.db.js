@@ -1,6 +1,7 @@
 import { drew, keith, atishay } from "./user.db";
 
 export const spark1 = {
+  id: "1",
   title: "Drew's spark",
   createdBy: drew,
   description:
@@ -12,6 +13,7 @@ export const spark1 = {
 };
 
 export const spark2 = {
+  id: "2",
   title: "Keith's spark",
   createdBy: keith,
   description:
@@ -23,6 +25,7 @@ export const spark2 = {
 };
 
 export const spark3 = {
+  id: "3",
   title: "Atishay's spark",
   createdBy: atishay,
   description:

@@ -1,17 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Card, Point } from "../../components";
+import { PostForm } from "../../forms";
 import style from "./NewPostCard.scss";
 import classNames from "../../helpers/classNames";
 
-const NewPostCard = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.newpostcard)} data-testid={"newpostcard"} {...rest}>
-    {children}
+const NewPostCard = ({ sparks, onSubmit }) => (
+  <div className={style.container}>
+    <Point className={style.point} withBorder color="light" />
+    <Card>
+      <PostForm sparks={sparks} onSubmit={onSubmit} />
+    </Card>
   </div>
 );
 
 NewPostCard.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  sparks: PropTypes.array,
+  onSubmit: PropTypes.func
 };
 
 export { NewPostCard };

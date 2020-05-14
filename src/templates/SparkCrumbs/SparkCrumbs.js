@@ -11,12 +11,12 @@ const SparkCrumbs = ({
   small = false
 }) => (
   <Breadcrumbs className={className}>
-    <Link to={profileRoute(organization.name)}>
+    <Link to={profileRoute(organization.name)} inline>
       <Tooltip label={organization.name || "Organization name"} position="top">
         <Avatar src={organization.avatarURL} />
       </Tooltip>
     </Link>
-    <Link to={viewSparkRoute(organization.name, spark.id)}>
+    <Link to={viewSparkRoute(organization.name, spark.id)} inline>
       <SparkSignature spark={spark} small={small} />
     </Link>
   </Breadcrumbs>

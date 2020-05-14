@@ -1,7 +1,8 @@
 #### Basic Usage
 
 ```jsx
-<NewPostCard>NewPostCard</NewPostCard>
+import { spark1 } from "../../data/spark.db.js";
+<NewPostCard sparks={[spark1]} />;
 ```
 
 Source:

@@ -19,7 +19,7 @@ import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
-  spark: yup.string().required("This field is required"),
+  spark: yup.string(),
   type: yup.string().required("This field is required")
 });
 
@@ -35,10 +35,14 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         </Link>
       </>
     );
+  const defaults = { ...defaultValues };
+  if (sparks.length === 1) {
+    defaults.spark = sparks[0].id;
+  }
   return (
     <Form
       onSubmit={onSubmit}
-      defaultValues={defaultValues}
+      defaultValues={defaults}
       className={style.form}
       validationSchema={postSchema}
     >
@@ -51,7 +55,10 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         />
       )}
       {sparks.length === 1 && (
-        <SparkCrumbs small spark={sparks[0]} organization={{ ...user }} />
+        <>
+          <SparkCrumbs small spark={sparks[0]} organization={{ ...user }} />
+          <TextInput name="spark" hidden />
+        </>
       )}
 
       <TextInput name="content" placeholder="What's the latests..." />
