@@ -6,7 +6,7 @@ export const spark1 = {
   createdBy: drew,
   belongsTo: drew,
   description:
-    "This is a spark description. This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
+    "This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }],
   followers: [keith, atishay],
   collaborators: [keith, atishay],
@@ -19,7 +19,7 @@ export const spark2 = {
   createdBy: keith,
   belongsTo: keith,
   description:
-    "This is a spark description. This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
+    "This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }],
   followers: [drew, atishay],
   collaborators: [drew, atishay],
@@ -32,7 +32,7 @@ export const spark3 = {
   createdBy: atishay,
   belongsTo: atishay,
   description:
-    "This is a spark description. This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
+    "This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }, { name: "Hacking" }],
   followers: [keith, drew],
   collaborators: [keith, drew],
