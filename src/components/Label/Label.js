@@ -11,13 +11,7 @@ const Label = ({ children, className, right }) => (
         {children}
       </Type>
     </div>
-    {right ? (
-      <div className={style["label-action"]}>
-        <Type overline color="grey">
-          {right}
-        </Type>
-      </div>
-    ) : null}
+    {right ? <div className={style["label-action"]}>{right}</div> : null}
   </div>
 );
 

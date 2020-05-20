@@ -4,6 +4,7 @@ export * from "./Compass";
 export * from "./Dot";
 export * from "./EllipsisV";
 export * from "./EmojiPlus";
+export * from "./Gear";
 export * from "./Hashtag";
 export * from "./Home";
 export * from "./Icon";

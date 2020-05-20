@@ -8,9 +8,9 @@ import {
   Search,
   Link
 } from "../../components";
-import { useUser } from "../../hooks";
+import { useUser } from "../..";
 import { Home, MagnifyingGlass } from "../../icons";
-import { profileRoute } from "../../routes";
+import { profileRoute, exploreRoute } from "../../routes";
 import { PageSignature } from "../../templates";
 import style from "./HomeBar.scss";
 
@@ -25,9 +25,11 @@ const HomeBar = () => {
         <div className={style.right}>
           <Search placeholder="Search..." className={style.search} />
           <div className={style.searchBtn}>
-            <IconButton color="grey" size="big">
-              <MagnifyingGlass />
-            </IconButton>
+            <Link button to={exploreRoute}>
+              <IconButton color="grey" size="big">
+                <MagnifyingGlass />
+              </IconButton>
+            </Link>
           </div>
           <Link to={profileRoute(username)} inline>
             <Avatar src={avatarURL} />

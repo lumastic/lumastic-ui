@@ -13,6 +13,28 @@ export const notificationsRoute = "/notifications";
 // USER ROUTES
 export const profileRoute = (orgName = ":orgName") => `/${orgName}`;
 
+export const settingsRoute = ({
+  account,
+  security,
+  emails,
+  notifications,
+  sparks,
+  organizations,
+  developer
+} = {}) =>
+  (account && "/settings/account") ||
+  (security && "/settings/security") ||
+  (emails && "/settings/emails") ||
+  (notifications && "/settings/notifications") ||
+  (sparks && "/settings/sparks") ||
+  (organizations && "/settings/organizations") ||
+  (developer && "/settings/apps") ||
+  "/settings/profile";
+
+// ORGANIZATION ROUTES
+export const myOrganizationsRoute = (orgName = ":orgName") =>
+  `/${orgName}/orgs`;
+
 // SPARK ROUTES
 
 export const mySparksRoute = "/sparks";

@@ -5,3 +5,6 @@ export * from "./NewPostDialog";
 export * from "./NewSparkDialog";
 export * from "./ProgressPost";
 export * from "./SideNav";
+export * from "./SparkInfo";
+export * from "./SparkPeople";
+export * from "./UserCard";

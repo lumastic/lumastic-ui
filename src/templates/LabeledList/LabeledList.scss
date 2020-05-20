@@ -1,11 +1,3 @@
-.list-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  .list-label-text {
-    flex-grow: 1;
-  }
-  .list-label-action {
-    flex-grow: 0;
-  }
+.label {
+  margin-bottom: 0.5rem;
 }

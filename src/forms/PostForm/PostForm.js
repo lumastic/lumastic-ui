@@ -11,7 +11,7 @@ import {
   Type,
   Point
 } from "../../components";
-import { useUser } from "../../hooks";
+import { useUser } from "../..";
 import { SparkSelect, Signature, SparkCrumbs } from "../../templates";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
@@ -19,7 +19,7 @@ import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
-  spark: yup.string(),
+  spark: yup.string().required("This field is required"),
   type: yup.string().required("This field is required")
 });
 

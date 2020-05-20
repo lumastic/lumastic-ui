@@ -33,6 +33,10 @@ const Select = ({
   ]);
 
   useEffect(() => {
+    setSelected(defaultValue);
+  }, [defaultValue]);
+
+  useEffect(() => {
     if (register) register({ name });
   }, [register, name]);
 

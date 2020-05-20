@@ -4,7 +4,7 @@ import { Card } from "../../components/Card";
 import { Label } from "../../components/Label";
 import { Type } from "../../components/Type";
 import { List } from "../../components/List";
-import { Tag } from "../Tag";
+import { Tag } from "../../templates/Tag";
 import style from "./SparkInfo.scss";
 import classNames from "../../helpers/classNames";
 

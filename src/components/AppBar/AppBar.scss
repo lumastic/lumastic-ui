@@ -1,4 +1,5 @@
 @import "../../styles/colors.scss";
+@import "../../styles/sizes.scss";
 
 .appbar {
   display: flex;
@@ -9,6 +10,12 @@
   top: 0;
   background-color: $backgroundLight;
   border-bottom: 1px solid $greyLight;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
   box-sizing: border-box;
+}
+
+@media (max-width: $tablet) {
+  .appbar {
+    padding: 0.25rem 0.5rem;
+  }
 }

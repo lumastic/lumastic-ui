@@ -19,7 +19,7 @@ import { Signature } from "../../templates";
 import style from "./SparkForm.scss";
 
 const sparkSchema = yup.object().shape({
-  owner: yup.string().required("This field is required"),
+  belongsTo: yup.string().required("This field is required"),
   title: yup.string().required("This field is required"),
   description: yup.string(),
   visibility: yup.string().required("This field is required")
@@ -33,15 +33,15 @@ const SparkForm = ({
   <Form
     onSubmit={onSubmit}
     validationSchema={sparkSchema}
-    defaultValues={{ visibility: "public", ...defaultValues }}
+    defaultValues={{
+      visibility: "Public",
+      ...defaultValues
+    }}
   >
     <div className={style.header}>
       <div>
         <Label>Owner</Label>
-        <Select
-          name="owner"
-          defaultValue={organizations[0] && organizations[0].id}
-        >
+        <Select name="belongsTo" defaultValue={organizations[0]?.id}>
           {organizations.map((org, index) => (
             <Option name={org.id} key={index}>
               <Signature>
@@ -66,7 +66,7 @@ const SparkForm = ({
       />
     </div>
 
-    <RadioInput name="visibility" value="public">
+    <RadioInput name="visibility" value="Public">
       <Type>
         <Users /> Public
       </Type>
@@ -74,7 +74,7 @@ const SparkForm = ({
         Everyone can see this spark. You choose who can collaborate.
       </Type>
     </RadioInput>
-    <RadioInput name="visibility" value="private" disabled={!license}>
+    <RadioInput name="visibility" value="Private" disabled={!license}>
       <Type color={license ? null : "grey"}>
         <UserLock /> Private
       </Type>
