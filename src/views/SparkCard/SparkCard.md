@@ -1,7 +1,8 @@
 #### Basic Usage
 
 ```jsx
-<SparkCard>SparkCard</SparkCard>
+import { spark1 } from "../../data/spark.db.js";
+<SparkCard spark={spark1} />;
 ```
 
 Source:

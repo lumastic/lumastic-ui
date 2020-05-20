@@ -1,17 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Card, Type, Label, List } from "../../components";
+import { SparkCrumbs, Tag } from "../../templates";
 import style from "./SparkCard.scss";
 import classNames from "../../helpers/classNames";
 
-const SparkCard = ({ children, className, ...rest }) => (
-  <div className={classNames(className, style.sparkcard)} data-testid={"sparkcard"} {...rest}>
-    {children}
-  </div>
+const SparkCard = ({ spark = {} }) => (
+  <Card>
+    <List>
+      <SparkCrumbs spark={spark} organization={spark?.belongsTo} />
+      <Type>{spark.description}</Type>
+      <div>
+        <Label>Tags</Label>
+        <div className={style.tags}>
+          {spark.tags?.map((tag, index) => (
+            <Tag tag={tag} key={tag.id || index} />
+          ))}
+        </div>
+      </div>
+    </List>
+  </Card>
 );
 
 SparkCard.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  spark: PropTypes.object
 };
 
 export { SparkCard };
