@@ -1,17 +1,13 @@
-import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
-import style from "./AppBar.scss";
+import React from "react";
 import classNames from "../../helpers/classNames";
+import style from "./AppBar.scss";
 
-const AppBar = forwardRef(({ children, className }, ref) => (
-  <header
-    className={classNames(className, style.appbar)}
-    data-testid="appbar"
-    ref={ref}
-  >
+const AppBar = ({ children, className }) => (
+  <header className={classNames(className, style.appbar)} data-testid="appbar">
     {children}
   </header>
-));
+);
 
 AppBar.propTypes = {
   children: PropTypes.node,
