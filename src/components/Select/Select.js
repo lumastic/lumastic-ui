@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useFormContext } from "react-hook-form";
 import SelectContext from "./helpers/SelectContext";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { SelectOptions } from "./helpers/SelectOptions";
@@ -9,6 +8,7 @@ import { Type } from "../Type";
 import { ArrowDown } from "../../icons/ArrowDown";
 import classNames from "../../helpers/classNames";
 import style from "./Select.scss";
+import { useInputContext } from "../../helpers/useInputContext";
 
 const Select = ({
   defaultValue,
@@ -22,7 +22,7 @@ const Select = ({
   onClose,
   onOpen
 }) => {
-  const { register, setValue, errors } = useFormContext();
+  const { register, setValue, errors } = useInputContext();
   const [selected, setSelected] = useState(defaultValue);
   const [options, setOptions] = useState([]);
   const triggerRef = useRef();

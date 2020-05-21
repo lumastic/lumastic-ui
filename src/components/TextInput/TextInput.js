@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useFormContext } from "react-hook-form";
+import { useInputContext } from "../../helpers/useInputContext";
 import { Type } from "..";
 import style from "./TextInput.scss";
 import classNames from "../../helpers/classNames";
 
 const TextInput = ({ name, type, placeholder, className, ...rest }) => {
-  const { register, errors } = useFormContext();
+  const { register, errors } = useInputContext();
   return (
     <>
       {errors && errors[name] && (

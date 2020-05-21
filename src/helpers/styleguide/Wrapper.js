@@ -7,9 +7,7 @@ import { drew } from "../../data/user.db";
 
 const Wrapper = ({ children }) => (
   <UserProvider {...drew}>
-    <Router>
-      <FormContext>{children}</FormContext>
-    </Router>
+    <Router>{children}</Router>
   </UserProvider>
 );
 

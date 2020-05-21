@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useFormContext } from "react-hook-form";
+import { useInputContext } from "../../helpers/useInputContext";
 import style from "./RadioInput.scss";
 import classNames from "../../helpers/classNames";
 
@@ -13,7 +13,7 @@ const RadioInput = ({
   value,
   ...rest
 }) => {
-  const { register } = useFormContext();
+  const { register } = useInputContext();
   return (
     <div
       className={classNames(className, style.radioinput)}
