@@ -1,22 +1,15 @@
 @import "../../styles/sizes.scss";
 
-.container,
-.right {
+.container {
   display: grid;
   align-items: center;
   grid-auto-flow: column;
-
-  column-gap: 1rem;
-}
-.container {
   grid-template-columns: 3fr 2fr;
+  column-gap: 1rem;
 }
 .icon {
   display: inline-flex;
   font-size: 1.2rem;
-}
-.right {
-  grid-template-columns: auto min-content;
 }
 .searchBtn {
   display: none;

@@ -10,6 +10,7 @@ import {
   Type
 } from "../../components";
 import { Signature } from "..";
+import { LeftPush } from "../../layouts";
 import { MagnifyingGlass } from "../../icons";
 import { useUser } from "../../hooks";
 import { exploreRoute, profileRoute } from "../../routes";
@@ -27,7 +28,7 @@ const PageAppBar = ({ icon, title }) => {
             <Type h4>{title}</Type>
           </Signature>
         </div>
-        <div className={style.right}>
+        <LeftPush>
           <Search placeholder="Search..." className={style.search} />
           <div className={style.searchBtn}>
             <Link button to={exploreRoute}>
@@ -39,7 +40,7 @@ const PageAppBar = ({ icon, title }) => {
           <Link to={profileRoute(username)} inline>
             <Avatar src={avatarURL} />
           </Link>
-        </div>
+        </LeftPush>
       </Container>
     </AppBar>
   );
