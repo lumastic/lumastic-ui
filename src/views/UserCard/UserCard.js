@@ -67,8 +67,8 @@ const UserCard = ({ sparks = [], organizations = [] }) => {
           }
         >
           {organizations.map((organization, index) => (
-            <Link to={profileRoute(organization.name)} inline>
-              <OrgSignature key={index} organization={organization} />
+            <Link to={profileRoute(organization.name)} inline key={index}>
+              <OrgSignature organization={organization} />
             </Link>
           ))}
         </LabeledList>
