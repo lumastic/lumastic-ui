@@ -25,6 +25,9 @@
     justify-self: center;
     font-size: 0.5rem;
     color: lighten($greyText, 10%);
+    &.nomargin {
+      margin-left: 0;
+    }
   }
   .label {
     color: $greyText;
@@ -35,9 +38,12 @@
   border-radius: 6px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  min-width: 11rem;
   .select-option {
     padding: 0.5rem 1.25rem;
+    min-width: 11rem;
+    &.compact {
+      min-width: unset;
+    }
     &[aria-selected="true"] {
       background-color: rgba($primaryLight, 0.2);
     }

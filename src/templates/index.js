@@ -5,6 +5,7 @@ export * from "./LabeledList";
 export * from "./LoadingScreen";
 export * from "./MoreMenu";
 export * from "./NewComment";
+export * from "./OrgSelect";
 export * from "./OrgSignature";
 export * from "./PageAppBar";
 export * from "./Reaction";

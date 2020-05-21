@@ -15,6 +15,7 @@ const Select = ({
   placeholder,
   name,
   small = false,
+  compact = false,
   children,
   className,
   onChange,
@@ -68,14 +69,18 @@ const Select = ({
                   <Type body2={small}>{placeholder}</Type>
                 </div>
               )}
-              <div className={style["select-arrow"]}>
+              <div
+                className={classNames(style["select-arrow"], {
+                  [style.nomargin]: compact
+                })}
+              >
                 <ArrowDown />
               </div>
             </div>
           </PopupTrigger>
           <PopupContent render={SelectOptions}>
             {Object.keys(options).map(option => (
-              <SelectOption key={option} name={option}>
+              <SelectOption key={option} name={option} compact={compact}>
                 {options[option]}
               </SelectOption>
             ))}
@@ -93,6 +98,7 @@ Select.propTypes = {
   children: PropTypes.node,
   defaultValue: PropTypes.any,
   small: PropTypes.bool,
+  compact: PropTypes.bool,
   name: PropTypes.string,
   onChange: PropTypes.func,
   onClose: PropTypes.func,

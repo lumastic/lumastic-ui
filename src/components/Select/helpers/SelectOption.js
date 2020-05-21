@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import style from "../Select.scss";
 import SelectContext from "./SelectContext";
 import PopupContext from "../../Popup/helpers/PopupContext";
+import classNames from "../../../helpers/classNames";
 
-const SelectOption = ({ children, name }) => {
+const SelectOption = ({ children, name, compact }) => {
   const { setSelected, selected } = useContext(SelectContext);
   const { toggle } = useContext(PopupContext);
 
@@ -23,7 +24,9 @@ const SelectOption = ({ children, name }) => {
     <div
       role="option"
       aria-selected={selected === name}
-      className={style["select-option"]}
+      className={classNames(style["select-option"], {
+        [style.compact]: compact
+      })}
       onClick={changeSelected}
       onKeyDown={handleEnter}
       tabIndex={0}
@@ -35,7 +38,8 @@ const SelectOption = ({ children, name }) => {
 
 SelectOption.propTypes = {
   children: PropTypes.node,
-  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  compact: PropTypes.bool
 };
 
 export { SelectOption };

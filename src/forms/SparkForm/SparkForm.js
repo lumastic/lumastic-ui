@@ -2,20 +2,17 @@ import PropTypes from "prop-types";
 import React from "react";
 import * as yup from "yup";
 import {
-  Avatar,
   Button,
   Form,
   Label,
   Link,
-  Option,
   RadioInput,
-  Select,
   TextInput,
   Type
 } from "../../components";
 import { UserLock, Users } from "../../icons";
 import { upgradeRoute } from "../../routes";
-import { Signature } from "../../templates";
+import { OrgSelect } from "../../templates";
 import style from "./SparkForm.scss";
 
 const sparkSchema = yup.object().shape({
@@ -41,16 +38,11 @@ const SparkForm = ({
     <div className={style.header}>
       <div>
         <Label>Owner</Label>
-        <Select name="belongsTo" defaultValue={organizations[0]?.id}>
-          {organizations.map((org, index) => (
-            <Option name={org.id} key={index}>
-              <Signature>
-                <Avatar src={org.avatarURL} setSize="1.25rem" />
-                <Type>{org.name}</Type>
-              </Signature>
-            </Option>
-          ))}
-        </Select>
+        <OrgSelect
+          name="belongsTo"
+          defaultValue={organizations[0]?.id}
+          organizations={organizations}
+        />
       </div>
       <div>
         <Label>Title</Label>
