@@ -6,7 +6,7 @@ export * from "./LoadingScreen";
 export * from "./MoreMenu";
 export * from "./NewComment";
 export * from "./OrgSignature";
-export * from "./PageSignature";
+export * from "./PageAppBar";
 export * from "./Reaction";
 export * from "./Signature";
 export * from "./SparkCrumbs";

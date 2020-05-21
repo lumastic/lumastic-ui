@@ -6,9 +6,10 @@ import {
   Search,
   Link,
   IconButton,
-  Avatar
+  Avatar,
+  Type
 } from "../../components";
-import { PageSignature } from "..";
+import { Signature } from "..";
 import { MagnifyingGlass } from "../../icons";
 import { useUser } from "../../hooks";
 import { exploreRoute, profileRoute } from "../../routes";
@@ -21,7 +22,10 @@ const PageAppBar = ({ icon, title }) => {
     <AppBar>
       <Container className={style.container}>
         <div>
-          <PageSignature icon={icon} title={title} />
+          <Signature>
+            <span className={style.icon}>{icon}</span>
+            <Type h4>{title}</Type>
+          </Signature>
         </div>
         <div className={style.right}>
           <Search placeholder="Search..." className={style.search} />

@@ -1,7 +1,8 @@
 #### Basic Usage
 
 ```jsx
-<PageAppBar>PageAppBar</PageAppBar>
+import { Home } from "../../icons";
+<PageAppBar icon={<Home />} title="Home" />;
 ```
 
 Source:

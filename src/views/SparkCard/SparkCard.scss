@@ -5,3 +5,8 @@
   column-gap: 0.25rem;
   align-items: center;
 }
+.card {
+  &:hover {
+    cursor: pointer;
+  }
+}
