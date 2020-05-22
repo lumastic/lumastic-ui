@@ -4,7 +4,7 @@ import { Alert } from "../Alert";
 import { IconButton } from "../IconButton";
 import { Type } from "../Type";
 import { Times } from "../../icons/Times/Times";
-import { useNotify } from ".";
+import { useNotify } from "./NotifyCenter";
 import style from "./Notify.scss";
 import classNames from "../../helpers/classNames";
 

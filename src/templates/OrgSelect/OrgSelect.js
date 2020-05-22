@@ -17,7 +17,7 @@ const OrgSelect = ({
   avatarsOnly = false,
   asFilter = false
 }) => {
-  const { username, avatarURL } = useUser();
+  const { avatarURL } = useUser();
   return (
     <Select
       defaultValue={defaultValue}
@@ -31,7 +31,7 @@ const OrgSelect = ({
     >
       {asFilter && (
         <>
-          <Option name={username}>
+          <Option name="all">
             <Signature>
               <Avatar src={avatarURL} setSize="1.25rem" />
               {!avatarsOnly && <Type>All</Type>}

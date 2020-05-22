@@ -12,7 +12,7 @@ import {
   Point
 } from "../../components";
 import { useUser } from "../..";
-import { SparkSelect, Signature, SparkCrumbs } from "../../templates";
+import { SparkSelectCrumbs, Signature, SparkCrumbs } from "../../templates";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
 import style from "./PostForm.scss";
@@ -47,7 +47,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
       validationSchema={postSchema}
     >
       {sparks.length > 1 && (
-        <SparkSelect
+        <SparkSelectCrumbs
           small
           name="spark"
           organization={{ ...user }}

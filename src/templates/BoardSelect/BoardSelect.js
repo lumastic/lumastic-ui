@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { SparkSignature } from "..";
-import { Option, Select } from "../../components";
+import { Option, Select, Type } from "../../components";
 
-const SparkSelect = ({
-  sparks = [],
+const BoardSelect = ({
+  boards = [],
   defaultValue,
   name,
   small,
@@ -13,7 +12,7 @@ const SparkSelect = ({
   onClose
 }) => (
   <Select
-    placeholder="Select a spark..."
+    placeholder="Select a board..."
     defaultValue={defaultValue}
     name={name}
     small={small}
@@ -21,16 +20,16 @@ const SparkSelect = ({
     onOpen={onOpen}
     onClose={onClose}
   >
-    {sparks.map((spark, key) => (
-      <Option key={spark.id || key} name={spark.id || key}>
-        <SparkSignature spark={spark} small={small} />
+    {boards.map((board, key) => (
+      <Option key={board.id || key} name={board.id || key}>
+        <Type>{board?.name}</Type>
       </Option>
     ))}
   </Select>
 );
 
-SparkSelect.propTypes = {
-  sparks: PropTypes.array,
+BoardSelect.propTypes = {
+  boards: PropTypes.array,
   name: PropTypes.string.isRequired,
   small: PropTypes.bool,
   defaultValue: PropTypes.string,
@@ -39,4 +38,4 @@ SparkSelect.propTypes = {
   onClose: PropTypes.func
 };
 
-export { SparkSelect };
+export { BoardSelect };

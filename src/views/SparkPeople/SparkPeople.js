@@ -17,11 +17,11 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
   <Card className={classNames(className, style.sparkinfo)}>
     <List>
       <div>
-        <Label>{`${spark.collaborators.length} Collaborators`}</Label>
+        <Label>{`${spark.collaborators?.length} Collaborators`}</Label>
         <div className={style.actionrow}>
           <div className={style.left}>
             <AvatarGroup>
-              {spark.collaborators.map((collaborator, index) => (
+              {spark.collaborators?.map((collaborator, index) => (
                 <Tooltip
                   label={collaborator.name}
                   position="top"
@@ -38,11 +38,11 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
         </div>
       </div>
       <div>
-        <Label>{`${spark.followers.length} Followers`}</Label>
+        <Label>{`${spark.followers?.length} Followers`}</Label>
         <div className={style.actionrow}>
           <div className={style.left}>
             <AvatarGroup>
-              {spark.followers.map((follower, index) => (
+              {spark.followers?.map((follower, index) => (
                 <Tooltip
                   label={follower.name}
                   position="top"

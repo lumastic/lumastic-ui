@@ -24,8 +24,9 @@ const Link = ({ children, className, button = false, to, inline }) => {
   }
   const child = Children.map(children, c =>
     cloneElement(c, {
-      onClick: () => {
-        if (c.props.onClick) c.props.onClick();
+      onClick: e => {
+        e.stopPropagation();
+        if (c.props.onClick) c.props.onClick(e);
         history.push({
           ...toObj,
           state: { ...toObj?.state, from: history.location }

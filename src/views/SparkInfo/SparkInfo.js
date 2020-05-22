@@ -18,7 +18,7 @@ const SparkInfo = ({ spark = {}, className }) => (
       <div>
         <Label>Tags</Label>
         <div className={style.tags}>
-          {spark.tags.map((tag, index) => (
+          {spark.tags?.map((tag, index) => (
             <Tag tag={tag} key={tag.id || index} />
           ))}
         </div>

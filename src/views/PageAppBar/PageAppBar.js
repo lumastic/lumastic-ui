@@ -9,7 +9,7 @@ import {
   Avatar,
   Type
 } from "../../components";
-import { Signature } from "..";
+import { Signature } from "../../templates";
 import { LeftPush } from "../../layouts";
 import { MagnifyingGlass } from "../../icons";
 import { useUser } from "../../hooks";
