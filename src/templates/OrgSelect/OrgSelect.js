@@ -46,7 +46,7 @@ const OrgSelect = ({
         </>
       )}
       {organizations.map((org, index) => (
-        <Option name={org.id} key={index}>
+        <Option name={org.name} key={index}>
           <Signature>
             <Avatar src={org.avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>{org.name}</Type>}

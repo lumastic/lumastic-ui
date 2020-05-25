@@ -5,14 +5,15 @@ import { LeftPush } from "../../layouts";
 import { BoardSelect, OrgSelect, SparkSelect } from "../../templates";
 
 const SparkNavBar = ({
+  children,
   organizations = [],
   org = {},
   sparks = [],
   spark = {},
   board = {},
-  orgChange,
-  sparkChange,
-  boardChange
+  onOrgChange,
+  onSparkChange,
+  onBoardChange
 }) => (
   <AppBar>
     <Container>
@@ -20,36 +21,37 @@ const SparkNavBar = ({
         <Breadcrumbs>
           <OrgSelect
             organizations={organizations}
-            onChange={orgChange}
-            defaultValue={org.id}
+            onChange={onOrgChange}
+            defaultValue={org.name}
             avatarsOnly
           />
           <SparkSelect
-            sparks={sparks?.filter(s => s.belongsTo.id === org.id)}
-            onChange={sparkChange}
-            defaultValue={spark.id}
+            sparks={sparks?.filter(s => s?.belongsTo.id === org.id)}
+            onChange={onSparkChange}
+            defaultValue={spark?.id}
           />
           <BoardSelect
             boards={spark?.boards}
-            onChange={boardChange}
+            onChange={onBoardChange}
             defaultValue={board.id}
           />
         </Breadcrumbs>
-        <div>Test</div>
+        <div>{children}</div>
       </LeftPush>
     </Container>
   </AppBar>
 );
 
 SparkNavBar.propTypes = {
+  children: PropTypes.node,
   organizations: PropTypes.array,
   org: PropTypes.object,
   sparks: PropTypes.array,
   spark: PropTypes.object,
   board: PropTypes.object,
-  orgChange: PropTypes.func,
-  sparkChange: PropTypes.func,
-  boardChange: PropTypes.func
+  onOrgChange: PropTypes.func,
+  onSparkChange: PropTypes.func,
+  onBoardChange: PropTypes.func
 };
 
 export { SparkNavBar };

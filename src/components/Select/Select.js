@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useEffect } from "react";
+import React, { useMemo, useState, useRef, useEffect, Children } from "react";
 import PropTypes from "prop-types";
 import SelectContext from "./helpers/SelectContext";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
@@ -79,9 +79,13 @@ const Select = ({
             </div>
           </PopupTrigger>
           <PopupContent render={SelectOptions}>
-            {Object.keys(options).map(option => (
-              <SelectOption key={option} name={option} compact={compact}>
-                {options[option]}
+            {Children.map(children, child => (
+              <SelectOption
+                key={child?.props?.name}
+                name={child?.props?.name}
+                compact={compact}
+              >
+                {child?.props?.children}
               </SelectOption>
             ))}
           </PopupContent>

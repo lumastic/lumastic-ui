@@ -62,4 +62,4 @@ export const viewBoardRoute = (
   orgName = ":orgName",
   sparkId = ":sparkId",
   boardId = ":boardId"
-) => `${baseSparkRoute(orgName, sparkId)}/idea/${boardId}`;
+) => `${baseSparkRoute(orgName, sparkId)}/board/${boardId}`;

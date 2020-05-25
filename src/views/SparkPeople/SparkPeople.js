@@ -27,7 +27,7 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
                   position="top"
                   key={collaborator.id || index}
                 >
-                  <Link to={profileRoute(collaborator.username)}>
+                  <Link to={profileRoute(collaborator.username)} inline>
                     <Avatar src={collaborator.avatarURL} />
                   </Link>
                 </Tooltip>
@@ -48,7 +48,7 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
                   position="top"
                   key={follower.id || index}
                 >
-                  <Link to={profileRoute(follower.username)}>
+                  <Link to={profileRoute(follower.username)} inline>
                     <Avatar src={follower.avatarURL} key={follower.id} />
                   </Link>
                 </Tooltip>

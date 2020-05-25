@@ -20,11 +20,14 @@ const BoardSelect = ({
     onOpen={onOpen}
     onClose={onClose}
   >
-    {boards.map((board, key) => (
-      <Option key={board.id || key} name={board.id || key}>
-        <Type>{board?.name}</Type>
-      </Option>
-    ))}
+    {boards.map(
+      (board, key) =>
+        board && (
+          <Option key={board?.id || key} name={board?.id || key}>
+            <Type>{board?.name}</Type>
+          </Option>
+        )
+    )}
   </Select>
 );
 

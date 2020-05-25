@@ -21,11 +21,14 @@ const SparkSelect = ({
     onOpen={onOpen}
     onClose={onClose}
   >
-    {sparks.map((spark, key) => (
-      <Option key={spark.id || key} name={spark.id || key}>
-        <SparkSignature spark={spark} small={small} />
-      </Option>
-    ))}
+    {sparks.map(
+      (spark, key) =>
+        spark && (
+          <Option key={spark?.id || key} name={spark?.id || key}>
+            <SparkSignature spark={spark} small={small} />
+          </Option>
+        )
+    )}
   </Select>
 );
 
