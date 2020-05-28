@@ -20,18 +20,21 @@ const SparkNavBar = ({
       <LeftPush hideRightOnTablet>
         <Breadcrumbs>
           <OrgSelect
+            name="org"
             organizations={organizations}
             onChange={onOrgChange}
             defaultValue={org.name}
             avatarsOnly
           />
           <SparkSelect
+            name="spark"
             sparks={sparks?.filter(s => s?.belongsTo.id === org.id)}
             onChange={onSparkChange}
             defaultValue={spark?.id}
             small
           />
           <BoardSelect
+            name="board"
             boards={spark?.boards}
             onChange={onBoardChange}
             defaultValue={board.id}

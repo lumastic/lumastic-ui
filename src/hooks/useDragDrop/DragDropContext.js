@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export const DragDropContext = createContext({});
+export const DragContext = createContext({});
+
+export const DropContext = createContext({});

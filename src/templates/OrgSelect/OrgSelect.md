@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<OrgSelect asFilter avatarsOnly />
+<OrgSelect asFilter avatarsOnly name={"org"} />
 ```
 
 Source:

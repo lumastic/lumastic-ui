@@ -1,45 +1,52 @@
-import { useEffect } from "react";
-import { useDragDrop } from "./useDragDrop";
+import { useEffect, useState } from "react";
+import { useDrag, useDrop } from "./useDragDrop";
 
 export const useDroppable = ({
   ref,
+  disable,
   onDragEnter,
   onDragLeave,
   onDrop
 } = {}) => {
   const dropRef = ref;
-  const { dragging, dropBelow, dragAction } = useDragDrop();
+  const { drag = {} } = useDrag();
+  const { setDrag } = useDrop();
+  const [oldBelow, setOldBelow] = useState();
   useEffect(() => {
+    if (disable) return;
+    const { dragging, dropBelow, dragAction } = drag;
+    // console.log(dragAction);
     const droppable = dropRef.current;
     // If something is being dragged and they are
-    // console.log(dragging, dropBelow, droppable);
-    if (dragging && dropBelow && dropBelow === droppable) {
-      switch (dragAction.type) {
-        case "enter":
-          // console.log("enter");
-          if (onDragEnter)
-            onDragEnter({ element: dragging, extras: dragAction.extras });
-          break;
-        case "leave":
-          // console.log("leave");
-          if (onDragLeave)
-            onDragLeave({ element: dragging, extras: dragAction.extras });
-          break;
-        case "dropped":
-          // console.log("dropped");
-          if (onDrop) onDrop({ element: dragging, extras: dragAction.extras });
-          break;
-        default:
-          break;
+    if (dragging && dropBelow) {
+      // console.log(oldBelow, dropBelow);
+      if (dragAction.type === "dropped" && dropBelow === droppable) {
+        // console.log("dropped", droppable);
+        setDrag({ dragging: false, dragAction: false, dropBelow: false });
+        setOldBelow(false);
+        if (onDrop) onDrop({ element: dragging, extras: dragAction.extras });
+        return;
       }
+      if (oldBelow === droppable && dropBelow !== droppable) {
+        // console.log("leave", droppable);
+        if (onDragLeave)
+          onDragLeave({ element: dragging, extras: dragAction.extras });
+      } else if (oldBelow !== droppable && dropBelow === droppable) {
+        // console.log("enter", droppable);
+        if (onDragEnter)
+          onDragEnter({ element: dragging, extras: dragAction.extras });
+      }
+      setOldBelow(dropBelow);
     }
   }, [
     dropRef,
-    dragging,
-    dropBelow,
-    dragAction,
+    drag,
+    setDrag,
     onDragEnter,
     onDragLeave,
-    onDrop
+    onDrop,
+    disable,
+    oldBelow,
+    setOldBelow
   ]);
 };

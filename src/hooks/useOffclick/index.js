@@ -1,1 +1,1 @@
-export { useOffclick } from "./useOffclick";
+export * from "./useOffclick";

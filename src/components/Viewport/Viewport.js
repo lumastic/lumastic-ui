@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useDragDrop } from "../../hooks";
+import { useDrag } from "../../hooks";
 import style from "./Viewport.scss";
 import classNames from "../../helpers/classNames";
 
 const Viewport = ({ children, className }) => {
-  const { dragging } = useDragDrop();
+  const { drag: { dragging } = {} } = useDrag();
   const viewportRef = useRef(null);
   const [scrolling, setScrolling] = useState({
     active: false,

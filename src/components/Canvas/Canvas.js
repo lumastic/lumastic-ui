@@ -18,10 +18,13 @@ const Canvas = ({ children, className, size = {} }) => {
     activeCard,
     setSelectedCards
   } = useBoard();
-
+  // console.log("Canvas Rerender");
   const onDrop = () => {
+    // console.log("Dropped card");
     if (setUpdateCanvas) setUpdateCanvas(o => !o);
   };
+
+  useDroppable({ ref: canvasRef, onDrop });
 
   const onDoubleClick = () => {
     console.log("Double clicked canvas");
@@ -30,6 +33,7 @@ const Canvas = ({ children, className, size = {} }) => {
   useEffect(() => {
     const canvas = canvasRef?.current;
     if (!canvas) return;
+    // console.log("Canvas update");
     const {
       width: canvasWidth,
       height: canvasHeight
@@ -47,9 +51,7 @@ const Canvas = ({ children, className, size = {} }) => {
       }
     });
     canvas.style.width = calcPixelString(newDimension.width + 40);
-  }, [updateCanvas, canvasRef]);
-
-  useDroppable({ ref: canvasRef, onDrop });
+  }, [canvasRef, updateCanvas]);
 
   // Right Click Handlers
   const {
@@ -65,7 +67,6 @@ const Canvas = ({ children, className, size = {} }) => {
     e.preventDefault();
     // Set right click position
     const clickPosition = { x: e.clientX, y: e.clientY };
-    console.log(clickPosition);
     const {
       x: offsetX,
       y: offsetY
@@ -92,6 +93,7 @@ const Canvas = ({ children, className, size = {} }) => {
       <RightClickMenu
         position={rightClickPosition}
         isShowing={rightClickShowing}
+        toggle={toggleRightClick}
       >
         <MenuItem>Test</MenuItem>
       </RightClickMenu>

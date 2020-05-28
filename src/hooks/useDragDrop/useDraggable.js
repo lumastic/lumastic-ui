@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDragDrop } from "./useDragDrop";
+import { useDrop } from "./useDragDrop";
 
 // TODO: Add mobile support
 // TODO: Add support for scrolling parent while moving
@@ -12,7 +12,7 @@ export const useDraggable = ({
   disable
 } = {}) => {
   const draggableRef = ref;
-  const { setDragging, setDropBelow, setDragAction } = useDragDrop();
+  const { setDrag } = useDrop();
 
   useEffect(() => {
     const toDrag = draggableRef.current;
@@ -48,7 +48,7 @@ export const useDraggable = ({
           document.body.appendChild(dragging);
           toDrag.style.visibility = "hidden";
           toDrag.classList.add(draggingClass);
-          setDragging(dragging);
+          setDrag({ dragging });
           if (onDragStart)
             onDragStart({
               element: toDrag,
@@ -79,19 +79,13 @@ export const useDraggable = ({
             dragging.style.visibility = "hidden";
             const elemBelow = document.elementFromPoint(dragX, dragY);
             dragging.style.visibility = null;
-            if (!elemBelow) return;
-            const droppableBelow = elemBelow.closest(".droppable");
+
+            const droppableBelow = elemBelow?.closest(".droppable");
+
             if (currDroppable !== droppableBelow) {
-              if (currDroppable) {
-                // Exiting droppableBelow
-                setDragAction({ type: "leave", extras: {} });
-              } else {
-                // Entering droppableBelow
-                setDragAction({ type: "enter", extras: {} });
-              }
-              setDropBelow(droppableBelow);
-              currDroppable = droppableBelow;
+              setDrag({ dropBelow: droppableBelow });
             }
+            currDroppable = droppableBelow;
           };
           // Listen for drop
           const drop = () => {
@@ -116,12 +110,13 @@ export const useDraggable = ({
             document.removeEventListener("mousemove", drag);
             document.removeEventListener("mouseup", drop);
             document.body.style.cursor = "unset";
-            setDragAction({
-              type: "dropped",
-              extras: { translate: finalPosition }
+            // console.log("Dropped item");
+            setDrag({
+              dragAction: {
+                type: "dropped",
+                extras: { translate: finalPosition }
+              }
             });
-            setDropBelow(false);
-            setDragging(false);
             if (onDrop) onDrop({ element: toDrag, translate: finalPosition });
           };
           // Listen for dragging
@@ -152,9 +147,7 @@ export const useDraggable = ({
     onDrag,
     onDrop,
     draggingClass,
-    setDragging,
-    setDropBelow,
-    setDragAction,
+    setDrag,
     disable
   ]);
 };

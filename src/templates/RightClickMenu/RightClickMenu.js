@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
 import PropTypes from "prop-types";
+import React, { useRef } from "react";
 import { Modal, PopupMenu } from "../../components";
+import { classNames } from "../../helpers";
 import { useOffclick } from "../../hooks";
 import style from "./RightClickMenu.scss";
-import { calcPixelString, classNames } from "../../helpers";
 
 const RightClickMenu = ({
   children,
@@ -14,7 +14,7 @@ const RightClickMenu = ({
 }) => {
   const menuRef = useRef();
   useOffclick(menuRef, toggle);
-  console.log(position);
+
   return (
     <div ref={menuRef} data-testid="rightclickmenu">
       <Modal isShowing={isShowing}>

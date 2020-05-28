@@ -1,11 +1,11 @@
-import React, { useRef, useState, memo } from "react";
 import PropTypes from "prop-types";
-import { useDraggable, useDroppable, useRightClick } from "../../hooks";
-import { Card, MenuItem, Type, Divider } from "../../components";
-import { useBoard } from "../../views";
+import React, { memo, useRef, useState } from "react";
 import { MoreMenu } from "..";
-import style from "./BoardCard.scss";
+import { Card, Divider, MenuItem, Type } from "../../components";
 import classNames from "../../helpers/classNames";
+import { useDraggable, useDroppable, useResizable } from "../../hooks";
+import { useBoard } from "../../views";
+import style from "./BoardCard.scss";
 
 const BoardCard = memo(({ className, card = {}, block = false }) => {
   const cardRef = useRef(null);
@@ -22,8 +22,13 @@ const BoardCard = memo(({ className, card = {}, block = false }) => {
   const onDrop = () => {
     console.log("Create stack");
   };
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  if (!card.parentCard) useDroppable({ ref: cardRef, onDrop });
+  useDroppable({ ref: cardRef, onDrop, disable: card.parentCard });
+  const onResizeEnd = () => console.log("End resize");
+  useResizable({
+    ref: cardRef,
+    handle: resizeHandle,
+    onResizeEnd
+  });
 
   const onRightClick = e => {
     console.log("Right click card", card.id);
@@ -32,7 +37,13 @@ const BoardCard = memo(({ className, card = {}, block = false }) => {
 
   return (
     <div
-      className={classNames(style.wrapper, { [style.block]: block })}
+      className={classNames(
+        style.wrapper,
+        { [style.block]: block },
+        {
+          droppable: !card.parentCard
+        }
+      )}
       style={
         !block
           ? {
@@ -43,17 +54,18 @@ const BoardCard = memo(({ className, card = {}, block = false }) => {
             }
           : null
       }
+      ref={cardRef}
     >
       <Card
-        className={classNames(className, style["board-card"], {
-          droppable: !card.parentCard
-        })}
+        className={classNames(className, style["board-card"])}
         id={card.id}
         onContextMenu={onRightClick}
-        ref={cardRef}
       >
         {card.content || "Test content"}
       </Card>
+      <div className={style.resize} ref={resizeHandle}>
+        T
+      </div>
       <div
         className={classNames(style.options, {
           [style.optionsopen]: optionsOpen
