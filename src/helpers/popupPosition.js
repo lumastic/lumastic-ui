@@ -1,6 +1,10 @@
 const popupPosition = (anchor, transform, trig, popup) => {
   const { height: popHeight, width: popWidth } = popup.getBoundingClientRect();
-  const { height: trigHeight, width: trigWidth } = trig.getBoundingClientRect();
+  const {
+    height: trigHeight,
+    width: trigWidth
+    // x: trigX
+  } = trig.getBoundingClientRect();
   const trigX = trig.offsetLeft;
   const trigY = trig.offsetTop;
   let popTop;
@@ -55,7 +59,7 @@ const popupPosition = (anchor, transform, trig, popup) => {
     default:
       break;
   }
-  if (popLeft <= 0) {
+  if (popLeft <= 0 && trigX !== 0) {
     popLeft = 0;
   } else if (popWidth + trigX > window.innerWidth) {
     popLeft -= popWidth + trigX - window.innerWidth + 20;

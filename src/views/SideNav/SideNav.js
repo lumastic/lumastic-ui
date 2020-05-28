@@ -29,7 +29,9 @@ import {
   mySparksRoute,
   createPostRoute,
   createSparkRoute,
-  notificationsRoute
+  notificationsRoute,
+  viewSparkRoute,
+  viewBoardRoute
 } from "../../routes";
 import style from "./SideNav.scss";
 
@@ -45,7 +47,7 @@ const SideNav = ({ className }) => (
     </div>
 
     <div className={style.navbutton}>
-      <NavIconButton to={mySparksRoute}>
+      <NavIconButton to={[mySparksRoute, viewSparkRoute(), viewBoardRoute()]}>
         <Sparks />
       </NavIconButton>
     </div>

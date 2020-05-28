@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+// Colors
+$bg-color: $background;
+$dot-color: darken($backgroundDark, 5%);
+// Dimensions
+$dot-size: 2px;
+$dot-space: 16px;
+
+.canvas {
+  background: linear-gradient(
+        90deg,
+        $bg-color ($dot-space - $dot-size),
+        transparent 1%
+      )
+      left,
+    linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) top,
+    $dot-color;
+  background-size: $dot-space $dot-space;
+  min-height: 110vh;
+  min-width: 110vw;
+  box-sizing: border-box;
+  position: relative;
+}

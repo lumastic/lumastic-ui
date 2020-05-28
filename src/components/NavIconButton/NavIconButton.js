@@ -16,7 +16,7 @@ const NavIconButton = ({ children, className, to, exact }) => (
           [style.active]: to && match
         })}
         data-testid="naviconbutton"
-        onClick={() => to && history.push(to || to[0])}
+        onClick={() => to && history.push(typeof to === "string" ? to : to[0])}
       >
         {children}
       </button>

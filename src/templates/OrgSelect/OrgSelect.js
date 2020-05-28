@@ -30,20 +30,20 @@ const OrgSelect = ({
       compact={avatarsOnly}
     >
       {asFilter && (
-        <>
-          <Option name="all">
-            <Signature>
-              <Avatar src={avatarURL} setSize="1.25rem" />
-              {!avatarsOnly && <Type>All</Type>}
-            </Signature>
-          </Option>
-          <Option name="collab">
-            <Signature>
-              <Avatar src={avatarURL} setSize="1.25rem" />
-              {!avatarsOnly && <Type>Collaborating</Type>}
-            </Signature>
-          </Option>
-        </>
+        <Option name="all">
+          <Signature>
+            <Avatar src={avatarURL} setSize="1.25rem" />
+            {!avatarsOnly && <Type>All</Type>}
+          </Signature>
+        </Option>
+      )}
+      {asFilter && (
+        <Option name="collab">
+          <Signature>
+            <Avatar src={avatarURL} setSize="1.25rem" />
+            {!avatarsOnly && <Type>Collaborating</Type>}
+          </Signature>
+        </Option>
       )}
       {organizations.map((org, index) => (
         <Option name={org.name} key={index}>

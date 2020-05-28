@@ -21,10 +21,10 @@
   }
   .select-arrow {
     display: inline-flex;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     align-self: center;
     justify-self: center;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     color: lighten($greyText, 10%);
     &.nomargin {
       margin-left: 0;

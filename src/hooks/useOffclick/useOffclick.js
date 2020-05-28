@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useOffclick = (ref, displayHandler) => {
+export const useOffclick = (ref, displayHandler) => {
   const [clickedOff, setClickedOff] = useState(false);
 
   function handleOffclick(e) {
@@ -23,5 +23,3 @@ const useOffclick = (ref, displayHandler) => {
 
   return clickedOff;
 };
-
-export default useOffclick;

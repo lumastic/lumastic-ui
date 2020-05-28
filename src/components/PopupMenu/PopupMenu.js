@@ -2,8 +2,9 @@ import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Menu } from "../Menu";
 import style from "./PopupMenu.scss";
+import { classNames } from "../../helpers";
 
-const PopupMenu = ({ children }) => {
+const PopupMenu = ({ children, className, ...rest }) => {
   const menuRef = useRef();
 
   useEffect(() => {
@@ -41,14 +42,15 @@ const PopupMenu = ({ children }) => {
   }, []);
 
   return (
-    <div className={style["popup-menu"]}>
+    <div className={classNames(style["popup-menu"], className)} {...rest}>
       <Menu ref={menuRef}>{children}</Menu>
     </div>
   );
 };
 
 PopupMenu.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export { PopupMenu };

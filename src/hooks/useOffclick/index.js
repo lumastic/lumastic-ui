@@ -1,3 +1,1 @@
-import useOffclick from "./useOffclick";
-
-export default useOffclick;
+export { useOffclick } from "./useOffclick";

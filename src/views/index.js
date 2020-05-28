@@ -1,3 +1,4 @@
+export * from "./Board";
 export * from "./Feed";
 export * from "./NewPostCard";
 export * from "./NewPostDialog";

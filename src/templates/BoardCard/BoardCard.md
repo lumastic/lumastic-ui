@@ -1,9 +1,7 @@
-### BoardCard does this
-
 #### Basic Usage
 
 ```jsx
-<BoardCard>BoardCard</BoardCard>
+<BoardCard block />
 ```
 
 Source:

@@ -1,2 +1,93 @@
-.boardcard {
+.wrapper {
+  position: absolute;
+  &.block {
+    position: relative;
+    .board-card {
+      display: block;
+    }
+    .options {
+      right: 0.5rem;
+      top: 0.5rem;
+    }
+  }
+  .options {
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+    position: absolute;
+    right: -1rem;
+    top: 0;
+    &.optionsopen {
+      opacity: 1;
+    }
+  }
+  &:hover {
+    .options {
+      opacity: 1;
+    }
+  }
+}
+
+.board-card {
+  touch-action: none;
+  min-height: min-content;
+  display: table;
+  box-sizing: border-box;
+  transition: box-shadow 300ms ease-in-out;
+  &.hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23);
+    z-index: 500;
+  }
+  &:hover {
+    .card-menu {
+      opacity: 1;
+    }
+    .resize-icon {
+      opacity: 1;
+    }
+  }
+
+  .card-menu {
+    position: absolute;
+    display: flex;
+    top: -1rem;
+    right: -0.5rem;
+    opacity: 0;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    color: #ccc;
+    transition: opacity 200ms ease-in-out;
+    :last-child {
+      padding-right: 0.5rem;
+    }
+    .menu-item {
+      flex-grow: 0;
+      font-size: 0.8rem;
+      padding: 0.25rem 0 0.25rem 0.5rem;
+      &:hover {
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+
+  .resize-icon {
+    position: absolute;
+    opacity: 0;
+    bottom: 0;
+    right: 0;
+    transition: opacity 200ms ease-in-out;
+    padding: 0.05rem 0.25rem;
+    box-sizing: border-box;
+    border-radius: 2px;
+    color: #ccc;
+    font-size: 0.75rem;
+    svg {
+      transform: rotate(-45deg);
+    }
+    &:hover {
+      cursor: nwse-resize;
+    }
+  }
 }

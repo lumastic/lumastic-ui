@@ -5,7 +5,7 @@ import { IconButton } from "../IconButton";
 import { Times } from "../../icons/Times";
 import style from "./Dialog.scss";
 import classNames from "../../helpers/classNames";
-import useOffclick from "../../hooks/useOffclick/useOffclick";
+import { useOffclick } from "../../hooks";
 
 const DialogContext = createContext();
 
