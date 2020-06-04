@@ -16,6 +16,7 @@ const Canvas = ({ children, className, size = {} }) => {
     createCard,
     updateCard,
     activeCard,
+    setActiveCard,
     setSelectedCards
   } = useBoard();
   // console.log("Canvas Rerender");
@@ -63,7 +64,8 @@ const Canvas = ({ children, className, size = {} }) => {
 
   const [canvasPosition, setCanvasPosition] = useState({ x: 0, y: 0 });
 
-  const rightClick = e => {
+  const onRightClick = e => {
+    if (e.metaKey) return;
     e.preventDefault();
     // Set right click position
     const clickPosition = { x: e.clientX, y: e.clientY };
@@ -80,22 +82,28 @@ const Canvas = ({ children, className, size = {} }) => {
     toggleRightClick(true);
   };
 
+  const onRightClickOff = () => {
+    toggleRightClick(false);
+    if (setActiveCard) setActiveCard(null);
+  };
+
   return (
     <div
       className={classNames(className, style.canvas, "droppable")}
       data-testid="canvas"
       style={{ ...size }}
       ref={canvasRef}
-      onContextMenu={rightClick}
+      onContextMenu={onRightClick}
       onDoubleClick={onDoubleClick}
     >
       {children}
       <RightClickMenu
         position={rightClickPosition}
         isShowing={rightClickShowing}
-        toggle={toggleRightClick}
+        toggle={onRightClickOff}
       >
         <MenuItem>Test</MenuItem>
+        {activeCard && <MenuItem>Card Click</MenuItem>}
       </RightClickMenu>
     </div>
   );

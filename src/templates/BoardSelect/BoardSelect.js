@@ -33,7 +33,7 @@ const BoardSelect = ({
 
 BoardSelect.propTypes = {
   boards: PropTypes.array,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   small: PropTypes.bool,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,

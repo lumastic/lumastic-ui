@@ -17,6 +17,7 @@ export * from "./Plus";
 export * from "./Post";
 export * from "./PostPlus";
 export * from "./Posts";
+export * from "./Resize";
 export * from "./Scissors";
 export * from "./Slash";
 export * from "./Spark";

@@ -13,7 +13,7 @@ import { useInputContext } from "../../helpers/useInputContext";
 const Select = ({
   defaultValue,
   placeholder,
-  name,
+  name = "select",
   small = false,
   compact = false,
   children,

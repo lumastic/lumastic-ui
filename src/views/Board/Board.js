@@ -13,7 +13,9 @@ const Board = ({ cards = [], mode = "free" }) => (
       <Canvas>
         {mode === "free" &&
           cards?.map((card, key) => (
-            <BoardCard card={card} key={card?.id || key} />
+            <BoardCard card={card} key={card?.id || key}>
+              <BoardCard card={card} key={card?.id || key} block />
+            </BoardCard>
           ))}
         {mode === "list" && (
           <List>

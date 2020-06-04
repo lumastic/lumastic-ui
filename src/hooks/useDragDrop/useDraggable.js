@@ -18,7 +18,9 @@ export const useDraggable = ({
     const toDrag = draggableRef.current;
     const parent = toDrag.parentElement;
 
-    const startDrag = ({ clientX, clientY, which }) => {
+    const startDrag = startEvent => {
+      const { clientX, clientY, which } = startEvent;
+      startEvent.stopPropagation();
       // Check left mouse
       if (which !== 1) return;
       // Set Click Position
@@ -48,7 +50,7 @@ export const useDraggable = ({
           document.body.appendChild(dragging);
           toDrag.style.visibility = "hidden";
           toDrag.classList.add(draggingClass);
-          setDrag({ dragging });
+          if (setDrag) setDrag({ dragging });
           if (onDragStart)
             onDragStart({
               element: toDrag,
@@ -83,7 +85,7 @@ export const useDraggable = ({
             const droppableBelow = elemBelow?.closest(".droppable");
 
             if (currDroppable !== droppableBelow) {
-              setDrag({ dropBelow: droppableBelow });
+              if (setDrag) setDrag({ dropBelow: droppableBelow });
             }
             currDroppable = droppableBelow;
           };
@@ -111,12 +113,13 @@ export const useDraggable = ({
             document.removeEventListener("mouseup", drop);
             document.body.style.cursor = "unset";
             // console.log("Dropped item");
-            setDrag({
-              dragAction: {
-                type: "dropped",
-                extras: { translate: finalPosition }
-              }
-            });
+            if (setDrag)
+              setDrag({
+                dragAction: {
+                  type: "dropped",
+                  extras: { translate: finalPosition }
+                }
+              });
             if (onDrop) onDrop({ element: toDrag, translate: finalPosition });
           };
           // Listen for dragging

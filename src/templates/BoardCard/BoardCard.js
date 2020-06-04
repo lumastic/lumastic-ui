@@ -1,22 +1,30 @@
 import PropTypes from "prop-types";
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useRef, useState, useEffect } from "react";
 import { MoreMenu } from "..";
 import { Card, Divider, MenuItem, Type } from "../../components";
+import { Resize } from "../../icons";
 import classNames from "../../helpers/classNames";
 import { useDraggable, useDroppable, useResizable } from "../../hooks";
 import { useBoard } from "../../views";
 import style from "./BoardCard.scss";
 
-const BoardCard = memo(({ className, card = {}, block = false }) => {
+const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   const cardRef = useRef(null);
   const resizeHandle = useRef(null);
-  const { canEdit, setActiveCard } = useBoard();
+  const { canEdit, setActiveCard, updateCard, setUpdateCanvas } = useBoard();
   const [edit, setEdit] = useState(false);
+  const [absolute, setAbsolute] = useState(!block);
   const [optionsOpen, setOptionsOpen] = useState(false);
+
+  useEffect(() => {
+    if (setUpdateCanvas) setUpdateCanvas(o => !o);
+  }, [setUpdateCanvas]);
+
   useDraggable({
     ref: cardRef,
     draggingClass: style.hover,
-    disable: edit
+    disable: edit,
+    onDragStart: () => setAbsolute(true)
   });
 
   const onDrop = () => {
@@ -39,13 +47,13 @@ const BoardCard = memo(({ className, card = {}, block = false }) => {
     <div
       className={classNames(
         style.wrapper,
-        { [style.block]: block },
+        { [style.block]: !absolute },
         {
           droppable: !card.parentCard
         }
       )}
       style={
-        !block
+        absolute
           ? {
               left: `${card.x}px`,
               top: `${card.y}px`,
@@ -62,9 +70,10 @@ const BoardCard = memo(({ className, card = {}, block = false }) => {
         onContextMenu={onRightClick}
       >
         {card.content || "Test content"}
+        {children}
       </Card>
       <div className={style.resize} ref={resizeHandle}>
-        T
+        {absolute && <Resize />}
       </div>
       <div
         className={classNames(style.options, {
@@ -101,6 +110,7 @@ const BoardCard = memo(({ className, card = {}, block = false }) => {
 });
 
 BoardCard.propTypes = {
+  children: PropTypes.node,
   card: PropTypes.object,
   className: PropTypes.string,
   block: PropTypes.bool

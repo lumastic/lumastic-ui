@@ -14,6 +14,7 @@ export const useResizable = ({
     const resizable = resizableRef.current;
     const resizeHandle = handleRef.current;
     const startResize = e => {
+      if (e.which !== 1) return;
       e.preventDefault();
       e.stopPropagation();
       const clickPosition = { x: e.clientX, y: e.clientY };
