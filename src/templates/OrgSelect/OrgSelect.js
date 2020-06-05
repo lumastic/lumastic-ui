@@ -11,6 +11,7 @@ const OrgSelect = ({
   defaultValue,
   name,
   small,
+  addOption,
   onChange,
   onOpen,
   onClose,
@@ -23,6 +24,7 @@ const OrgSelect = ({
       defaultValue={defaultValue}
       name={name}
       small={small}
+      addOption={addOption}
       onChange={onChange}
       onOpen={onOpen}
       onClose={onClose}
@@ -46,7 +48,7 @@ const OrgSelect = ({
         </Option>
       )}
       {organizations.map((org, index) => (
-        <Option name={org.name} key={index}>
+        <Option name={org.id} key={index}>
           <Signature>
             <Avatar src={org.avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>{org.name}</Type>}
@@ -62,6 +64,7 @@ OrgSelect.propTypes = {
   name: PropTypes.string,
   small: PropTypes.bool,
   defaultValue: PropTypes.string,
+  addOption: PropTypes.node,
   onChange: PropTypes.func,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,

@@ -22,7 +22,7 @@ const SparkNavBar = ({
           <OrgSelect
             organizations={organizations}
             onChange={onOrgChange}
-            defaultValue={org.name}
+            defaultValue={org?.id}
             avatarsOnly
           />
           <SparkSelect
@@ -34,7 +34,7 @@ const SparkNavBar = ({
           <BoardSelect
             boards={spark?.boards}
             onChange={onBoardChange}
-            defaultValue={board.id}
+            defaultValue={board?.id}
             small
           />
         </Breadcrumbs>

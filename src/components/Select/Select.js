@@ -9,6 +9,7 @@ import { ArrowDown } from "../../icons/ArrowDown";
 import classNames from "../../helpers/classNames";
 import style from "./Select.scss";
 import { useInputContext } from "../../helpers/useInputContext";
+import { MenuItem } from "../Menu";
 
 const Select = ({
   defaultValue,
@@ -20,7 +21,10 @@ const Select = ({
   className,
   onChange,
   onClose,
-  onOpen
+  onOpen,
+  addOption,
+  addOptionLabel,
+  onAddOption
 }) => {
   const { register, setValue, errors } = useInputContext();
   const [selected, setSelected] = useState(defaultValue);
@@ -79,15 +83,20 @@ const Select = ({
             </div>
           </PopupTrigger>
           <PopupContent render={SelectOptions}>
-            {Children.map(children, child => (
-              <SelectOption
-                key={child?.props?.name}
-                name={child?.props?.name}
-                compact={compact}
-              >
-                {child?.props?.children}
-              </SelectOption>
-            ))}
+            {Children.map(
+              children,
+              child =>
+                child?.props?.name && (
+                  <SelectOption
+                    key={child?.props?.name}
+                    name={child?.props?.name}
+                    compact={compact}
+                  >
+                    {child?.props?.children}
+                  </SelectOption>
+                )
+            )}
+            {addOption}
           </PopupContent>
         </Popup>
         {children}
@@ -103,6 +112,7 @@ Select.propTypes = {
   defaultValue: PropTypes.any,
   small: PropTypes.bool,
   compact: PropTypes.bool,
+  addOption: PropTypes.node,
   name: PropTypes.string,
   onChange: PropTypes.func,
   onClose: PropTypes.func,

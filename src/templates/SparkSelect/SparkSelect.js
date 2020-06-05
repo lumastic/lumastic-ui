@@ -8,6 +8,7 @@ const SparkSelect = ({
   defaultValue,
   name,
   small,
+  addOption,
   onChange,
   onOpen,
   onClose
@@ -16,6 +17,7 @@ const SparkSelect = ({
     placeholder="Select a spark..."
     defaultValue={defaultValue}
     name={name}
+    addOption={addOption}
     small={small}
     onChange={onChange}
     onOpen={onOpen}
@@ -37,6 +39,7 @@ SparkSelect.propTypes = {
   name: PropTypes.string,
   small: PropTypes.bool,
   defaultValue: PropTypes.string,
+  addOption: PropTypes.node,
   onChange: PropTypes.func,
   onOpen: PropTypes.func,
   onClose: PropTypes.func

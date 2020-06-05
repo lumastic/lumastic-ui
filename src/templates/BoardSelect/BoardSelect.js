@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Option, Select, Type } from "../../components";
+import { Signature } from "../..";
+import { Option, Select, Type, MenuItem } from "../../components";
+import { Plus } from "../../icons";
 
 const BoardSelect = ({
   boards = [],
   defaultValue,
   name,
   small,
+  addOption,
   onChange,
   onOpen,
   onClose
@@ -16,6 +19,7 @@ const BoardSelect = ({
     defaultValue={defaultValue}
     name={name}
     small={small}
+    addOption={addOption}
     onChange={onChange}
     onOpen={onOpen}
     onClose={onClose}
@@ -36,6 +40,7 @@ BoardSelect.propTypes = {
   name: PropTypes.string,
   small: PropTypes.bool,
   defaultValue: PropTypes.string,
+  addOption: PropTypes.node,
   onChange: PropTypes.func,
   onOpen: PropTypes.func,
   onClose: PropTypes.func
