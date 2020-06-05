@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Signature } from "../..";
-import { Option, Select, Type, MenuItem } from "../../components";
-import { Plus } from "../../icons";
+import { Option, Select, Type } from "../../components";
 
 const BoardSelect = ({
   boards = [],
@@ -28,7 +26,7 @@ const BoardSelect = ({
       (board, key) =>
         board && (
           <Option key={board?.id || key} name={board?.id || key}>
-            <Type>{board?.name}</Type>
+            <Type body2={small}>{board?.name}</Type>
           </Option>
         )
     )}

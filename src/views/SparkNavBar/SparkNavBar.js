@@ -1,11 +1,26 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { AppBar, Breadcrumbs, Container } from "../../components";
+import {
+  AppBar,
+  Breadcrumbs,
+  Container,
+  Link,
+  MenuItem,
+  Type
+} from "../../components";
 import { LeftPush } from "../../layouts";
-import { BoardSelect, OrgSelect, SparkSelect } from "../../templates";
+import {
+  BoardSelect,
+  OrgSelect,
+  SparkSelect,
+  Signature
+} from "../../templates";
+import { Plus } from "../../icons";
+import { createSparkRoute } from "../../routes";
 
 const SparkNavBar = ({
   children,
+  noContainer,
   organizations = [],
   org = {},
   sparks = [],
@@ -16,7 +31,7 @@ const SparkNavBar = ({
   onBoardChange
 }) => (
   <AppBar>
-    <Container>
+    <Container maxWidth={noContainer && "unset"}>
       <LeftPush hideRightOnTablet>
         <Breadcrumbs>
           <OrgSelect
@@ -29,12 +44,36 @@ const SparkNavBar = ({
             sparks={sparks?.filter(s => s?.belongsTo.id === org.id)}
             onChange={onSparkChange}
             defaultValue={spark?.id}
+            addOption={
+              <Link to={createSparkRoute} button>
+                <MenuItem>
+                  <Signature>
+                    <Type body2>
+                      <Plus />
+                    </Type>
+                    <Type body2>New Spark</Type>
+                  </Signature>
+                </MenuItem>
+              </Link>
+            }
             small
           />
           <BoardSelect
             boards={spark?.boards}
             onChange={onBoardChange}
             defaultValue={board?.id}
+            addOption={
+              <Link to={createSparkRoute} button>
+                <MenuItem>
+                  <Signature>
+                    <Type body2>
+                      <Plus />
+                    </Type>
+                    <Type body2>New Board</Type>
+                  </Signature>
+                </MenuItem>
+              </Link>
+            }
             small
           />
         </Breadcrumbs>
@@ -46,6 +85,7 @@ const SparkNavBar = ({
 
 SparkNavBar.propTypes = {
   children: PropTypes.node,
+  noContainer: PropTypes.bool,
   organizations: PropTypes.array,
   org: PropTypes.object,
   sparks: PropTypes.array,
