@@ -1,11 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { Canvas, Viewport, List } from "../../components";
-import { BoardCard } from "../../templates";
+import React from "react";
+import { Canvas, List, Viewport } from "../../components";
 import { DragDropProvider } from "../../hooks";
-import { useBoard } from "./BoardProvider";
-import style from "./Board.scss";
-import classNames from "../../helpers/classNames";
+import { BoardCard } from "../../templates";
 
 const Board = ({ cards = [], mode = "free" }) => (
   <DragDropProvider>
@@ -13,9 +10,7 @@ const Board = ({ cards = [], mode = "free" }) => (
       <Canvas>
         {mode === "free" &&
           cards?.map((card, key) => (
-            <BoardCard card={card} key={card?.id || key}>
-              <BoardCard card={card} key={card?.id || key} block />
-            </BoardCard>
+            <BoardCard card={card} key={card?.id || key} />
           ))}
         {mode === "list" && (
           <List>

@@ -20,15 +20,36 @@ const Canvas = ({ children, className, size = {} }) => {
     setSelectedCards
   } = useBoard();
   // console.log("Canvas Rerender");
-  const onDrop = () => {
-    // console.log("Dropped card");
-    if (setUpdateCanvas) setUpdateCanvas(o => !o);
+  const onDrop = ({ element, extras }) => {
+    const { translate } = extras;
+    updateCard(element.id, {
+      location: {
+        x: translate.x,
+        y: translate.y,
+        z: 1
+      }
+    });
   };
 
   useDroppable({ ref: canvasRef, onDrop });
 
-  const onDoubleClick = () => {
+  const onDoubleClick = e => {
     console.log("Double clicked canvas");
+    e.preventDefault();
+    // Set right click position
+    const clickPosition = { x: e.clientX, y: e.clientY };
+    const {
+      x: offsetX,
+      y: offsetY
+    } = canvasRef.current.getBoundingClientRect();
+    if (createCard)
+      createCard({
+        location: {
+          x: clickPosition.x - offsetX,
+          y: clickPosition.y - offsetY,
+          z: 1
+        }
+      });
   };
 
   useEffect(() => {

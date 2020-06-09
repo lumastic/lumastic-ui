@@ -46,6 +46,7 @@ export const useResizable = ({
       document.addEventListener("mousemove", resize);
       const endResize = () => {
         document.removeEventListener("mousemove", resize);
+        document.removeEventListener("mouseup", endResize);
         const { width, height } = resizable.getBoundingClientRect();
         if (onResizeEnd)
           onResizeEnd({

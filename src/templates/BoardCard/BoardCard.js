@@ -31,7 +31,13 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
     console.log("Create stack");
   };
   useDroppable({ ref: cardRef, onDrop, disable: card.parentCard });
-  const onResizeEnd = () => console.log("End resize");
+
+  const onResizeEnd = ({ dimension }) => {
+    if (updateCard)
+      updateCard(card.id, {
+        location: { x: card.x, y: card.y, z: card.z, ...dimension }
+      });
+  };
   useResizable({
     ref: cardRef,
     handle: resizeHandle,
@@ -63,18 +69,19 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
           : null
       }
       ref={cardRef}
+      id={card.id}
     >
       <Card
         className={classNames(className, style["board-card"])}
-        id={card.id}
         onContextMenu={onRightClick}
       >
         {card.content || "Test content"}
         {children}
+        <div className={style.resize} ref={resizeHandle}>
+          {absolute && <Resize />}
+        </div>
       </Card>
-      <div className={style.resize} ref={resizeHandle}>
-        {absolute && <Resize />}
-      </div>
+
       <div
         className={classNames(style.options, {
           [style.optionsopen]: optionsOpen

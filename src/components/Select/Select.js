@@ -1,15 +1,14 @@
-import React, { useMemo, useState, useRef, useEffect, Children } from "react";
 import PropTypes from "prop-types";
-import SelectContext from "./helpers/SelectContext";
-import { Popup, PopupContent, PopupTrigger } from "../Popup";
-import { SelectOptions } from "./helpers/SelectOptions";
-import { SelectOption } from "./helpers/SelectOption";
-import { Type } from "../Type";
-import { ArrowDown } from "../../icons/ArrowDown";
+import React, { Children, useEffect, useMemo, useRef, useState } from "react";
 import classNames from "../../helpers/classNames";
-import style from "./Select.scss";
 import { useInputContext } from "../../helpers/useInputContext";
-import { MenuItem } from "../Menu";
+import { ArrowDown } from "../../icons/ArrowDown";
+import { Popup, PopupContent, PopupTrigger } from "../Popup";
+import { Type } from "../Type";
+import SelectContext from "./helpers/SelectContext";
+import { SelectOption } from "./helpers/SelectOption";
+import { SelectOptions } from "./helpers/SelectOptions";
+import style from "./Select.scss";
 
 const Select = ({
   defaultValue,
@@ -22,9 +21,7 @@ const Select = ({
   onChange,
   onClose,
   onOpen,
-  addOption,
-  addOptionLabel,
-  onAddOption
+  addOption
 }) => {
   const { register, setValue, errors } = useInputContext();
   const [selected, setSelected] = useState(defaultValue);
