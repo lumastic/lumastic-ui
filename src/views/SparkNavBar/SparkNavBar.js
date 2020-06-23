@@ -16,7 +16,7 @@ import {
   Signature
 } from "../../templates";
 import { Plus } from "../../icons";
-import { createSparkRoute } from "../../routes";
+import { createSparkRoute, createBoardRoute } from "../../routes";
 
 const SparkNavBar = ({
   children,
@@ -63,7 +63,7 @@ const SparkNavBar = ({
             onChange={onBoardChange}
             defaultValue={board?.id}
             addOption={
-              <Link to={createSparkRoute} button>
+              <Link to={createBoardRoute(org?.name, spark?.id)} button>
                 <MenuItem>
                   <Signature>
                     <Type body2>

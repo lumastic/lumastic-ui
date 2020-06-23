@@ -1,31 +1,18 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Canvas, List, Viewport } from "../../components";
+import { Canvas, Viewport } from "../../components";
 import { DragDropProvider } from "../../hooks";
-import { BoardCard } from "../../templates";
 
-const Board = ({ cards = [], mode = "free" }) => (
+const Board = ({ children, mode = "free" }) => (
   <DragDropProvider>
     <Viewport>
-      <Canvas>
-        {mode === "free" &&
-          cards?.map((card, key) => (
-            <BoardCard card={card} key={card?.id || key} />
-          ))}
-        {mode === "list" && (
-          <List>
-            {cards?.map((card, key) => (
-              <BoardCard card={card} key={card?.id || key} block />
-            ))}
-          </List>
-        )}
-      </Canvas>
+      <Canvas>{children}</Canvas>
     </Viewport>
   </DragDropProvider>
 );
 
 Board.propTypes = {
-  cards: PropTypes.array,
+  children: PropTypes.node,
   mode: PropTypes.bool
 };
 

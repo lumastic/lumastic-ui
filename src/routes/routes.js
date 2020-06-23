@@ -58,6 +58,14 @@ export const createPostRoute = {
 };
 
 // BOARD ROUTES
+export const createBoardRoute = (
+  orgName = ":orgName",
+  sparkId = ":sparkId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}/create/board`,
+  state: { modal: true }
+});
+
 export const viewBoardRoute = (
   orgName = ":orgName",
   sparkId = ":sparkId",

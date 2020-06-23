@@ -75,8 +75,7 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
         className={classNames(className, style["board-card"])}
         onContextMenu={onRightClick}
       >
-        {card.content || "Test content"}
-        {children}
+        <Type>{children}</Type>
         <div className={style.resize} ref={resizeHandle}>
           {absolute && <Resize />}
         </div>

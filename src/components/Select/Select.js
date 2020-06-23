@@ -35,17 +35,22 @@ const Select = ({
   ]);
 
   useEffect(() => {
-    setSelected(defaultValue);
-  }, [defaultValue]);
-
-  useEffect(() => {
     if (register) register({ name });
   }, [register, name]);
 
   useEffect(() => {
-    if (onChange) onChange(selected);
     if (selected && setValue) setValue(name, selected, true);
-  }, [selected, onChange, setValue, name]);
+  }, [selected, setValue, name]);
+
+  useEffect(() => {
+    // console.log("Select onchange", selected);
+    if (onChange) onChange(selected);
+  }, [selected]);
+
+  useEffect(() => {
+    // console.log("Select default value", defaultValue);
+    setSelected(defaultValue);
+  }, [defaultValue]);
 
   return (
     <>

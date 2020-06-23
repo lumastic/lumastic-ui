@@ -1,5 +1,6 @@
 export * from "./Board";
 export * from "./Feed";
+export * from "./NewBoardDialog";
 export * from "./NewPostCard";
 export * from "./NewPostDialog";
 export * from "./NewSparkDialog";
