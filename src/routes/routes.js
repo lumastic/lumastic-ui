@@ -50,6 +50,11 @@ export const createSparkRoute = {
 export const viewSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") =>
   baseSparkRoute(orgName, sparkId);
 
+export const editSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}/edit`,
+  state: { modal: true }
+});
+
 // POST ROUTES
 
 export const createPostRoute = {

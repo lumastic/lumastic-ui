@@ -1,18 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card } from "../../components/Card";
-import { Label } from "../../components/Label";
-import { Type } from "../../components/Type";
-import { List } from "../../components/List";
-import { Tag } from "../../templates/Tag";
+import { Card, Label, Type, List, IconButton, Link } from "../../components";
+import { Tag } from "../../templates";
+import { Gear } from "../../icons";
+import { editSparkRoute } from "../../routes";
 import style from "./SparkInfo.scss";
 import classNames from "../../helpers/classNames";
 
-const SparkInfo = ({ spark = {}, className }) => (
+const SparkInfo = ({ spark = {}, className, canEdit = false }) => (
   <Card className={classNames(className, style.sparkinfo)}>
     <List>
       <div>
-        <Label>Description</Label>
+        <Label
+          right={
+            canEdit && (
+              <Link
+                button
+                to={editSparkRoute(spark?.belongsTo?.name, spark?.id)}
+              >
+                <IconButton color="grey">
+                  <Gear />
+                </IconButton>
+              </Link>
+            )
+          }
+        >
+          Description
+        </Label>
         <Type>{spark.description}</Type>
       </div>
       <div>
@@ -29,7 +43,8 @@ const SparkInfo = ({ spark = {}, className }) => (
 
 SparkInfo.propTypes = {
   spark: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  canEdit: PropTypes.bool
 };
 
 export { SparkInfo };
