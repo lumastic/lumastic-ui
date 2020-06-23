@@ -11,7 +11,7 @@ const SparkDialog = ({
   license,
   title = "",
   spark = {},
-  showingPathname
+  isShowing = false
 }) => {
   const history = useHistory();
   const location = useLocation();
@@ -19,7 +19,7 @@ const SparkDialog = ({
     history.push(location.state?.from || homeRoute);
   };
   return (
-    <Dialog isShowing={location.pathname === showingPathname} hide={hide}>
+    <Dialog isShowing={isShowing} hide={hide}>
       <Type h2 align="center" gutterBottom>
         {title}
       </Type>
@@ -39,7 +39,7 @@ SparkDialog.propTypes = {
   license: PropTypes.bool,
   spark: PropTypes.object,
   title: PropTypes.string,
-  showingPathname: PropTypes.string
+  isShowing: PropTypes.bool
 };
 
 export { SparkDialog };

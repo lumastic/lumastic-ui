@@ -12,11 +12,11 @@ import {
 } from "../../components";
 import { UserLock, Users } from "../../icons";
 import { upgradeRoute } from "../../routes";
-import { OrgSelect } from "../../templates";
+import { OrgSelect, OrgSignature } from "../../templates";
 import style from "./SparkForm.scss";
 
 const sparkSchema = yup.object().shape({
-  belongsTo: yup.string().required("This field is required"),
+  belongsTo: yup.string(),
   title: yup.string().required("This field is required"),
   description: yup.string(),
   visibility: yup.string().required("This field is required")
@@ -38,11 +38,15 @@ const SparkForm = ({
     <div className={style.header}>
       <div>
         <Label>Owner</Label>
-        <OrgSelect
-          name="belongsTo"
-          defaultValue={organizations[0]?.id}
-          organizations={organizations}
-        />
+        {organizations > 1 ? (
+          <OrgSelect
+            name="belongsTo"
+            defaultValue={organizations[0]?.id}
+            organizations={organizations}
+          />
+        ) : (
+          <OrgSignature organization={organizations[0]} />
+        )}
       </div>
       <div>
         <Label>Title</Label>

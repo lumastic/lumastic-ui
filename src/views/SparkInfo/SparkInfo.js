@@ -1,11 +1,11 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { Card, Label, Type, List, IconButton, Link } from "../../components";
-import { Tag } from "../../templates";
+import React from "react";
+import { Card, IconButton, Label, Link, List, Type } from "../../components";
+import classNames from "../../helpers/classNames";
 import { Gear } from "../../icons";
 import { editSparkRoute } from "../../routes";
+import { Tag } from "../../templates";
 import style from "./SparkInfo.scss";
-import classNames from "../../helpers/classNames";
 
 const SparkInfo = ({ spark = {}, className, canEdit = false }) => (
   <Card className={classNames(className, style.sparkinfo)}>
@@ -25,8 +25,12 @@ const SparkInfo = ({ spark = {}, className, canEdit = false }) => (
             )
           }
         >
-          Description
+          Title
         </Label>
+        <Type>{spark.title}</Type>
+      </div>
+      <div>
+        <Label>Description</Label>
         <Type>{spark.description}</Type>
       </div>
       <div>
