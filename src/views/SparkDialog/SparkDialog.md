@@ -3,7 +3,7 @@
 ```jsx
 import { Link, Button } from "../..";
 <>
-  <NewSparkDialog />
+  <SparkDialog />
   <Link to={"/create/spark"} button>
     <Button>New Spark</Button>
   </Link>
@@ -12,5 +12,5 @@ import { Link, Button } from "../..";
 
 Source:
 
-```js { "file": "./NewSparkDialog.js" }
+```js { "file": "./SparkDialog.js" }
 ```

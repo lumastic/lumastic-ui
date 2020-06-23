@@ -3,7 +3,7 @@ export * from "./Feed";
 export * from "./NewBoardDialog";
 export * from "./NewPostCard";
 export * from "./NewPostDialog";
-export * from "./NewSparkDialog";
+export * from "./SparkDialog";
 export * from "./PageAppBar";
 export * from "./ProgressPost";
 export * from "./SideNav";
