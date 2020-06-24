@@ -3,10 +3,10 @@ import { SearchSelect } from "..";
 
 export const ExSearchSelect = () => {
   const array = [
-    { text: "this" },
-    { text: "is" },
-    { text: "an" },
-    { text: "array" }
+    { text: "this", id: 1 },
+    { text: "is", id: 2 },
+    { text: "an", id: 3 },
+    { text: "array", id: 4 }
   ];
   const searchFunc = value =>
     array.filter(result => result?.text?.includes(value));

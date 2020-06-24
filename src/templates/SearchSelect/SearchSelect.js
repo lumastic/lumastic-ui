@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
 import React, {
-  cloneElement,
+  createElement,
   useEffect,
   useReducer,
   useState,
-  createElement
+  useRef
 } from "react";
 import { Chip, Modal } from "../../components";
-import { useInputContext } from "../../helpers/useInputContext";
 import { classNames } from "../../helpers";
-import style from "./SearchSelect.scss";
+import { useInputContext } from "../../helpers/useInputContext";
+import { useOffclick } from "../../hooks";
 import useModal from "../../hooks/useModal";
+import style from "./SearchSelect.scss";
 
 const SearchSelect = ({
   name = "searchselect",
@@ -27,14 +28,13 @@ const SearchSelect = ({
   const selectReducer = (oldValue, action) => {
     const newVal = [...oldValue];
     const index = newVal.findIndex(x => x.id === action?.payload?.id);
+
     switch (action.type) {
       case "add":
         newVal.push(action?.payload);
         return newVal;
       case "remove":
-        if (newVal.length > 1) {
-          newVal.splice(index, 1);
-        }
+        newVal.splice(index, 1);
         return newVal;
       default:
         return newVal;
@@ -44,17 +44,9 @@ const SearchSelect = ({
   const [selected, setSelected] = useReducer(selectReducer, defaultValue);
 
   const [results, setResults] = useState([]);
+  const resultsRef = useRef();
 
-  const searchHandler = e => {
-    if (onSearch) {
-      setResults(onSearch(e?.target?.value));
-    }
-    if (e?.target?.value === "") {
-      toggle(false);
-    } else {
-      toggle(true);
-    }
-  };
+  useOffclick(resultsRef, toggle);
 
   useEffect(() => {
     if (register) register({ name });
@@ -68,31 +60,54 @@ const SearchSelect = ({
     if (onChange) onChange(selected);
   }, [selected]);
 
+  const searchHandler = e => {
+    if (onSearch) {
+      setResults(onSearch(e?.target?.value));
+    }
+    if (e?.target?.value === "") {
+      toggle(false);
+    } else {
+      toggle(true);
+    }
+  };
+
   return (
     <div className={classNames(style.container)}>
       <div className={style.searchbox}>
         <div className={style.selected}>
           {selected?.map(selection => (
             <Chip
+              className={style.selection}
               label="Test"
-              onRemove={() =>
-                setSelected({ type: "remove", payload: selection })
-              }
+              onRemove={() => {
+                setSelected({ type: "remove", payload: selection });
+              }}
             />
           ))}
         </div>
         <div className={style.search}>
-          <input type="text" placeholder="search" onChange={searchHandler} />
+          <input
+            type="search"
+            placeholder="search"
+            onChange={searchHandler}
+            onFocus={searchHandler}
+          />
         </div>
       </div>
       <Modal isShowing={isShowing} disablePortal>
-        <div className={style.results}>
+        <div className={style.results} ref={resultsRef}>
           {renderResults &&
-            results?.map((result, index) => (
-              <div className={style.result} key={result?.id || index}>
-                {createElement(renderResults, { ...result })}
-              </div>
-            ))}
+            results
+              ?.filter(result => !selected?.includes(result))
+              ?.map((result, index) => (
+                <div
+                  className={style.result}
+                  key={result?.id || index}
+                  onClick={() => setSelected({ type: "add", payload: result })}
+                >
+                  {createElement(renderResults, { ...result })}
+                </div>
+              ))}
         </div>
       </Modal>
     </div>
