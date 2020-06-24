@@ -19,7 +19,8 @@ const SearchSelect = ({
   onChange,
   onSearch,
   className,
-  renderResults
+  renderResult,
+  renderSelection
 }) => {
   const { register, setValue, errors } = useInputContext();
 
@@ -76,13 +77,14 @@ const SearchSelect = ({
       <div className={style.searchbox}>
         <div className={style.selected}>
           {selected?.map(selection => (
-            <Chip
-              className={style.selection}
-              label="Test"
-              onRemove={() => {
-                setSelected({ type: "remove", payload: selection });
-              }}
-            />
+            <div className={style.selection}>
+              {createElement(renderSelection, {
+                ...selection,
+                onRemove: () => {
+                  setSelected({ type: "remove", payload: selection });
+                }
+              })}
+            </div>
           ))}
         </div>
         <div className={style.search}>
@@ -96,7 +98,7 @@ const SearchSelect = ({
       </div>
       <Modal isShowing={isShowing} disablePortal>
         <div className={style.results} ref={resultsRef}>
-          {renderResults &&
+          {renderResult &&
             results
               ?.filter(result => !selected?.includes(result))
               ?.map((result, index) => (
@@ -105,7 +107,7 @@ const SearchSelect = ({
                   key={result?.id || index}
                   onClick={() => setSelected({ type: "add", payload: result })}
                 >
-                  {createElement(renderResults, { ...result })}
+                  {createElement(renderResult, { ...result })}
                 </div>
               ))}
         </div>
@@ -120,7 +122,8 @@ SearchSelect.propTypes = {
   onChange: PropTypes.func,
   onSearch: PropTypes.func,
   name: PropTypes.string,
-  renderResults: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+  renderResult: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
 };
 
 export { SearchSelect };
