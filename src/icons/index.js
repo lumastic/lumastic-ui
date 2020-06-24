@@ -13,6 +13,7 @@ export * from "./Lock";
 export * from "./Logo";
 export * from "./MagnifyingGlass";
 export * from "./PaperAirplane";
+export * from "./Pencil";
 export * from "./Plus";
 export * from "./Post";
 export * from "./PostPlus";

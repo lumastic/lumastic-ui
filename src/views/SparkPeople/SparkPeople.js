@@ -7,17 +7,35 @@ import {
   Label,
   Link,
   List,
-  Tooltip
+  Tooltip,
+  IconButton
 } from "../../components";
+import { profileRoute } from "../../routes";
+import { Gear } from "../../icons";
 import classNames from "../../helpers/classNames";
 import style from "./SparkPeople.scss";
-import { profileRoute } from "../../routes";
 
-const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
+const SparkPeople = ({
+  spark = {},
+  className,
+  collabAction,
+  followAction,
+  isAdmin = false
+}) => (
   <Card className={classNames(className, style.sparkinfo)}>
     <List>
       <div>
-        <Label>{`${spark.collaborators?.length} Collaborators`}</Label>
+        <Label
+          right={
+            isAdmin && (
+              <Link button>
+                <IconButton color="grey">
+                  <Gear />
+                </IconButton>
+              </Link>
+            )
+          }
+        >{`${spark.collaborators?.length} Collaborators`}</Label>
         <div className={style.actionrow}>
           <div className={style.left}>
             <AvatarGroup>
@@ -38,7 +56,7 @@ const SparkPeople = ({ spark = {}, className, collabAction, followAction }) => (
         </div>
       </div>
       <div>
-        <Label>{`${spark.followers?.length} Followers`}</Label>
+        <Label>{`${spark.followers?.length || 0} Followers`}</Label>
         <div className={style.actionrow}>
           <div className={style.left}>
             <AvatarGroup>
@@ -66,7 +84,8 @@ SparkPeople.propTypes = {
   spark: PropTypes.object,
   className: PropTypes.string,
   collabAction: PropTypes.node,
-  followAction: PropTypes.node
+  followAction: PropTypes.node,
+  isAdmin: PropTypes.bool
 };
 
 export { SparkPeople };

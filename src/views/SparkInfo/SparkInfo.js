@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Card, IconButton, Label, Link, List, Type } from "../../components";
 import classNames from "../../helpers/classNames";
-import { Gear } from "../../icons";
+import { Pencil } from "../../icons";
 import { editSparkRoute } from "../../routes";
 import { Tag } from "../../templates";
 import style from "./SparkInfo.scss";
@@ -19,7 +19,7 @@ const SparkInfo = ({ spark = {}, className, canEdit = false }) => (
                 to={editSparkRoute(spark?.belongsTo?.name, spark?.id)}
               >
                 <IconButton color="grey">
-                  <Gear />
+                  <Pencil />
                 </IconButton>
               </Link>
             )
