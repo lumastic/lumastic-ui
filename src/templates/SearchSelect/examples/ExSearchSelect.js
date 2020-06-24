@@ -20,6 +20,7 @@ export const ExSearchSelect = () => {
 
   return (
     <SearchSelect
+      placeholder="Search list..."
       onSearch={searchFunc}
       renderResult={renderResult}
       renderSelection={renderSelection}

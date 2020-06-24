@@ -19,6 +19,7 @@ const SearchSelect = ({
   onChange,
   onSearch,
   className,
+  placeholder,
   renderResult,
   renderSelection
 }) => {
@@ -46,6 +47,7 @@ const SearchSelect = ({
 
   const [results, setResults] = useState([]);
   const resultsRef = useRef();
+  const inputRef = useRef();
 
   useOffclick(resultsRef, toggle);
 
@@ -72,27 +74,51 @@ const SearchSelect = ({
     }
   };
 
+  const clickHandler = result => {
+    setSelected({ type: "add", payload: result });
+    inputRef?.current?.focus();
+  };
+
+  const handleEnter = (e, result) => {
+    if (e.key === "Escape") {
+      toggle(false);
+    }
+    if (e.keyCode === 13) {
+      clickHandler(result);
+    }
+  };
+
+  const handleEsc = e => {
+    if (e.key === "Escape") {
+      inputRef?.current?.blur();
+      toggle(false);
+    }
+  };
+
   return (
-    <div className={classNames(style.container)}>
+    <div className={classNames(style.container, className)}>
       <div className={style.searchbox}>
         <div className={style.selected}>
-          {selected?.map(selection => (
-            <div className={style.selection}>
-              {createElement(renderSelection, {
-                ...selection,
-                onRemove: () => {
-                  setSelected({ type: "remove", payload: selection });
-                }
-              })}
-            </div>
-          ))}
+          {renderSelection &&
+            selected?.map(selection => (
+              <div className={style.selection}>
+                {createElement(renderSelection, {
+                  ...selection,
+                  onRemove: () => {
+                    setSelected({ type: "remove", payload: selection });
+                  }
+                })}
+              </div>
+            ))}
         </div>
         <div className={style.search}>
           <input
             type="search"
-            placeholder="search"
+            placeholder={placeholder}
+            ref={inputRef}
             onChange={searchHandler}
             onFocus={searchHandler}
+            onKeyDown={handleEsc}
           />
         </div>
       </div>
@@ -105,7 +131,10 @@ const SearchSelect = ({
                 <div
                   className={style.result}
                   key={result?.id || index}
-                  onClick={() => setSelected({ type: "add", payload: result })}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={e => handleEnter(e, result)}
+                  onClick={() => clickHandler(result)}
                 >
                   {createElement(renderResult, { ...result })}
                 </div>
@@ -119,6 +148,7 @@ const SearchSelect = ({
 SearchSelect.propTypes = {
   defaultValue: PropTypes.array,
   className: PropTypes.string,
+  placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onSearch: PropTypes.func,
   name: PropTypes.string,
