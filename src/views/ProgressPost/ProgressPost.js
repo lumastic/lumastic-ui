@@ -13,6 +13,7 @@ import recommendReactions from "./helpers/recommendReactions.json";
 import formatTime from "../../helpers/formatTime";
 import style from "./ProgressPost.scss";
 import { parseContent } from "../../helpers";
+import { pressComponents } from "../../PressHelpers";
 
 const ProgressPost = ({
   spark = {},
@@ -37,7 +38,10 @@ const ProgressPost = ({
         </Type>
       </div>
       <Type tag="div">
-        <PressRenderer value={parseContent(post?.content)} />
+        <PressRenderer
+          components={pressComponents}
+          value={parseContent(post?.content)}
+        />
       </Type>
       <div className={style.postreactions}>
         {post.reactions?.map((reaction, key) => (

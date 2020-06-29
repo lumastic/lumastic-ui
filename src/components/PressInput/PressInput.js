@@ -62,7 +62,6 @@ PressInput.propTypes = {
   name: PropTypes.string,
   reset: PropTypes.bool,
   readOnly: PropTypes.bool,
-  onChange: PropTypes.func,
   className: PropTypes.string
 };
 
