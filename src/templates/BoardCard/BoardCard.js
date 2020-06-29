@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { memo, useEffect, useRef, useState } from "react";
 import { PressRenderer } from "pressdk";
+import { useForm, FormContext } from "react-hook-form";
 import { MoreMenu } from "..";
 import { Card, Divider, MenuItem, PressInput, Type } from "../../components";
 import classNames from "../../helpers/classNames";
@@ -13,7 +14,7 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   const cardRef = useRef(null);
   const resizeHandle = useRef(null);
   const { canEdit, setActiveCard, updateCard, setUpdateCanvas } = useBoard();
-  const [edit, setEdit] = useState(false);
+  const formMethods = useForm();
   const [absolute, setAbsolute] = useState(!block);
   const [optionsOpen, setOptionsOpen] = useState(false);
 
@@ -24,7 +25,6 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   useDraggable({
     ref: cardRef,
     draggingClass: style.hover,
-    disable: edit,
     onDragStart: () => setAbsolute(true)
   });
 
@@ -49,6 +49,13 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
     if (setActiveCard) setActiveCard(card);
   };
 
+  const onBlur = data => {
+    if (updateCard)
+      updateCard(card.id, {
+        content: data?.content
+      });
+  };
+
   return (
     <div
       className={classNames(
@@ -71,22 +78,24 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
       ref={cardRef}
       id={card.id}
     >
-      <Card
-        className={classNames(className, style["board-card"])}
-        onContextMenu={onRightClick}
-        onBlur={() => console.log("Focus")}
-      >
-        <Type>
-          {edit && canEdit ? (
-            <PressInput defaultValue={card?.content} readOnly={!canEdit} />
-          ) : (
-            <PressRenderer value={card?.content} />
-          )}
-        </Type>
-        <div className={style.resize} ref={resizeHandle}>
-          {absolute && <Resize />}
-        </div>
-      </Card>
+      <FormContext {...formMethods}>
+        <Card
+          className={classNames(className, style["board-card"])}
+          onContextMenu={onRightClick}
+          onBlur={formMethods?.handleSubmit(onBlur)}
+        >
+          <Type tag="div">
+            {canEdit ? (
+              <PressInput name="content" defaultValue={card?.content} />
+            ) : (
+              <PressRenderer value={card?.content} />
+            )}
+          </Type>
+          <div className={style.resize} ref={resizeHandle}>
+            {absolute && <Resize />}
+          </div>
+        </Card>
+      </FormContext>
 
       <div
         className={classNames(style.options, {

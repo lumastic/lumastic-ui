@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Card } from "../../components/Card";
-import { Divider } from "../../components/Divider";
-import { Type } from "../../components/Type";
-import { Point } from "../../components/Point";
-import { Comment } from "../../templates/Comment";
-import { NewComment } from "../../templates/NewComment";
-import { Reaction } from "../../templates/Reaction";
-import { AddEmoji } from "../../templates/AddEmoji";
-import { SparkCrumbs } from "../../templates/SparkCrumbs";
+import { TextRenderer } from "pressdk";
+import { Card, Divider, Type, Point } from "../../components";
+import {
+  Comment,
+  NewComment,
+  Reaction,
+  AddEmoji,
+  SparkCrumbs
+} from "../../templates";
 import recommendReactions from "./helpers/recommendReactions.json";
 import formatTime from "../../helpers/formatTime";
 import style from "./ProgressPost.scss";
@@ -35,7 +35,9 @@ const ProgressPost = ({
           {formatTime({ time: post.createdAt || post.time })}
         </Type>
       </div>
-      <Type tag="div">{post.content}</Type>
+      <Type tag="div">
+        <TextRenderer value={post?.content} />
+      </Type>
       <div className={style.postreactions}>
         {post.reactions?.map((reaction, key) => (
           <Reaction

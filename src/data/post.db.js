@@ -2,7 +2,12 @@ import { drew, keith, atishay } from "./user.db";
 import { drewComment, keithComment } from "./comment.db";
 
 export const postWithComments = {
-  content: "This is a post with comments",
+  content: [
+    {
+      name: "default",
+      children: [{ text: "This is a post with comments" }]
+    }
+  ],
   createdBy: drew,
   comments: [drewComment, keithComment],
   reactions: [
@@ -23,7 +28,12 @@ export const postWithComments = {
 };
 
 export const postNoComments = {
-  content: "This is a post without comments",
+  content: [
+    {
+      name: "default",
+      children: [{ text: "This is a post without comments" }]
+    }
+  ],
   createdBy: drew,
   reactions: [
     {
