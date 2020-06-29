@@ -9,7 +9,8 @@ import {
   Option,
   Link,
   Type,
-  Point
+  Point,
+  RichInput
 } from "../../components";
 import { useUser } from "../..";
 import { SparkSelectCrumbs, Signature, SparkCrumbs } from "../../templates";
@@ -61,7 +62,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         </>
       )}
 
-      <TextInput name="content" placeholder="What's the latests..." />
+      <RichInput name="content" placeholder="What's the latests..." />
       <div className={style.bottom}>
         <div className={style.left}>
           <Select

@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
-import React, { memo, useRef, useState, useEffect } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
+import { PressRenderer } from "pressdk";
 import { MoreMenu } from "..";
-import { Card, Divider, MenuItem, Type } from "../../components";
-import { Resize } from "../../icons";
+import { Card, Divider, MenuItem, PressInput, Type } from "../../components";
 import classNames from "../../helpers/classNames";
 import { useDraggable, useDroppable, useResizable } from "../../hooks";
+import { Resize } from "../../icons";
 import { useBoard } from "../../views";
 import style from "./BoardCard.scss";
 
@@ -45,8 +46,7 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   });
 
   const onRightClick = e => {
-    console.log("Right click card", card.id);
-    setActiveCard(card);
+    if (setActiveCard) setActiveCard(card);
   };
 
   return (
@@ -74,8 +74,15 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
       <Card
         className={classNames(className, style["board-card"])}
         onContextMenu={onRightClick}
+        onBlur={() => console.log("Focus")}
       >
-        <Type>{children}</Type>
+        <Type>
+          {edit && canEdit ? (
+            <PressInput defaultValue={card?.content} readOnly={!canEdit} />
+          ) : (
+            <PressRenderer value={card?.content} />
+          )}
+        </Type>
         <div className={style.resize} ref={resizeHandle}>
           {absolute && <Resize />}
         </div>

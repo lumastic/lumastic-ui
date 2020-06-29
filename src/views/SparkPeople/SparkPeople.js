@@ -4,24 +4,19 @@ import {
   Avatar,
   AvatarGroup,
   Card,
+  IconButton,
   Label,
   Link,
   List,
   Tooltip,
-  IconButton
+  Button
 } from "../../components";
-import { profileRoute } from "../../routes";
-import { Gear } from "../../icons";
 import classNames from "../../helpers/classNames";
+import { Gear } from "../../icons";
+import { profileRoute } from "../../routes";
 import style from "./SparkPeople.scss";
 
-const SparkPeople = ({
-  spark = {},
-  className,
-  collabAction,
-  followAction,
-  isAdmin = false
-}) => (
+const SparkPeople = ({ spark = {}, className, isAdmin = false }) => (
   <Card className={classNames(className, style.sparkinfo)}>
     <List>
       <div>
@@ -52,7 +47,6 @@ const SparkPeople = ({
               ))}
             </AvatarGroup>
           </div>
-          <div className={style.right}>{collabAction}</div>
         </div>
       </div>
       <div>
@@ -73,7 +67,6 @@ const SparkPeople = ({
               ))}
             </AvatarGroup>
           </div>
-          <div className={style.right}>{followAction}</div>
         </div>
       </div>
     </List>
@@ -83,8 +76,6 @@ const SparkPeople = ({
 SparkPeople.propTypes = {
   spark: PropTypes.object,
   className: PropTypes.string,
-  collabAction: PropTypes.node,
-  followAction: PropTypes.node,
   isAdmin: PropTypes.bool
 };
 

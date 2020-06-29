@@ -2,12 +2,7 @@
 
 ```jsx
 import { spark1 } from "../../data/spark.db.js";
-import { Button } from "../../components/Button";
-<SparkPeople
-  spark={spark1}
-  collabAction={<Button size="small">Manage</Button>}
-  followAction={<Button size="small">See All</Button>}
-/>;
+<SparkPeople spark={spark1} isAdmin />;
 ```
 
 Source:

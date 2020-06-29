@@ -2,17 +2,22 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Canvas, Viewport } from "../../components";
 import { DragDropProvider } from "../../hooks";
+import { BoardCard } from "../../templates";
 
-const Board = ({ children, mode = "free" }) => (
+const Board = ({ cards = [], mode = "free" }) => (
   <DragDropProvider>
     <Viewport>
-      <Canvas>{children}</Canvas>
+      <Canvas>
+        {cards?.map((card, index) => (
+          <BoardCard key={card?.id || index} card={card} />
+        ))}
+      </Canvas>
     </Viewport>
   </DragDropProvider>
 );
 
 Board.propTypes = {
-  children: PropTypes.node,
+  cards: PropTypes.array,
   mode: PropTypes.bool
 };
 

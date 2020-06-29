@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-expressions */
 import PropTypes from "prop-types";
 import React, {
   createElement,
   useEffect,
   useReducer,
-  useState,
-  useRef
+  useRef,
+  useState
 } from "react";
-import { Chip, Modal } from "../../components";
+import { Modal } from "../../components";
 import { classNames } from "../../helpers";
 import { useInputContext } from "../../helpers/useInputContext";
 import { useOffclick } from "../../hooks";
@@ -23,6 +24,7 @@ const SearchSelect = ({
   renderResult,
   renderSelection
 }) => {
+  // TODO: useCallback to the searchFunc
   const { register, setValue, errors } = useInputContext();
 
   const [isShowing, toggle] = useModal();

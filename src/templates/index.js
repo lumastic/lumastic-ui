@@ -10,6 +10,7 @@ export * from "./OrgSelect";
 export * from "./OrgSignature";
 export * from "./Reaction";
 export * from "./RightClickMenu";
+export * from "./SearchSelect";
 export * from "./Signature";
 export * from "./SparkCrumbs";
 export * from "./SparkSelect";
