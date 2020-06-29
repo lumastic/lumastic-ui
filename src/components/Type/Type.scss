@@ -46,6 +46,12 @@
   &.primary {
     color: $primaryDark;
   }
+  &.secondary {
+    color: $secondaryDark;
+  }
+  &.accent {
+    color: $accent;
+  }
   &.red {
     color: $redDark;
   }
@@ -66,6 +72,9 @@
   }
   &.right {
     text-align: right;
+  }
+  &.gutter-bottom {
+    margin-bottom: 0.5em;
   }
   svg {
     position: relative;

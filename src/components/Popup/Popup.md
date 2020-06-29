@@ -25,20 +25,37 @@ import { Type } from "../Type";
 import { PopupContent, PopupTrigger } from ".";
 import { Button } from "../Button";
 import { Type } from "../Type";
-
-<Popup anchor={{ v: "top", h: "left" }} transform={{ v: "top", h: "left" }}>
-  <PopupTrigger>
-    <Button variant={"contained"} size={"small"}>
-      Top Left
-    </Button>
-  </PopupTrigger>
-  <PopupContent>
-    <Type>
-      This popup's top-left corner is anchored to the top left corner of the
-      trigger
-    </Type>
-  </PopupContent>
-</Popup>;
+<>
+  <Popup anchor={{ v: "top", h: "left" }} transform={{ v: "top", h: "left" }}>
+    <PopupTrigger>
+      <Button variant={"contained"} size={"small"}>
+        Top Left
+      </Button>
+    </PopupTrigger>
+    <PopupContent>
+      <Type>
+        This popup's top-left corner is anchored to the top left corner of the
+        trigger
+      </Type>
+    </PopupContent>
+  </Popup>
+  <Popup
+    anchor={{ v: "center", h: "right" }}
+    transform={{ v: "center", h: "left" }}
+  >
+    <PopupTrigger>
+      <Button variant={"contained"} size={"small"}>
+        Middle Right
+      </Button>
+    </PopupTrigger>
+    <PopupContent>
+      <Type>
+        This popup's top-left corner is anchored to the top left corner of the
+        trigger
+      </Type>
+    </PopupContent>
+  </Popup>
+</>;
 ```
 
 #### `render` allows for `PopupContent` to be rendered as a custom component

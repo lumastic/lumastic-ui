@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "../../helpers/classNames";
 import useModal from "../../hooks/useModal";
-import useOffclick from "../../hooks/useOffclick/useOffclick";
+import { useOffclick } from "../../hooks";
 import PopupContext from "./helpers/PopupContext";
 import popupPosition from "../../helpers/popupPosition";
 import style from "./Popup.scss";

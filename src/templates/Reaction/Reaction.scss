@@ -1,0 +1,38 @@
+@import "../../styles/colors.scss";
+
+.reaction {
+  display: inline-flex;
+
+  .emoji {
+    font-size: 0.8rem;
+  }
+  &:focus {
+    outline: 1px dotted $secondaryLight;
+  }
+  .chip {
+    &.reactable {
+      &:hover {
+        cursor: pointer;
+      }
+      transition: all 0.1s ease-in-out;
+
+      &:not(.reacted) {
+        &:hover {
+          background-color: rgba-to-rgb(rgba($greyDark, 0.3));
+        }
+        &:active {
+          background-color: rgba-to-rgb(rgba($greyDark, 0.5));
+        }
+      }
+
+      &.reacted {
+        &:hover {
+          background-color: rgba-to-rgb(rgba($secondaryLight, 0.6));
+        }
+        &:active {
+          background-color: rgba-to-rgb(rgba($secondaryLight, 0.8));
+        }
+      }
+    }
+  }
+}

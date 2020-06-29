@@ -1,17 +1,23 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { useInputContext } from "../../helpers/useInputContext";
 import style from "./RadioInput.scss";
 import classNames from "../../helpers/classNames";
 
-const RadioInput = forwardRef(
-  (
-    { children, className, id, name, disabled, isChecked, value, ...rest },
-    ref
-  ) => (
+const RadioInput = ({
+  children,
+  className,
+  id,
+  name,
+  disabled,
+  value,
+  ...rest
+}) => {
+  const { register } = useInputContext();
+  return (
     <div
       className={classNames(className, style.radioinput)}
       data-testid="radioinput"
-      ref={ref}
     >
       <input
         type="radio"
@@ -19,14 +25,13 @@ const RadioInput = forwardRef(
         id={id}
         name={name}
         disabled={disabled}
-        checked={isChecked}
+        ref={register}
         {...rest}
       />
       <div className={classNames(style.label, "type")}>{children}</div>
     </div>
-  )
-);
-
+  );
+};
 RadioInput.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -34,7 +39,8 @@ RadioInput.propTypes = {
   name: PropTypes.string,
   disabled: PropTypes.bool,
   isChecked: PropTypes.bool,
-  value: PropTypes.string
+  value: PropTypes.string,
+  register: PropTypes.func
 };
 
 export { RadioInput };

@@ -1,0 +1,19 @@
+.form {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 0.4rem;
+  .spark {
+    // margin-bottom: 0.25rem;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .left {
+      flex-grow: 1;
+    }
+    .right {
+      flex-grow: 0;
+    }
+  }
+}

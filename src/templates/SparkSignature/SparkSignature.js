@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Signature } from "../Signature";
 import { Type } from "../../components/Type";
 import { Spark } from "../../icons/Spark";
+import { Signature } from "../Signature";
 
 const SparkSignature = ({ spark = {}, small = false }) => (
   <Signature>

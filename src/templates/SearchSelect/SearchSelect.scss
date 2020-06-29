@@ -1,0 +1,58 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
+.container {
+  display: block;
+  position: relative;
+  .searchbox {
+    display: grid;
+    grid-template-columns: max-content minmax(5rem, auto);
+    column-gap: 0.25rem;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid $greyDark;
+    border-radius: 6px;
+    .selected {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .selection {
+        &:not(:last-child) {
+          margin-right: 0.25rem;
+        }
+      }
+    }
+    .search {
+      flex-grow: 1;
+      input {
+        font-family: $bodyFont;
+        background-color: inherit;
+        font-style: normal;
+        line-height: 0;
+        font-size: 1em;
+        border: none;
+        width: 100%;
+        &::placeholder {
+          color: $greyText;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  .results {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: $backgroundLight;
+    position: absolute;
+    // margin-top: 0.2rem;
+    top: 100%;
+
+    .result {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}

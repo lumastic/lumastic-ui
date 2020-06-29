@@ -1,10 +1,12 @@
 const path = require("path");
-const { getEntries } = require("./getEntries");
-
-const entries = getEntries();
 
 module.exports = {
-  entry: entries,
+  entry: {
+    index: "./src/index.js",
+    "icons/index": "./src/icons",
+    "routes/index": "./src/routes",
+    "helpers/index": "./src/helpers"
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -12,7 +14,8 @@ module.exports = {
   },
   externals: {
     react: "react",
-    "react-dom": "react-dom"
+    "react-dom": "react-dom",
+    "react-router-dom": "react-router-dom"
   },
   module: {
     rules: [
@@ -28,7 +31,10 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader"
+            loader: "style-loader",
+            options: {
+              injectType: "singletonStyleTag"
+            }
           },
           {
             loader: "css-loader",

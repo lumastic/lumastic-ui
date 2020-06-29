@@ -1,11 +1,11 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
+import { Button } from "../Button";
 import style from "./IconButton.scss";
 import classNames from "../../helpers/classNames";
-import { Button } from "../Button";
 
 const IconButton = forwardRef(
-  ({ children, className, size, setSize, ...rest }, ref) => (
+  ({ children, className, buttonClass, size, setSize, ...rest }, ref) => (
     <div
       className={classNames(
         className,
@@ -17,7 +17,7 @@ const IconButton = forwardRef(
       <Button
         size={size}
         {...rest}
-        className={style.icon}
+        className={classNames(buttonClass, style.icon)}
         style={{ fontSize: setSize }}
         ref={ref}
       >
@@ -31,6 +31,7 @@ IconButton.propTypes = {
   children: PropTypes.node,
   size: PropTypes.oneOf(["big", "small"]),
   className: PropTypes.string,
+  buttonClass: PropTypes.string,
   setSize: PropTypes.string
 };
 

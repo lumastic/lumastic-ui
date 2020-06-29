@@ -1,18 +1,20 @@
-import React from "react";
+import React, { Children } from "react";
 import PropTypes from "prop-types";
-import style from "./AvatarGroup.scss";
 import classNames from "../../helpers/classNames";
 import { Type } from "../Type";
+import style from "./AvatarGroup.scss";
 
 const AvatarGroup = ({ children, className, more }) => (
   <div
     className={classNames(className, style.avatargroup)}
     data-testid="avatargroup"
   >
-    {children}
+    {Children.map(children, child => (
+      <div className={style.avatar}>{child}</div>
+    ))}
     {more ? (
       <div className={style.more}>
-        <Type size="0.6rem" color="grey">
+        <Type setSize="0.6rem" color="grey">
           <b>{`+${more > 99 ? 99 : more}`}</b>
         </Type>
       </div>

@@ -9,11 +9,7 @@ const Option = ({ children, name }) => {
     if (setOptions) setOptions(state => ({ ...state, [name]: children }));
   }, [setOptions, name, children]);
 
-  return (
-    <div hidden data-testid="option">
-      {children}
-    </div>
-  );
+  return <></>;
 };
 
 Option.propTypes = {

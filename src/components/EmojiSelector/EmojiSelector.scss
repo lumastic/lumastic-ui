@@ -1,0 +1,64 @@
+@import "../../styles/colors.scss";
+
+.emojiselector {
+  width: 250px;
+  background-color: $backgroundLight;
+  .search {
+    padding: 0.5rem;
+    .search-box {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+  .scrollcontainer {
+    height: 200px;
+    overflow-y: scroll;
+  }
+  .groups {
+    display: grid;
+    grid-auto-flow: row;
+    // row-gap: 0.25rem;
+  }
+  .label {
+    text-transform: capitalize;
+    padding: 0.25rem 0.5rem;
+  }
+  .recommended {
+    padding: 0.1rem 0.25rem;
+  }
+  .emojis {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    .emoji {
+      font-size: 1.2rem;
+      padding: 0.1rem;
+      text-align: center;
+      border-radius: 6px;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: rgba($greyLight, 0.5);
+        cursor: pointer;
+      }
+      &:focus {
+        outline: 1px dotted $secondaryLight;
+      }
+      &:active {
+        background-color: $greyLight;
+      }
+    }
+  }
+  .selection {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.25rem 0.5rem;
+    border-top: 1px solid $greyLight;
+    .selected-emoji {
+      font-size: 1.75rem;
+      margin-right: 1rem;
+    }
+    .selected-description {
+      margin-top: 0.2rem;
+    }
+  }
+}

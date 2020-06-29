@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect, createElement } from "react";
 import PropTypes from "prop-types";
-import style from "./Tooltip.scss";
-import classNames from "../../helpers/classNames";
 import { Modal } from "../Modal";
 import { Type } from "../Type/Type";
 import tooltipPosition from "../../helpers/tooltipPosition";
+import style from "./Tooltip.scss";
+import classNames from "../../helpers/classNames";
 
 const Tooltip = ({
   position = "bottom",

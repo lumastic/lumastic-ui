@@ -1,27 +1,48 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Avatar } from "../../components/Avatar";
-import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { Option } from "../../components/Option";
-import { Select } from "../../components/Select";
-import { SparkSignature } from "../SparkSignature";
+import { SparkSignature } from "..";
+import { Option, Select } from "../../components";
 
-const SparkSelect = ({ sparks = [], avatarURL }) => (
-  <Breadcrumbs>
-    <Avatar src={avatarURL} />
-    <Select placeholder="Select a spark...">
-      {sparks.map((spark, key) => (
-        <Option key={spark.id || key} name={spark.id || key}>
-          <SparkSignature spark={spark} />
-        </Option>
-      ))}
-    </Select>
-  </Breadcrumbs>
+const SparkSelect = ({
+  sparks = [],
+  defaultValue,
+  name,
+  small,
+  addOption,
+  onChange,
+  onOpen,
+  onClose
+}) => (
+  <Select
+    placeholder="Select a spark..."
+    defaultValue={defaultValue}
+    name={name}
+    addOption={addOption}
+    small={small}
+    onChange={onChange}
+    onOpen={onOpen}
+    onClose={onClose}
+  >
+    {sparks.map(
+      (spark, key) =>
+        spark && (
+          <Option key={spark?.id || key} name={spark?.id || key}>
+            <SparkSignature spark={spark} small={small} />
+          </Option>
+        )
+    )}
+  </Select>
 );
 
 SparkSelect.propTypes = {
   sparks: PropTypes.array,
-  avatarURL: PropTypes.string
+  name: PropTypes.string,
+  small: PropTypes.bool,
+  defaultValue: PropTypes.string,
+  addOption: PropTypes.node,
+  onChange: PropTypes.func,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func
 };
 
 export { SparkSelect };

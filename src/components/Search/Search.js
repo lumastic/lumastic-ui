@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "./Search.scss";
-import classNames from "../../helpers/classNames";
 import { MagnifyingGlass } from "../../icons/MagnifyingGlass";
+import classNames from "../../helpers/classNames";
+import style from "./Search.scss";
 
 const Search = ({
   name,

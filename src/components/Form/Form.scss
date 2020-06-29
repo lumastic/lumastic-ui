@@ -1,0 +1,21 @@
+@import "../../styles/colors.scss";
+
+.form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: min-content;
+  row-gap: 1rem;
+}
+.general {
+  margin-bottom: 0.75rem;
+}
+.debugger {
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid $greyLight;
+  pre {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}

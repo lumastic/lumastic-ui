@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
+import getTag from "./helpers/getTag";
 import style from "./Type.scss";
 import classNames from "../../helpers/classNames";
-import getTag from "./helpers/getTag";
 
 const Type = forwardRef(
   (
@@ -16,6 +16,7 @@ const Type = forwardRef(
       caption,
       overline,
       body2,
+      gutterBottom,
       setSize,
       align = "left",
       tag,
@@ -38,6 +39,7 @@ const Type = forwardRef(
           { [style.caption]: caption },
           { [style.overline]: overline },
           { [style.body2]: body2 },
+          { [style["gutter-bottom"]]: gutterBottom },
           style[color]
         )}
         style={{ fontSize: setSize }}
@@ -60,11 +62,20 @@ Type.propTypes = {
   h4: PropTypes.bool,
   caption: PropTypes.bool,
   overline: PropTypes.bool,
+  gutterBottom: PropTypes.bool,
   body2: PropTypes.bool,
   setSize: PropTypes.string,
   align: PropTypes.oneOf(["center", "left", "right"]),
   tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "p", "span", "div"]),
-  color: PropTypes.oneOf(["normal", "primary", "red", "green", "grey"])
+  color: PropTypes.oneOf([
+    "normal",
+    "primary",
+    "secondary",
+    "accent",
+    "red",
+    "green",
+    "grey"
+  ])
 };
 
 export { Type };

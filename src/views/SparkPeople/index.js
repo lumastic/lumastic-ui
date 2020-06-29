@@ -1,0 +1,1 @@
+export { SparkPeople } from "./SparkPeople";

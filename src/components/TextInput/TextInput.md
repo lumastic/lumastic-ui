@@ -9,8 +9,8 @@
 #### `placeholder` defaults to `name` if not specified
 
 ```jsx
-<TextInput name={"Name as placeholder"} />
-<TextInput placeholder={"Placeholder text"} />
+  <TextInput name={"Name as placeholder"} />
+  <TextInput placeholder={"Placeholder text"} />
 ```
 
 Source:

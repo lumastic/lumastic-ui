@@ -29,11 +29,14 @@ const getEntries = () => {
   const components = path.resolve(__dirname, "src/components");
   const templates = path.resolve(__dirname, "src/templates");
   const layouts = path.resolve(__dirname, "src/layouts");
+  const views = path.resolve(__dirname, "src/views");
   const icons = path.resolve(__dirname, "src/icons");
   return {
     ...createEntries(components),
     ...createEntries(templates),
+    ...createEntries(views),
     ...createEntries(layouts),
+    [`routes/index`]: `${path.resolve(__dirname, "src/routes")}/index.js`,
     ...createIconEntries(icons)
   };
 };

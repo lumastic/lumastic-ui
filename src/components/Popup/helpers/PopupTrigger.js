@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import PopupContext from "./PopupContext";
+import { classNames } from "../../../helpers";
 import style from "../Popup.scss";
 
-const PopupTrigger = ({ children }) => {
+const PopupTrigger = ({ className, children }) => {
   const { toggle, setTrigger } = useContext(PopupContext);
 
   const handleClick = () => {
@@ -22,7 +23,7 @@ const PopupTrigger = ({ children }) => {
       tabIndex={0}
       ref={ref => setTrigger(ref)}
       onClick={handleClick}
-      className={style["popup-trigger"]}
+      className={classNames(className, style["popup-trigger"])}
       onKeyDown={handleEnter}
     >
       {children}
@@ -31,6 +32,7 @@ const PopupTrigger = ({ children }) => {
 };
 
 PopupTrigger.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node
 };
 

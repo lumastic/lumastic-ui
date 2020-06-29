@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Timeline } from "../../components/Timeline";
 import style from "./Feed.scss";
 import classNames from "../../helpers/classNames";
-import { Timeline } from "../../components/Timeline";
 
 const Feed = ({ children, className, ...rest }) => (
   <div

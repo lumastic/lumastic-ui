@@ -2,6 +2,9 @@ const path = require("path");
 const fs = require("fs");
 
 module.exports = {
+  styleguideComponents: {
+    Wrapper: path.join(__dirname, "src/helpers/styleguide/Wrapper")
+  },
   sections: [
     {
       name: "Components",
@@ -18,6 +21,10 @@ module.exports = {
     {
       name: "Layouts",
       components: "src/layouts/*/*.js"
+    },
+    {
+      name: "Forms",
+      components: "src/forms/*/*.js"
     }
   ],
   ignore: ["src/*/**/index.js", "src/*/**/*.test.js", "src/*/**/examples/*"],

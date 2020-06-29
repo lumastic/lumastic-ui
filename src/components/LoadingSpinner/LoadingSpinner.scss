@@ -1,0 +1,36 @@
+@import "../../styles/colors.scss";
+.loadingspinner {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+  &:after {
+    position: absolute;
+    top: -0.25rem;
+    left: -0.25rem;
+    border: 0.25rem solid transparent;
+    border-top-color: $secondary;
+    border-bottom-color: $accent;
+    animation: spinny 0.75s linear infinite;
+  }
+}
+@keyframes spinny {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
