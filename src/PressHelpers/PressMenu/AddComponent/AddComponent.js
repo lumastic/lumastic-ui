@@ -25,7 +25,7 @@ const AddComponent = memo(({ insertEditor, insertComponent, components }) => (
       <MenuItem onClick={insertEditor}>
         <Type body2>Text Block</Type>
       </MenuItem>
-      {components.map(component => (
+      {components?.map(component => (
         <MenuItem
           onClick={() => insertComponent(component)}
           key={component?.name}

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
+import { defaultPressValue } from "pressdk";
 import {
   Form,
   TextInput,
@@ -10,13 +11,15 @@ import {
   Link,
   Type,
   Point,
-  RichInput
+  PressInput,
+  InputController
 } from "../../components";
 import { useUser } from "../..";
 import { SparkSelectCrumbs, Signature, SparkCrumbs } from "../../templates";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
 import style from "./PostForm.scss";
+import useModal from "../../hooks/useModal";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
@@ -26,6 +29,7 @@ const postSchema = yup.object().shape({
 
 const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
   const user = useUser();
+  const [reset, toggle] = useModal();
   if (sparks.length === 0)
     return (
       <>
@@ -36,13 +40,24 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         </Link>
       </>
     );
-  const defaults = { ...defaultValues };
+  const defaults = {
+    content: JSON.stringify(defaultPressValue()),
+    ...defaultValues
+  };
   if (sparks.length === 1) {
     defaults.spark = sparks[0].id;
   }
+  const handleSubmit = (data, e, rest) => {
+    if (onSubmit) {
+      onSubmit(data, e, rest);
+    } else {
+      alert(JSON.stringify(data));
+    }
+    toggle();
+  };
   return (
     <Form
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       defaultValues={defaults}
       className={style.form}
       validationSchema={postSchema}
@@ -62,7 +77,11 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         </>
       )}
 
-      <RichInput name="content" placeholder="What's the latests..." />
+      <PressInput
+        reset={reset}
+        name="content"
+        placeholder="What's the latests..."
+      />
       <div className={style.bottom}>
         <div className={style.left}>
           <Select

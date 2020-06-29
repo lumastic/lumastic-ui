@@ -15,6 +15,7 @@ export * from "./Emoji";
 export * from "./EmojiSelector";
 export * from "./Form";
 export * from "./IconButton";
+export * from "./InputController";
 export * from "./Label";
 export * from "./Link";
 export * from "./List";

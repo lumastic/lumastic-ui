@@ -16,7 +16,7 @@ import { OrgSelect, OrgSignature } from "../../templates";
 import style from "./SparkForm.scss";
 
 const sparkSchema = yup.object().shape({
-  belongsTo: yup.string(),
+  belongsTo: yup.string().required("This field is required"),
   title: yup.string().required("This field is required"),
   description: yup.string(),
   visibility: yup.string().required("This field is required")
@@ -32,6 +32,7 @@ const SparkForm = ({
     validationSchema={sparkSchema}
     defaultValues={{
       visibility: "Public",
+      belongsTo: organizations[0]?.id,
       ...defaultValues
     }}
   >
@@ -45,7 +46,10 @@ const SparkForm = ({
             organizations={organizations}
           />
         ) : (
-          <OrgSignature organization={organizations[0]} />
+          <>
+            <OrgSignature organization={organizations[0]} />
+            <TextInput name="belongsTo" hidden />
+          </>
         )}
       </div>
       <div>

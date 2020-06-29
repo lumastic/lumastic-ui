@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { TextRenderer } from "pressdk";
+import { PressRenderer } from "pressdk";
 import { Card, Divider, Type, Point } from "../../components";
 import {
   Comment,
@@ -12,6 +12,7 @@ import {
 import recommendReactions from "./helpers/recommendReactions.json";
 import formatTime from "../../helpers/formatTime";
 import style from "./ProgressPost.scss";
+import { parseContent } from "../../helpers";
 
 const ProgressPost = ({
   spark = {},
@@ -36,7 +37,7 @@ const ProgressPost = ({
         </Type>
       </div>
       <Type tag="div">
-        <TextRenderer value={post?.content} />
+        <PressRenderer value={parseContent(post?.content)} />
       </Type>
       <div className={style.postreactions}>
         {post.reactions?.map((reaction, key) => (

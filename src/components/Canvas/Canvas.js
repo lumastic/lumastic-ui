@@ -34,7 +34,7 @@ const Canvas = ({ children, className, size = {} }) => {
   useDroppable({ ref: canvasRef, onDrop });
 
   const onDoubleClick = e => {
-    console.log("Double clicked canvas");
+    // console.log("Double clicked canvas");
     e.preventDefault();
     // Set right click position
     const clickPosition = { x: e.clientX, y: e.clientY };

@@ -1,16 +1,22 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { FormContext, useForm } from "react-hook-form";
 import { Type, Alert } from "..";
-
 import style from "./Form.scss";
+
+const defaultSubmit = (data, e, rest) => {
+  alert(JSON.stringify(data));
+  rest.reset();
+};
 
 const Form = ({
   defaultValues,
   validationSchema,
   children,
   className,
-  onSubmit = data => alert(JSON.stringify(data)),
+  onSubmit = defaultSubmit,
   debug
 }) => {
   const methods = useForm({
