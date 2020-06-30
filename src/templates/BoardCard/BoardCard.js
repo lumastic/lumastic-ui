@@ -1,22 +1,16 @@
+import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React, { memo, useEffect, useRef, useState } from "react";
-import { PressRenderer } from "pressdk";
-import { useForm, FormContext } from "react-hook-form";
+import { FormContext, useForm } from "react-hook-form";
 import { MoreMenu } from "..";
-import {
-  Card,
-  Divider,
-  MenuItem,
-  PressInput,
-  Type,
-  InputController
-} from "../../components";
+import { Card, Divider, MenuItem, PressInput, Type } from "../../components";
+import { parseContent } from "../../helpers";
 import classNames from "../../helpers/classNames";
 import { useDraggable, useDroppable, useResizable } from "../../hooks";
 import { Resize } from "../../icons";
 import { useBoard } from "../../views";
 import style from "./BoardCard.scss";
-import { parseContent } from "../../helpers";
+import { pressComponents } from "../../PressHelpers";
 
 const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   const cardRef = useRef(null);
@@ -98,7 +92,10 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
                 defaultValue={parseContent(card?.content)}
               />
             ) : (
-              <PressRenderer value={parseContent(card?.content)} />
+              <PressRenderer
+                components={pressComponents}
+                value={parseContent(card?.content)}
+              />
             )}
           </Type>
           <div className={style.resize} ref={resizeHandle}>

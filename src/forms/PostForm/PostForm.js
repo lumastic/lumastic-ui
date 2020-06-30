@@ -1,25 +1,24 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import * as yup from "yup";
 import { defaultPressValue } from "pressdk";
+import PropTypes from "prop-types";
+import React from "react";
+import * as yup from "yup";
+import { useUser } from "../..";
 import {
-  Form,
-  TextInput,
   Button,
-  Select,
-  Option,
+  Form,
   Link,
-  Type,
+  Option,
   Point,
   PressInput,
-  InputController
+  Select,
+  TextInput,
+  Type
 } from "../../components";
-import { useUser } from "../..";
-import { SparkSelectCrumbs, Signature, SparkCrumbs } from "../../templates";
+import useModal from "../../hooks/useModal";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
+import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";
 import style from "./PostForm.scss";
-import useModal from "../../hooks/useModal";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),

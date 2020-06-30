@@ -4,6 +4,7 @@ export * from "./NewBoardDialog";
 export * from "./NewPostCard";
 export * from "./NewPostDialog";
 export * from "./PageAppBar";
+export * from "./ProfileHeader";
 export * from "./ProgressPost";
 export * from "./SideNav";
 export * from "./SparkCard";

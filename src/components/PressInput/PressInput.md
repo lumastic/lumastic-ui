@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<PressInput>PressInput</PressInput>
+<PressInput />
 ```
 
 Source:

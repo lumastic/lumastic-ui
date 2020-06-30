@@ -4,9 +4,10 @@
 <BoardCard
   block
   card={{
-    content: [
+    content: JSON.stringify([
       {
         name: "type",
+        id: 1,
         value: [
           {
             name: "default",
@@ -14,17 +15,9 @@
           }
         ]
       }
-    ]
+    ])
   }}
 />
-```
-
-#### Basic Usage
-
-```jsx
-<BoardCard>
-  <BoardCard block />
-</BoardCard>
 ```
 
 Source:

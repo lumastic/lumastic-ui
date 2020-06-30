@@ -1,0 +1,35 @@
+@import "../../../styles/colors.scss";
+$tabBorderSize: 2px;
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.5rem;
+  margin-bottom: -$tabBorderSize;
+  border-bottom: $tabBorderSize solid #dbdbdb;
+  transition: all 150ms ease-in-out;
+  color: grey;
+  &.disabled {
+    color: rgba($grey, 0.7);
+    &:hover {
+      background-color: unset;
+      border-bottom: $tabBorderSize solid #dbdbdb;
+      color: rgba($grey, 0.7);
+      cursor: unset;
+    }
+  }
+  &:hover {
+    background-color: rgba($primary, 0.2);
+    border-bottom: $tabBorderSize solid rgba($primary, 0.2);
+    color: $primary;
+    cursor: pointer;
+  }
+  .typography {
+    color: inherit;
+  }
+  &.active {
+    border-bottom: $tabBorderSize solid $primary;
+    color: $primary;
+  }
+}
