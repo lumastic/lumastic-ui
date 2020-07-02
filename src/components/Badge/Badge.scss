@@ -5,9 +5,12 @@
   display: inline-flex;
   .badge {
     position: absolute;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
+    display: inline-flex;
+    &.circle {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+    }
     &.border {
       border: 2px solid $backgroundLight;
     }
@@ -24,16 +27,16 @@
       background-color: $secondary;
     }
     &.top {
-      top: -2px;
+      top: -0.4vh;
     }
     &.bottom {
-      bottom: -2px;
+      bottom: -0.4vh;
     }
     &.left {
-      left: -0.25rem;
+      left: -0.4vw;
     }
     &.right {
-      right: -0.25rem;
+      right: -0.4vw;
     }
   }
 }

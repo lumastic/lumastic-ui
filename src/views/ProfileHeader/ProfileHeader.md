@@ -5,7 +5,7 @@
   organization={{
     isUserOrganization: true,
     name: "dlytle",
-    headerImage: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
+    headerURL: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
     createdBy: {
       name: "Drew Lytle",
       following: [{ name: "keith" }]

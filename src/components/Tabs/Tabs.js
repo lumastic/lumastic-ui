@@ -1,11 +1,18 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Switch, useLocation } from "react-router-dom";
+import React, { Children, useState } from "react";
+import { Route, Switch } from "react-router-dom";
 import { TabContext } from "./Tab/TabContext";
+import { TabPanel } from "./TabPanel";
+import { classNames } from "../../helpers";
 import style from "./Tabs.scss";
-import classNames from "../../helpers/classNames";
 
-const Tabs = ({ children, className, initialTab, baseRoute }) => {
+const Tabs = ({
+  children,
+  className,
+  initialTab,
+  baseRoute,
+  vertical = false
+}) => {
   const [activeTab, changeTab] = useState(initialTab);
   const tabProviderValue = {
     activeTab,
@@ -13,13 +20,33 @@ const Tabs = ({ children, className, initialTab, baseRoute }) => {
     path: baseRoute,
     initialTab
   };
-
+  const childArray = Children.toArray(children);
+  const header = childArray[0];
+  const panels = childArray.slice(1, childArray.length);
   return (
-    <TabContext.Provider value={tabProviderValue}>
-      <Switch>
-        <div className={classNames(style.tabs, className)}>{children}</div>
-      </Switch>
-    </TabContext.Provider>
+    <div
+      className={classNames(style.tabs, className, {
+        [style.vertical]: vertical
+      })}
+    >
+      <TabContext.Provider value={tabProviderValue}>
+        {header}
+        <Switch>
+          {panels.map(panel => (
+            <Route
+              key={panel?.props?.name}
+              path={
+                initialTab === panel?.props?.name
+                  ? baseRoute
+                  : `${baseRoute}/${panel?.props?.name}`
+              }
+              exact={initialTab === panel?.props?.name}
+              render={() => <TabPanel {...panel?.props} />}
+            />
+          ))}
+        </Switch>
+      </TabContext.Provider>
+    </div>
   );
 };
 
@@ -27,6 +54,7 @@ Tabs.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   initialTab: PropTypes.string,
+  vertical: PropTypes.bool,
   baseRoute: PropTypes.string
 };
 

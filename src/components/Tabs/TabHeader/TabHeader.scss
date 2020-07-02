@@ -7,11 +7,12 @@ $tabBorderSize: 2px;
   flex-direction: row;
   border-bottom: $tabBorderSize solid $greyLight;
   flex-wrap: wrap;
-  .tab {
+  margin-bottom: 0.75rem;
+  > a {
     flex-grow: 0;
   }
   &.center {
-    .tab {
+    > a {
       flex-grow: 1;
     }
   }

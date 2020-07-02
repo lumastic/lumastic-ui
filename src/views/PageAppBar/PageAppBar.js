@@ -1,24 +1,28 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   AppBar,
-  Container,
-  Search,
-  Link,
-  IconButton,
   Avatar,
+  Container,
+  IconButton,
+  Link,
   Type
 } from "../../components";
-import { Signature } from "../../templates";
-import { LeftPush } from "../../layouts";
-import { MagnifyingGlass } from "../../icons";
+import { SearchForm } from "../../forms";
 import { useUser } from "../../hooks";
-import { exploreRoute, profileRoute } from "../../routes";
+import { MagnifyingGlass } from "../../icons";
+import { LeftPush } from "../../layouts";
+import { exploreRoute, profileRoute, searchRoute } from "../../routes";
+import { Signature } from "../../templates";
 import style from "./PageAppBar.scss";
-import classNames from "../../helpers/classNames";
 
 const PageAppBar = ({ icon, title }) => {
   const { avatarURL, username } = useUser();
+  const history = useHistory();
+  const onSearch = searchString => {
+    history.push(searchRoute(searchString));
+  };
   return (
     <AppBar>
       <Container className={style.container}>
@@ -29,7 +33,11 @@ const PageAppBar = ({ icon, title }) => {
           </Signature>
         </div>
         <LeftPush>
-          <Search placeholder="Search..." className={style.search} />
+          <SearchForm
+            placeholder="Search..."
+            className={style.search}
+            onSearch={onSearch}
+          />
           <div className={style.searchBtn}>
             <Link button to={exploreRoute}>
               <IconButton color="grey" size="big">

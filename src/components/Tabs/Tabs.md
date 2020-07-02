@@ -3,7 +3,7 @@
 ```jsx
 import { TabHeader, Tab, TabPanel } from ".";
 <Tabs initialTab="posts" baseRoute="/test">
-  <TabHeader align={"left"}>
+  <TabHeader align={"center"}>
     <Tab name={"posts"}>Posts</Tab>
     <Tab name={"sparks"}>Sparks</Tab>
     <Tab name={"disabled"} disabled>

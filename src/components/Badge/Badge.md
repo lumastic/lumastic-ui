@@ -47,6 +47,23 @@ import { Avatar } from "../Avatar";
 </>;
 ```
 
+#### `render`
+
+```jsx padded
+import { Avatar } from "../Avatar";
+import { IconButton } from "../IconButton";
+import { Gear } from "../../icons";
+<Badge
+  render={
+    <IconButton>
+      <Gear />
+    </IconButton>
+  }
+>
+  <Avatar />
+</Badge>;
+```
+
 Source:
 
 ```js { "file": "./Badge.js" }

@@ -8,7 +8,6 @@ import style from "./Tab.scss";
 
 const Tab = ({ children, name, className, disabled }) => {
   const { initialTab, path } = useContext(TabContext);
-  console.log(path, name, initialTab);
 
   return (
     <NavLink
@@ -19,7 +18,7 @@ const Tab = ({ children, name, className, disabled }) => {
       })}
       activeClassName={style.active}
     >
-      <Type>{children}</Type>
+      <Type body2>{children}</Type>
     </NavLink>
   );
 };

@@ -8,7 +8,7 @@ const Search = ({
   name,
   value,
   id,
-  placeholder,
+  placeholder = "Search...",
   className,
   onChange,
   ...rest
