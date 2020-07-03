@@ -16,7 +16,7 @@
     "test": "jest --watch",
     "cp:package": "cp -rf package.json dist",
     "yalc": "yarn build && cd dist && yalc push",
-    "dist": "cd dist && yarn publish"
+    "dist": "yarn build && cd dist && yarn publish"
   },
   "keywords": [],
   "author": "Headfake Digital, LLC",
@@ -85,7 +85,7 @@
     "rootDir": "src"
   },
   "dependencies": {
-    "pressdk": "^0.1.0",
+    "pressdk": "^0.2.2",
     "yup": "^0.28.5"
   }
 }

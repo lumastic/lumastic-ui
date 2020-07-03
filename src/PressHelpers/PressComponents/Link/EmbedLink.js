@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import style from "./Link.scss";
-import { Type, Button, TextInput, LoadingSpinner } from "../../../components";
+import { LoadingSpinner, TextInput, Type } from "../../../components";
+import style from "./EmbedLink.scss";
 
 /**
  * Hello this is the gallery
  * @param {{value: [], onChange: () => {}, callbacks: { uploadFile: () => {} }, readOnly: Boolean}} param0
  */
-const Link = ({ value, onChange, callbacks, readOnly }) => {
+const EmbedLink = ({ value, onChange, callbacks, readOnly }) => {
   const { metascrapi } = callbacks;
   const { url, base, image, title, favicon } = value;
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ const Link = ({ value, onChange, callbacks, readOnly }) => {
 
 export const link = {
   name: "link",
-  render: Link,
+  render: EmbedLink,
   defaultValue: { url: "", base: "", image: "", title: "", favicon: "" },
   recieveCallbacks: true,
   displayName: "Link"
