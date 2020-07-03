@@ -1,0 +1,55 @@
+@import "../../../styles/colors.scss";
+
+.link {
+  border-radius: 5px;
+  border: 1px solid $grey;
+  .loading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  &.focused {
+    border: 2px solid $secondary;
+  }
+  overflow: hidden;
+  position: relative;
+  a {
+    all: unset;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($grey, 20%);
+    }
+    &:focus {
+      background-color: lighten($secondary, 20%);
+    }
+    &:active {
+      background-color: lighten($secondary, 20%);
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: inherit;
+    .img {
+      flex-grow: 2;
+      flex-basis: 100px;
+      min-height: 90px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 5;
+      flex-basis: 200px;
+      padding: 10px;
+    }
+  }
+}

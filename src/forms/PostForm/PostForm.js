@@ -26,7 +26,7 @@ const postSchema = yup.object().shape({
   type: yup.string().required("This field is required")
 });
 
-const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
+const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
   const user = useUser();
   const [reset, toggle] = useModal();
   if (sparks.length === 0)
@@ -80,6 +80,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         reset={reset}
         name="content"
         placeholder="What's the latests..."
+        callbacks={callbacks}
       />
       <div className={style.bottom}>
         <div className={style.left}>
@@ -123,7 +124,8 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
 PostForm.propTypes = {
   sparks: PropTypes.array,
   onSubmit: PropTypes.func,
-  defaultValues: PropTypes.object
+  defaultValues: PropTypes.object,
+  callbacks: PropTypes.object
 };
 
 export { PostForm };

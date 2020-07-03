@@ -68,32 +68,7 @@ const Gallery = ({ value, onChange, callbacks, readOnly }) => {
 export const gallery = {
   name: "gallery",
   render: Gallery,
-  defaultValue: [
-    {
-      src: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
-      alt: "alt test"
-    },
-    {
-      src: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
-      alt: "alt test"
-    },
-    {
-      src: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
-      alt: "alt test"
-    },
-    {
-      src: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
-      alt: "alt test"
-    },
-    {
-      src: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
-      alt: "alt test"
-    },
-    {
-      src: "https://cdn.lumastic.com/media/v1/pages/demo/Header.png",
-      alt: "alt test"
-    }
-  ],
+  defaultValue: [],
   recieveCallbacks: true,
   displayName: "Photos"
 };

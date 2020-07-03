@@ -4,7 +4,7 @@ import { getYtId } from "./helpers/getYtId";
 import { TextInput } from "../../../components";
 import style from "./YouTube.scss";
 
-const YouTube = ({ value, onChange }) => {
+const YouTube = ({ value, onChange, readOnly }) => {
   const handleValueChange = e => {
     const link = e?.target?.value;
     if (onChange) onChange({ link });
@@ -22,7 +22,13 @@ const YouTube = ({ value, onChange }) => {
         />
       </div>
 
-      <TextInput value={value?.link || ""} onChange={handleValueChange} />
+      {!readOnly && (
+        <TextInput
+          value={value?.link || ""}
+          onChange={handleValueChange}
+          placeholder="Paste in a YouTube link..."
+        />
+      )}
     </div>
   );
 };
