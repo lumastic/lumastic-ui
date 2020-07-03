@@ -7,7 +7,7 @@ import style from "./EmbedLink.scss";
  * Hello this is the gallery
  * @param {{value: [], onChange: () => {}, callbacks: { uploadFile: () => {} }, readOnly: Boolean}} param0
  */
-const EmbedLink = ({ value, onChange, callbacks, readOnly }) => {
+const EmbedLink = ({ value = {}, onChange, callbacks = {}, readOnly }) => {
   const { metascrapi } = callbacks;
   const { url, base, image, title, favicon } = value;
   const [loading, setLoading] = useState(false);

@@ -7,14 +7,14 @@ import { Type, Button } from "../../../components";
  * Hello this is the gallery
  * @param {{value: [], onChange: () => {}, callbacks: { uploadFile: () => {} }, readOnly: Boolean}} param0
  */
-const Gallery = ({ value, onChange, callbacks, readOnly }) => {
-  const { uploadFile } = callbacks;
+const Gallery = ({ value = [], onChange, callbacks = {}, readOnly }) => {
+  const { uploadFiles } = callbacks;
   const input = useRef();
   const handleFileUpload = async e => {
     if (onChange) {
-      const files = await uploadFile(e.target.files);
+      const files = await uploadFiles(e.target.files);
+      console.log(files);
       const images = [];
-
       if (files)
         files.forEach(file =>
           images.push({ src: file.url, alt: file?.meta?.alt })

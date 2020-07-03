@@ -6,6 +6,7 @@ import { useInputContext } from "../../helpers/useInputContext";
 import { pressComponents, PressMenu } from "../../PressHelpers";
 import { Type } from "../Type";
 import style from "./PressInput.scss";
+import { useUser } from "../../hooks";
 
 const PressInput = ({
   defaultValue,
@@ -13,10 +14,10 @@ const PressInput = ({
   name = "pressinput",
   reset,
   readOnly,
-  className,
-  callbacks
+  className
 }) => {
   const { register, setValue, errors } = useInputContext();
+  const { callbacks } = useUser();
   // console.log(defaultValue);
   useEffect(() => {
     if (register) register({ name });
@@ -64,8 +65,7 @@ PressInput.propTypes = {
   name: PropTypes.string,
   reset: PropTypes.bool,
   readOnly: PropTypes.bool,
-  className: PropTypes.string,
-  callbacks: PropTypes.object
+  className: PropTypes.string
 };
 
 export { PressInput };

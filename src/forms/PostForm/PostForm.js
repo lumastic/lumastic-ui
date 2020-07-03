@@ -80,7 +80,6 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
         reset={reset}
         name="content"
         placeholder="What's the latests..."
-        callbacks={callbacks}
       />
       <div className={style.bottom}>
         <div className={style.left}>
