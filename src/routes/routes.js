@@ -1,6 +1,6 @@
 export const baseRoute = "/";
 export const homeRoute = "/home";
-export const exploreRoute = "/explore";
+
 export const upgradeRoute = "/pro";
 export const notificationsRoute = "/notifications";
 
@@ -76,3 +76,10 @@ export const viewBoardRoute = (
   sparkId = ":sparkId",
   boardId = ":boardId"
 ) => `${baseSparkRoute(orgName, sparkId)}/board/${boardId}`;
+
+// EXPLORE ROUTE
+export const exploreRoute = "/explore";
+
+// SEARCH ROUTE
+export const searchRoute = (searchString = ":searchString") =>
+  `/explore/${searchString}`;

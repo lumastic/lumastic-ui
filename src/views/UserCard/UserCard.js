@@ -32,7 +32,7 @@ const UserCard = ({ sparks = [], organizations = [] }) => {
           <Type h3>{user?.name}</Type>
         </Link>
         <Type color="grey" body2>
-          This is where a bio would go
+          {user?.userProfile?.bio}
         </Type>
       </div>
       <div className={style.sparks}>

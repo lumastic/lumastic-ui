@@ -1,0 +1,22 @@
+@import "../../../styles/colors.scss";
+$tabBorderSize: 2px;
+
+.tab-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: $tabBorderSize solid $greyLight;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  > a {
+    flex-grow: 0;
+  }
+  &.center {
+    > a {
+      flex-grow: 1;
+    }
+  }
+  &.right {
+    justify-content: flex-end;
+  }
+}

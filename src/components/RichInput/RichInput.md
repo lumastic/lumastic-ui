@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<RichInput>RichInput</RichInput>
+<RichInput />
 ```
 
 Source:

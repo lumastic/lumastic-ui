@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { getYtId } from "./helpers/getYtId";
-import { TextInput } from "../../../components";
-import style from "./YouTube.scss";
+import { TextEditor }
 
-const YouTube = ({ value, onChange, readOnly }) => {
+const YouTube = ({ value, onChange }) => {
   const handleValueChange = e => {
     const link = e?.target?.value;
     if (onChange) onChange({ link });
@@ -22,18 +20,12 @@ const YouTube = ({ value, onChange, readOnly }) => {
         />
       </div>
 
-      {!readOnly && (
-        <TextInput
-          value={value?.link || ""}
-          onChange={handleValueChange}
-          placeholder="Paste in a YouTube link..."
-        />
-      )}
+      <TextInput value={value?.link || ""} onChange={handleValueChange} />
     </div>
   );
 };
 
-export const yt = {
+export const ytConfig = {
   name: "yt",
   render: YouTube,
   defaultValue: { link: "" },

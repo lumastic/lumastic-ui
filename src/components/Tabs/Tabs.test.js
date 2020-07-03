@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Tab } from ".";
+import { Tabs } from ".";
 
-describe("Tab tests", () => {
+describe("Tabs tests", () => {
   test("Can mount", () => {
-    render(<Tab>Test</Tab>);
-    expect(screen.queryByTestId("tab")).toBeTruthy();
+    render(<Tabs>Test</Tabs>);
+    expect(screen.queryByTestId("tabs")).toBeTruthy();
   });
 });

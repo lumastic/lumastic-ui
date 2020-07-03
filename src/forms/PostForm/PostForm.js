@@ -1,25 +1,24 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import * as yup from "yup";
 import { defaultPressValue } from "pressdk";
+import PropTypes from "prop-types";
+import React from "react";
+import * as yup from "yup";
+import { useUser } from "../..";
 import {
-  Form,
-  TextInput,
   Button,
-  Select,
-  Option,
+  Form,
   Link,
-  Type,
+  Option,
   Point,
   PressInput,
-  InputController
+  Select,
+  TextInput,
+  Type
 } from "../../components";
-import { useUser } from "../..";
-import { SparkSelectCrumbs, Signature, SparkCrumbs } from "../../templates";
+import useModal from "../../hooks/useModal";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
+import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";
 import style from "./PostForm.scss";
-import useModal from "../../hooks/useModal";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
@@ -27,7 +26,7 @@ const postSchema = yup.object().shape({
   type: yup.string().required("This field is required")
 });
 
-const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
+const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
   const user = useUser();
   const [reset, toggle] = useModal();
   if (sparks.length === 0)
@@ -81,6 +80,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
         reset={reset}
         name="content"
         placeholder="What's the latests..."
+        callbacks={callbacks}
       />
       <div className={style.bottom}>
         <div className={style.left}>
@@ -124,7 +124,8 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {} }) => {
 PostForm.propTypes = {
   sparks: PropTypes.array,
   onSubmit: PropTypes.func,
-  defaultValues: PropTypes.object
+  defaultValues: PropTypes.object,
+  callbacks: PropTypes.object
 };
 
 export { PostForm };
