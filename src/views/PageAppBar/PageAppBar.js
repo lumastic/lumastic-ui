@@ -17,7 +17,7 @@ import { exploreRoute, profileRoute, searchRoute } from "../../routes";
 import { Signature } from "../../templates";
 import style from "./PageAppBar.scss";
 
-const PageAppBar = ({ icon, title }) => {
+const PageAppBar = ({ icon, title, noSearch = false }) => {
   const { avatarURL, username } = useUser();
   const history = useHistory();
   const onSearch = searchString => {
@@ -33,18 +33,25 @@ const PageAppBar = ({ icon, title }) => {
           </Signature>
         </div>
         <LeftPush>
-          <SearchForm
-            placeholder="Search..."
-            className={style.search}
-            onSearch={onSearch}
-          />
-          <div className={style.searchBtn}>
-            <Link button to={exploreRoute}>
-              <IconButton color="grey" size="big">
-                <MagnifyingGlass />
-              </IconButton>
-            </Link>
-          </div>
+          {!noSearch ? (
+            <>
+              <SearchForm
+                placeholder="Search..."
+                className={style.search}
+                onSearch={onSearch}
+              />
+              <div className={style.searchBtn}>
+                <Link button to={exploreRoute}>
+                  <IconButton color="grey" size="big">
+                    <MagnifyingGlass />
+                  </IconButton>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div />
+          )}
+
           <Link to={profileRoute(username)} inline>
             <Avatar src={avatarURL} />
           </Link>
@@ -56,7 +63,8 @@ const PageAppBar = ({ icon, title }) => {
 
 PageAppBar.propTypes = {
   icon: PropTypes.node,
-  title: PropTypes.string
+  title: PropTypes.string,
+  noSearch: PropTypes.bool
 };
 
 export { PageAppBar };

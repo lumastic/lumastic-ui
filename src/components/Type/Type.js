@@ -74,7 +74,8 @@ Type.propTypes = {
     "accent",
     "red",
     "green",
-    "grey"
+    "grey",
+    "white"
   ])
 };
 

@@ -27,7 +27,7 @@ const YouTube = ({ value, onChange }) => {
   );
 };
 
-export const ytConfig = {
+export const yt = {
   name: "yt",
   render: YouTube,
   defaultValue: { link: "" },

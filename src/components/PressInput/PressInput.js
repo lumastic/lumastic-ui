@@ -13,7 +13,8 @@ const PressInput = ({
   name = "pressinput",
   reset,
   readOnly,
-  className
+  className,
+  callbacks
 }) => {
   const { register, setValue, errors } = useInputContext();
   // console.log(defaultValue);
@@ -48,6 +49,7 @@ const PressInput = ({
               renderMenu={PressMenu}
               readOnly={readOnly}
               components={pressComponents}
+              callbacks={callbacks}
             />
           </Type>
         </PressProvider>
@@ -62,7 +64,8 @@ PressInput.propTypes = {
   name: PropTypes.string,
   reset: PropTypes.bool,
   readOnly: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  callbacks: PropTypes.object
 };
 
 export { PressInput };

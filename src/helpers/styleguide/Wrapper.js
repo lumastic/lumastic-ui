@@ -1,9 +1,8 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import PropTypes from "prop-types";
-import { FormContext } from "react-hook-form";
-import { UserProvider } from "../../hooks";
 import { drew } from "../../data/user.db";
+import { UserProvider } from "../../hooks";
 
 const Wrapper = ({ children }) => (
   <UserProvider {...drew}>
