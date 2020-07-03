@@ -62,9 +62,6 @@ const ProgressPost = ({
       {(post.comments || canComment) && <Divider />}
       {(post.comments || canComment) && (
         <div className={style.comments}>
-          {canComment && (
-            <NewComment post={post} onSubmit={newCommentHandler} />
-          )}
           {post.comments?.map((comment, key) => (
             <Comment
               comment={comment}
@@ -72,6 +69,9 @@ const ProgressPost = ({
               key={comment.id || key}
             />
           ))}
+          {canComment && (
+            <NewComment post={post} onSubmit={newCommentHandler} />
+          )}
         </div>
       )}
     </Card>

@@ -18,7 +18,8 @@ const NewComment = ({ post = {}, onSubmit }) => {
       defaultValues={{ progressUpdateId: post?.id }}
     >
       <Avatar src={avatarURL} size="small" className={style.avatar} />
-      <TextInput name="comment" placeholder="Post a comment..." />
+      <TextInput name="content" placeholder="Post a comment..." />
+      <TextInput name="progressUpdateId" hidden />
       <IconButton size="big" type="submit">
         <PaperAirplane />
       </IconButton>
