@@ -38,11 +38,11 @@ const Link = ({ value, onChange, callbacks, readOnly }) => {
                 }}
               />
               <div className={style["text-container"]}>
-                <Type caption color="grey">
+                <Type caption color="grey" tag="div">
                   {base}
                 </Type>
 
-                <Type>{title}</Type>
+                <Type tag="div">{title}</Type>
               </div>
             </div>
           </a>
