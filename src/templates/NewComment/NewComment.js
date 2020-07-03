@@ -9,10 +9,14 @@ import { useUser } from "../..";
 import style from "./NewComment.scss";
 import classNames from "../../helpers/classNames";
 
-const NewComment = ({ onSubmit }) => {
+const NewComment = ({ post = {}, onSubmit }) => {
   const { avatarURL } = useUser();
   return (
-    <Form className={style.newcomment}>
+    <Form
+      className={style.newcomment}
+      onSubmit={onSubmit}
+      defaultValues={{ progressUpdateId: post?.id }}
+    >
       <Avatar src={avatarURL} size="small" className={style.avatar} />
       <TextInput name="comment" placeholder="Post a comment..." />
       <IconButton size="big" type="submit">
@@ -23,7 +27,8 @@ const NewComment = ({ onSubmit }) => {
 };
 
 NewComment.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  post: PropTypes.object
 };
 
 export { NewComment };

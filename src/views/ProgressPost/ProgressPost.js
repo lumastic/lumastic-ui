@@ -21,7 +21,7 @@ const ProgressPost = ({
   canComment = false,
   reactionClick,
   reactionSelect,
-  createComment
+  newCommentHandler
 }) => (
   <div className={style.postcontainer} data-testid="progresspost">
     <Point className={style.point} withBorder />
@@ -63,7 +63,7 @@ const ProgressPost = ({
       {(post.comments || canComment) && (
         <div className={style.comments}>
           {canComment && (
-            <NewComment post={post} createComment={createComment} />
+            <NewComment post={post} onSubmit={newCommentHandler} />
           )}
           {post.comments?.map((comment, key) => (
             <Comment
@@ -84,7 +84,7 @@ ProgressPost.propTypes = {
   canComment: PropTypes.bool,
   reactionClick: PropTypes.func,
   reactionSelect: PropTypes.func,
-  createComment: PropTypes.func
+  newCommentHandler: PropTypes.func
 };
 
 export { ProgressPost };
