@@ -1,16 +1,22 @@
-import React from "react";
+import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
-import { Card, Type, Label, List, Link } from "../../components";
+import React from "react";
+import { Card, Label, List, Type } from "../../components";
+import { parseContent } from "../../helpers";
+import { pressComponents } from "../../PressHelpers";
 import { SparkCrumbs, Tag } from "../../templates";
-import { viewSparkRoute } from "../../routes";
 import style from "./SparkCard.scss";
-import classNames from "../../helpers/classNames";
 
 const SparkCard = ({ spark = {} }) => (
   <Card>
     <List>
       <SparkCrumbs spark={spark} organization={spark?.belongsTo} />
-      <Type>{spark.description}</Type>
+      <Type tag="div">
+        <PressRenderer
+          components={pressComponents}
+          value={parseContent(spark?.description)}
+        />
+      </Type>
       <div>
         <Label>Tags</Label>
         <div className={style.tags}>
