@@ -1,10 +1,12 @@
 const path = require("path");
 const fs = require("fs");
+const webpack = require("./webpack.dev.js");
 
 module.exports = {
   styleguideComponents: {
     Wrapper: path.join(__dirname, "src/helpers/styleguide/Wrapper")
   },
+  webpackConfig: webpack,
   sections: [
     {
       name: "Components",
