@@ -10,7 +10,13 @@ import style from "./SparkCard.scss";
 const SparkCard = ({ spark = {} }) => (
   <Card>
     <List>
-      <SparkCrumbs spark={spark} organization={spark?.belongsTo} />
+      <SparkCrumbs
+        spark={spark}
+        organization={spark?.belongsTo}
+        user={
+          spark?.belongsTo?.isUserOrganization && spark?.belongsTo?.createdBy
+        }
+      />
       <Type tag="div">
         <PressRenderer
           components={pressComponents}

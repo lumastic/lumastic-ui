@@ -53,7 +53,11 @@ const ProfileHeader = ({
         <div className={style["avatar-wrapper"]}>
           <Avatar
             className={style.avatar}
-            src={organization?.avatarURL}
+            src={
+              organization?.isUserOrganization
+                ? organization?.createdBy?.avatarURL
+                : organization?.avatarURL
+            }
             setSize="5rem"
           />
         </div>

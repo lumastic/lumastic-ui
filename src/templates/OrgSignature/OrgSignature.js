@@ -6,16 +6,13 @@ import { profileRoute } from "../../routes";
 
 const OrgSignature = ({ organization = {}, user = {} }) => (
   <Signature>
-    <Link to={profileRoute(organization.name || user.username)} inline>
-      <Tooltip
-        label={organization.name || user.name || "Organization name"}
-        position="top"
-      >
-        <Avatar src={organization.avatarURL || user.avatarURL} />
+    <Link to={profileRoute(user.username || organization.name)} inline>
+      <Tooltip label={user.name || organization.name} position="top">
+        <Avatar src={user.userProfile?.avatarURL || organization.avatarURL} />
       </Tooltip>
     </Link>
-    <Link to={profileRoute(organization.name || user.username)} inline>
-      <Type>{organization.name || user.name}</Type>
+    <Link to={profileRoute(user.username || organization.name)} inline>
+      <Type>{user.name || organization.name}</Type>
     </Link>
   </Signature>
 );
