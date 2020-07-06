@@ -38,7 +38,8 @@
   background-color: $backgroundLight;
   border-radius: 6px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 300px;
   .select-option {
     padding: 0.5rem 1.25rem;
     min-width: 11rem;
