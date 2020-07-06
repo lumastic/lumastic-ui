@@ -4,16 +4,16 @@ import { PressRenderer } from "pressdk";
 import { Card, Divider, Type, Point } from "../../components";
 import {
   Comment,
-  NewComment,
   Reaction,
   AddEmoji,
   SparkCrumbs
 } from "../../templates";
 import recommendReactions from "./helpers/recommendReactions.json";
 import formatTime from "../../helpers/formatTime";
-import style from "./ProgressPost.scss";
 import { parseContent } from "../../helpers";
 import { pressComponents } from "../../PressHelpers";
+import { CommentForm } from "../../forms";
+import style from "./ProgressPost.scss";
 
 const ProgressPost = ({
   spark = {},
@@ -70,7 +70,10 @@ const ProgressPost = ({
             />
           ))}
           {canComment && (
-            <NewComment post={post} onSubmit={newCommentHandler} />
+            <CommentForm
+              defaultValues={{ progressUpdateId: post?.id }}
+              onSubmit={newCommentHandler}
+            />
           )}
         </div>
       )}
