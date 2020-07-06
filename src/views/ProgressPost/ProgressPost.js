@@ -2,12 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { PressRenderer } from "pressdk";
 import { Card, Divider, Type, Point } from "../../components";
-import {
-  Comment,
-  Reaction,
-  AddEmoji,
-  SparkCrumbs
-} from "../../templates";
+import { Comment, Reaction, AddEmoji, SparkCrumbs } from "../../templates";
 import recommendReactions from "./helpers/recommendReactions.json";
 import formatTime from "../../helpers/formatTime";
 import { parseContent } from "../../helpers";
@@ -29,7 +24,7 @@ const ProgressPost = ({
       <div className={style.postheader}>
         <SparkCrumbs
           spark={spark}
-          organization={post.createdBy}
+          user={post.createdBy}
           className={style.crumbs}
           small
         />

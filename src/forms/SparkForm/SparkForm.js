@@ -47,7 +47,13 @@ const SparkForm = ({
           />
         ) : (
           <>
-            <OrgSignature organization={organizations[0]} />
+            <OrgSignature
+              organization={organizations[0]}
+              user={
+                organizations[0]?.isUserOrganization &&
+                organizations[0]?.createdBy
+              }
+            />
             <TextInput name="belongsTo" hidden />
           </>
         )}
