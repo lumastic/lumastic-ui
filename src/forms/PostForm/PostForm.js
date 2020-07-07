@@ -79,7 +79,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
       <PressInput
         reset={reset}
         name="content"
-        placeholder="What's the latests..."
+        placeholder="What's the latest..."
       />
       <div className={style.bottom}>
         <div className={style.left}>
