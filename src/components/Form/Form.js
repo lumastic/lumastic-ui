@@ -35,6 +35,7 @@ const Form = ({
       <form
         className={className || style.form}
         onSubmit={methods.handleSubmit(submitHandler)}
+        onKeyDown={e => console.log(e.key)}
       >
         {children}
       </form>

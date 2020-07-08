@@ -22,3 +22,8 @@
   grid-template-columns: auto min-content;
   column-gap: 0.5rem;
 }
+.collaborator-container {
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: center;
+}
