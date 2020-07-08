@@ -27,7 +27,13 @@ const SparkDialog = ({
         onSubmit={onSubmit}
         organizations={organizations}
         license={license}
-        defaultValues={spark}
+        defaultValues={
+          spark && {
+            title: spark?.title,
+            description: spark?.description,
+            visibility: spark?.visibility
+          }
+        }
       />
     </Dialog>
   );
