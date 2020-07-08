@@ -10,7 +10,7 @@ const SparkDialog = ({
   organizations,
   license,
   title = "",
-  spark = {},
+  spark,
   isShowing = false
 }) => {
   const history = useHistory();
