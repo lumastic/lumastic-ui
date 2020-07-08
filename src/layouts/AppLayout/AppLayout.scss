@@ -33,8 +33,12 @@
       z-index: 99;
     }
     main {
-      margin-top: 38px;
-      margin-bottom: 43px;
+      position: fixed;
+      box-sizing: border-box;
+      top: 38px;
+      right: 0;
+      bottom: 43px;
+      left: 0;
     }
   }
 }

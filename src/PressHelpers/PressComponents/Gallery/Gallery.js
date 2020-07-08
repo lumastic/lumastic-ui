@@ -13,7 +13,7 @@ const Gallery = ({ value = [], onChange, callbacks = {}, readOnly }) => {
   const handleFileUpload = async e => {
     if (onChange) {
       const files = await uploadFiles(e.target.files);
-      console.log(files);
+      // console.log(files);
       const images = [];
       if (files)
         files.forEach(file =>
