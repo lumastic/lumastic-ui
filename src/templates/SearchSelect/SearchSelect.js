@@ -22,7 +22,8 @@ const SearchSelect = ({
   className,
   placeholder,
   renderResult,
-  renderSelection
+  renderSelection,
+  reset
 }) => {
   // TODO: useCallback to the searchFunc
   const { register, setValue, errors } = useInputContext();
@@ -40,12 +41,20 @@ const SearchSelect = ({
       case "remove":
         newVal.splice(index, 1);
         return newVal;
+      case "reset":
+        return [];
       default:
         return newVal;
     }
   };
 
   const [selected, setSelected] = useReducer(selectReducer, defaultValue);
+
+  useEffect(() => {
+    if (reset !== undefined && reset !== null) {
+      setSelected({ type: "reset" });
+    }
+  }, [reset]);
 
   const [results, setResults] = useState([]);
   const resultsRef = useRef();
@@ -65,9 +74,9 @@ const SearchSelect = ({
     if (onChange) onChange(selected);
   }, [selected]);
 
-  const searchHandler = e => {
+  const searchHandler = async e => {
     if (onSearch) {
-      setResults(onSearch(e?.target?.value));
+      setResults(await onSearch(e?.target?.value));
     }
     if (e?.target?.value === "") {
       toggle(false);
@@ -155,7 +164,8 @@ SearchSelect.propTypes = {
   onSearch: PropTypes.func,
   name: PropTypes.string,
   renderResult: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+  renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  reset: PropTypes.bool
 };
 
 export { SearchSelect };
