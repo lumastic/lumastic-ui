@@ -35,7 +35,11 @@ const Form = ({
       <form
         className={className || style.form}
         onSubmit={methods.handleSubmit(submitHandler)}
-        onKeyDown={e => console.log(e.key)}
+        onKeyDown={e => {
+          if (e.metaKey && e.keyCode === 13) {
+            methods.handleSubmit(submitHandler)(e);
+          }
+        }}
       >
         {children}
       </form>
