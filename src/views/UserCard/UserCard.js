@@ -19,7 +19,7 @@ const UserCard = ({ sparks = [], organizations = [] }) => {
       <div className={style.header}>
         <div className={style["avatar-container"]}>
           <Link inline to={profileRoute(user?.username)}>
-            <Avatar src={user?.avatarURL} setSize="5rem" />
+            <Avatar src={user?.avatarURL} setSize="4rem" />
           </Link>
           <Link button to={settingsRoute()}>
             <IconButton className={style.button} color="grey" size="big">
