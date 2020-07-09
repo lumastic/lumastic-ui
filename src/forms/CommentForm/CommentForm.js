@@ -1,21 +1,20 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import {
-  Form,
   Avatar,
+  Form,
+  IconButton,
   PressInput,
-  TextInput,
-  IconButton
+  TextInput
 } from "../../components";
-import { useUser } from "../../hooks";
-import useModal from "../../hooks/useModal";
+import classNames from "../../helpers/classNames";
+import { useReset, useUser } from "../../hooks";
 import { PaperAirplane } from "../../icons";
 import style from "./CommentForm.scss";
-import classNames from "../../helpers/classNames";
 
 const CommentForm = ({ className, onSubmit, defaultValues }) => {
   const { avatarURL } = useUser();
-  const [reset, toggle] = useModal();
+  const [reset, toggle] = useReset();
   const handleSubmit = (data, e, rest) => {
     if (onSubmit) {
       onSubmit(data, e, rest);

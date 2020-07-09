@@ -46,7 +46,14 @@ const ProgressPost = ({
           {isAuthor && (
             <div className={style.menu}>
               <MoreMenu position="right">
-                <Link button to={editPostRoute(post?.id)}>
+                <Link
+                  button
+                  to={editPostRoute(
+                    spark?.belongsTo?.name,
+                    spark?.id,
+                    post?.id
+                  )}
+                >
                   <MenuItem>
                     <Type body2>Edit</Type>
                   </MenuItem>

@@ -4,3 +4,4 @@ export * from "./useRightClick";
 export * from "./touch";
 export * from "./useOffclick";
 export * from "./useResizable";
+export * from "./useReset";
