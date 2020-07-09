@@ -4,22 +4,22 @@ import {
   Avatar,
   AvatarGroup,
   Button,
-  IconButton,
   Card,
+  Chip,
+  Form,
+  IconButton,
   Label,
   Link,
   List,
   Tooltip,
-  Form,
-  Type,
-  Chip
+  Type
 } from "../../components";
 import classNames from "../../helpers/classNames";
-import { profileRoute } from "../../routes";
-import { SearchSelect, Signature, OrgSignature } from "../../templates";
-import style from "./SparkPeople.scss";
-import useModal from "../../hooks/useModal";
+import { useReset } from "../../hooks";
 import { Times } from "../../icons";
+import { profileRoute } from "../../routes";
+import { OrgSignature, SearchSelect, Signature } from "../../templates";
+import style from "./SparkPeople.scss";
 
 const SparkPeople = ({
   spark = {},
@@ -29,7 +29,7 @@ const SparkPeople = ({
   onSearchCollaborators,
   onRemoveCollaborator
 }) => {
-  const [reset, toggle] = useModal();
+  const [reset, toggle] = useReset();
   return (
     <Card className={classNames(className, style.sparkinfo)}>
       <List>

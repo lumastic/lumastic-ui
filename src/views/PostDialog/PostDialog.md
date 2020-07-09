@@ -3,7 +3,7 @@
 ```jsx
 import { Link, Button } from "../..";
 <>
-  <NewPostDialog />
+  <PostDialog />
   <Link to={"/create/post"} button>
     <Button>New Post</Button>
   </Link>
@@ -12,5 +12,5 @@ import { Link, Button } from "../..";
 
 Source:
 
-```js { "file": "./NewPostDialog.js" }
+```js { "file": "./PostDialog.js" }
 ```

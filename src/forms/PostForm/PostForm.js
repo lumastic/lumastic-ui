@@ -14,11 +14,12 @@ import {
   TextInput,
   Type
 } from "../../components";
-import useModal from "../../hooks/useModal";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
 import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";
 import style from "./PostForm.scss";
+import { parseContent } from "../../helpers";
+import { useReset } from "../../hooks";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
@@ -26,9 +27,14 @@ const postSchema = yup.object().shape({
   type: yup.string().required("This field is required")
 });
 
-const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
+const PostForm = ({
+  onSubmit,
+  sparks = [],
+  defaultValues = {},
+  buttonLabel = "Post"
+}) => {
   const user = useUser();
-  const [reset, toggle] = useModal();
+  const [reset, toggle] = useReset();
   if (sparks.length === 0)
     return (
       <>
@@ -39,16 +45,9 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
         </Link>
       </>
     );
-  const defaults = {
-    content: JSON.stringify(defaultPressValue()),
-    ...defaultValues
-  };
-  if (sparks.length === 1) {
-    defaults.spark = sparks[0].id;
-  }
-  const handleSubmit = (data, e, rest) => {
+  const handleSubmit = async (data, e, rest) => {
     if (onSubmit) {
-      onSubmit(data, e, rest);
+      await onSubmit(data, e, rest);
     } else {
       alert(JSON.stringify(data));
     }
@@ -57,7 +56,11 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
   return (
     <Form
       onSubmit={handleSubmit}
-      defaultValues={defaults}
+      defaultValues={{
+        content: JSON.stringify(defaultPressValue()),
+        spark: sparks[0].id,
+        ...defaultValues
+      }}
       className={style.form}
       validationSchema={postSchema}
     >
@@ -65,18 +68,19 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
         <SparkSelectCrumbs
           small
           name="spark"
-          organization={{ ...user }}
+          organization={user}
           sparks={sparks}
         />
       )}
       {sparks.length === 1 && (
         <>
-          <SparkCrumbs small spark={sparks[0]} organization={{ ...user }} />
+          <SparkCrumbs small spark={sparks[0]} organization={user} />
           <TextInput name="spark" hidden />
         </>
       )}
 
       <PressInput
+        defaultValue={parseContent(defaultValues?.content)}
         reset={reset}
         name="content"
         placeholder="What's the latest..."
@@ -112,7 +116,7 @@ const PostForm = ({ onSubmit, sparks = [], defaultValues = {}, callbacks }) => {
         <div className={style.right}>
           <Button type="submit">
             <PaperAirplane />
-            Post
+            {buttonLabel}
           </Button>
         </div>
       </div>
@@ -124,7 +128,7 @@ PostForm.propTypes = {
   sparks: PropTypes.array,
   onSubmit: PropTypes.func,
   defaultValues: PropTypes.object,
-  callbacks: PropTypes.object
+  buttonLabel: PropTypes.string
 };
 
 export { PostForm };
