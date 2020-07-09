@@ -45,9 +45,9 @@ const PostForm = ({
         </Link>
       </>
     );
-  const handleSubmit = (data, e, rest) => {
+  const handleSubmit = async (data, e, rest) => {
     if (onSubmit) {
-      onSubmit(data, e, rest);
+      await onSubmit(data, e, rest);
     } else {
       alert(JSON.stringify(data));
     }

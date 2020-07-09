@@ -31,7 +31,7 @@ const PressInput = ({
   const onChange = value => {
     if (setValue) setValue(name, JSON.stringify(value));
   };
-  console.log(defaultValue);
+  // console.log(defaultValue);
   return (
     <>
       {errors && errors[name] && (
