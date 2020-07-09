@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { PressRenderer } from "pressdk";
-import { Card, Divider, Type, Point, MenuItem } from "../../components";
+import { Card, Divider, Type, Point, MenuItem, Link } from "../../components";
 import {
   Comment,
   Reaction,
@@ -16,6 +16,7 @@ import { pressComponents } from "../../PressHelpers";
 import { CommentForm } from "../../forms";
 import style from "./ProgressPost.scss";
 import { useUser } from "../../hooks";
+import { editPostRoute } from "../../routes";
 
 const ProgressPost = ({
   spark = {},
@@ -23,7 +24,8 @@ const ProgressPost = ({
   canComment = false,
   reactionClick,
   reactionSelect,
-  newCommentHandler
+  newCommentHandler,
+  deleteHandler
 }) => {
   const { id } = useUser();
   const isAuthor = post?.createdBy?.id === id;
@@ -44,10 +46,12 @@ const ProgressPost = ({
           {isAuthor && (
             <div className={style.menu}>
               <MoreMenu position="right">
-                <MenuItem>
-                  <Type body2>Edit</Type>
-                </MenuItem>
-                <MenuItem>
+                <Link button to={editPostRoute(post?.id)}>
+                  <MenuItem>
+                    <Type body2>Edit</Type>
+                  </MenuItem>
+                </Link>
+                <MenuItem onClick={deleteHandler}>
                   <Type body2 color="red">
                     Delete
                   </Type>
@@ -107,7 +111,8 @@ ProgressPost.propTypes = {
   canComment: PropTypes.bool,
   reactionClick: PropTypes.func,
   reactionSelect: PropTypes.func,
-  newCommentHandler: PropTypes.func
+  newCommentHandler: PropTypes.func,
+  deleteHandler: PropTypes.func
 };
 
 export { ProgressPost };

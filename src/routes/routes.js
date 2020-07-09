@@ -62,6 +62,11 @@ export const createPostRoute = {
   state: { modal: true }
 };
 
+export const editPostRoute = (postId = ":postId") => ({
+  pathname: `/post/${postId}/edit`,
+  state: { modal: true }
+});
+
 // BOARD ROUTES
 export const createBoardRoute = (
   orgName = ":orgName",

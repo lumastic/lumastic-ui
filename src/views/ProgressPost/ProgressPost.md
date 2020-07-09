@@ -13,6 +13,7 @@ import { postWithComments } from "../../data/post.db.js";
   canComment
   spark={{ title: "Spark Title" }}
   post={postWithComments}
+  deleteHandler={() => alert("Deleting")}
 />;
 ```
 
