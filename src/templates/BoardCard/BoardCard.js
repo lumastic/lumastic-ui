@@ -20,6 +20,7 @@ const BoardCard = memo(
     const formMethods = useForm();
     const [absolute, setAbsolute] = useState(!block);
     const [optionsOpen, setOptionsOpen] = useState(false);
+    const [edit, setEdit] = useState(false);
 
     useEffect(() => {
       if (setUpdateCanvas) setUpdateCanvas(o => !o);
@@ -28,7 +29,8 @@ const BoardCard = memo(
     useDraggable({
       ref: cardRef,
       draggingClass: style.hover,
-      onDragStart: () => setAbsolute(true)
+      onDragStart: () => setAbsolute(true),
+      disable: edit
     });
 
     const onDrop = () => {
@@ -49,14 +51,20 @@ const BoardCard = memo(
     });
 
     const onRightClick = e => {
-      if (setActiveCard) setActiveCard(card);
+      if (edit) {
+        e.stopPropagation();
+      } else if (setActiveCard) {
+        setActiveCard(card);
+      }
     };
 
     const onBlur = data => {
-      if (updateCard)
+      if (updateCard) {
         updateCard(card.id, {
           content: data?.content
         });
+        setEdit(false);
+      }
     };
     return (
       <div
@@ -85,20 +93,18 @@ const BoardCard = memo(
             className={classNames(className, style["board-card"])}
             onContextMenu={onRightClick}
             onBlur={formMethods?.handleSubmit(onBlur)}
+            onClick={() => {
+              if (canEdit && !edit) setEdit(true);
+            }}
+            onDoubleClick={e => e.stopPropagation()}
           >
             <Type tag="div">
-              {canEdit ? (
-                <PressInput
-                  name="content"
-                  defaultValue={parseContent(card?.content)}
-                  callbacks={callbacks}
-                />
-              ) : (
-                <PressRenderer
-                  components={pressComponents}
-                  value={parseContent(card?.content)}
-                />
-              )}
+              <PressInput
+                name="content"
+                defaultValue={parseContent(card?.content)}
+                callbacks={callbacks}
+                readOnly={!canEdit}
+              />
             </Type>
             <div className={style.resize} ref={resizeHandle}>
               {absolute && <Resize />}
