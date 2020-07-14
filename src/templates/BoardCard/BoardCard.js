@@ -1,4 +1,3 @@
-import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React, { memo, useEffect, useRef, useState } from "react";
 import { FormContext, useForm } from "react-hook-form";
@@ -10,7 +9,6 @@ import { useDraggable, useDroppable, useResizable } from "../../hooks";
 import { Resize } from "../../icons";
 import { useBoard } from "../../views";
 import style from "./BoardCard.scss";
-import { pressComponents } from "../../PressHelpers";
 
 const BoardCard = memo(
   ({ children, className, card = {}, block = false, callbacks }) => {
