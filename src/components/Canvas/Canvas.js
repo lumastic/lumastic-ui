@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { useDroppable, useRightClick } from "../../hooks";
 import { useBoard } from "../../views";
 import { calcPixelString } from "../../helpers";
@@ -7,6 +7,7 @@ import { RightClickMenu } from "../../templates";
 import { MenuItem } from "../Menu";
 import classNames from "../../helpers/classNames";
 import style from "./Canvas.scss";
+import { Type } from "../Type";
 
 const Canvas = ({ children, className, size = {} }) => {
   const canvasRef = useRef(null);
@@ -108,6 +109,27 @@ const Canvas = ({ children, className, size = {} }) => {
     if (setActiveCard) setActiveCard(null);
   };
 
+  const menuHandler = useCallback(
+    ({ type }) => {
+      switch (type) {
+        case "create":
+          if (createCard)
+            createCard({
+              location: {
+                x: canvasPosition.x,
+                y: canvasPosition.y,
+                z: 1
+              }
+            });
+          break;
+        default:
+          break;
+      }
+      onRightClickOff();
+    },
+    [createCard, canvasPosition]
+  );
+
   return (
     <div
       className={classNames(className, style.canvas, "droppable")}
@@ -123,7 +145,9 @@ const Canvas = ({ children, className, size = {} }) => {
         isShowing={rightClickShowing}
         toggle={onRightClickOff}
       >
-        <MenuItem>Test</MenuItem>
+        <MenuItem onClick={() => menuHandler({ type: "create" })}>
+          <Type body2>New Card</Type>
+        </MenuItem>
         {activeCard && <MenuItem>Card Click</MenuItem>}
       </RightClickMenu>
     </div>

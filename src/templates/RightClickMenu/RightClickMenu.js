@@ -16,8 +16,8 @@ const RightClickMenu = ({
   useOffclick(menuRef, toggle);
 
   return (
-    <div ref={menuRef} data-testid="rightclickmenu">
-      <Modal isShowing={isShowing}>
+    <Modal isShowing={isShowing}>
+      <div ref={menuRef} data-testid="rightclickmenu">
         <PopupMenu
           className={classNames(className, style.rightclickmenu)}
           style={{
@@ -26,8 +26,8 @@ const RightClickMenu = ({
         >
           {children}
         </PopupMenu>
-      </Modal>
-    </div>
+      </div>
+    </Modal>
   );
 };
 
