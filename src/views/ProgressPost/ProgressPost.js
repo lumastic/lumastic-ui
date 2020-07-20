@@ -42,7 +42,7 @@ const ProgressPost = ({
     <Card className={style.progresspost}>
       <div className={style.postheader}>
         <Link to={profileRoute(post?.createdBy?.username)} inline>
-          <Avatar src={post?.createdBy?.src} size="big" />
+          <Avatar src={post?.createdBy?.avatarURL} size="big" />
         </Link>
         <div className={style.info}>
           <Breadcrumbs>
