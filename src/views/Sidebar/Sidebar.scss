@@ -1,0 +1,17 @@
+@import "../../styles/colors.scss";
+.sidebar {
+  padding: 1rem 0;
+  background-color: $backgroundLight;
+  box-sizing: border-box;
+  height: 100vh;
+  max-width: 300px;
+  display: grid;
+  grid-template-rows: repeat(5, min-content) auto;
+  row-gap: 0.75rem;
+  .divider {
+    padding: 0 1rem;
+  }
+  .bottom-links {
+    align-self: self-end;
+  }
+}

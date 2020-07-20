@@ -1,11 +1,11 @@
 #### Basic Usage
 
 ```jsx
-import { SideNav } from "../../views/SideNav";
-import { AppBar } from "../../components/AppBar";
-import { Main } from "../../components/Main";
+import { MobileNav } from "../../views";
+import { AppBar } from "../../components";
+import { Main } from "../../components";
 <AppLayout>
-  <SideNav>Sidebar</SideNav>
+  <MobileNav>Sidebar</MobileNav>
   <AppBar>AppBar</AppBar>
   <Main>Main Content</Main>
 </AppLayout>;
