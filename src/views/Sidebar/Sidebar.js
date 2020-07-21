@@ -42,7 +42,10 @@ const Sidebar = ({ className, version, sparks = [] }) => (
 
     <div className={style.sparks}>
       <Label className={style.label}>MY SPARKS</Label>
-      <SparksNav sparks={sparks} />
+      <div className={style.sparksnav}>
+        <SparksNav sparks={sparks} />
+      </div>
+
       <NavButton>
         <Type body2 tag="div" color="primary" className={style.type}>
           <Plus /> <b>NEW SPARK</b>

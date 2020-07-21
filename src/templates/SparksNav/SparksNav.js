@@ -12,13 +12,50 @@ const SparksNav = ({ sparks = [], className, ...rest }) => (
     {...rest}
   >
     {sparks?.map((spark, index) => (
-      <Accordion>
-        <NavButton key={spark?.id || index}>
+      <Accordion key={spark?.id || index}>
+        <NavButton>
           <AccordionTrigger>
             <Type tag="div">{spark?.title}</Type>
           </AccordionTrigger>
         </NavButton>
-        <AccordionContent>Test</AccordionContent>
+        <AccordionContent className={style.boards}>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+          <NavButton>
+            <Type tag="div">Test</Type>
+          </NavButton>
+        </AccordionContent>
       </Accordion>
     ))}
   </div>

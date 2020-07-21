@@ -36,9 +36,15 @@ const AccordionTrigger = ({ children, className }) => {
   );
 };
 
-const AccordionContent = ({ children, className }) => (
-  <div className={classNames(style.content, className)}>{children}</div>
-);
+const AccordionContent = ({ children, className }) => {
+  const { isShowing } = useContext(AccordionContext);
+  if (isShowing) {
+    return (
+      <div className={classNames(style.content, className)}>{children}</div>
+    );
+  }
+  return null;
+};
 
 Accordion.propTypes = {
   children: PropTypes.node
