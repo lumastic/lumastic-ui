@@ -1,7 +1,40 @@
+@import "../../styles/colors.scss";
+
 .navbutton {
-  /* // ICON: DEFAULT */
-  i,
-  svg {
-    margin-right: 0.75em;
+  padding: 0.25 0.25rem;
+  display: block;
+  background-color: inherit;
+  width: 100%;
+  border: none;
+  &:focus {
+    outline: none;
+    .container {
+      outline: 1px solid $secondaryLight;
+    }
   }
+  &:hover {
+    cursor: pointer;
+    .container {
+      background-color: lighten($greyLight, 15%);
+    }
+  }
+  &:active {
+    .container {
+      background-color: lighten($greyLight, 5%);
+    }
+  }
+  &.active {
+    .container {
+      background-color: rgba($secondary, 0.5);
+    }
+  }
+  .container {
+    transition: background-color 100ms ease-in-out;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+
+  /* // ICON: DEFAULT */
 }

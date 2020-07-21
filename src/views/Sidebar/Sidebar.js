@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Divider, NavButton, Link, Type } from "../../components";
+import { Divider, NavButton, Link, Type, Label } from "../../components";
 import classNames from "../../helpers/classNames";
 import { Bell, Compass, Home, MagnifyingGlass, Plus, Trash } from "../../icons";
 import { SparksNav } from "../../templates";
@@ -9,20 +9,30 @@ import style from "./Sidebar.scss";
 const Sidebar = ({ className, version, sparks = [] }) => (
   <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
     <div className={style["main-btns"]}>
-      <NavButton>
-        <Home /> Home
+      <NavButton to="/" exact>
+        <Type tag="div" h4 className={style.type}>
+          <Home /> Home
+        </Type>
       </NavButton>
       <NavButton>
-        <Compass /> Explore
+        <Type tag="div" h4 className={style.type}>
+          <Compass /> Explore
+        </Type>
       </NavButton>
       <NavButton>
-        <MagnifyingGlass /> Find
+        <Type tag="div" h4 className={style.type}>
+          <MagnifyingGlass /> Find
+        </Type>
       </NavButton>
       <NavButton>
-        <Plus /> Create
+        <Type tag="div" h4 className={style.type}>
+          <Plus /> Create
+        </Type>
       </NavButton>
       <NavButton>
-        <Bell /> Notifications
+        <Type tag="div" h4 className={style.type}>
+          <Bell /> Notifications
+        </Type>
       </NavButton>
     </div>
 
@@ -31,9 +41,12 @@ const Sidebar = ({ className, version, sparks = [] }) => (
     </div>
 
     <div className={style.sparks}>
+      <Label className={style.label}>MY SPARKS</Label>
       <SparksNav sparks={sparks} />
       <NavButton>
-        <Plus /> New Spark
+        <Type body2 tag="div" color="primary" className={style.type}>
+          <Plus /> <b>NEW SPARK</b>
+        </Type>
       </NavButton>
     </div>
 
@@ -43,9 +56,15 @@ const Sidebar = ({ className, version, sparks = [] }) => (
 
     <div className={style["bottom-btns"]}>
       <NavButton>
-        <Trash /> Archive
+        <Type body2 tag="div" className={style.type}>
+          <Trash /> Archive
+        </Type>
       </NavButton>
-      <NavButton>Store</NavButton>
+      <NavButton>
+        <Type body2 tag="div" className={style.type}>
+          Store
+        </Type>
+      </NavButton>
     </div>
 
     <div className={style["bottom-links"]}>

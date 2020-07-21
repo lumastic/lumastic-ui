@@ -1,7 +1,8 @@
 #### Basic Usage
 
 ```jsx
-<Sidebar>Sidebar</Sidebar>
+import { spark1, spark2 } from "../../data/spark.db.js";
+<Sidebar sparks={[spark1, spark2]} />;
 ```
 
 Source:

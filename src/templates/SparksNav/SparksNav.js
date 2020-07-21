@@ -2,19 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./SparksNav.scss";
 import classNames from "../../helpers/classNames";
+import { NavButton, Type } from "../../components";
+import { Accordion, AccordionTrigger, AccordionContent } from "../Accordion";
 
-const SparksNav = ({ children, className, ...rest }) => (
+const SparksNav = ({ sparks = [], className, ...rest }) => (
   <div
     className={classNames(className, style.sparksnav)}
     data-testid="sparksnav"
     {...rest}
   >
-    Childrem
+    {sparks?.map((spark, index) => (
+      <Accordion>
+        <NavButton key={spark?.id || index}>
+          <AccordionTrigger>
+            <Type tag="div">{spark?.title}</Type>
+          </AccordionTrigger>
+        </NavButton>
+        <AccordionContent>Test</AccordionContent>
+      </Accordion>
+    ))}
   </div>
 );
 
 SparksNav.propTypes = {
-  children: PropTypes.node,
+  sparks: PropTypes.array,
   className: PropTypes.string
 };
 

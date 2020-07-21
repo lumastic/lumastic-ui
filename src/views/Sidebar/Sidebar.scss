@@ -1,6 +1,6 @@
 @import "../../styles/colors.scss";
 .sidebar {
-  padding: 1rem 0;
+  padding: 0.5rem 0 2rem;
   background-color: $backgroundLight;
   box-sizing: border-box;
   height: 100vh;
@@ -8,10 +8,23 @@
   display: grid;
   grid-template-rows: repeat(5, min-content) auto;
   row-gap: 0.75rem;
+  .sparks {
+    .label {
+      padding-left: 0.75rem;
+    }
+  }
   .divider {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
   }
   .bottom-links {
+    padding: 0 0.75rem;
     align-self: self-end;
+  }
+  .type {
+    display: inline-flex;
+    > i,
+    > svg {
+      margin-right: 0.75em;
+    }
   }
 }
