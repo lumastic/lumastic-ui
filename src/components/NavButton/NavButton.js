@@ -4,21 +4,23 @@ import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 import style from "./NavButton.scss";
 import classNames from "../../helpers/classNames";
+import { Link } from "../Link";
 
-const NavButton = ({ children, className, to, exact }) => (
+const NavButton = ({ children, className, path, exact, to }) => (
   <Route
-    path={to}
+    path={path || to}
     exact={exact}
-    children={({ match, history }) => (
-      <button
-        className={classNames(className, style.navbutton, {
-          [style.active]: to && match
-        })}
-        data-testid="navbutton"
-        onClick={() => to && history.push(typeof to === "string" ? to : to[0])}
-      >
-        <div className={style.container}>{children}</div>
-      </button>
+    children={({ match }) => (
+      <Link to={to} button>
+        <button
+          className={classNames(className, style.navbutton, {
+            [style.active]: to && match
+          })}
+          data-testid="navbutton"
+        >
+          <div className={style.container}>{children}</div>
+        </button>
+      </Link>
     )}
   />
 );
@@ -26,6 +28,7 @@ const NavButton = ({ children, className, to, exact }) => (
 NavButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  path: PropTypes.string,
   to: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string)

@@ -1,5 +1,8 @@
+@import "../../styles/colors.scss";
 .sparksnav {
   .boards {
-    padding-left: 0.75rem;
+    margin-left: 0.5rem;
+    border-left: 2px solid $grey;
+    box-sizing: border-box;
   }
 }

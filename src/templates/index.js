@@ -1,3 +1,4 @@
+export * from "./Accordion";
 export * from "./AddEmoji";
 export * from "./BoardCard";
 export * from "./BoardSelect";

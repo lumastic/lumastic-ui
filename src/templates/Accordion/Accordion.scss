@@ -12,5 +12,9 @@
   .button {
     flex-grow: 0;
     display: inline-flex;
+    transition: transform 100ms ease-in-out;
+    &.rotate {
+      transform: rotate(180deg);
+    }
   }
 }

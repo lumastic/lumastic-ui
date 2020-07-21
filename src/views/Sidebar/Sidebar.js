@@ -5,31 +5,39 @@ import classNames from "../../helpers/classNames";
 import { Bell, Compass, Home, MagnifyingGlass, Plus, Trash } from "../../icons";
 import { SparksNav } from "../../templates";
 import style from "./Sidebar.scss";
+import {
+  createSparkRoute,
+  homeRoute,
+  exploreRoute,
+  findRoute,
+  createRoute,
+  notificationsRoute
+} from "../../routes";
 
 const Sidebar = ({ className, version, sparks = [] }) => (
   <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
     <div className={style["main-btns"]}>
-      <NavButton to="/" exact>
+      <NavButton to={homeRoute} exact>
         <Type tag="div" h4 className={style.type}>
           <Home /> Home
         </Type>
       </NavButton>
-      <NavButton>
+      <NavButton to={exploreRoute} exact>
         <Type tag="div" h4 className={style.type}>
           <Compass /> Explore
         </Type>
       </NavButton>
-      <NavButton>
+      <NavButton to={findRoute} path={findRoute.pathname} exact>
         <Type tag="div" h4 className={style.type}>
           <MagnifyingGlass /> Find
         </Type>
       </NavButton>
-      <NavButton>
+      <NavButton to={createRoute} path={createRoute.pathname} exact>
         <Type tag="div" h4 className={style.type}>
           <Plus /> Create
         </Type>
       </NavButton>
-      <NavButton>
+      <NavButton to={notificationsRoute} exact>
         <Type tag="div" h4 className={style.type}>
           <Bell /> Notifications
         </Type>
@@ -46,7 +54,7 @@ const Sidebar = ({ className, version, sparks = [] }) => (
         <SparksNav sparks={sparks} />
       </div>
 
-      <NavButton>
+      <NavButton to={createSparkRoute} exact path={createSparkRoute.pathname}>
         <Type body2 tag="div" color="primary" className={style.type}>
           <Plus /> <b>NEW SPARK</b>
         </Type>
@@ -71,7 +79,7 @@ const Sidebar = ({ className, version, sparks = [] }) => (
     </div>
 
     <div className={style["bottom-links"]}>
-      <Link>
+      <Link to="/terms">
         <Type caption color="grey">
           Terms and Guidelines
         </Type>

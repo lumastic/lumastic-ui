@@ -1,5 +1,6 @@
 export * from "./ArrowDown";
 export * from "./Bell";
+export * from "./Chevron";
 export * from "./Compass";
 export * from "./Copy";
 export * from "./Dot";

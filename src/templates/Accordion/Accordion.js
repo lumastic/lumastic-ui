@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "../../helpers/classNames";
 import useModal from "../../hooks/useModal";
 import { IconButton } from "../../components";
-import { Gear } from "../../icons";
+import { Gear, Chevron } from "../../icons";
 import style from "./Accordion.scss";
 
 const AccordionContext = createContext({});
@@ -19,7 +19,7 @@ const Accordion = ({ children }) => {
 };
 
 const AccordionTrigger = ({ children, className }) => {
-  const { toggle } = useContext(AccordionContext);
+  const { isShowing, toggle } = useContext(AccordionContext);
   const onClick = e => {
     e.stopPropagation();
     toggle();
@@ -27,9 +27,9 @@ const AccordionTrigger = ({ children, className }) => {
   return (
     <div className={classNames(style.trigger, className)}>
       <div className={style.text}>{children}</div>
-      <div className={style.button}>
+      <div className={classNames(style.button, { [style.rotate]: isShowing })}>
         <IconButton onClick={onClick} size="small" color="grey">
-          <Gear />
+          <Chevron />
         </IconButton>
       </div>
     </div>

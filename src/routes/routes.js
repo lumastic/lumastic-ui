@@ -10,6 +10,11 @@ export const notificationsRoute = "/notifications";
  * @param {string} sparkId id of spark to be displayed / interacted with
  */
 
+export const createRoute = {
+  pathname: "/create",
+  state: { modal: true }
+};
+
 // USER ROUTES
 export const profileRoute = (orgName = ":orgName") => `/${orgName}`;
 
@@ -90,5 +95,10 @@ export const viewBoardRoute = (
 export const exploreRoute = "/explore";
 
 // SEARCH ROUTE
+export const findRoute = {
+  pathname: "/find",
+  state: { modal: true }
+};
+
 export const searchRoute = (searchString = ":searchString") =>
   `/explore/${searchString}`;

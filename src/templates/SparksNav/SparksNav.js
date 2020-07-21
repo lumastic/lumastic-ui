@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./SparksNav.scss";
 import classNames from "../../helpers/classNames";
-import { NavButton, Type } from "../../components";
+import { NavButton, Type, Divider } from "../../components";
 import { Accordion, AccordionTrigger, AccordionContent } from "../Accordion";
+import { viewSparkRoute, viewBoardRoute } from "../../routes";
 
 const SparksNav = ({ sparks = [], className, ...rest }) => (
   <div
@@ -13,48 +14,21 @@ const SparksNav = ({ sparks = [], className, ...rest }) => (
   >
     {sparks?.map((spark, index) => (
       <Accordion key={spark?.id || index}>
-        <NavButton>
+        <NavButton exact to={viewSparkRoute(spark?.belongsTo?.name, spark?.id)}>
           <AccordionTrigger>
             <Type tag="div">{spark?.title}</Type>
           </AccordionTrigger>
         </NavButton>
         <AccordionContent className={style.boards}>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
-          <NavButton>
-            <Type tag="div">Test</Type>
-          </NavButton>
+          {spark?.boards?.map((board, key) => (
+            <NavButton
+              key={board?.id || key}
+              to={viewBoardRoute(spark?.belongsTo?.name, spark?.id, board?.id)}
+              exact
+            >
+              <Type tag="div">{board?.name}</Type>
+            </NavButton>
+          ))}
         </AccordionContent>
       </Accordion>
     ))}
