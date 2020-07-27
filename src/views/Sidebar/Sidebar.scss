@@ -7,6 +7,14 @@
   width: 300px;
   display: flex;
   flex-direction: column;
+  .popup {
+    width: 100%;
+    display: block;
+    .trigger {
+      width: 100%;
+      display: block;
+    }
+  }
   .sparks {
     min-height: 0;
     display: grid;

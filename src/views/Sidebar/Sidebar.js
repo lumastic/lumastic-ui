@@ -1,17 +1,37 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Divider, Label, Link, NavButton, Type } from "../../components";
+import {
+  Divider,
+  Label,
+  Link,
+  NavButton,
+  Type,
+  Popup,
+  PopupTrigger,
+  PopupContent,
+  PopupMenu,
+  MenuItem
+} from "../../components";
 import classNames from "../../helpers/classNames";
-import { Bell, Compass, Home, MagnifyingGlass, Plus } from "../../icons";
+import {
+  Bell,
+  Compass,
+  Home,
+  MagnifyingGlass,
+  Plus,
+  SparkPlus,
+  PostPlus
+} from "../../icons";
 import {
   createRoute,
   createSparkRoute,
   exploreRoute,
   findRoute,
   homeRoute,
-  notificationsRoute
+  notificationsRoute,
+  createPostRoute
 } from "../../routes";
-import { SparksNav } from "../../templates";
+import { SparksNav, Signature } from "../../templates";
 import style from "./Sidebar.scss";
 
 const Sidebar = ({ className, version, sparks = [] }) => (
@@ -24,19 +44,50 @@ const Sidebar = ({ className, version, sparks = [] }) => (
       </NavButton>
       <NavButton to={exploreRoute} exact>
         <Type tag="div" h4 className={style.type}>
-          <Compass /> Explore
+          <MagnifyingGlass /> Explore
         </Type>
       </NavButton>
-      <NavButton to={findRoute} path={findRoute.pathname} exact>
+      {/* <NavButton to={findRoute} path={findRoute.pathname} exact>
         <Type tag="div" h4 className={style.type}>
           <MagnifyingGlass /> Find
         </Type>
-      </NavButton>
-      <NavButton to={createRoute} path={createRoute.pathname} exact>
+      </NavButton> */}
+      {/* <NavButton to={createRoute} path={createRoute.pathname} exact>
         <Type tag="div" h4 className={style.type}>
           <Plus /> Create
         </Type>
-      </NavButton>
+      </NavButton> */}
+      <Popup
+        anchor={{ v: "top", h: "left" }}
+        transform={{ v: "top", h: "left" }}
+        className={style.popup}
+      >
+        <PopupTrigger className={style.trigger}>
+          <NavButton>
+            <Type tag="div" h4 className={style.type}>
+              <Plus /> Create
+            </Type>
+          </NavButton>
+        </PopupTrigger>
+        <PopupContent render={PopupMenu}>
+          <Link button to={createSparkRoute}>
+            <MenuItem>
+              <Signature>
+                <SparkPlus />
+                <Type>New Spark</Type>
+              </Signature>
+            </MenuItem>
+          </Link>
+          <Link button to={createPostRoute}>
+            <MenuItem>
+              <Signature>
+                <PostPlus />
+                <Type>New Post</Type>
+              </Signature>
+            </MenuItem>
+          </Link>
+        </PopupContent>
+      </Popup>
       <NavButton to={notificationsRoute} exact>
         <Type tag="div" h4 className={style.type}>
           <Bell /> Notifications

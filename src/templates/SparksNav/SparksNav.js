@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IconButton, Link, NavButton, Tooltip, Type } from "../../components";
 import classNames from "../../helpers/classNames";
 import { Plus } from "../../icons";
@@ -34,7 +34,11 @@ const SparksNavButton = ({ spark = {} }) => {
                     button
                     to={createBoardRoute(spark?.belongsTo?.name, spark?.id)}
                   >
-                    <IconButton size="small" color="grey">
+                    <IconButton
+                      size="small"
+                      color="grey"
+                      onClick={e => e.stopPropagation()}
+                    >
                       <Plus />
                     </IconButton>
                   </Link>
