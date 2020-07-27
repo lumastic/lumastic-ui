@@ -59,7 +59,7 @@ const Sidebar = ({ className, version, sparks = [] }) => (
           <Home /> Home
         </Type>
       </NavButton>
-      <NavButton to={exploreRoute} exact>
+      <NavButton to={exploreRoute}>
         <Type tag="div" h4 className={style.type} setSize="1.1rem">
           <MagnifyingGlass /> Explore
         </Type>
