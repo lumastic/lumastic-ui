@@ -1,6 +1,7 @@
 export * from "./Board";
 export * from "./Feed";
 export * from "./MobileNav";
+export * from "./Nav";
 export * from "./NewBoardDialog";
 export * from "./NewPostCard";
 export * from "./PageAppBar";
