@@ -117,8 +117,8 @@ const Sidebar = ({ className, version, sparks = [] }) => (
     </div>
 
     <div className={style.sparks}>
-      <Label className={style.label}>MY SPARKS</Label>
       <div className={style.sparksnav}>
+        <Label className={style.label}>MY SPARKS</Label>
         <SparksNav sparks={sparks} />
       </div>
 
@@ -129,12 +129,12 @@ const Sidebar = ({ className, version, sparks = [] }) => (
       </NavButton>
     </div>
 
-    <div className={style.divider}>
+    {/* <div className={style.divider}>
       <Divider />
-    </div>
+    </div> */}
 
-    <div className={style["bottom-btns"]}>
-      {/* <NavButton>
+    {/* <div className={style["bottom-btns"]}>
+      <NavButton>
         <Type body2 tag="div" className={style.type}>
           <Trash /> Archive
         </Type>
@@ -143,8 +143,8 @@ const Sidebar = ({ className, version, sparks = [] }) => (
         <Type body2 tag="div" className={style.type}>
           Store
         </Type>
-      </NavButton> */}
-    </div>
+      </NavButton>
+    </div> */}
   </nav>
 );
 
