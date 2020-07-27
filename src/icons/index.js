@@ -12,6 +12,7 @@ export * from "./Home";
 export * from "./Icon";
 export * from "./Lock";
 export * from "./Logo";
+export * from "./LogoText";
 export * from "./MagnifyingGlass";
 export * from "./PaperAirplane";
 export * from "./Pencil";

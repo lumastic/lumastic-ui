@@ -13,7 +13,6 @@ const SparksNavButton = ({ spark = {} }) => {
   return (
     <Accordion>
       <NavButton
-        exact
         to={viewSparkRoute(spark?.belongsTo?.name, spark?.id)}
         className={style.navbtn}
       >

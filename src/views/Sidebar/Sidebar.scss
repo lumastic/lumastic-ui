@@ -1,12 +1,14 @@
 @import "../../styles/colors.scss";
 .sidebar {
-  padding: 0.5rem 0 1rem;
+  padding: 0 0 0.5rem;
   background-color: $backgroundLight;
   box-sizing: border-box;
   height: 100vh;
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid $greyLight;
+
   .popup {
     width: 100%;
     display: block;
@@ -14,6 +16,9 @@
       width: 100%;
       display: block;
     }
+  }
+  .main-btns {
+    padding-top: 0.5rem;
   }
   .sparks {
     min-height: 0;
@@ -23,6 +28,7 @@
       min-height: 0;
       overflow-y: auto;
       overflow-x: hidden;
+      padding: 1px 0;
     }
     .label {
       padding-left: 0.75rem;
@@ -34,9 +40,39 @@
   .bottom-btns {
     flex-grow: 1;
   }
-  .bottom-links {
-    padding: 0.75rem 0.75rem 0;
+  .logo-container {
+    padding: 0.45rem 1rem;
+    background-color: $primary;
     flex-grow: 0;
+    color: $background;
+    display: flex;
+    align-items: flex-end;
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-right: 0.25rem;
+      // border-bottom: 1px solid $greyLight;
+      .symbol {
+        display: inline-flex;
+        font-size: 1em;
+        color: $accent;
+        margin-right: 0.3em;
+      }
+      .text {
+        color: $backgroundLight;
+        display: inline-flex;
+        font-size: 0.6em;
+      }
+      // justify-content: center;
+    }
+    .links {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      // align-items: flex-end;
+    }
     // align-self: self-end;
   }
   .type {
@@ -44,6 +80,7 @@
     > i,
     > svg {
       margin-right: 0.75em;
+      top: 0.15rem;
     }
   }
 }

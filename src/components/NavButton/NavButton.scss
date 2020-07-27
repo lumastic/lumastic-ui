@@ -1,9 +1,10 @@
 @import "../../styles/colors.scss";
 
 .navbutton {
-  padding: 0.25 0.25rem;
+  padding: 0;
   display: block;
   background-color: inherit;
+  box-sizing: border-box;
   width: 100%;
   border: none;
   &:focus {
@@ -25,15 +26,15 @@
   }
   &.active {
     .container {
-      background-color: rgba($secondary, 0.5);
+      background-color: rgba($grey, 0.4);
     }
   }
   .container {
     transition: background-color 100ms ease-in-out;
     display: flex;
     align-items: center;
-    padding: 0.5rem;
-    border-radius: 8px;
+    padding: 0.5rem 0 0.5rem 0.75rem;
+    // border-radius: 8px;
   }
 
   /* // ICON: DEFAULT */
