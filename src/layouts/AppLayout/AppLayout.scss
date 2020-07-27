@@ -8,13 +8,13 @@
   grid-template-areas:
     "navigation appbar"
     "navigation main";
-  nav:first-child {
+  > nav {
     grid-area: navigation;
   }
-  header:nth-child(2) {
+  > header {
     grid-area: appbar;
   }
-  main:nth-child(3) {
+  > main {
     grid-area: main;
   }
 }
