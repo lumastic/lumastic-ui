@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Divider, NavButton, Link, Type, Label } from "../../components";
+import { Divider, Label, Link, NavButton, Type } from "../../components";
 import classNames from "../../helpers/classNames";
-import { Bell, Compass, Home, MagnifyingGlass, Plus, Trash } from "../../icons";
-import { SparksNav } from "../../templates";
-import style from "./Sidebar.scss";
+import { Bell, Compass, Home, MagnifyingGlass, Plus } from "../../icons";
 import {
+  createRoute,
   createSparkRoute,
-  homeRoute,
   exploreRoute,
   findRoute,
-  createRoute,
+  homeRoute,
   notificationsRoute
 } from "../../routes";
+import { SparksNav } from "../../templates";
+import style from "./Sidebar.scss";
 
 const Sidebar = ({ className, version, sparks = [] }) => (
   <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
@@ -66,7 +66,7 @@ const Sidebar = ({ className, version, sparks = [] }) => (
     </div>
 
     <div className={style["bottom-btns"]}>
-      <NavButton>
+      {/* <NavButton>
         <Type body2 tag="div" className={style.type}>
           <Trash /> Archive
         </Type>
@@ -75,7 +75,7 @@ const Sidebar = ({ className, version, sparks = [] }) => (
         <Type body2 tag="div" className={style.type}>
           Store
         </Type>
-      </NavButton>
+      </NavButton> */}
     </div>
 
     <div className={style["bottom-links"]}>
@@ -84,7 +84,7 @@ const Sidebar = ({ className, version, sparks = [] }) => (
           Terms and Guidelines
         </Type>
       </Link>
-      <Link>
+      <Link to="/version">
         <Type caption color="grey">
           v{version}
         </Type>
