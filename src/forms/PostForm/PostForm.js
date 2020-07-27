@@ -87,7 +87,7 @@ const PostForm = ({
       />
       <div className={style.bottom}>
         <div className={style.left}>
-          <Select
+          {/* <Select
             name="type"
             small
             placeholder="Select a spark..."
@@ -111,7 +111,7 @@ const PostForm = ({
                 <Type body2>Mark as solved</Type>
               </Signature>
             </Option>
-          </Select>
+          </Select> */}
         </div>
         <div className={style.right}>
           <Button type="submit">
