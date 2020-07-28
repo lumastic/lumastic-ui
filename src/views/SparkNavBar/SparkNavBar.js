@@ -13,7 +13,9 @@ import {
   BoardSelect,
   OrgSelect,
   SparkSelect,
-  Signature
+  Signature,
+  SparkSignature,
+  OrgSignature
 } from "../../templates";
 import { Plus } from "../../icons";
 import { createSparkRoute, createBoardRoute } from "../../routes";
@@ -21,43 +23,21 @@ import { createSparkRoute, createBoardRoute } from "../../routes";
 const SparkNavBar = ({
   children,
   noContainer,
-  organizations = [],
   org = {},
-  sparks = [],
   spark = {},
   board = {},
-  onOrgChange,
-  onSparkChange,
   onBoardChange
 }) => (
   <AppBar>
     <Container maxWidth={noContainer && "unset"}>
       <LeftPush hideRightOnTablet>
         <Breadcrumbs>
-          <OrgSelect
-            organizations={organizations}
-            onChange={onOrgChange}
-            defaultValue={org?.id}
-            avatarsOnly
-          />
-          <SparkSelect
-            sparks={sparks?.filter(s => s?.belongsTo.id === org.id)}
-            onChange={onSparkChange}
-            defaultValue={spark?.id}
-            addOption={
-              <Link to={createSparkRoute} button>
-                <MenuItem>
-                  <Signature>
-                    <Type body2>
-                      <Plus />
-                    </Type>
-                    <Type body2>New Spark</Type>
-                  </Signature>
-                </MenuItem>
-              </Link>
-            }
+          <OrgSignature
+            organization={org}
+            user={org?.isUserOrganization && org}
             small
           />
+          <SparkSignature spark={spark} small />
           <BoardSelect
             boards={spark?.boards}
             onChange={onBoardChange}
