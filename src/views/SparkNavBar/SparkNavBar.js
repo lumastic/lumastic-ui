@@ -10,18 +10,12 @@ import {
 } from "../../components";
 import { Plus } from "../../icons";
 import { LeftPush } from "../../layouts";
-import { createBoardRoute } from "../../routes";
-import {
-  BoardSelect,
-  OrgSignature,
-  Signature,
-  SparkSignature
-} from "../../templates";
+import { createBoardRoute, viewSparkRoute } from "../../routes";
+import { BoardSelect, OrgSignature, Signature } from "../../templates";
 
 const SparkNavBar = ({
   children,
   noContainer,
-  org = {},
   spark = {},
   board = {},
   onBoardChange
@@ -31,17 +25,22 @@ const SparkNavBar = ({
       <LeftPush hideRightOnTablet>
         <Breadcrumbs>
           <OrgSignature
-            organization={org}
-            user={org?.isUserOrganization && org}
+            organization={spark?.belongsTo}
+            user={spark?.belongsTo?.isUserOrganization && spark?.belongsTo}
             small
           />
-          <SparkSignature spark={spark} small />
+          <Link inline to={viewSparkRoute(spark?.belongsTo?.name, spark?.id)}>
+            <Type body2>{spark.title}</Type>
+          </Link>
           <BoardSelect
             boards={spark?.boards}
             onChange={onBoardChange}
             defaultValue={board?.id}
             addOption={
-              <Link to={createBoardRoute(org?.name, spark?.id)} button>
+              <Link
+                to={createBoardRoute(spark?.belongsTo?.name, spark?.id)}
+                button
+              >
                 <MenuItem>
                   <Signature>
                     <Type body2>
@@ -64,7 +63,6 @@ const SparkNavBar = ({
 SparkNavBar.propTypes = {
   children: PropTypes.node,
   noContainer: PropTypes.bool,
-  org: PropTypes.object,
   spark: PropTypes.object,
   board: PropTypes.object,
   onBoardChange: PropTypes.func

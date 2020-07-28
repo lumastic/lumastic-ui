@@ -2,7 +2,7 @@
 
 ```jsx
 import { spark1, spark2 } from "../../data/spark.db.js";
-<SparkNavBar sparks={[spark1, spark2]} />;
+<SparkNavBar spark={spark1} />;
 ```
 
 Source:
