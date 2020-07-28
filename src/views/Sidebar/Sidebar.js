@@ -38,21 +38,6 @@ import style from "./Sidebar.scss";
 
 const Sidebar = ({ className, version, sparks = [] }) => (
   <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
-    <div className={style["logo-container"]}>
-      <div className={style.logo}>
-        <span className={style.symbol}>
-          <Logo />
-        </span>
-        <span className={style.text}>
-          <LogoText />
-        </span>
-      </div>
-      <div className={style.links}>
-        <Link to="/version">
-          <Type caption>v{version}</Type>
-        </Link>
-      </div>
-    </div>
     <div className={style["main-btns"]}>
       <NavButton to={homeRoute} exact>
         <Type tag="div" h4 className={style.type} setSize="1.1rem">
@@ -145,6 +130,23 @@ const Sidebar = ({ className, version, sparks = [] }) => (
         </Type>
       </NavButton>
     </div> */}
+    <div className={style["bottom-btns"]}>
+      <div className={style["logo-container"]}>
+        <div className={style.logo}>
+          <span className={style.symbol}>
+            <Logo />
+          </span>
+          <span className={style.text}>
+            <LogoText />
+          </span>
+        </div>
+        <div className={style.links}>
+          <Link to="/version">
+            <Type caption>v{version}</Type>
+          </Link>
+        </div>
+      </div>
+    </div>
   </nav>
 );
 
