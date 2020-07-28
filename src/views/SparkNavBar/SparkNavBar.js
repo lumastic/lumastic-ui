@@ -8,17 +8,15 @@ import {
   MenuItem,
   Type
 } from "../../components";
+import { Plus } from "../../icons";
 import { LeftPush } from "../../layouts";
+import { createBoardRoute } from "../../routes";
 import {
   BoardSelect,
-  OrgSelect,
-  SparkSelect,
+  OrgSignature,
   Signature,
-  SparkSignature,
-  OrgSignature
+  SparkSignature
 } from "../../templates";
-import { Plus } from "../../icons";
-import { createSparkRoute, createBoardRoute } from "../../routes";
 
 const SparkNavBar = ({
   children,
@@ -66,13 +64,9 @@ const SparkNavBar = ({
 SparkNavBar.propTypes = {
   children: PropTypes.node,
   noContainer: PropTypes.bool,
-  organizations: PropTypes.array,
   org: PropTypes.object,
-  sparks: PropTypes.array,
   spark: PropTypes.object,
   board: PropTypes.object,
-  onOrgChange: PropTypes.func,
-  onSparkChange: PropTypes.func,
   onBoardChange: PropTypes.func
 };
 
