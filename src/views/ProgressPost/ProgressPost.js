@@ -1,31 +1,24 @@
+import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
-import { PressRenderer } from "pressdk";
 import {
+  Avatar,
+  Breadcrumbs,
   Card,
   Divider,
-  Type,
-  Point,
-  MenuItem,
   Link,
-  Avatar,
-  Breadcrumbs
+  MenuItem,
+  Type
 } from "../../components";
-import {
-  Comment,
-  Reaction,
-  AddEmoji,
-  SparkCrumbs,
-  MoreMenu
-} from "../../templates";
-import recommendReactions from "./helpers/recommendReactions.json";
-import formatTime from "../../helpers/formatTime";
-import { parseContent } from "../../helpers";
-import { pressComponents } from "../../PressHelpers";
 import { CommentForm } from "../../forms";
-import style from "./ProgressPost.scss";
+import { parseContent } from "../../helpers";
+import formatTime from "../../helpers/formatTime";
 import { useUser } from "../../hooks";
-import { editPostRoute, viewSparkRoute, profileRoute } from "../../routes";
+import { pressComponents } from "../../PressHelpers";
+import { editPostRoute, profileRoute, viewSparkRoute } from "../../routes";
+import { AddEmoji, Comment, MoreMenu, Reaction } from "../../templates";
+import recommendReactions from "./helpers/recommendReactions.json";
+import style from "./ProgressPost.scss";
 
 const ProgressPost = ({
   spark = {},
@@ -47,12 +40,14 @@ const ProgressPost = ({
         <div className={style.info}>
           <Breadcrumbs>
             <Link to={profileRoute(post?.createdBy?.username)} inline>
-              <Type tag="div">
-                <b>{post?.createdBy?.name}</b>
+              <Type tag="div" body2>
+                {post?.createdBy?.name}
               </Type>
             </Link>
             <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
-              <Type tag="div">{spark?.title}</Type>
+              <Type tag="div" body2>
+                {spark?.title}
+              </Type>
             </Link>
           </Breadcrumbs>
 
@@ -110,9 +105,9 @@ const ProgressPost = ({
           />
         ) : null}
       </div>
-      {}
       {(post.comments || canComment) && (
         <div className={style.comments}>
+          <Divider />
           {post.comments?.map((comment, key) => (
             <Comment
               comment={comment}
