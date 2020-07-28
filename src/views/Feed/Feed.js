@@ -1,8 +1,7 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { Timeline } from "../../components/Timeline";
-import style from "./Feed.scss";
+import React from "react";
 import classNames from "../../helpers/classNames";
+import style from "./Feed.scss";
 
 const Feed = ({ children, className, ...rest }) => (
   <div
@@ -10,10 +9,7 @@ const Feed = ({ children, className, ...rest }) => (
     data-testid="feed"
     {...rest}
   >
-    <div className={style.timeline}>
-      <Timeline />
-    </div>
-    <div className={style.items}>{children}</div>
+    {children}
   </div>
 );
 

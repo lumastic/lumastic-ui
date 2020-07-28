@@ -11,7 +11,7 @@ import { postNoComments } from "../../data/post.db.js";
 import { postWithComments } from "../../data/post.db.js";
 <ProgressPost
   canComment
-  spark={{ title: "Spark Title" }}
+  spark={{ title: "😀 Spark Title" }}
   post={postWithComments}
   deleteHandler={() => alert("Deleting")}
 />;
