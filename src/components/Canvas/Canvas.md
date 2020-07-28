@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<Canvas>Canvas</Canvas>
+// <Canvas>Canvas</Canvas>
 ```
 
 Source:

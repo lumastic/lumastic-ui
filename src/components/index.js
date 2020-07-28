@@ -23,6 +23,7 @@ export * from "./LoadingSpinner";
 export * from "./Main";
 export * from "./Menu";
 export * from "./Modal";
+export * from "./NavButton";
 export * from "./NavIconButton";
 export * from "./Notify";
 export * from "./Option";

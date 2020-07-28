@@ -1,0 +1,39 @@
+@import "../../styles/colors.scss";
+
+.showing {
+  display: flex;
+}
+
+.sparksnav {
+  .navbtn {
+    &:hover {
+      .btns {
+        display: flex;
+      }
+    }
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    .title {
+      flex-grow: 1;
+    }
+    .btns {
+      display: none;
+      &.showing {
+        display: flex;
+      }
+      flex-grow: 0;
+      align-items: center;
+      .btn {
+        display: inline-flex;
+        margin-right: 0.75rem;
+      }
+    }
+  }
+  .boards {
+    margin-left: 0.8rem;
+    // border-left: 1px solid $greyLight;
+    box-sizing: border-box;
+  }
+}

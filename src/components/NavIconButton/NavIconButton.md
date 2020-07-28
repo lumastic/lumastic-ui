@@ -1,25 +1,25 @@
 #### Basic Usage
 
 ```jsx
-import { Sparks } from "../../icons/Sparks";
-import { SideNav } from "../../views/SideNav";
-<SideNav>
+import { Sparks } from "../../icons";
+import { MobileNav } from "../../views";
+<MobileNav>
   <NavIconButton>
     <Sparks />
   </NavIconButton>
-</SideNav>;
+</MobileNav>;
 ```
 
 #### `active`
 
 ```jsx
-import { Sparks } from "../../icons/Sparks";
-import { SideNav } from "../../views/SideNav";
-<SideNav>
+import { Sparks } from "../../icons";
+import { MobileNav } from "../../views";
+<MobileNav>
   <NavIconButton active>
     <Sparks />
   </NavIconButton>
-</SideNav>;
+</MobileNav>;
 ```
 
 Source:

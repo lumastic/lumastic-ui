@@ -10,7 +10,12 @@ export const spark1 = {
   tags: [{ name: "Woodworking" }, { name: "Baking" }],
   followers: [keith, atishay],
   collaborators: [keith, atishay],
-  posts: []
+  posts: [],
+  boards: [
+    { id: 1, name: "Notes" },
+    { id: 2, name: "Ideas" },
+    { id: 3, name: "Crafting" }
+  ]
 };
 
 export const spark2 = {
@@ -23,7 +28,12 @@ export const spark2 = {
   tags: [{ name: "Woodworking" }, { name: "Baking" }],
   followers: [drew, atishay],
   collaborators: [drew, atishay],
-  posts: []
+  posts: [],
+  boards: [
+    { id: 1, name: "Notes" },
+    { id: 2, name: "Ideas" },
+    { id: 3, name: "Crafting" }
+  ]
 };
 
 export const spark3 = {

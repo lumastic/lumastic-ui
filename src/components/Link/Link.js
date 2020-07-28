@@ -39,7 +39,7 @@ const Link = ({
   const child = Children.map(children, c =>
     cloneElement(c, {
       onClick: e => {
-        e.stopPropagation();
+        // e.stopPropagation();
         if (c.props.onClick) c.props.onClick(e);
         history.push({
           ...toObj,

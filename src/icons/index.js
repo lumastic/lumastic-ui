@@ -1,5 +1,6 @@
 export * from "./ArrowDown";
 export * from "./Bell";
+export * from "./Chevron";
 export * from "./Compass";
 export * from "./Copy";
 export * from "./Dot";
@@ -11,6 +12,7 @@ export * from "./Home";
 export * from "./Icon";
 export * from "./Lock";
 export * from "./Logo";
+export * from "./LogoText";
 export * from "./MagnifyingGlass";
 export * from "./PaperAirplane";
 export * from "./Pencil";
