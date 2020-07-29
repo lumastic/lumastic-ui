@@ -7,24 +7,20 @@ import {
   Button,
   Form,
   Link,
-  Option,
-  Point,
   PressInput,
-  Select,
   TextInput,
   Type
 } from "../../components";
-import { PaperAirplane } from "../../icons";
-import { createSparkRoute } from "../../routes";
-import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";
-import style from "./PostForm.scss";
 import { parseContent } from "../../helpers";
 import { useReset } from "../../hooks";
+import { PaperAirplane } from "../../icons";
+import { createSparkRoute } from "../../routes";
+import { SparkCrumbs, SparkSelectCrumbs } from "../../templates";
+import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
-  spark: yup.string().required("This field is required"),
-  type: yup.string().required("This field is required")
+  spark: yup.string().required("This field is required")
 });
 
 const PostForm = ({
