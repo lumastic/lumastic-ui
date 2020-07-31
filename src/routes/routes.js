@@ -67,6 +67,15 @@ export const createPostRoute = {
   state: { modal: true }
 };
 
+export const viewPostRoute = (
+  orgName = ":orgName",
+  sparkId = ":sparkId",
+  postId = ":postId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}/post/${postId}`,
+  state: { modal: true }
+});
+
 export const editPostRoute = (
   orgName = ":orgName",
   sparkId = ":sparkId",

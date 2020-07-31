@@ -5,7 +5,7 @@ import style from "./NotificationCard.scss";
 import classNames from "../../helpers/classNames";
 import { useUser } from "../../hooks";
 import { formatTime } from "../../helpers";
-import { profileRoute, viewSparkRoute } from "../../routes";
+import { profileRoute, viewSparkRoute, viewPostRoute } from "../../routes";
 
 const NotificationCard = ({ notification = {}, className }) => {
   const { id } = useUser();
@@ -20,7 +20,11 @@ const NotificationCard = ({ notification = {}, className }) => {
           commented on{" "}
           <Link
             inline
-            to={profileRoute(notification?.post?.createdBy?.username)}
+            to={viewPostRoute(
+              notification?.spark?.belongsTo?.name,
+              notification?.spark?.id,
+              notification?.post?.id
+            )}
           >
             <b>
               {notification?.post?.createdBy?.id === id
