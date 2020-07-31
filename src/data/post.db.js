@@ -3,7 +3,7 @@ import { drewComment, keithComment } from "./comment.db";
 
 export const postWithComments = {
   content: "This is a post with comments",
-  createdBy: drew,
+  createdBy: keith,
   comments: [drewComment, keithComment],
   reactions: [
     {

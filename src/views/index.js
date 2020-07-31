@@ -4,6 +4,7 @@ export * from "./MobileNav";
 export * from "./Nav";
 export * from "./NewBoardDialog";
 export * from "./NewPostCard";
+export * from "./NotificationCard";
 export * from "./PageAppBar";
 export * from "./PostDialog";
 export * from "./ProfileHeader";
