@@ -1,0 +1,16 @@
+@import "../../../styles/colors.scss";
+
+.mention {
+  display: inline-block;
+  text-decoration: none;
+  color: $primaryDark;
+  font-size: 0.9em;
+  padding: 0.1em 0.25em;
+  border-radius: 0.25rem;
+  background-color: rgba($primary, 0.2);
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: inherit;
+    cursor: pointer;
+  }
+}
