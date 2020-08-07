@@ -11,7 +11,7 @@ import {
   TextInput,
   Type
 } from "../../components";
-import { parseContent } from "../../helpers";
+import { parseContent, findMentions } from "../../helpers";
 import { useReset } from "../../hooks";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
@@ -42,12 +42,19 @@ const PostForm = ({
       </>
     );
   const handleSubmit = async (data, e, rest) => {
+    const object = JSON.parse(data?.content);
+    const mentions = findMentions(object);
+    data.mentions = mentions;
+    const { reset: formReset } = rest;
+    rest.reset = () => {
+      formReset();
+      toggle();
+    };
     if (onSubmit) {
       await onSubmit(data, e, rest);
     } else {
       alert(JSON.stringify(data));
     }
-    toggle();
   };
   return (
     <Form

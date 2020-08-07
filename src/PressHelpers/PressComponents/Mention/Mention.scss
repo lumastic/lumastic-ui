@@ -14,3 +14,19 @@
     cursor: pointer;
   }
 }
+
+.item {
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  .avatar {
+    margin-right: 0.75rem;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: lighten(lightgray, 5%);
+  }
+  &.selected {
+    background-color: lightgray;
+  }
+}

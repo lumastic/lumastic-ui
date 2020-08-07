@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 import React, { memo } from "react";
-import { Link } from "../../../components";
+import { Link, Type } from "../../../components";
 import styles from "./Tag.scss";
 import { tagRoute } from "../../../routes";
 
@@ -12,3 +13,13 @@ export const Tag = memo(({ attributes, children, element, state }) => (
     {children}
   </span>
 ));
+
+export const TagSelectItem = ({ item, selected, onClick }) => (
+  <div
+    className={[styles.item, selected && styles.selected].join(" ")}
+    onMouseDown={onClick}
+  >
+    <Type className={styles.icon}>#</Type>
+    <Type>{item?.name}</Type>
+  </div>
+);

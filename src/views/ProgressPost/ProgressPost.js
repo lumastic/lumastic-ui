@@ -14,7 +14,7 @@ import { CommentForm } from "../../forms";
 import { parseContent } from "../../helpers";
 import formatTime from "../../helpers/formatTime";
 import { useUser } from "../../hooks";
-import { pressComponents } from "../../PressHelpers";
+import { pressComponents, Mention, Tag } from "../../PressHelpers";
 import { editPostRoute, profileRoute, viewSparkRoute } from "../../routes";
 import { AddEmoji, Comment, MoreMenu, Reaction } from "../../templates";
 import recommendReactions from "./helpers/recommendReactions.json";
@@ -87,6 +87,8 @@ const ProgressPost = ({
         <PressRenderer
           components={pressComponents}
           value={parseContent(post?.content)}
+          renderMention={Mention}
+          renderTag={Tag}
         />
       </Type>
       <div className={style.postreactions}>
