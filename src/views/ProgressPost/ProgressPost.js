@@ -74,7 +74,14 @@ const ProgressPost = ({
                   <Type body2>Edit</Type>
                 </MenuItem>
               </Link>
-              <MenuItem onClick={deleteHandler}>
+              <MenuItem
+                onClick={() =>
+                  deleteHandler(post?.id, {
+                    archived: true,
+                    content: post?.content
+                  })
+                }
+              >
                 <Type body2 color="red">
                   Delete
                 </Type>
