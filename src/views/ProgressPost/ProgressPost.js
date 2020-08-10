@@ -74,11 +74,11 @@ const ProgressPost = ({
                   <Type body2>Edit</Type>
                 </MenuItem>
               </Link>
-              {/* <MenuItem onClick={deleteHandler}>
-                  <Type body2 color="red">
-                    Delete
-                  </Type>
-                </MenuItem> */}
+              <MenuItem onClick={deleteHandler}>
+                <Type body2 color="red">
+                  Delete
+                </Type>
+              </MenuItem>
             </MoreMenu>
           </div>
         )}
