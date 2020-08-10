@@ -3,7 +3,7 @@ const mentionCheck = valueItem => {
   const mentions = [];
   valueItem?.children?.forEach(child => {
     if (child?.name === "mention") {
-      mentions.push(child?.state?.userProfile?.id);
+      mentions.push({ id: child?.state?.userProfile?.id });
     } else if (child?.children) {
       mentions.push(...mentionCheck(child));
     }
