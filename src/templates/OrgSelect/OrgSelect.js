@@ -7,6 +7,7 @@ import style from "./OrgSelect.scss";
 import classNames from "../../helpers/classNames";
 
 const OrgSelect = ({
+  className,
   organizations = [],
   defaultValue,
   name,
@@ -28,25 +29,25 @@ const OrgSelect = ({
       onChange={onChange}
       onOpen={onOpen}
       onClose={onClose}
-      className={style.select}
+      className={classNames(className, style.select)}
       compact={avatarsOnly}
     >
       {asFilter && (
         <Option name="all">
           <Signature>
             <Avatar src={avatarURL} setSize="1.25rem" />
-            {!avatarsOnly && <Type>All</Type>}
+            {!avatarsOnly && <Type>My Sparks</Type>}
           </Signature>
         </Option>
       )}
-      {asFilter && (
+      {/* {asFilter && (
         <Option name="collab">
           <Signature>
             <Avatar src={avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>Collaborating</Type>}
           </Signature>
         </Option>
-      )}
+      )} */}
       {organizations.map((org, index) => (
         <Option name={org.id} key={index}>
           <Signature>
@@ -60,6 +61,7 @@ const OrgSelect = ({
 };
 
 OrgSelect.propTypes = {
+  className: PropTypes.string,
   organizations: PropTypes.array,
   name: PropTypes.string,
   small: PropTypes.bool,

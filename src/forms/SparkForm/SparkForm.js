@@ -39,7 +39,7 @@ const SparkForm = ({
     <div className={style.header}>
       <div>
         <Label>Owner</Label>
-        {organizations > 1 ? (
+        {organizations.length > 1 ? (
           <OrgSelect
             name="belongsTo"
             defaultValue={organizations[0]?.id}
