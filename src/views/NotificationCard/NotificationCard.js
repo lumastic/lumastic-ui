@@ -1,57 +1,76 @@
-import React from "react";
+import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
-import { Card, Avatar, Type, Link } from "../../components";
-import style from "./NotificationCard.scss";
+import React from "react";
+import { Avatar, Card, Link, Type } from "../../components";
+import { formatTime, parseContent } from "../../helpers";
 import classNames from "../../helpers/classNames";
-import { useUser } from "../../hooks";
-import { formatTime } from "../../helpers";
-import { profileRoute, viewSparkRoute, viewPostRoute } from "../../routes";
+import { Mention, pressComponents, Tag } from "../../PressHelpers";
+import { profileRoute, viewPostRoute, viewSparkRoute } from "../../routes";
+import style from "./NotificationCard.scss";
 
 const NotificationCard = ({ notification = {}, className }) => {
-  const { id } = useUser();
+  const { actor, entity_type, spark, post, content, createdAt } = notification;
+  let action = "";
+  let label = "";
+  switch (entity_type) {
+    case "MentionProgressUpdate":
+      action = "mentioned you in";
+      label = "a post";
+      break;
+    case "MentionProgressUpdateComment":
+      action = "mentioned you in";
+      label = "a comment";
+      break;
+    case "ProgressUpdateComment":
+      action = "commented on";
+      label = "your post";
+      break;
+    case "FollowedUserAction":
+      action = "followed you";
+      label = "";
+      break;
+    default:
+      break;
+  }
   return (
     <Card className={classNames(className, style.notificationcard)}>
-      <Avatar src={notification?.sender?.avatarURL} size="big" />
+      <Avatar src={actor?.avatarURL} size="big" />
       <div className={style.info}>
         <Type tag="div">
-          <Link inline to={profileRoute(notification?.sender?.username)}>
-            <b>{notification?.sender?.name?.split(" ")[0]}</b>
+          <Link inline to={profileRoute(actor?.name)}>
+            <b>
+              {actor?.isUserProfile
+                ? actor?.createdBy?.name?.split(" ")[0]
+                : actor?.name}
+            </b>
           </Link>{" "}
-          commented on{" "}
+          {action}{" "}
           <Link
             inline
-            to={viewPostRoute(
-              notification?.spark?.belongsTo?.name,
-              notification?.spark?.id,
-              notification?.post?.id
-            )}
+            to={viewPostRoute(spark?.belongsTo?.name, spark?.id, post?.id)}
           >
-            <b>
-              {notification?.post?.createdBy?.id === id
-                ? "your"
-                : `${
-                    notification?.post?.createdBy?.name?.split(" ")[0]
-                  }'s`}{" "}
-              post
-            </b>
+            <b>{label}</b>
           </Link>
         </Type>
         <Type color="grey" tag="div" caption setSize="0.7rem">
-          <Link
-            inline
-            to={viewSparkRoute(
-              notification?.spark?.belongsTo?.name,
-              notification?.spark?.id
-            )}
-          >
-            {notification?.spark?.title}
-          </Link>{" "}
-          •{" "}
+          <Link inline to={viewSparkRoute(spark?.belongsTo?.name, spark?.id)}>
+            {spark?.title}
+          </Link>
+          {spark && ` • `}
           {formatTime({
-            time: notification?.post?.createdAt || notification?.time
+            time: createdAt
           })}
         </Type>
-        <Type className={style.content}>{notification?.content}</Type>
+        {content && (
+          <Type className={style.content} tag="div">
+            <PressRenderer
+              components={pressComponents}
+              value={parseContent(content)}
+              renderMention={Mention}
+              renderTag={Tag}
+            />
+          </Type>
+        )}
       </div>
     </Card>
   );

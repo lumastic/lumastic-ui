@@ -34,7 +34,7 @@ import { Signature, SparksNav, OrgSelect } from "../../templates";
 import style from "./Sidebar.scss";
 
 const Sidebar = ({ className, version, sparks = [], organizations = [] }) => {
-  const [org, setOrg] = useState();
+  const [org, setOrg] = useState("all");
   const [sparkList, setSparks] = useState(sparks);
   useEffect(() => {
     if (org === "all") {

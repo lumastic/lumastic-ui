@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Select, Option, Avatar, Type } from "../../components";
 import { Signature } from "..";
@@ -49,7 +49,7 @@ const OrgSelect = ({
         </Option>
       )} */}
       {organizations.map((org, index) => (
-        <Option name={org.id} key={index}>
+        <Option name={org.id} key={org?.id || index}>
           <Signature>
             <Avatar src={org.avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>{org.name}</Type>}

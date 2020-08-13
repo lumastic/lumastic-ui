@@ -5,15 +5,21 @@ import { Sidebar } from "../Sidebar";
 import style from "./Nav.scss";
 import classNames from "../../helpers/classNames";
 
-const Nav = ({ sparks = [], version = "" }) => (
+const Nav = ({ sparks, version = "", organizations }) => (
   <>
     <MobileNav className={style.mobile} />
-    <Sidebar className={style.sidebar} sparks={sparks} version={version} />
+    <Sidebar
+      className={style.sidebar}
+      sparks={sparks}
+      version={version}
+      organizations={organizations}
+    />
   </>
 );
 
 Nav.propTypes = {
   sparks: PropTypes.array,
+  organizations: PropTypes.array,
   version: PropTypes.string
 };
 
