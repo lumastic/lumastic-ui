@@ -9,7 +9,14 @@ import { profileRoute, viewPostRoute, viewSparkRoute } from "../../routes";
 import style from "./NotificationCard.scss";
 
 const NotificationCard = ({ notification = {}, className }) => {
-  const { actor, entity_type, spark, post, content, createdAt } = notification;
+  const {
+    actor,
+    entity_type,
+    spark,
+    post_ref_id,
+    content,
+    createdAt
+  } = notification;
   let action = "";
   let label = "";
   switch (entity_type) {
@@ -47,7 +54,7 @@ const NotificationCard = ({ notification = {}, className }) => {
           {action}{" "}
           <Link
             inline
-            to={viewPostRoute(spark?.belongsTo?.name, spark?.id, post?.id)}
+            to={viewPostRoute(spark?.belongsTo?.name, spark?.id, post_ref_id)}
           >
             <b>{label}</b>
           </Link>
