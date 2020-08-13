@@ -61,7 +61,7 @@ const PostForm = ({
       onSubmit={handleSubmit}
       defaultValues={{
         content: JSON.stringify(defaultPressValue()),
-        spark: sparks[0].id,
+        spark: sparks[0]?.id,
         ...defaultValues
       }}
       className={style.form}

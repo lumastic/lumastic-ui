@@ -48,8 +48,8 @@ const OrgSelect = ({
           </Signature>
         </Option>
       )} */}
-      {organizations.map((org, index) => (
-        <Option name={org.id} key={org?.id || index}>
+      {organizations.map((org = {}, index) => (
+        <Option name={org.id} key={org.id || index}>
           <Signature>
             <Avatar src={org.avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>{org.name}</Type>}
