@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { SparkSignature } from "..";
-import { Option, Select } from "../../components";
+import { Option, Select, Type } from "../../components";
 
 const SparkSelect = ({
   sparks = [],
@@ -27,7 +26,9 @@ const SparkSelect = ({
       (spark, key) =>
         spark && (
           <Option key={spark?.id || key} name={spark?.id || key}>
-            <SparkSignature spark={spark} small={small} />
+            <Type body2={small} tag="div">
+              {spark.title}
+            </Type>
           </Option>
         )
     )}
