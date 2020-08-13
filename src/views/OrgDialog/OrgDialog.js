@@ -23,6 +23,7 @@ const OrgDialog = ({
       </Type>
       <OrgForm
         onSubmit={onSubmit}
+        validate
         defaultValues={
           organization && {
             name: organization?.name,
