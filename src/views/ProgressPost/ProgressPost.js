@@ -11,7 +11,7 @@ import {
   Type
 } from "../../components";
 import { CommentForm } from "../../forms";
-import { parseContent } from "../../helpers";
+import { parseContent, classNames } from "../../helpers";
 import formatTime from "../../helpers/formatTime";
 import { useUser } from "../../hooks";
 import { pressComponents, Mention, Tag } from "../../PressHelpers";
@@ -27,12 +27,13 @@ const ProgressPost = ({
   reactionClick,
   reactionSelect,
   newCommentHandler,
-  deleteHandler
+  deleteHandler,
+  className
 }) => {
   const { id } = useUser();
   const isAuthor = post?.createdBy?.id === id;
   return (
-    <Card className={style.progresspost}>
+    <Card className={classNames(style.progresspost, className)}>
       <div className={style.postheader}>
         <Link to={profileRoute(post?.createdBy?.username)} inline>
           <Avatar src={post?.createdBy?.avatarURL} size="big" />
@@ -143,7 +144,8 @@ ProgressPost.propTypes = {
   reactionClick: PropTypes.func,
   reactionSelect: PropTypes.func,
   newCommentHandler: PropTypes.func,
-  deleteHandler: PropTypes.func
+  deleteHandler: PropTypes.func,
+  className: PropTypes.string
 };
 
 export { ProgressPost };

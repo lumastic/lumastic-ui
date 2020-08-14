@@ -8,6 +8,7 @@ export * from "./NotificationCard";
 export * from "./OrgDialog";
 export * from "./PageAppBar";
 export * from "./PostDialog";
+export * from "./PostView";
 export * from "./ProfileHeader";
 export * from "./ProgressPost";
 export * from "./Sidebar";
