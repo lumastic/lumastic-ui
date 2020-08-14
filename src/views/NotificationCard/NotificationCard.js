@@ -11,6 +11,7 @@ import style from "./NotificationCard.scss";
 const NotificationCard = ({ notification = {}, className }) => {
   const {
     actor,
+    entity_id,
     entity_type,
     spark,
     post_ref_id,
@@ -54,7 +55,11 @@ const NotificationCard = ({ notification = {}, className }) => {
           {action}{" "}
           <Link
             inline
-            to={viewPostRoute(spark?.belongsTo?.name, spark?.id, post_ref_id)}
+            to={viewPostRoute(
+              spark?.belongsTo?.name,
+              spark?.id,
+              post_ref_id || entity_id
+            )}
           >
             <b>{label}</b>
           </Link>
