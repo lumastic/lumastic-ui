@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import classNames from "../../helpers/classNames";
 import { useInputContext } from "../../helpers/useInputContext";
-import { pressComponents, PressMenu } from "../../PressHelpers";
+import {
+  pressComponents,
+  PressMenu,
+  Mention,
+  Tag,
+  MentionSelectItem,
+  TagSelectItem
+} from "../../PressHelpers";
 import { Type } from "../Type";
 import style from "./PressInput.scss";
 import { useUser } from "../../hooks";
@@ -52,6 +59,10 @@ const PressInput = ({
               readOnly={readOnly}
               components={pressComponents}
               callbacks={callbacks}
+              renderMention={Mention}
+              renderMentionItem={MentionSelectItem}
+              renderTag={Tag}
+              renderTagItem={TagSelectItem}
             />
           </Type>
         </PressProvider>

@@ -11,10 +11,10 @@ import {
   Type
 } from "../../components";
 import { CommentForm } from "../../forms";
-import { parseContent } from "../../helpers";
+import { parseContent, classNames } from "../../helpers";
 import formatTime from "../../helpers/formatTime";
 import { useUser } from "../../hooks";
-import { pressComponents } from "../../PressHelpers";
+import { pressComponents, Mention, Tag } from "../../PressHelpers";
 import { editPostRoute, profileRoute, viewSparkRoute } from "../../routes";
 import { AddEmoji, Comment, MoreMenu, Reaction } from "../../templates";
 import recommendReactions from "./helpers/recommendReactions.json";
@@ -27,12 +27,13 @@ const ProgressPost = ({
   reactionClick,
   reactionSelect,
   newCommentHandler,
-  deleteHandler
+  deleteHandler,
+  className
 }) => {
   const { id } = useUser();
   const isAuthor = post?.createdBy?.id === id;
   return (
-    <Card className={style.progresspost}>
+    <Card className={classNames(style.progresspost, className)}>
       <div className={style.postheader}>
         <Link to={profileRoute(post?.createdBy?.username)} inline>
           <Avatar src={post?.createdBy?.avatarURL} size="big" />
@@ -74,11 +75,18 @@ const ProgressPost = ({
                   <Type body2>Edit</Type>
                 </MenuItem>
               </Link>
-              {/* <MenuItem onClick={deleteHandler}>
-                  <Type body2 color="red">
-                    Delete
-                  </Type>
-                </MenuItem> */}
+              <MenuItem
+                onClick={() =>
+                  deleteHandler(post?.id, {
+                    archived: true,
+                    content: post?.content
+                  })
+                }
+              >
+                <Type body2 color="red">
+                  Delete
+                </Type>
+              </MenuItem>
             </MoreMenu>
           </div>
         )}
@@ -87,6 +95,8 @@ const ProgressPost = ({
         <PressRenderer
           components={pressComponents}
           value={parseContent(post?.content)}
+          renderMention={Mention}
+          renderTag={Tag}
         />
       </Type>
       <div className={style.postreactions}>
@@ -134,7 +144,8 @@ ProgressPost.propTypes = {
   reactionClick: PropTypes.func,
   reactionSelect: PropTypes.func,
   newCommentHandler: PropTypes.func,
-  deleteHandler: PropTypes.func
+  deleteHandler: PropTypes.func,
+  className: PropTypes.string
 };
 
 export { ProgressPost };

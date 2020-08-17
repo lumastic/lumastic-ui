@@ -40,6 +40,22 @@ export const settingsRoute = ({
 export const myOrganizationsRoute = (orgName = ":orgName") =>
   `/${orgName}/orgs`;
 
+export const createOrganizationRoute = {
+  pathname: "/create/organization",
+  state: { modal: true }
+};
+
+export const orgSettingsRoute = (
+  orgName = ":orgName",
+  { members, security, sparks, billing, developer } = {}
+) =>
+  (security && `/${orgName}/settings/security`) ||
+  (sparks && `/${orgName}/settings/sparks`) ||
+  (members && `/${orgName}/settings/members`) ||
+  (billing && `/${orgName}/settings/billing`) ||
+  (developer && `/${orgName}/settings/apps`) ||
+  `/${orgName}/settings/profile`;
+
 // SPARK ROUTES
 
 export const mySparksRoute = "/sparks";
@@ -67,6 +83,15 @@ export const createPostRoute = {
   state: { modal: true }
 };
 
+export const viewPostRoute = (
+  orgName = ":orgName",
+  sparkId = ":sparkId",
+  postId = ":postId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}/post/${postId}`,
+  state: { modal: true }
+});
+
 export const editPostRoute = (
   orgName = ":orgName",
   sparkId = ":sparkId",
@@ -93,6 +118,8 @@ export const viewBoardRoute = (
 
 // EXPLORE ROUTE
 export const exploreRoute = "/explore";
+
+export const tagRoute = (tagName = ":tagName") => `/expore/tag/${tagName}`;
 
 // SEARCH ROUTE
 export const findRoute = {

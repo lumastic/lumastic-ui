@@ -19,6 +19,9 @@
       color: $greyText;
     }
   }
+  > div:first-child {
+    flex-grow: 1;
+  }
   .select-arrow {
     display: inline-flex;
     margin-left: 0.5rem;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Select, Option, Avatar, Type } from "../../components";
 import { Signature } from "..";
@@ -7,6 +7,7 @@ import style from "./OrgSelect.scss";
 import classNames from "../../helpers/classNames";
 
 const OrgSelect = ({
+  className,
   organizations = [],
   defaultValue,
   name,
@@ -28,27 +29,27 @@ const OrgSelect = ({
       onChange={onChange}
       onOpen={onOpen}
       onClose={onClose}
-      className={style.select}
+      className={classNames(className, style.select)}
       compact={avatarsOnly}
     >
       {asFilter && (
         <Option name="all">
           <Signature>
             <Avatar src={avatarURL} setSize="1.25rem" />
-            {!avatarsOnly && <Type>All</Type>}
+            {!avatarsOnly && <Type>My Sparks</Type>}
           </Signature>
         </Option>
       )}
-      {asFilter && (
+      {/* {asFilter && (
         <Option name="collab">
           <Signature>
             <Avatar src={avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>Collaborating</Type>}
           </Signature>
         </Option>
-      )}
-      {organizations.map((org, index) => (
-        <Option name={org.id} key={index}>
+      )} */}
+      {organizations.map((org = {}, index) => (
+        <Option name={org.id} key={org.id || index}>
           <Signature>
             <Avatar src={org.avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>{org.name}</Type>}
@@ -60,6 +61,7 @@ const OrgSelect = ({
 };
 
 OrgSelect.propTypes = {
+  className: PropTypes.string,
   organizations: PropTypes.array,
   name: PropTypes.string,
   small: PropTypes.bool,

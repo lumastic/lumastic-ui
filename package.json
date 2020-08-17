@@ -86,7 +86,7 @@
     "rootDir": "src"
   },
   "dependencies": {
-    "pressdk": ">=0.3.0",
+    "pressdk": ">=0.4.0",
     "yup": "^0.28.5"
   }
 }

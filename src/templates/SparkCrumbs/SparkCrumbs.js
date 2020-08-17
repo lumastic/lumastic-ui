@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Avatar, Link, Breadcrumbs, Tooltip } from "../../components";
-import { SparkSignature } from "../SparkSignature";
+import { Avatar, Breadcrumbs, Link, Tooltip, Type } from "../../components";
 import { profileRoute, viewSparkRoute } from "../../routes";
 
 const SparkCrumbs = ({
@@ -21,7 +20,9 @@ const SparkCrumbs = ({
       to={viewSparkRoute(user.username || organization.name, spark.id)}
       inline
     >
-      <SparkSignature spark={spark} small={small} />
+      <Type body2={small} tag="div">
+        {spark.title}
+      </Type>
     </Link>
   </Breadcrumbs>
 );

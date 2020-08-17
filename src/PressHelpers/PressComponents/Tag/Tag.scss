@@ -1,0 +1,29 @@
+@import "../../../styles/colors.scss";
+
+.tag {
+  display: inline-block;
+  text-decoration: none;
+  color: $primaryDark;
+  font-size: 0.9em;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: inherit;
+    cursor: pointer;
+  }
+}
+
+.item {
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  .icon {
+    margin-right: 0.75rem;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: lighten(lightgray, 5%);
+  }
+  &.selected {
+    background-color: lightgray;
+  }
+}
