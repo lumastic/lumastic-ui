@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import style from "./Button.scss";
 import classNames from "../../helpers/classNames";
+import { useInputContext } from "../../helpers/useInputContext";
 
 const Button = forwardRef(
   (
@@ -19,28 +20,31 @@ const Button = forwardRef(
       ...rest
     },
     ref
-  ) => (
-    <button
-      className={classNames(
-        className,
-        style.button,
-        style[color],
-        style[variant],
-        { [style[size]]: size },
-        { [style["full-width"]]: fullWidth },
-        { [style.disabled]: disabled },
-        { [style.shadow]: shadow }
-      )}
-      onClick={onClick}
-      disabled={disabled}
-      type={type || "button"}
-      data-testid="button"
-      ref={ref}
-      {...rest}
-    >
-      {children}
-    </button>
-  )
+  ) => {
+    const { formState } = useInputContext();
+    return (
+      <button
+        className={classNames(
+          className,
+          style.button,
+          style[color],
+          style[variant],
+          { [style[size]]: size },
+          { [style["full-width"]]: fullWidth },
+          { [style.disabled]: disabled },
+          { [style.shadow]: shadow }
+        )}
+        onClick={onClick}
+        disabled={disabled || formState?.isSubmitting}
+        type={type || "button"}
+        data-testid="button"
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </button>
+    );
+  }
 );
 
 Button.propTypes = {
