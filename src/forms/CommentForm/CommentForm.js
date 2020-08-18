@@ -11,17 +11,25 @@ import classNames from "../../helpers/classNames";
 import { useReset, useUser } from "../../hooks";
 import { PaperAirplane } from "../../icons";
 import style from "./CommentForm.scss";
+import { findMentions } from "../../helpers";
 
 const CommentForm = ({ className, onSubmit, defaultValues }) => {
   const { avatarURL } = useUser();
   const [reset, toggle] = useReset();
-  const handleSubmit = (data, e, rest) => {
+  const handleSubmit = async (data, e, rest) => {
+    const object = JSON.parse(data?.content);
+    const mentions = findMentions(object);
+    data.mentions = mentions;
+    const { reset: formReset } = rest;
+    rest.reset = () => {
+      formReset();
+      toggle();
+    };
     if (onSubmit) {
-      onSubmit(data, e, rest);
+      await onSubmit(data, e, rest);
     } else {
       alert(JSON.stringify(data));
     }
-    toggle();
   };
   return (
     <Form
