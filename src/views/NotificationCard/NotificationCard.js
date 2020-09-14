@@ -34,9 +34,10 @@ const NotificationCard = ({ notification = {}, className }) => {
       label = "your post";
       break;
     case "FollowedUserAction":
-      action = "followed you";
-      label = "";
-      break;
+      // action = "commented on";
+      // label = "a post";
+      // break;
+      return null;
     default:
       break;
   }
