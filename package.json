@@ -12,7 +12,7 @@
     "new:form": "cd scripts && ./createForm.sh",
     "new:icon": "cd scripts && ./createIcon.sh",
     "index": "cd scripts && ./index.sh",
-    "build": "webpack && yarn cp:package",
+    "build": "webpack",
     "build:prod": "webpack --env prod && yarn cp:package",
     "test": "jest --watch",
     "cp:package": "cp -rf package.json dist",
