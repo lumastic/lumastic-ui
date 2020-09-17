@@ -17,7 +17,13 @@ const Comment = ({ comment = {}, createdBy = {} }) => (
     </Tooltip>
     <div className={style.content}>
       <Type color="grey" caption setSize="0.7rem">
-        {createdBy.name} • {formatTime({ time: comment.createdAt })}
+        {createdBy.name} •{" "}
+        <Tooltip
+          postition="top"
+          label={formatTime({ time: comment.createdAt, fullDate: true })}
+        >
+          {formatTime({ time: comment.createdAt })}
+        </Tooltip>
       </Type>
       <Type tag="div">
         <PressRenderer

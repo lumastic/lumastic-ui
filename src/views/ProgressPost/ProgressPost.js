@@ -8,7 +8,8 @@ import {
   Divider,
   Link,
   MenuItem,
-  Type
+  Type,
+  Tooltip
 } from "../../components";
 import { CommentForm } from "../../forms";
 import { parseContent, classNames } from "../../helpers";
@@ -51,18 +52,22 @@ const ProgressPost = ({
               </Type>
             </Link>
           </Breadcrumbs>
-
-          <Type
-            color="grey"
-            className={style.time}
-            tag="div"
-            caption
-            setSize="0.7rem"
+          <Tooltip
+            postition="top"
+            label={formatTime({ time: post.createdAt, fullDate: true })}
           >
-            {`${post?.spark?.visibility || "Public"} • ${formatTime({
-              time: post.createdAt || post.time
-            })}`}
-          </Type>
+            <Type
+              color="grey"
+              className={style.time}
+              tag="div"
+              caption
+              setSize="0.7rem"
+            >
+              {`${post?.spark?.visibility || "Public"} • ${formatTime({
+                time: post.createdAt || post.time
+              })}`}
+            </Type>
+          </Tooltip>
         </div>
         {isAuthor && (
           <div className={style.menu}>
