@@ -10,7 +10,7 @@ const formatTime = ({
   time = "",
   fullDate = false,
   withTime = false,
-  ago = false
+  ago = true
 }) => {
   if (fullDate) {
     let format = "LL";
