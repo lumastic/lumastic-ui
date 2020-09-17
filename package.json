@@ -86,6 +86,7 @@
     "rootDir": "src"
   },
   "dependencies": {
+    "moment": "^2.28.0",
     "pressdk": ">=1.0.0",
     "yup": "^0.28.5"
   }
