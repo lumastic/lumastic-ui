@@ -67,7 +67,9 @@ const ProgressPost = ({
               caption
               setSize="0.7rem"
             >
-              {`${post?.spark?.visibility || "Public"} • ${formatTime({
+              {`${spark?.visibility ||
+                post?.spark?.visibility ||
+                "Public"} • ${formatTime({
                 time: post.createdAt || post.time
               })}`}
             </Type>
