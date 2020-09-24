@@ -8,7 +8,7 @@ import { Tooltip } from "../../components/Tooltip";
 import formatTime from "../../helpers/formatTime";
 import style from "./Comment.scss";
 import { parseContent } from "../../helpers";
-import { pressComponents } from "../../PressHelpers";
+import { Mention, pressComponents } from "../../PressHelpers";
 
 const Comment = ({ comment = {}, createdBy = {} }) => (
   <div className={style.comment} data-testid="comment">
@@ -29,6 +29,7 @@ const Comment = ({ comment = {}, createdBy = {} }) => (
         <PressRenderer
           components={pressComponents}
           value={parseContent(comment?.content)}
+          renderMention={Mention}
         />
       </Type>
     </div>
