@@ -54,7 +54,11 @@ const ProgressPost = ({
           </Breadcrumbs>
           <Tooltip
             postition="top"
-            label={formatTime({ time: post.createdAt, fullDate: true })}
+            label={formatTime({
+              time: post.createdAt || post.time,
+              fullDate: true,
+              withTime: true
+            })}
           >
             <Type
               color="grey"
