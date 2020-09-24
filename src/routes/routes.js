@@ -1,6 +1,8 @@
 export const baseRoute = "/";
 export const homeRoute = "/home";
 
+export const logoutRoute = "/logout";
+
 export const upgradeRoute = "/pro";
 export const notificationsRoute = "/notifications";
 
