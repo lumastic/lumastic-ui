@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can parse known good should parse content with urls and images 1`] = `
+Array [
+  Object {
+    "id": 1213425038528,
+    "name": "type",
+    "value": Array [
+      Object {
+        "children": Array [
+          Object {
+            "larger": true,
+            "text": "Chris Schwarz Ideas and Writeup",
+          },
+        ],
+        "name": "default",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "text": "Chis Schwarz brought attention to this style of Tool Chest. He has a few writeups on it and blog posts so hes definately a good place to start.",
+          },
+        ],
+        "name": "default",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "text": "Chris Schwarz plans and sketchup",
+          },
+        ],
+        "name": "default",
+      },
+    ],
+  },
+  Object {
+    "id": 722590329122,
+    "name": "link",
+    "value": Object {
+      "base": "www.popularwoodworking.com",
+      "image": "https://s26462.pcdn.co/wp-content/uploads/Dutch-Chest-With-Lower-Case-e1402947709808.jpg",
+      "title": "Dutch Tool Chest with a Lower Storage Unit | Popular Woodworking Magazine",
+      "url": "https://www.popularwoodworking.com/woodworking-blogs/dutch-tool-chest-lower-storage-unit/",
+    },
+  },
+  Object {
+    "id": 189761849362,
+    "name": "link",
+    "value": Object {
+      "base": "blog.lostartpress.com
+",
+      "image": "https://lostartpress.files.wordpress.com/2012/12/dutch_bench_planes_img_5256.jpg",
+      "title": "Let’s Go Dutch (Tool Chest) | Lost Art Press",
+      "url": "https://blog.lostartpress.com/2012/12/23/lets-go-dutch-tool-chest/
+",
+    },
+  },
+  Object {
+    "id": 474640913276,
+    "name": "link",
+    "value": Object {
+      "base": "lostartpress.files.wordpress.com
+",
+      "title": "",
+      "url": "https://lostartpress.files.wordpress.com/2013/01/dutch_open_img_4536.jpg
+",
+    },
+  },
+  Object {
+    "id": 1256103301600,
+    "name": "link",
+    "value": Object {
+      "base": "blog.lostartpress.com",
+      "image": "https://lostartpress.files.wordpress.com/2013/01/dutch_covered_img_4538.jpg?w=229",
+      "title": "A Quick Tour of the Dutch Tool Chest | Lost Art Press",
+      "url": "https://blog.lostartpress.com/2013/01/11/a-quick-tour-of-the-dutch-tool-chest/",
+    },
+  },
+]
+`;
+
+exports[`can parse known good should parse no content 1`] = `
+Array [
+  Object {
+    "id": 387326265445,
+    "name": "type",
+    "value": Array [
+      Object {
+        "children": Array [
+          Object {
+            "text": "",
+          },
+        ],
+        "name": "default",
+      },
+    ],
+  },
+]
+`;
+
+exports[`can parse known good should parse youtube content 1`] = `
+Array [
+  Object {
+    "id": 675776893448,
+    "name": "type",
+    "value": Array [
+      Object {
+        "children": Array [
+          Object {
+            "text": "Lumberjocks Video",
+          },
+        ],
+        "name": "default",
+      },
+    ],
+  },
+  Object {
+    "id": 2719519280,
+    "name": "yt",
+    "value": Object {
+      "link": "https://www.youtube.com/embed/2JJCXXQqAIk",
+    },
+  },
+  Object {
+    "id": 861852389263,
+    "name": "type",
+    "value": Array [
+      Object {
+        "children": Array [
+          Object {},
+        ],
+        "name": "default",
+      },
+    ],
+  },
+  Object {
+    "id": 242572017073,
+    "name": "link",
+    "value": Object {
+      "base": "www.lumberjocks.com",
+      "image": "http://lumberjocks.com/assets/pictures/projects/903266-97x65.jpg",
+      "title": "Mobile Base For A Dutch Tool Chest - by CarterR @ LumberJocks.com ~ woodworking community",
+      "url": "https://www.lumberjocks.com/projects/181330",
+    },
+  },
+]
+`;
