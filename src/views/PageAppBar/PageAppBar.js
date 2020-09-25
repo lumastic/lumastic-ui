@@ -11,9 +11,14 @@ import {
 } from "../../components";
 import { SearchForm } from "../../forms";
 import { useUser } from "../../hooks";
-import { MagnifyingGlass } from "../../icons";
+import { MagnifyingGlass, LogOut } from "../../icons";
 import { LeftPush } from "../../layouts";
-import { exploreRoute, profileRoute, searchRoute } from "../../routes";
+import {
+  exploreRoute,
+  profileRoute,
+  searchRoute,
+  logoutRoute
+} from "../../routes";
 import { Signature } from "../../templates";
 import style from "./PageAppBar.scss";
 
@@ -54,6 +59,12 @@ const PageAppBar = ({ icon, title, noSearch = false }) => {
 
           <Link to={profileRoute(username)} inline>
             <Avatar src={avatarURL} />
+          </Link>
+
+          <Link to={logoutRoute} inline>
+            <IconButton color="grey" size="big">
+              <LogOut />
+            </IconButton>
           </Link>
         </LeftPush>
       </Container>

@@ -30,3 +30,4 @@ export * from "./Times";
 export * from "./Trash";
 export * from "./UserLock";
 export * from "./Users";
+export * from "./Logout";
