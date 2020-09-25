@@ -54,7 +54,11 @@ const ProgressPost = ({
           </Breadcrumbs>
           <Tooltip
             postition="top"
-            label={formatTime({ time: post.createdAt, fullDate: true })}
+            label={formatTime({
+              time: post.createdAt || post.time,
+              fullDate: true,
+              withTime: true
+            })}
           >
             <Type
               color="grey"
@@ -63,7 +67,9 @@ const ProgressPost = ({
               caption
               setSize="0.7rem"
             >
-              {`${post?.spark?.visibility || "Public"} • ${formatTime({
+              {`${spark?.visibility ||
+                post?.spark?.visibility ||
+                "Public"} • ${formatTime({
                 time: post.createdAt || post.time
               })}`}
             </Type>
