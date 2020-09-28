@@ -1,2 +1,26 @@
-.slideshow {
+@import "../../styles/colors.scss";
+
+.slide-controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .dot {
+    &.active {
+      background-color: $greyDark;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    box-sizing: border-box;
+    display: inline-block;
+    background: transparent;
+    border: 1px solid $grey;
+    border-radius: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.5rem;
+    transform: scale(0.75);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+      background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    width: 0.8rem;
+  }
 }

@@ -1,17 +1,24 @@
-import React, { Children } from "react";
 import PropTypes from "prop-types";
-import { Link, Route, Switch, useLocation } from "react-router-dom";
 import * as queryString from "query-string";
-import style from "./Slideshow.scss";
+import React, { Children, cloneElement } from "react";
+import { Link, useLocation } from "react-router-dom";
 import classNames from "../../helpers/classNames";
+import style from "./Slideshow.scss";
 
-const Slideshow = ({ children, className, name }) => {
+const Slideshow = ({ children, className, name = "slideshow" }) => {
   const slides = Children.toArray(children);
   const location = useLocation();
+  const isIndex = index =>
+    parseInt(queryString.parse(location.search)[name]) === index ||
+    (!queryString.parse(location.search)[name] && index === 0);
   return (
     <>
-      {slides[queryString.parse(location.search)[name] || 0]}
-      <div className={style["slide-controller"]}>
+      {cloneElement(slides[queryString.parse(location.search)[name] || 0], {
+        nextSlide: parseInt(queryString.parse(location.search)[name]) + 1 || 1,
+        previousSlide:
+          parseInt(queryString.parse(location.search)[name]) - 1 || 0
+      })}
+      <div className={classNames(className, style["slide-controller"])}>
         {slides.map((slide, index) => (
           <Link
             to={{
@@ -22,10 +29,10 @@ const Slideshow = ({ children, className, name }) => {
                 [name]: index
               })
             }}
-          >
-            <div className={style.dot} />
-            dot
-          </Link>
+            className={classNames(style.dot, {
+              [style.active]: isIndex(index)
+            })}
+          />
         ))}
       </div>
     </>

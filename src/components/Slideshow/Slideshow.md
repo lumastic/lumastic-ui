@@ -2,8 +2,9 @@
 
 ```jsx
 <Slideshow name="slidetest">
-  <div>Test1</div>
+  <div disabled>Test1</div>
   <div>Test2</div>
+  <div>Test3</div>
 </Slideshow>
 ```
 
