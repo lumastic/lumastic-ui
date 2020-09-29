@@ -76,6 +76,9 @@
   &.gutter-bottom {
     margin-bottom: 0.5em;
   }
+  &.header-font {
+    font-family: $headerFont;
+  }
   svg {
     position: relative;
     top: 0.25em;

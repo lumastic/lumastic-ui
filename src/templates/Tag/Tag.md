@@ -1,7 +1,7 @@
 #### Basic Usage
 
 ```jsx
-<Tag>Tag</Tag>
+<Tag />
 ```
 
 Source:

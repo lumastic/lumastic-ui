@@ -21,6 +21,7 @@ const Card = forwardRef(
 Card.propTypes = {
   children: PropTypes.node,
   noSidePadding: PropTypes.bool,
+  backgroundImage: PropTypes.string,
   className: PropTypes.string
 };
 
