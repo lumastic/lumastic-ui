@@ -1,10 +1,9 @@
 import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
-import { Card, Label, List, Type } from "../../components";
+import { Card, Type } from "../../components";
 import { parseContent } from "../../helpers";
 import { pressComponents } from "../../PressHelpers";
-import { SparkCrumbs, Tag } from "../../templates";
 import style from "./SparkCard.scss";
 
 const SparkCard = ({ spark = {} }) => (
