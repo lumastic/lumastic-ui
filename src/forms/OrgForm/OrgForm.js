@@ -55,7 +55,7 @@ const AvatarEdit = ({ initialURL, imageUploadHandler = () => {} }) => {
       });
       setSrc(reading.target.result);
       const image = await imageUploadHandler(file);
-      if (!image.error) {
+      if (image && !image?.error) {
         notifyDispatch({
           type: "add",
           props: {
@@ -68,7 +68,9 @@ const AvatarEdit = ({ initialURL, imageUploadHandler = () => {} }) => {
         notifyDispatch({
           type: "add",
           props: {
-            children: image.error,
+            children:
+              image?.error ||
+              "Sorry! There was an error uploading that image...",
             severity: "error"
           }
         });
