@@ -14,9 +14,22 @@ const Slideshow = ({ children, className, name = "slideshow" }) => {
   return (
     <>
       {cloneElement(slides[queryString.parse(location.search)[name] || 0], {
-        nextSlide: parseInt(queryString.parse(location.search)[name]) + 1 || 1,
-        previousSlide:
-          parseInt(queryString.parse(location.search)[name]) - 1 || 0
+        nextSlide: {
+          pathname: location.pathname,
+          hash: location.hash,
+          search: queryString.stringify({
+            ...queryString.parse(location.search),
+            [name]: parseInt(queryString.parse(location.search)[name]) + 1 || 1
+          })
+        },
+        previousSlide: {
+          pathname: location.pathname,
+          hash: location.hash,
+          search: queryString.stringify({
+            ...queryString.parse(location.search),
+            [name]: parseInt(queryString.parse(location.search)[name]) - 1 || 0
+          })
+        }
       })}
       <div className={classNames(className, style["slide-controller"])}>
         {slides.map((slide, index) => (

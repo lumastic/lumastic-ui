@@ -8,30 +8,23 @@ import { SparkCrumbs, Tag } from "../../templates";
 import style from "./SparkCard.scss";
 
 const SparkCard = ({ spark = {} }) => (
-  <Card>
-    <List>
-      <SparkCrumbs
-        spark={spark}
-        organization={spark?.belongsTo}
-        user={
-          spark?.belongsTo?.isUserOrganization && spark?.belongsTo?.createdBy
-        }
+  <Card className={style.glow}>
+    <Type h4>{spark.title}</Type>
+    <Type
+      color="grey"
+      className={style.time}
+      tag="div"
+      caption
+      setSize="0.7rem"
+    >
+      {`${spark?.belongsTo?.name} • ${spark?.posts?.length} posts • ${spark?.visibility}`}
+    </Type>
+    <Type tag="div">
+      <PressRenderer
+        components={pressComponents}
+        value={parseContent(spark?.description)}
       />
-      <Type tag="div">
-        <PressRenderer
-          components={pressComponents}
-          value={parseContent(spark?.description)}
-        />
-      </Type>
-      <div>
-        <Label>Tags</Label>
-        <div className={style.tags}>
-          {spark.tags?.map((tag, index) => (
-            <Tag tag={tag} key={tag.id || index} />
-          ))}
-        </div>
-      </div>
-    </List>
+    </Type>
   </Card>
 );
 
