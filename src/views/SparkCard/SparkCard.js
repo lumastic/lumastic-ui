@@ -1,14 +1,17 @@
 import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
-import { Card, Type } from "../../components";
+import { Card, Type, Link } from "../../components";
 import { parseContent } from "../../helpers";
 import { pressComponents } from "../../PressHelpers";
+import { profileRoute, viewSparkRoute } from "../../routes";
 import style from "./SparkCard.scss";
 
 const SparkCard = ({ spark = {} }) => (
   <Card className={style.glow}>
-    <Type h4>{spark.title}</Type>
+    <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
+      <Type h4>{spark.title}</Type>
+    </Link>
     <Type
       color="grey"
       className={style.time}
@@ -16,7 +19,10 @@ const SparkCard = ({ spark = {} }) => (
       caption
       setSize="0.7rem"
     >
-      {`${spark?.belongsTo?.name} • ${spark?.posts?.length} posts • ${spark?.visibility}`}
+      <Link to={profileRoute(spark?.belongsTo?.name)} inline>
+        {spark?.belongsTo?.name}
+      </Link>
+      {` • ${spark?.posts?.length} posts • ${spark?.visibility}`}
     </Type>
     <Type tag="div">
       <PressRenderer

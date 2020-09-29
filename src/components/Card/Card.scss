@@ -1,9 +1,9 @@
 @import "../../styles/colors.scss";
 
 .card {
-  padding: 0.75rem;
+  padding: 1rem;
   border: 1px solid $grey;
-  border-radius: 6px;
+  border-radius: 0.75rem;
   background-color: $backgroundLight;
   .no-side-padding {
     padding-left: 0;
