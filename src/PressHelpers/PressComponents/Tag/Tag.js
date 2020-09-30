@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { memo } from "react";
 import { Link, Type } from "../../../components";
-import styles from "./Tag.scss";
+import styles from "./PressTag.scss";
 import { tagRoute } from "../../../routes";
 
 export const Tag = memo(({ attributes, children, element, state }) => (

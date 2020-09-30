@@ -27,7 +27,8 @@ const PostForm = ({
   onSubmit,
   sparks = [],
   defaultValues = {},
-  buttonLabel = "Post"
+  buttonLabel = "Post",
+  buttonProps = {}
 }) => {
   const user = useUser();
   const [reset, toggle] = useReset();
@@ -86,7 +87,7 @@ const PostForm = ({
         defaultValue={parseContent(defaultValues?.content)}
         reset={reset}
         name="content"
-        placeholder="What's the latest..."
+        placeholder="What's on your mind..."
       />
       <div className={style.bottom}>
         <div className={style.left}>
@@ -117,7 +118,7 @@ const PostForm = ({
           </Select> */}
         </div>
         <div className={style.right}>
-          <Button type="submit">
+          <Button type="submit" {...buttonProps}>
             <PaperAirplane />
             {buttonLabel}
           </Button>
@@ -131,6 +132,7 @@ PostForm.propTypes = {
   sparks: PropTypes.array,
   onSubmit: PropTypes.func,
   defaultValues: PropTypes.object,
+  buttonProps: PropTypes.object,
   buttonLabel: PropTypes.string
 };
 

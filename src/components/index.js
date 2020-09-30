@@ -35,6 +35,7 @@ export * from "./RadioInput";
 export * from "./RichInput";
 export * from "./Search";
 export * from "./Select";
+export * from "./Slideshow";
 export * from "./Tabs";
 export * from "./TextInput";
 export * from "./Timeline";

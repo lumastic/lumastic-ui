@@ -1,37 +1,35 @@
 import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
-import { Card, Label, List, Type } from "../../components";
+import { Card, Type, Link } from "../../components";
 import { parseContent } from "../../helpers";
 import { pressComponents } from "../../PressHelpers";
-import { SparkCrumbs, Tag } from "../../templates";
+import { profileRoute, viewSparkRoute } from "../../routes";
 import style from "./SparkCard.scss";
 
 const SparkCard = ({ spark = {} }) => (
-  <Card>
-    <List>
-      <SparkCrumbs
-        spark={spark}
-        organization={spark?.belongsTo}
-        user={
-          spark?.belongsTo?.isUserOrganization && spark?.belongsTo?.createdBy
-        }
+  <Card className={style.glow}>
+    <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
+      <Type h4>{spark.title}</Type>
+    </Link>
+    <Type
+      color="grey"
+      className={style.time}
+      tag="div"
+      caption
+      setSize="0.7rem"
+    >
+      <Link to={profileRoute(spark?.belongsTo?.name)} inline>
+        {spark?.belongsTo?.name}
+      </Link>
+      {` • ${spark?.progressBoards[0]?.progressUpdates?.length} posts • ${spark?.visibility}`}
+    </Type>
+    <Type tag="div">
+      <PressRenderer
+        components={pressComponents}
+        value={parseContent(spark?.description)}
       />
-      <Type tag="div">
-        <PressRenderer
-          components={pressComponents}
-          value={parseContent(spark?.description)}
-        />
-      </Type>
-      <div>
-        <Label>Tags</Label>
-        <div className={style.tags}>
-          {spark.tags?.map((tag, index) => (
-            <Tag tag={tag} key={tag.id || index} />
-          ))}
-        </div>
-      </div>
-    </List>
+    </Type>
   </Card>
 );
 

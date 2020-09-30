@@ -2,7 +2,7 @@ import { drew, keith, atishay } from "./user.db";
 
 export const spark1 = {
   id: "1",
-  title: "Drew's spark",
+  title: "👃 Drew's spark",
   createdBy: drew,
   belongsTo: drew,
   description:

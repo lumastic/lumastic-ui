@@ -1,2 +1,6 @@
-.orgform {
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: min-content auto;
+  column-gap: 1.5rem;
 }
