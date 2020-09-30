@@ -31,7 +31,10 @@ const Slideshow = ({ children, className, name = "slideshow" }) => {
           })
         }
       })}
-      <div className={classNames(className, style["slide-controller"])}>
+      <div
+        className={classNames(className, style["slide-controller"])}
+        data-testid="slideshow"
+      >
         {slides.map((slide, index) => (
           <Link
             to={{
