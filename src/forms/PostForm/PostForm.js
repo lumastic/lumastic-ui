@@ -87,7 +87,7 @@ const PostForm = ({
         defaultValue={parseContent(defaultValues?.content)}
         reset={reset}
         name="content"
-        placeholder="What's on you mind..."
+        placeholder="What's on your mind..."
       />
       <div className={style.bottom}>
         <div className={style.left}>
