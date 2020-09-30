@@ -99,7 +99,8 @@ const OrgForm = ({
   defaultValues = {},
   validate = false,
   customValidation,
-  imageUploadHandler
+  imageUploadHandler,
+  buttonLabel = "SAVE"
 }) => (
   <Form
     onSubmit={onSubmit}
@@ -127,7 +128,7 @@ const OrgForm = ({
     </div>
 
     <Button variant="contained" type="submit">
-      Save
+      {buttonLabel}
     </Button>
   </Form>
 );
@@ -137,7 +138,8 @@ OrgForm.propTypes = {
   validate: PropTypes.bool,
   defaultValues: PropTypes.object,
   imageUploadHandler: PropTypes.func,
-  customValidation: PropTypes.object
+  customValidation: PropTypes.object,
+  buttonLabel: PropTypes.string
 };
 
 export { OrgForm };
