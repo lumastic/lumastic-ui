@@ -15,6 +15,7 @@ const Type = forwardRef(
       h4,
       caption,
       overline,
+      underline,
       body2,
       gutterBottom,
       setSize,
@@ -22,6 +23,7 @@ const Type = forwardRef(
       tag,
       color = "normal",
       headerFont,
+      weight = "normal",
       ...rest
     },
     ref
@@ -39,6 +41,7 @@ const Type = forwardRef(
           style[align],
           { [style.caption]: caption },
           { [style.overline]: overline },
+          { [style.underline]: underline },
           { [style.body2]: body2 },
           { [style["gutter-bottom"]]: gutterBottom },
           { [style["header-font"]]: headerFont },
@@ -64,6 +67,7 @@ Type.propTypes = {
   h4: PropTypes.bool,
   caption: PropTypes.bool,
   overline: PropTypes.bool,
+  underline: PropTypes.bool,
   gutterBottom: PropTypes.bool,
   headerFont: PropTypes.bool,
   body2: PropTypes.bool,
@@ -79,7 +83,8 @@ Type.propTypes = {
     "green",
     "grey",
     "white"
-  ])
+  ]),
+  weight: PropTypes.oneOf(["normal", "bold", "light"])
 };
 
 export { Type };

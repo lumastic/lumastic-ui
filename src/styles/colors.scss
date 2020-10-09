@@ -107,3 +107,7 @@
   @include defineColorHSL(--bg-light-color, 0, 0%, 18%);
   @include defineColorHSL(--bg-dark-color, 220, 6%, 10%);
 }
+
+html {
+  color: var(--font-color);
+}

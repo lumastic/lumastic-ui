@@ -30,7 +30,7 @@
   .search {
     border: none;
     width: 100%;
-    font-family: $bodyFont;
+    font-family: var(--body-font);
     font-style: normal;
     // line-height: 0;
     font-size: 1em;

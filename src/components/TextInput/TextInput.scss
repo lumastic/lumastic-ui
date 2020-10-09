@@ -2,7 +2,7 @@
 @import "../../styles/colors.scss";
 
 .textinput {
-  font-family: $bodyFont;
+  font-family: var(--body-font);
   background-color: inherit;
   font-style: normal;
   font-size: 1em;

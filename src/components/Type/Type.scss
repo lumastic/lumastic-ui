@@ -5,23 +5,22 @@
   margin: 0;
   padding: 0;
   line-height: 1.4;
-  font-family: $bodyFont;
+  font-family: var(--body-font);
   font-weight: normal;
   font-size: 1rem;
   letter-spacing: 0.5px;
   &.h1,
-  &.h2,
   &.h3,
-  &.h4,
-  &.overline {
-    font-family: $headerFont;
+  &.overline,
+  &.underline {
+    font-family: var(--header-font);
     font-weight: bold;
   }
   &.h1 {
     font-size: 3rem;
   }
   &.h2 {
-    font-size: 1.9rem;
+    font-size: 2.25em;
   }
   &.h3 {
     font-size: 1.6rem;
@@ -31,17 +30,22 @@
     letter-spacing: 0.04em;
   }
   &.caption {
-    font-size: 0.8rem;
+    font-size: var(--font-size-14);
     letter-spacing: 0.5px;
     font-style: italic;
+    font-weight: lighter;
   }
   &.body2 {
-    font-size: 0.8rem;
+    font-size: var(--font-size-14);
   }
   &.overline {
-    font-size: 0.6rem;
+    font-size: var(--font-size-12);
     letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+  &.underline {
+    font-size: var(--font-size-12);
+    letter-spacing: 0.1em;
   }
   &.primary {
     color: var(--primary-color-dark);
@@ -77,7 +81,7 @@
     margin-bottom: 0.5em;
   }
   &.header-font {
-    font-family: $headerFont;
+    font-family: var(--header-font);
   }
   svg {
     position: relative;
