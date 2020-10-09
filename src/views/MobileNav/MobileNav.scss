@@ -4,7 +4,7 @@
 .sidenav {
   width: 100%;
   box-sizing: border-box;
-  background-color: $primary;
+  background-color: var(--primary-color);
   display: inline-flex;
   align-items: center;
   flex-direction: row;

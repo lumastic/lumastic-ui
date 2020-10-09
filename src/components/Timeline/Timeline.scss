@@ -6,6 +6,6 @@
   overflow: hidden;
   height: 100%;
   min-height: 2rem;
-  border-left: 2px solid $secondaryLight;
+  border-left: 2px solid var(--secondary-color-light);
   // box-sizing: border-box;
 }

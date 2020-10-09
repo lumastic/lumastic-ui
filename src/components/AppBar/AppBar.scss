@@ -8,8 +8,8 @@
   height: min-content;
   flex-direction: row;
   top: 0;
-  background-color: $backgroundLight;
-  border-bottom: 1px solid $greyLight;
+  background-color: var(--bg-color-light);
+  border-bottom: 1px solid var(--font-light-color);
   padding: 0.25rem 1rem;
   box-sizing: border-box;
 }

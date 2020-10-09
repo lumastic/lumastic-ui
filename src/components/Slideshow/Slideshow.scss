@@ -6,7 +6,7 @@
   justify-content: center;
   .dot {
     &.active {
-      background-color: $greyDark;
+      background-color: var(--font-secondary-color);
     }
     &:last-child {
       margin-right: 0;
@@ -14,7 +14,7 @@
     box-sizing: border-box;
     display: inline-block;
     background: transparent;
-    border: 1px solid $grey;
+    border: 1px solid var(--font-light-color);
     border-radius: 0.8rem;
     height: 0.8rem;
     margin-right: 0.5rem;

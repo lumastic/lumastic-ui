@@ -10,7 +10,7 @@
     column-gap: 0.25rem;
     align-items: center;
     padding: 0.25rem 0.5rem;
-    border: 1px solid $greyDark;
+    border: 1px solid var(--font-secondary-color);
     border-radius: 6px;
     .selected {
       display: flex;
@@ -33,7 +33,7 @@
         border: none;
         width: 100%;
         &::placeholder {
-          color: $greyText;
+          color: var(--font-secondary-color);
         }
         &:focus {
           outline: none;
@@ -46,7 +46,7 @@
     border-radius: 6px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
     overflow-x: hidden;
-    background-color: $backgroundLight;
+    background-color: var(--bg-color-light);
     position: absolute;
     max-height: 200px;
     // margin-top: 0.2rem;
@@ -55,7 +55,7 @@
     .result {
       padding: 0.5rem 0.75rem;
       &:hover {
-        background-color: lighten($greyLight, 18%);
+        background-color: lightness(var(--font-light-color), 1.18);
         cursor: pointer;
       }
     }

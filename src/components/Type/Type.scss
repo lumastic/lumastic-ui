@@ -44,25 +44,25 @@
     text-transform: uppercase;
   }
   &.primary {
-    color: $primaryDark;
+    color: var(--primary-color-dark);
   }
   &.secondary {
-    color: $secondaryDark;
+    color: var(--secondary-color-dark);
   }
   &.accent {
-    color: $accent;
+    color: var(--accent-color);
   }
   &.red {
-    color: $redDark;
+    color: lightness(var(--red-color), 0.8);
   }
   &.green {
-    color: $greenDark;
+    color: lightness(var(--green-color), 0.8);
   }
   &.grey {
-    color: $greyText;
+    color: var(--font-secondary-color);
   }
   &.white {
-    color: $lightText;
+    color: var(--font-light-color);
   }
   &.left {
     text-align: left;

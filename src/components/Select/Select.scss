@@ -1,22 +1,22 @@
 @import "../../styles/colors.scss";
 
 .select {
-  border: 1px solid $grey;
+  border: 1px solid var(--font-light-color);
   border-radius: 6px;
   padding: 0.25rem 0.75rem;
   transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: $backgroundLight;
+  background-color: var(--bg-color-light);
   &.error {
-    border-color: $red;
+    border-color: var(--red-color);
   }
   &:hover {
-    border-color: $greyText;
+    border-color: var(--font-secondary-color);
     cursor: pointer;
     .select-arrow {
-      color: $greyText;
+      color: var(--font-secondary-color);
     }
   }
   > div:first-child {
@@ -28,17 +28,17 @@
     align-self: center;
     justify-self: center;
     font-size: 0.4rem;
-    color: lighten($greyText, 10%);
+    color: lightness(var(--font-secondary-color), 1.1);
     &.nomargin {
       margin-left: 0;
     }
   }
   .label {
-    color: $greyText;
+    color: var(--font-secondary-color);
   }
 }
 .select-options {
-  background-color: $backgroundLight;
+  background-color: var(--bg-color-light);
   border-radius: 6px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
@@ -50,17 +50,17 @@
       min-width: unset;
     }
     &[aria-selected="true"] {
-      background-color: rgba($primaryLight, 0.2);
+      background-color: alpha(var(--primary-color-light), 0.2);
     }
     &:focus {
       outline: none;
       &:not([aria-selected="true"]) {
-        background-color: lighten($greyLight, 15%);
+        background-color: lightness(var(--font-light-color), 1.15);
       }
     }
     &:hover {
       &:not(:focus):not([aria-selected="true"]) {
-        background-color: lighten($greyLight, 18%);
+        background-color: lightness(var(--font-light-color), 1.18);
       }
       cursor: pointer;
     }

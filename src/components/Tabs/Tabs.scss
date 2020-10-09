@@ -12,7 +12,7 @@ $tabBorderSize: 2px;
       height: min-content;
       flex-direction: column;
       align-items: flex-start;
-      border: $tabBorderSize solid $greyLight;
+      border: $tabBorderSize solid var(--font-light-color);
       border-radius: 8px;
       > a {
         width: 100%;

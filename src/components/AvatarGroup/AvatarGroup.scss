@@ -6,7 +6,7 @@
   .avatar {
     &:not(:first-child) {
       margin-left: -0.5rem;
-      border: 2px solid $backgroundLight;
+      border: 2px solid var(--bg-color-light);
       border-radius: 50%;
     }
     display: inline-flex;
@@ -21,8 +21,8 @@
     height: 0.5rem;
     width: 0.5rem;
 
-    border: 2px solid $backgroundLight;
+    border: 2px solid var(--bg-color-light);
     border-radius: 50%;
-    background-color: $greyLight;
+    background-color: var(--font-light-color);
   }
 }

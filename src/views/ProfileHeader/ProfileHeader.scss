@@ -21,8 +21,8 @@
     .avatar-wrapper {
       flex-grow: 1;
       .avatar {
-        background-color: $background;
-        border: 0.2rem solid $background;
+        background-color: var(--bg-color);
+        border: 0.2rem solid var(--bg-color);
       }
     }
     .action {

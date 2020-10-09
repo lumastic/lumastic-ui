@@ -7,17 +7,17 @@
   background-color: transparent;
   box-sizing: border-box;
   &:focus {
-    outline: 1px dotted $secondaryLight;
-    background-color: lighten($greyLight, 15%);
+    outline: 1px dotted var(--secondary-color-light);
+    background-color: lightness(var(--font-light-color), 1.15);
   }
   &:hover {
-    background-color: lighten($greyLight, 18%);
+    background-color: lightness(var(--font-light-color), 1.18);
     cursor: pointer;
   }
   &:active {
-    background-color: lighten($greyLight, 12%);
+    background-color: lightness(var(--font-light-color), 1.12);
   }
   &.active {
-    background-color: rgba($secondaryLight, 0.2);
+    background-color: alpha(var(--secondary-color-light), 0.2);
   }
 }

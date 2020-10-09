@@ -5,7 +5,7 @@ $tabBorderSize: 2px;
   display: flex;
   align-items: center;
   flex-direction: row;
-  border-bottom: $tabBorderSize solid $greyLight;
+  border-bottom: $tabBorderSize solid var(--font-light-color);
   flex-wrap: wrap;
   margin-bottom: 0.75rem;
   > a {

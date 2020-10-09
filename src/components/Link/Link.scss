@@ -4,7 +4,7 @@
   text-decoration: none;
   color: unset;
   &.highlight {
-    color: $primary;
+    color: var(--primary-color);
   }
   &.inline {
     display: inline-flex;

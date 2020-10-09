@@ -18,8 +18,8 @@
     top: -0.25rem;
     left: -0.25rem;
     border: 0.25rem solid transparent;
-    border-top-color: $secondary;
-    border-bottom-color: $accent;
+    border-top-color: var(--secondary-color);
+    border-bottom-color: var(--accent-color);
     animation: spinny 0.75s linear infinite;
   }
 }

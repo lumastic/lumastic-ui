@@ -4,8 +4,8 @@
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  color: $primary;
-  background-color: rgba-to-rgb(rgba($primary, 0.2));
+  color: var(--primary-color);
+  background-color: rgba-to-rgb(alpha(var(--primary-color), 0.2));
   padding-right: 0.5rem;
   .symbol {
     display: inline-flex;
@@ -23,7 +23,7 @@
     margin-left: 0.5rem;
   }
   &.grey {
-    color: $greyText;
-    background-color: rgba-to-rgb(rgba($greyDark, 0.2));
+    color: var(--font-secondary-color);
+    background-color: rgba-to-rgb(alpha(var(--font-secondary-color), 0.2));
   }
 }

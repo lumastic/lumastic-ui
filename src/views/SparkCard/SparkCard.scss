@@ -8,8 +8,8 @@
   align-items: center;
 }
 .glow {
-  box-shadow: 0px 0px 7px 0px $accent;
-  border: 1px solid $accent;
+  box-shadow: 0px 0px 7px 0px var(--accent-color);
+  border: 1px solid var(--accent-color);
 }
 .card {
   &:hover {

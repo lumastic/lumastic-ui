@@ -1,41 +1,109 @@
-@function rgba-to-rgb($rgba, $background: #fff) {
-  @return mix(
-    rgb(red($rgba), green($rgba), blue($rgba)),
-    $background,
-    alpha($rgba) * 100%
-  );
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index(#{$string}, $search);
+  @if $index {
+    @return str-slice(#{$string}, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice(#{$string}, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+  @return $string;
 }
-$primary: #008bff;
-$primaryLight: lighten($primary, 5%);
-$primaryDark: darken($primary, 5%);
 
-$secondary: #79c6ff;
-$secondaryLight: lighten($secondary, 5%);
-$secondaryDark: darken($secondary, 5%);
+@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
+  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
+}
 
-$grey: #afafaf;
-$greyLight: lighten($grey, 10%);
-$greyDark: darken($grey, 5%);
-$greyText: #646464;
+@function lightness($color, $lightnessMultiplier) {
+  $color: str-replace($color, "var(");
+  $color: str-replace($color, ")");
+  $color-h: var(#{$color + "-h"});
+  $color-s: var(#{$color + "-s"});
+  $color-l: var(#{$color + "-l"});
+  @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
+}
 
-$red: #cf0000;
-$redLight: lighten($red, 5%);
-$redDark: darken($red, 2%);
+@function saturation($color, $saturationMultiplier) {
+  $color: str-replace($color, "var(");
+  $color: str-replace($color, ")");
+  $color-h: var(#{$color + "-h"});
+  $color-s: var(#{$color + "-s"});
+  $color-l: var(#{$color + "-l"});
+  @return hsl($color-h, calc(#{$color-s} * #{$saturationMultiplier}), $color-l);
+}
 
-$green: #00a01b;
-$greenLight: lighten($green, 5%);
-$greenDark: darken($green, 2%);
+// return css color variable with different opacity value
+@function alpha($color, $opacity) {
+  $color: str-replace($color, "var(");
+  $color: str-replace($color, ")");
+  $color-h: var(#{$color + "-h"});
+  $color-s: var(#{$color + "-s"});
+  $color-l: var(#{$color + "-l"});
+  @return hsla($color-h, $color-s, $color-l, $opacity);
+}
 
-$yellow: #ff9900;
-$yellowLight: lighten($yellow, 5%);
-$yellowDark: darken($yellow, 7%);
+:root {
+  --primary-hue: 209;
+  @include defineColorHSL(--primary-color, var(--primary-hue), 87%, 21%);
+  @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 40%);
+  @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 11%);
 
-$lightText: lighten($greyLight, 10%);
+  @include defineColorHSL(--secondary-color, var(--primary-hue), 100%, 50%);
+  @include defineColorHSL(
+    --secondary-color-light,
+    var(--primary-hue),
+    100%,
+    75%
+  );
+  @include defineColorHSL(
+    --secondary-color-dark,
+    var(--primary-hue),
+    100%,
+    35%
+  );
 
-$accent: #fec82a;
+  --accent-hue: 44;
+  @include defineColorHSL(--accent-color, var(--accent-hue), 92%, 70%);
+  @include defineColorHSL(--accent-color-light, var(--accent-hue), 18%, 90%);
+  @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 80%);
 
-$background: #f4f4f4;
-$backgroundLight: white;
-$backgroundDark: #dfdfdf;
+  @include defineColorHSL(--font-color, 0, 0%, 0%);
+  @include defineColorHSL(--font-secondary-color, 0, 0%, 40%);
+  @include defineColorHSL(--font-light-color, 0, 0%, 55%);
 
-$tooltipBackground: rgba(0, 0, 0, 0.8);
+  @include defineColorHSL(--bg-color, 0, 0%, 95%);
+  @include defineColorHSL(--bg-color-light, 0, 0%, 100%);
+  @include defineColorHSL(--bg-color-dark, 0, 0%, 0%);
+  @include defineColorHSL(--border-color, 0, 0%, 80%);
+
+  @include defineColorHSL(--red-color, 0, 58%, 49%);
+
+  @include defineColorHSL(--green-color, 130, 53%, 41%);
+}
+
+[data-theme="dark"] {
+  @include defineColorHSL(
+    --primary-color,
+    var(--primary-hue),
+    87%,
+    100%
+  ); // Make it white
+  @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 100%);
+  @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 100%);
+
+  @include defineColorHSL(--accent-color, var(--primary-hue), 12%, 5%);
+  @include defineColorHSL(--accent-color-light, var(--accent-hue), 92%, 10%);
+  @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 0%);
+
+  @include defineColorHSL(--font-color, 0, 0%, 100%);
+  @include defineColorHSL(--font-secondary-color, 0, 0%, 61%);
+  @include defineColorHSL(--font-light-color, 0, 0%, 43%);
+
+  @include defineColorHSL(--bg-color, 220, 6%, 10%);
+  @include defineColorHSL(--bg-light-color, 0, 0%, 18%);
+  @include defineColorHSL(--bg-dark-color, 220, 6%, 10%);
+}

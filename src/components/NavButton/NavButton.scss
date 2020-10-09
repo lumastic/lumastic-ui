@@ -10,23 +10,23 @@
   &:focus {
     outline: none;
     .container {
-      outline: 1px solid $secondaryLight;
+      outline: 1px solid var(--secondary-color-light);
     }
   }
   &:hover {
     cursor: pointer;
     .container {
-      background-color: lighten($greyLight, 15%);
+      background-color: lightness(var(--font-light-color), 1.15);
     }
   }
   &:active {
     .container {
-      background-color: lighten($greyLight, 5%);
+      background-color: lightness(var(--font-light-color), 1.05);
     }
   }
   &.active {
     .container {
-      background-color: rgba($greyLight, 0.4);
+      background-color: alpha(var(--font-light-color), 0.4);
     }
   }
   .container {

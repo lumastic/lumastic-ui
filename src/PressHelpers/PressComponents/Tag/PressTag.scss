@@ -3,7 +3,7 @@
 .tag {
   display: inline-block;
   text-decoration: none;
-  color: $primaryDark;
+  color: var(--primary-color-dark);
   font-size: 0.9em;
   &:hover {
     text-decoration: underline;
@@ -21,7 +21,7 @@
   }
   &:hover {
     cursor: pointer;
-    background-color: lighten(lightgray, 5%);
+    background-color: lightness(var(--bg-color, lightgray), 1.05);
   }
   &.selected {
     background-color: lightgray;

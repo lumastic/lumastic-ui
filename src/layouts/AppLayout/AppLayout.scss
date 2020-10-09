@@ -1,12 +1,12 @@
 @import "../../styles/sizes.scss";
 
 .applayout {
-  height: 100vh;
+  // height: 100vh;
   display: grid;
   grid-template-columns: min-content auto;
   grid-template-rows: max-content auto;
   grid-template-areas:
-    "navigation appbar"
+    "appbar appbar"
     "navigation main";
   > nav {
     grid-area: navigation;

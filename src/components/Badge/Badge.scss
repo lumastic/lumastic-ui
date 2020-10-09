@@ -12,19 +12,19 @@
       border-radius: 50%;
     }
     &.border {
-      border: 2px solid $backgroundLight;
+      border: 2px solid var(--bg-color-light);
     }
     &.green {
-      background-color: $green;
+      background-color: var(--green-color);
     }
     &.red {
-      background-color: $red;
+      background-color: var(--red-color);
     }
     &.yellow {
-      background-color: $yellow;
+      background-color: var(--accent-color);
     }
     &.secondary {
-      background-color: $secondary;
+      background-color: var(--secondary-color);
     }
     &.top {
       top: -0.4vh;
