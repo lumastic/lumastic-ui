@@ -58,3 +58,13 @@
     }
   }
 }
+
+@media (max-width: $tablet) {
+  .name {
+    display: none;
+  }
+  .naviconbutton {
+    font-size: 1.75rem;
+    min-width: 3.5rem;
+  }
+}

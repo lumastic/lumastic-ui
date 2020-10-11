@@ -4,7 +4,7 @@
 .appbar {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 2fr 6fr minmax(min-content, 4fr);
+  grid-template-columns: 2fr 6fr minmax(4fr, min-content);
   column-gap: 0.5rem;
   align-items: center;
   width: 100%;
@@ -54,15 +54,53 @@
     .menu-items {
       display: grid;
       grid-auto-flow: column;
-      column-gap: 0.5rem;
+      column-gap: 0.75rem;
       align-items: center;
       max-width: 19rem;
     }
   }
 }
 
+.searchBtn {
+  display: none;
+}
+
 @media (max-width: $tablet) {
-  .rightrail {
-    display: none;
+  .appbar {
+    .search {
+      display: none;
+    }
+    .searchBtn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .logo-container {
+      .text {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .appbar {
+    padding: 0.5rem;
+    .search {
+      display: none;
+    }
+    .searchBtn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .logo-container {
+      .text {
+        display: inline-flex;
+      }
+    }
+    .mainbtns-container {
+      display: none;
+    }
   }
 }
