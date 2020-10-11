@@ -2,20 +2,67 @@
 @import "../../styles/sizes.scss";
 
 .appbar {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 2fr 6fr minmax(min-content, 4fr);
+  column-gap: 0.5rem;
   align-items: center;
   width: 100%;
   height: min-content;
-  flex-direction: row;
   top: 0;
   background-color: var(--bg-color-light);
-  border-bottom: 1px solid var(--font-light-color);
-  padding: 0.25rem 1rem;
+  box-shadow: var(--box-shadow-low);
+  padding: 0 1.25rem;
   box-sizing: border-box;
+  .logo-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    height: 100%;
+    .symbol,
+    .text {
+      color: var(--primary-color);
+      display: inline-flex;
+    }
+    .symbol {
+      margin-right: 0.5rem;
+    }
+  }
+  .mainbtns-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .mainbtns {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      max-width: 32rem;
+      width: 100%;
+      .navbutton {
+        width: 25%;
+      }
+    }
+  }
+  .menu-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    .menu-items {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      max-width: 19rem;
+      width: 100%;
+    }
+  }
 }
 
 @media (max-width: $tablet) {
-  .appbar {
-    padding: 0.25rem 0.5rem;
+  .rightrail {
+    display: none;
   }
 }

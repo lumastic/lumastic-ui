@@ -43,7 +43,7 @@
     background-color: alpha(var(--font-secondary-color), 0.5);
   }
   &.primary {
-    color: var(--primary-color-dark);
+    color: var(--primary-color);
     &:hover {
       background-color: alpha(var(--primary-color), 0.2);
     }
@@ -52,7 +52,7 @@
     }
   }
   &.secondary {
-    color: var(--secondary-color-dark);
+    color: var(--secondary-color);
     &:hover {
       background-color: alpha(var(--secondary-color), 0.2);
     }
@@ -124,10 +124,10 @@
       background-color: var(--primary-color-light);
     }
     &:active {
-      background-color: var(--primary-color-dark);
+      background-color: var(--primary-color);
     }
     &.secondary {
-      background-color: var(--secondary-color-dark);
+      background-color: var(--secondary-color);
       &:hover {
         background-color: var(--secondary-color-light);
       }

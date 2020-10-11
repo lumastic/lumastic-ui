@@ -12,7 +12,7 @@ const Button = forwardRef(
       type = "button",
       variant = "default",
       shadow = false,
-      color = "primary",
+      color = "secondary",
       fullWidth,
       size,
       disabled,

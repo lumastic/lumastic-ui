@@ -18,7 +18,9 @@ const Tab = ({ children, name, className, disabled }) => {
       })}
       activeClassName={style.active}
     >
-      <Type body2>{children}</Type>
+      <Type body2 headerFont>
+        {children}
+      </Type>
     </NavLink>
   );
 };

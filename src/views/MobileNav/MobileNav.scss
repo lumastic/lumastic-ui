@@ -4,21 +4,22 @@
 .sidenav {
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-light);
   display: inline-flex;
   align-items: center;
   flex-direction: row;
   align-items: center;
   height: min-content;
-  padding: 0.25rem 0;
+  padding: 0.25rem;
   .navbutton {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
     margin: 0;
-    &.new {
-      display: flex;
+    .new {
+      width: 100%;
+      // display: flex;
     }
   }
 }

@@ -67,25 +67,25 @@ module.exports = {
       }
     }
   },
-  updateExample: (props, exampleFilePath) => {
-    const { settings, lang } = props;
-    if (settings && settings.file && typeof settings.file === "string") {
-      const filepath = path.resolve(
-        path.dirname(exampleFilePath),
-        settings.file
-      );
-      const { file, ...restSettings } = settings;
-      return {
-        content: fs.readFileSync(filepath, "utf8"),
-        settings: { static: true, ...restSettings },
-        lang
-      };
-    }
-    return props;
-  },
+  // updateExample: (props, exampleFilePath) => {
+  //   const { settings, lang } = props;
+  //   if (settings && settings.file && typeof settings.file === "string") {
+  //     const filepath = path.resolve(
+  //       path.dirname(exampleFilePath),
+  //       settings.file
+  //     );
+  //     const { file, ...restSettings } = settings;
+  //     return {
+  //       content: fs.readFileSync(filepath, "utf8"),
+  //       settings: { static: true, ...restSettings },
+  //       lang
+  //     };
+  //   }
+  //   return props;
+  // },
   getComponentPathLine: componentPath => {
     const name = path.basename(componentPath, ".js");
-    const dir = `lumastic-ui/${name}`;
+    const dir = `lumastic-ui`;
     return `import { ${name} } from "${dir}";`;
   }
 };

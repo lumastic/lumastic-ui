@@ -3,17 +3,20 @@
 
 .naviconbutton {
   display: inline-flex;
-  padding: 0;
+  flex-direction: column;
+  padding: 0.25rem 0.5rem;
   align-items: center;
   justify-content: center;
-  border: none;
-  border-radius: 50%;
   font-size: 1.5rem;
-  width: 1.75em;
-  height: 1.75em;
+  width: 100%;
   background-color: transparent;
-  color: lightness(var(--secondary-color), 1.15);
   transition: all 100ms ease-in-out;
+  color: var(--font-light-color);
+  border: none;
+  border-bottom: 2px solid transparent;
+  .name {
+    white-space: nowrap;
+  }
   &:focus {
     outline: 1px dotted lightness(var(--secondary-color), 1.15);
   }
@@ -21,19 +24,37 @@
     cursor: pointer;
   }
   &:hover:not(.active) {
-    background-color: alpha(var(--bg-color-light), 0.25);
+    border-bottom: 2px solid alpha(var(--primary-color), 0.75);
+    color: alpha(var(--primary-color), 0.75);
   }
   &:active:not(.active) {
-    background-color: alpha(var(--bg-color-light), 0.5);
+    border-bottom: 2px solid alpha(var(--primary-color), 0.9);
+    color: alpha(var(--primary-color), 0.9);
   }
   &.active {
-    background-color: var(--bg-color-light);
+    border-bottom: 2px solid var(--primary-color);
     color: var(--primary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
-}
-@media (max-width: $tablet) {
-  .naviconbutton {
-    font-size: 1.25rem;
+  &.mobile {
+    color: white;
+    border-radius: 0.5rem;
+    border-bottom: unset;
+    &:focus {
+      outline: 1px dotted lightness(var(--secondary-color), 1.15);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover:not(.active) {
+      background-color: alpha(var(--bg-color-light), 0.25);
+    }
+    &:active:not(.active) {
+      background-color: alpha(var(--bg-color-light), 0.5);
+    }
+    &.active {
+      background-color: var(--bg-color-light);
+      color: var(--primary-color);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
   }
 }
