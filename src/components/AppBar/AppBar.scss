@@ -52,11 +52,11 @@
     justify-content: flex-end;
     width: 100%;
     .menu-items {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 0.5rem;
       align-items: center;
       max-width: 19rem;
-      width: 100%;
     }
   }
 }
