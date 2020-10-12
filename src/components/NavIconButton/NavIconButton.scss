@@ -48,6 +48,7 @@
     }
     &:hover:not(.active) {
       background-color: alpha(var(--bg-color-light), 0.25);
+      color: white;
     }
     &:active:not(.active) {
       background-color: alpha(var(--bg-color-light), 0.5);
