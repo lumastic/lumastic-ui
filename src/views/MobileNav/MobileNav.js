@@ -36,18 +36,14 @@ import style from "./MobileNav.scss";
 const MobileNav = ({ className }) => (
   <nav className={classNames(className, style.sidenav)} data-testid="sidenav">
     <div className={style.navbutton}>
-      <NavIconButton mobile to={homeRoute} exact icon={<Home />}>
-        <Home />
-      </NavIconButton>
+      <NavIconButton mobile to={homeRoute} exact icon={<Home />} />
     </div>
     <div className={style.navbutton}>
       <NavIconButton
         mobile
         to={[mySparksRoute, viewSparkRoute(), viewBoardRoute()]}
         icon={<Sparks />}
-      >
-        <Sparks />
-      </NavIconButton>
+      />
     </div>
     <div className={classNames(style.navbutton)}>
       <Popup
@@ -56,9 +52,7 @@ const MobileNav = ({ className }) => (
         className={style.new}
       >
         <PopupTrigger>
-          <NavIconButton mobile icon={<Plus />}>
-            <Plus />
-          </NavIconButton>
+          <NavIconButton mobile icon={<Plus />} />
         </PopupTrigger>
         <PopupContent render={PopupMenu}>
           <Link button to={createSparkRoute}>
@@ -81,14 +75,10 @@ const MobileNav = ({ className }) => (
       </Popup>
     </div>
     <div className={style.navbutton}>
-      <NavIconButton mobile to={exploreRoute} icon={<MagnifyingGlass />}>
-        <MagnifyingGlass />
-      </NavIconButton>
+      <NavIconButton mobile to={exploreRoute} icon={<MagnifyingGlass />} />
     </div>
     <div className={style.navbutton}>
-      <NavIconButton mobile to={notificationsRoute} icon={<Bell />}>
-        <Bell />
-      </NavIconButton>
+      <NavIconButton mobile to={notificationsRoute} icon={<Bell />} />
     </div>
   </nav>
 );

@@ -16,6 +16,7 @@
   border-bottom: 2px solid transparent;
   .name {
     white-space: nowrap;
+    font-size: 0.75rem;
   }
   &:focus {
     outline: 1px dotted lightness(var(--secondary-color), 1.15);
@@ -38,7 +39,7 @@
   &.mobile {
     color: white;
     border-radius: 0.5rem;
-    border-bottom: unset;
+    border-bottom: unset !important;
     &:focus {
       outline: 1px dotted lightness(var(--secondary-color), 1.15);
     }
@@ -60,11 +61,21 @@
 }
 
 @media (max-width: $tablet) {
-  .name {
-    display: none;
-  }
   .naviconbutton {
     font-size: 1.75rem;
     min-width: 3.5rem;
+    .name {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .naviconbutton {
+    font-size: 1.5rem;
+    .name {
+      display: inline-flex;
+      font-size: 0.5rem;
+    }
   }
 }
