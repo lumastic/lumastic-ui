@@ -3,11 +3,11 @@
 ```jsx
 import { Nav } from "../../views";
 import { AppBar, Main } from "../../components";
-// <AppLayout>
-//   <Nav />
-//   <AppBar>Test Appbar</AppBar>
-//   <Main>Test</Main>
-// </AppLayout>;
+<AppLayout>
+  <AppBar>Test Appbar</AppBar>
+  <Nav />
+  <Main>Test</Main>
+</AppLayout>;
 ```
 
 Source:
