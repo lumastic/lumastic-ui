@@ -26,12 +26,12 @@ const AccordionTrigger = ({ children, className }) => {
   };
   return (
     <div className={classNames(style.trigger, className)}>
-      <div className={style.text}>{children}</div>
       <div className={classNames(style.button, { [style.rotate]: isShowing })}>
         <IconButton onClick={onClick} size="small" color="grey">
           <ArrowDown />
         </IconButton>
       </div>
+      <div className={style.text}>{children}</div>
     </div>
   );
 };

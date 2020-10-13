@@ -27,13 +27,16 @@
       align-items: center;
       .btn {
         display: inline-flex;
-        margin-right: 0.75rem;
+        // margin-right: 0.25rem;
       }
     }
   }
   .boards {
-    margin-left: 0.8rem;
+    margin-left: 1.5rem;
     // border-left: 1px solid var(--font-light-color);
+    .space-label {
+      margin-left: 0.8rem;
+    }
     box-sizing: border-box;
   }
 }

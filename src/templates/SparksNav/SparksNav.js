@@ -1,10 +1,19 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { IconButton, Link, NavButton, Tooltip, Type } from "../../components";
+import {
+  IconButton,
+  Label,
+  Link,
+  MenuItem,
+  NavButton,
+  Tooltip,
+  Type
+} from "../../components";
 import classNames from "../../helpers/classNames";
 import { Plus } from "../../icons";
 import { createBoardRoute, viewBoardRoute, viewSparkRoute } from "../../routes";
 import { Accordion, AccordionContent, AccordionTrigger } from "../Accordion";
+import { MoreMenu } from "../MoreMenu";
 import style from "./SparksNav.scss";
 
 const SparksNavButton = ({ spark = {} }) => {
@@ -29,35 +38,29 @@ const SparksNavButton = ({ spark = {} }) => {
               )}
             >
               <div className={style.btn}>
-                <Tooltip label="New Board">
-                  <Link
-                    button
-                    to={createBoardRoute(spark?.belongsTo?.name, spark?.id)}
-                  >
-                    <IconButton
-                      size="small"
-                      color="grey"
-                      onClick={e => e.stopPropagation()}
-                    >
-                      <Plus />
-                    </IconButton>
-                  </Link>
-                </Tooltip>
-              </div>
-              {/* <div className={style.btn}>
                 <MoreMenu
-                  onOpen={() => setShowing(true)}
+                  onOpen={() => {
+                    setShowing(true);
+                  }}
                   onClose={() => setShowing(false)}
                   position="right"
                 >
-                  <MenuItem>Test</MenuItem>
+                  <MenuItem>
+                    <Type body2>Edit</Type>
+                  </MenuItem>
+                  <MenuItem>
+                    <Type body2 color="red">
+                      Delete
+                    </Type>
+                  </MenuItem>
                 </MoreMenu>
-              </div> */}
+              </div>
             </div>
           </div>
         </AccordionTrigger>
       </NavButton>
       <AccordionContent className={style.boards}>
+        <Label className={style["space-label"]}>Spaces</Label>
         {spark?.boards?.map((board, key) => (
           <NavButton
             key={board?.id || key}

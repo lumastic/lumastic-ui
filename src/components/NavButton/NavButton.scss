@@ -16,17 +16,17 @@
   &:hover {
     cursor: pointer;
     .container {
-      background-color: lightness(var(--font-light-color), 1.15);
+      background-color: alpha(var(--font-light-color), 0.25);
     }
   }
   &:active {
     .container {
-      background-color: lightness(var(--font-light-color), 1.05);
+      background-color: alpha(var(--font-light-color), 0.5);
     }
   }
   &.active {
     .container {
-      background-color: alpha(var(--font-light-color), 0.4);
+      background-color: alpha(var(--accent-color), 0.6);
     }
   }
   .container {
@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     padding: 0.5rem 0.75rem;
-    // border-radius: 8px;
+    border-radius: 0.5rem;
   }
 
   /* // ICON: DEFAULT */
