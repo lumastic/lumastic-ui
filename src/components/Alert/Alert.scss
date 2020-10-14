@@ -26,16 +26,16 @@
   }
   &.normal {
     &.info {
-      background-color: functions.alpha(var(--primary-color), 0.2);
+      background-color: alpha(var(--primary-color), 0.2);
     }
     &.success {
-      background-color: functions.alpha(var(--green-color), 0.25);
+      background-color: alpha(var(--green-color), 0.25);
     }
     &.warning {
-      background-color: functions.alpha(var(--accent-color), 0.3);
+      background-color: alpha(var(--accent-color), 0.3);
     }
     &.error {
-      background-color: functions.alpha(var(--red-color), 0.3);
+      background-color: alpha(var(--red-color), 0.3);
     }
   }
 }
