@@ -2,6 +2,8 @@
 
 .applayout {
   height: 100vh;
+  width: 100%;
+  // max-width: 100%;
   display: grid;
   grid-template-columns: minmax(min-content, 300px) auto;
   grid-template-rows: max-content auto;
@@ -17,6 +19,7 @@
   }
   > main {
     grid-area: main;
+    padding: 0 1.125rem 0 0;
   }
 }
 @media (max-width: $tablet) {

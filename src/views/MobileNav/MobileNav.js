@@ -34,7 +34,7 @@ import { Signature } from "../../templates";
 import style from "./MobileNav.scss";
 
 const MobileNav = ({ className }) => (
-  <nav className={classNames(className, style.sidenav)} data-testid="sidenav">
+  <nav className={classNames(className, style.mobilenav)} data-testid="sidenav">
     <div className={style.navbutton}>
       <NavIconButton mobile to={homeRoute} exact icon={<Home />} />
     </div>

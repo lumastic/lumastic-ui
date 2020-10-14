@@ -1,3 +1,5 @@
+import color from "./styles/colors.scss";
+
 export * from "./views";
 export * from "./layouts";
 export * from "./templates";

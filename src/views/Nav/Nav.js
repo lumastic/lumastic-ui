@@ -1,9 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { MobileNav } from "../MobileNav";
 import { Sidebar } from "../Sidebar";
 import style from "./Nav.scss";
-import classNames from "../../helpers/classNames";
 
 const Nav = ({ sparks, version = "", organizations }) => (
   <>
