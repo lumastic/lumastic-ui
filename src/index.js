@@ -1,5 +1,4 @@
-import color from "./styles/colors.scss";
-import fonts from "./styles/fonts.scss";
+import vars from "./styles/css-variables.scss";
 
 export * from "./views";
 export * from "./layouts";
