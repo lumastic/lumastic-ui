@@ -3,10 +3,10 @@
 .chip {
   display: inline-flex;
   align-items: center;
-  border-radius: 0.75rem;
+  border-radius: var(--spacing-med);
   color: var(--primary-color);
   background-color: alpha(var(--secondary-color), 0.2);
-  padding-right: 0.5rem;
+  padding-right: var(--spacing-small);
   .symbol {
     display: inline-flex;
     padding-left: 0.25rem;
@@ -17,10 +17,10 @@
   }
   .label {
     display: inline-flex;
-    padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+    padding: 0.25rem 0.25rem 0.25rem var(--spacing-small);
   }
   .remove {
-    margin-left: 0.5rem;
+    margin-left: var(--spacing-small);
   }
   &.grey {
     color: var(--font-secondary-color);

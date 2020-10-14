@@ -1,5 +1,5 @@
 .items {
-  padding: 0.25rem 0 0.5rem;
+  padding: 0.25rem 0 var(--spacing-small);
   display: grid;
   grid-template-columns: auto min-content;
 }

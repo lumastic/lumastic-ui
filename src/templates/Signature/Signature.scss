@@ -5,7 +5,7 @@
   .sig-seal {
     display: inline-flex;
     flex-grow: 0;
-    margin-right: 0.75rem;
+    margin-right: var(--spacing-med);
   }
   .sig-text {
     flex-grow: 1;

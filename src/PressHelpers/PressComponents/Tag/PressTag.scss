@@ -13,11 +13,11 @@
 }
 
 .item {
-  padding: 0.5rem 0.75rem;
+  padding: var(--spacing-small) var(--spacing-med);
   display: flex;
   align-items: center;
   .icon {
-    margin-right: 0.75rem;
+    margin-right: var(--spacing-med);
   }
   &:hover {
     cursor: pointer;

@@ -6,7 +6,7 @@
   // right: 0;
   // z-index: 9997;
   display: flex;
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-small) 1rem;
   background-color: var(--font-light-color);
   border-radius: 6px;
   &.filled {

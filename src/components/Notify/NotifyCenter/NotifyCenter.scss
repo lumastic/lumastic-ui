@@ -1,9 +1,9 @@
 .notify-center {
   z-index: 9997;
   position: fixed;
-  top: 0.5rem;
+  top: var(--spacing-small);
   right: 1rem;
   display: grid;
   grid-auto-flow: row;
-  row-gap: 0.5rem;
+  row-gap: var(--spacing-small);
 }

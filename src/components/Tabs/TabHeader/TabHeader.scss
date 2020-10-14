@@ -6,7 +6,7 @@ $tabBorderSize: 2px;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--spacing-med);
   > a {
     flex-grow: 0;
   }

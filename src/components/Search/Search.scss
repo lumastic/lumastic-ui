@@ -4,9 +4,9 @@
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem var(--spacing-small);
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: var(--spacing-small);
   transition: all 0.2s ease-in-out;
   background-color: var(--bg-color-light);
   &:focus-within {
@@ -22,7 +22,7 @@
   .search-icon {
     display: inline-flex;
     align-items: center;
-    margin-right: 0.75rem;
+    margin-right: var(--spacing-med);
     color: var(--font-secondary-color);
     transition: all 0.2s ease-in-out;
   }

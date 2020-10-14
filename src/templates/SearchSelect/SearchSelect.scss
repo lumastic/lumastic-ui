@@ -8,7 +8,7 @@
     grid-template-columns: max-content minmax(5rem, auto);
     column-gap: 0.25rem;
     align-items: center;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem var(--spacing-small);
     border: 1px solid var(--font-secondary-color);
     border-radius: 6px;
     .selected {
@@ -52,7 +52,7 @@
     top: 100%;
 
     .result {
-      padding: 0.5rem 0.75rem;
+      padding: var(--spacing-small) var(--spacing-med);
       &:hover {
         background-color: lightness(var(--font-light-color), 1.18);
         cursor: pointer;

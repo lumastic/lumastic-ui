@@ -18,8 +18,8 @@
       display: block;
     }
     .options {
-      right: 0.5rem;
-      top: 0.5rem;
+      right: var(--spacing-small);
+      top: var(--spacing-small);
     }
   }
   .options {

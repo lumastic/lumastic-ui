@@ -32,7 +32,7 @@
   // border: 1px solid var(--font-light-color);
   box-sizing: border-box;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  border-radius: var(--spacing-small);
   padding: 1rem;
   margin: -7rem 1rem 0;
   width: 100%;
@@ -40,8 +40,8 @@
 }
 .dialog-close {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: var(--spacing-small);
+  right: var(--spacing-small);
 }
 @media (max-width: $mobile) {
   .dialog {

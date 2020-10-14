@@ -4,10 +4,10 @@
   box-sizing: border-box;
   height: calc(100%-1.25rem);
   width: 100%;
-  padding: 0.75rem;
+  padding: var(--spacing-med);
   display: flex;
   flex-direction: column;
-  border-radius: 0 0.5rem 0.5rem 0;
+  border-radius: 0 var(--spacing-small) var(--spacing-small) 0;
   box-shadow: var(--box-shadow-low);
   .popup {
     width: 100%;
@@ -33,15 +33,15 @@
       padding: 1px 0;
     }
     .label {
-      padding-left: 0.75rem;
+      padding-left: var(--spacing-med);
     }
   }
   .divider {
-    padding-bottom: 0.75rem;
+    padding-bottom: var(--spacing-med);
   }
   .newbtn {
     > div {
-      padding: 0.75rem 1rem;
+      padding: var(--spacing-med) 1rem;
     }
   }
   .logo-container {

@@ -3,7 +3,7 @@
 .select {
   border: 1px solid var(--font-light-color);
   border-radius: 6px;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem var(--spacing-med);
   transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: row;
@@ -24,7 +24,7 @@
   }
   .select-arrow {
     display: inline-flex;
-    margin-left: 0.5rem;
+    margin-left: var(--spacing-small);
     align-self: center;
     justify-self: center;
     font-size: 0.4rem;
@@ -44,7 +44,7 @@
   overflow-y: auto;
   max-height: 300px;
   .select-option {
-    padding: 0.5rem 1.25rem;
+    padding: var(--spacing-small) 1.25rem;
     min-width: 11rem;
     &.compact {
       min-width: unset;

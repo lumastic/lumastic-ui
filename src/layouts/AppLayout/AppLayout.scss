@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: minmax(min-content, 300px) auto;
   grid-template-rows: max-content auto;
-  gap: 1.125rem;
+  gap: var(--spacing-big);
   grid-template-areas:
     "appbar appbar"
     "navigation main";
@@ -19,7 +19,7 @@
   }
   > main {
     grid-area: main;
-    padding: 0 1.125rem 0 0;
+    padding: 0 var(--spacing-big) 0 0;
   }
 }
 @media (max-width: $tablet) {
