@@ -19,10 +19,12 @@ import {
 import {
   exploreRoute,
   homeRoute,
+  logoutRoute,
   mySparksRoute,
   notificationsRoute,
   profileRoute,
   searchRoute,
+  settingsRoute,
   viewBoardRoute,
   viewSparkRoute
 } from "../../routes";
@@ -152,7 +154,7 @@ const AppBar = ({ className }) => {
                 </MenuItem>
               </Link>
               <Divider />
-              <Link button to="/pro">
+              <Link button to={settingsRoute()}>
                 <MenuItem>
                   <Signature>
                     <Type color="grey">
@@ -164,7 +166,7 @@ const AppBar = ({ className }) => {
                   </Signature>
                 </MenuItem>
               </Link>
-              <Link button to="/pro">
+              <Link button to={logoutRoute}>
                 <MenuItem>
                   <Signature>
                     <Type color="grey">
