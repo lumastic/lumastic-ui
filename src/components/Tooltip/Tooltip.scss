@@ -14,7 +14,7 @@
 .tooltip {
   border-radius: 6px;
   padding: 0.2rem 0.7rem;
-  color: var(--font-light-color);
+  color: lightness(var(--font-light-color), 1.75);
   background-color: alpha(var(--bg-color-dark), 0.8);
   &::after {
     content: " ";
@@ -26,24 +26,22 @@
     left: 50%;
     margin-left: -5px;
     bottom: 100%;
-    border-color: transparent transparent
-      alpha(var(--bg-color-dark) transparent, 0.8);
+    border-color: transparent transparent alpha(var(--bg-color-dark), 0.8)
+      transparent;
   }
   &.top::after {
     left: 50%;
     margin-left: -5px;
     top: 100%;
-    border-color: alpha(
-      var(--bg-color-dark) transparent transparent transparent,
-      0.8
-    );
+    border-color: alpha(var(--bg-color-dark), 0.8) transparent transparent
+      transparent;
   }
   &.right::after {
     top: 50%;
     right: 100%;
     margin-top: -5px;
-    border-color: transparent
-      alpha(var(--bg-color-dark) transparent transparent, 0.8);
+    border-color: transparent alpha(var(--bg-color-dark), 0.8) transparent
+      transparent;
   }
   &.left::after {
     top: 50%;

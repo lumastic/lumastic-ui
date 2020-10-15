@@ -5,6 +5,10 @@
 }
 
 .sparksnav {
+  min-height: 0;
+  // flex-grow: 1;
+  display: grid;
+  grid-template-rows: min-content auto;
   .navbtn {
     &:hover {
       .btns {
@@ -36,6 +40,7 @@
     // border-left: 1px solid var(--font-light-color);
     .space-label {
       margin-left: 0.8rem;
+      padding-right: var(--spacing-med);
     }
     box-sizing: border-box;
   }
