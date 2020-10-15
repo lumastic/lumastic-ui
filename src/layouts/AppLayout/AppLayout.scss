@@ -17,14 +17,19 @@
   > header {
     grid-area: appbar;
   }
+  > aside {
+    grid-area: aside;
+  }
   > main {
     grid-area: main;
-    padding: 0 var(--spacing-big) 0 0;
+    padding: var(--spacing-big) var(--spacing-big) 0 0;
+    margin-top: calc(var(--spacing-big) * -1);
   }
 }
 @media (max-width: $tablet) {
   .applayout {
     height: unset;
+    display: block;
     nav {
       position: fixed;
       bottom: 0;
@@ -39,10 +44,20 @@
     main {
       position: fixed;
       box-sizing: border-box;
-      top: 38px;
+      padding: 60px var(--spacing-small) 0;
+      margin-top: unset;
+      top: 0;
       right: 0;
-      bottom: 43px;
+      bottom: 44px;
       left: 0;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .applayout {
+    main {
+      padding-top: 50px;
     }
   }
 }

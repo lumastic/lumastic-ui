@@ -49,24 +49,25 @@
     --primary-color,
     var(--primary-hue),
     87%,
-    100%
+    98%
   ); // Make it white
-  @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 100%);
-  @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 100%);
+  @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 98%);
+  @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 98%);
 
   @include defineColorHSL(--accent-color, var(--primary-hue), 12%, 5%);
   @include defineColorHSL(--accent-color-light, var(--accent-hue), 92%, 10%);
   @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 0%);
 
-  @include defineColorHSL(--font-color, 0, 0%, 100%);
-  @include defineColorHSL(--font-secondary-color, 0, 0%, 61%);
-  @include defineColorHSL(--font-light-color, 0, 0%, 43%);
+  @include defineColorHSL(--font-color, 0, 0%, 90%);
+  @include defineColorHSL(--font-secondary-color, 0, 0%, 70%);
+  @include defineColorHSL(--font-light-color, 0, 0%, 50%);
 
   @include defineColorHSL(--bg-color, 220, 6%, 10%);
-  @include defineColorHSL(--bg-light-color, 0, 0%, 18%);
-  @include defineColorHSL(--bg-dark-color, 220, 6%, 10%);
+  @include defineColorHSL(--bg-color-light, 0, 0%, 18%);
+  @include defineColorHSL(--bg-color-dark, 220, 6%, 10%);
 }
 
 html {
   color: var(--font-color);
+  background-color: var(--bg-color);
 }

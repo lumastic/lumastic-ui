@@ -1,6 +1,14 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import { Link, MenuItem, NavButton, Type } from "../../components";
+import { Scrollbars } from "react-custom-scrollbars";
+import {
+  Divider,
+  Link,
+  List,
+  MenuItem,
+  NavButton,
+  Type
+} from "../../components";
 import classNames from "../../helpers/classNames";
 import { Plus } from "../../icons";
 import { createOrganizationRoute, createSparkRoute } from "../../routes";
@@ -21,41 +29,66 @@ const Sidebar = ({ className, version, sparks = [], organizations = [] }) => {
     setOrg(orgId);
   };
   return (
-    <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
-      <div className={style.sparks}>
-        <OrgSelect
-          organizations={organizations}
-          asFilter
-          small
-          defaultValue="all"
-          onChange={onOrgChange}
-          addOption={
-            <Link button to={createOrganizationRoute}>
-              <MenuItem>
-                <Signature>
-                  <Type>
-                    <Plus />
-                  </Type>
-                  <Type>New Organization</Type>
-                </Signature>
-              </MenuItem>
-            </Link>
-          }
-        />
-
-        <SparksNav sparks={sparkList} />
-      </div>
-      <NavButton
-        to={createSparkRoute}
-        exact
-        path={createSparkRoute.pathname}
-        className={style.newbtn}
+    <Scrollbars autoHide>
+      <nav
+        className={classNames(className, style.sidebar)}
+        data-testid="sidebar"
       >
-        <Type body2 tag="div" color="primary" className={style.type}>
-          <Plus /> <b>NEW SPARK</b>
-        </Type>
-      </NavButton>
-    </nav>
+        <div className={style.sparks}>
+          <OrgSelect
+            organizations={organizations}
+            asFilter
+            small
+            defaultValue="all"
+            onChange={onOrgChange}
+            addOption={
+              <Link button to={createOrganizationRoute}>
+                <MenuItem>
+                  <Signature>
+                    <Type>
+                      <Plus />
+                    </Type>
+                    <Type>New Organization</Type>
+                  </Signature>
+                </MenuItem>
+              </Link>
+            }
+          />
+
+          <SparksNav sparks={sparkList} />
+        </div>
+        <NavButton
+          to={createSparkRoute}
+          exact
+          path={createSparkRoute.pathname}
+          className={style.newbtn}
+        >
+          <Type body2 tag="div" color="primary" className={style.type}>
+            <Plus /> <b>NEW SPARK</b>
+          </Type>
+        </NavButton>
+        <List>
+          <Divider />
+          <Link inline to="/terms">
+            <Type caption color="grey">
+              Terms & Conditions
+            </Type>
+          </Link>
+          <div className={style.bottomlinks}>
+            <Link inline to="/about">
+              <Type caption color="grey">
+                About Us
+              </Type>
+            </Link>
+            <Link inline to="/version">
+              <Type caption color="grey">
+                {version}
+              </Type>
+            </Link>
+          </div>
+        </List>
+      </nav>
+    </Scrollbars>
   );
 };
 

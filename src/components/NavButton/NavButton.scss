@@ -7,6 +7,8 @@
   box-sizing: border-box;
   width: 100%;
   border: none;
+  color: var(--font-color);
+  margin: calc(var(--spacing-small) / 2) 0;
   &:focus {
     outline: none;
     .container {

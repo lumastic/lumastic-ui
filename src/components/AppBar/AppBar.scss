@@ -8,8 +8,9 @@
   column-gap: var(--spacing-small);
   align-items: center;
   width: 100%;
-  height: min-content;
+  height: auto;
   top: 0;
+  z-index: 1000;
   background-color: var(--bg-color-light);
   box-shadow: var(--box-shadow-low);
   padding: 0 var(--spacing-big);
@@ -65,7 +66,7 @@
   display: none;
 }
 
-@media (max-width: $tablet) {
+@media (max-width: $mobile) {
   .appbar {
     .search {
       display: none;
@@ -74,26 +75,13 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-    }
-    .logo-container {
-      .text {
-        display: none;
-      }
     }
   }
 }
 
-@media (max-width: $mobile) {
+@media (max-width: $tablet) {
   .appbar {
     padding: var(--spacing-small);
-    .search {
-      display: none;
-    }
-    .searchBtn {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
     .logo-container {
       .text {
         display: inline-flex;

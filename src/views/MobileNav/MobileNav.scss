@@ -23,3 +23,9 @@
     }
   }
 }
+
+[data-theme="dark"] {
+  .mobilenav {
+    background-color: var(--bg-color);
+  }
+}

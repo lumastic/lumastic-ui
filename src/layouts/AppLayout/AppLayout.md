@@ -4,8 +4,7 @@
 import { Nav } from "../../views";
 import { AppBar, Main } from "../../components";
 <AppLayout>
-  <AppBar>Test Appbar</AppBar>
-  <Nav />
+  <Nav version="v2.0.0" />
   <Main>Test</Main>
 </AppLayout>;
 ```
