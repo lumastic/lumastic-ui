@@ -2,7 +2,7 @@
 
 .select {
   border: 1px solid var(--font-light-color);
-  border-radius: 6px;
+  border-radius: 0.5rem;
   padding: 0.25rem var(--spacing-med);
   transition: all 0.2s ease-in-out;
   display: flex;
@@ -39,13 +39,20 @@
 }
 .select-options {
   background-color: var(--bg-color-light);
-  border-radius: 6px;
+  border-radius: 0.5rem;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
+  min-width: 12rem;
   max-height: 300px;
+  padding: calc(var(--spacing-small) / 2);
   .select-option {
     padding: var(--spacing-small) 1.25rem;
-    min-width: 11rem;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    margin: calc(var(--spacing-small) / 4) 0;
+    border-radius: 0.5rem;
     &.compact {
       min-width: unset;
     }
@@ -55,12 +62,12 @@
     &:focus {
       outline: none;
       &:not([aria-selected="true"]) {
-        background-color: lightness(var(--font-light-color), 1.15);
+        background-color: var(--bg-color-active);
       }
     }
     &:hover {
       &:not(:focus):not([aria-selected="true"]) {
-        background-color: lightness(var(--font-light-color), 1.18);
+        background-color: var(--bg-color-hover);
       }
       cursor: pointer;
     }

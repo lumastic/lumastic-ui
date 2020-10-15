@@ -18,7 +18,7 @@
   &:hover {
     cursor: pointer;
     .container {
-      background-color: alpha(var(--font-light-color), 0.25);
+      background-color: var(--bg-color-hover);
     }
   }
   &:active {

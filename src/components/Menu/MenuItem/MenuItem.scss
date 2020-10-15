@@ -6,16 +6,24 @@
   border: none;
   background-color: transparent;
   box-sizing: border-box;
+  margin: calc(var(--spacing-small) / 4) 0;
+  border-radius: 0.5rem;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:focus {
     outline: 1px dotted var(--secondary-color-light);
-    background-color: lightness(var(--font-light-color), 1.15);
+    background-color: var(--bg-color-hover);
   }
   &:hover {
-    background-color: lightness(var(--font-light-color), 1.18);
+    background-color: var(--bg-color-hover);
     cursor: pointer;
   }
   &:active {
-    background-color: lightness(var(--font-light-color), 1.12);
+    background-color: var(--bg-color-active);
   }
   &.active {
     background-color: alpha(var(--secondary-color-light), 0.2);
