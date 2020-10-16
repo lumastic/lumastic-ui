@@ -28,6 +28,7 @@ export * from "./Slash";
 export * from "./Spark";
 export * from "./SparkPlus";
 export * from "./Sparks";
+export * from "./Stealth";
 export * from "./Times";
 export * from "./Trash";
 export * from "./UserLock";

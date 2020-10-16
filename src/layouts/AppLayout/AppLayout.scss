@@ -5,7 +5,7 @@
   width: 100%;
   // max-width: 100%;
   display: grid;
-  grid-template-columns: minmax(min-content, 300px) auto;
+  grid-template-columns: minmax(min-content, 280px) auto;
   grid-template-rows: max-content auto;
   gap: var(--spacing-big);
   grid-template-areas:
@@ -16,9 +16,6 @@
   }
   > header {
     grid-area: appbar;
-  }
-  > aside {
-    grid-area: aside;
   }
   > main {
     grid-area: main;

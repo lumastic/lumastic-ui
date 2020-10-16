@@ -10,48 +10,10 @@
   width: 100%;
   padding: 0 0 0 var(--spacing-med);
 
-  .main-btns {
-    margin-bottom: 1rem;
-  }
-  .sparks {
-    min-height: 0;
-    // flex-grow: 1;
-    display: grid;
-    grid-template-rows: min-content auto;
-
-    .sparksnav {
-      min-height: 0;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 1px 0;
-    }
-    .label {
-      padding-left: var(--spacing-med);
-    }
-  }
-  .divider {
-    padding-bottom: var(--spacing-med);
-  }
-  .newbtn {
-    > div {
-      padding: var(--spacing-med) 1rem;
-    }
-  }
-
   .bottomlinks {
     display: grid;
     align-items: center;
     grid-template-columns: auto min-content;
     padding-bottom: var(--spacing-med);
-  }
-  // align-self: self-end;
-
-  .type {
-    display: inline-flex;
-    > i,
-    > svg {
-      margin-right: 0.75em;
-      top: 0.15rem;
-    }
   }
 }

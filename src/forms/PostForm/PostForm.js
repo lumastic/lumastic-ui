@@ -8,8 +8,11 @@ import {
   Form,
   Link,
   PressInput,
+  Select,
   TextInput,
-  Type
+  Type,
+  Option,
+  Divider
 } from "../../components";
 import { parseContent, findMentions } from "../../helpers";
 import { useReset } from "../../hooks";
@@ -91,34 +94,14 @@ const PostForm = ({
       />
       <div className={style.bottom}>
         <div className={style.left}>
-          {/* <Select
-            name="type"
-            small
-            placeholder="Select a spark..."
-            defaultValue="progress"
-          >
+          <Select name="progressBoardId" small placeholder="Share with...">
             <Option name="progress">
-              <Signature>
-                <Point />
-                <Type body2>Share progress</Type>
-              </Signature>
+              <Type body2>Share progress</Type>
             </Option>
-            <Option name="issue">
-              <Signature>
-                <Point color="red" />
-                <Type body2>Ask for help</Type>
-              </Signature>
-            </Option>
-            <Option name="resolved">
-              <Signature>
-                <Point color="green" />
-                <Type body2>Mark as solved</Type>
-              </Signature>
-            </Option>
-          </Select> */}
+          </Select>
         </div>
         <div className={style.right}>
-          <Button type="submit" {...buttonProps}>
+          <Button type="submit" variant="contained" {...buttonProps}>
             <PaperAirplane />
             {buttonLabel}
           </Button>

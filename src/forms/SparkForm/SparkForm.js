@@ -10,9 +10,9 @@ import {
   TextInput,
   Type
 } from "../../components";
-import { UserLock, Users } from "../../icons";
+import { Stealth, Users } from "../../icons";
 import { upgradeRoute } from "../../routes";
-import { OrgSelect, OrgSignature } from "../../templates";
+import { OrgSelect, OrgSignature, Signature } from "../../templates";
 import style from "./SparkForm.scss";
 
 const sparkSchema = yup.object().shape({
@@ -60,7 +60,7 @@ const SparkForm = ({
       </div>
       <div>
         <Label>Title</Label>
-        <TextInput name="title" placeholder="Give it a name..." />
+        <TextInput name="title" placeholder="Give it a title..." />
       </div>
     </div>
 
@@ -74,26 +74,29 @@ const SparkForm = ({
 
     <RadioInput name="visibility" value="Public">
       <Type>
-        <Users /> Public
+        <Users /> Open
       </Type>
       <Type body2 color="grey">
-        Everyone can see this spark. You choose who can collaborate.
+        Anyone can see this spark. You choose who can collaborate.
       </Type>
     </RadioInput>
     <RadioInput name="visibility" value="Private" disabled={!license}>
       <Type color={license ? null : "grey"}>
-        <UserLock /> Private
+        <Stealth /> Stealth
       </Type>
       <Type body2 color="grey">
         {license
           ? "You control who can see and collaborate on this spark."
-          : "You need a pro account to create private sparks."}
+          : "You need a pro membership to create stealth sparks."}
       </Type>
       {license || (
         <Link to={upgradeRoute}>
-          <Type caption color="primary">
-            Buy us coffee and upgrade now!
-          </Type>
+          <Signature>
+            <Type underline>🚀</Type>
+            <Type underline color="primary">
+              Upgrade now!
+            </Type>
+          </Signature>
         </Link>
       )}
     </RadioInput>

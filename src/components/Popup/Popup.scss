@@ -20,6 +20,9 @@
   overflow: hidden;
 }
 .popup-trigger {
+  &:hover {
+    cursor: pointer;
+  }
   &:focus {
     outline: 1px dotted var(--secondary-color-light);
   }

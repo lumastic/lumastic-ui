@@ -21,6 +21,10 @@
     align-items: center;
     .title {
       flex-grow: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 20ch;
     }
     .btns {
       display: none;

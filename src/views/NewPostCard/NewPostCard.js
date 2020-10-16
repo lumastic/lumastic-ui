@@ -1,17 +1,26 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { Card } from "../../components";
-import { PostForm } from "../../forms";
+import { Avatar, Card, Link, Type } from "../../components";
+import { useUser } from "../../hooks";
+import { createPostRoute } from "../../routes";
+import { Signature } from "../../templates";
+import style from "./NewPostCard.scss";
 
-const NewPostCard = ({ sparks, onSubmit }) => (
-  <Card>
-    <PostForm sparks={sparks} onSubmit={onSubmit} />
-  </Card>
-);
-
-NewPostCard.propTypes = {
-  sparks: PropTypes.array,
-  onSubmit: PropTypes.func
+const NewPostCard = () => {
+  const { avatarURL, name } = useUser();
+  return (
+    <Link button to={createPostRoute}>
+      <Card className={style.card}>
+        <Signature>
+          <Avatar src={avatarURL} size="big" />
+          <div className={style.bubble}>
+            <Type color="grey">What's the latest, {name.split(" ")[0]}?</Type>
+          </div>
+        </Signature>
+      </Card>
+    </Link>
+  );
 };
+
+NewPostCard.propTypes = {};
 
 export { NewPostCard };

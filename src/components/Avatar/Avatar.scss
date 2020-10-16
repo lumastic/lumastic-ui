@@ -1,7 +1,7 @@
 .avatar {
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 50%;
   overflow: hidden;
   &.big {
@@ -9,8 +9,8 @@
     height: 2.25rem;
   }
   &.small {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
   &.shadow {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);

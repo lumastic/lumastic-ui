@@ -3,17 +3,33 @@ import React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import { Divider, Link, List, NavButton, Type } from "../../components";
 import classNames from "../../helpers/classNames";
-import { Plus } from "../../icons";
-import { createSparkRoute } from "../../routes";
-import { SparksNav } from "../../templates";
+import { upgradeRoute } from "../../routes";
+import { Signature, SparksNav } from "../../templates";
 import style from "./Sidebar.scss";
 
 const Sidebar = ({ className, version, sparks = [], organizations = [] }) => (
   <Scrollbars autoHide>
     <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
-      <div className={style.sparks}>
-        <SparksNav sparks={sparks} organizations={organizations} />
-      </div>
+      <SparksNav sparks={sparks} organizations={organizations} />
+      <Divider />
+      <NavButton>
+        <Signature>
+          <Type body2>👋</Type>
+          <Type body2>Getting Started</Type>
+        </Signature>
+      </NavButton>
+      <NavButton>
+        <Signature>
+          <Type body2>📓</Type>
+          <Type body2>Community Guidelines</Type>
+        </Signature>
+      </NavButton>
+      <NavButton to={upgradeRoute}>
+        <Signature>
+          <Type body2>🚀</Type>
+          <Type body2>Upgrade membership</Type>
+        </Signature>
+      </NavButton>
       <List>
         <Divider />
         <Link inline to="/terms">

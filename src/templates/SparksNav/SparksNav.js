@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   IconButton,
   Label,
   Link,
   MenuItem,
   NavButton,
-  Search,
   Tooltip,
   Type
 } from "../../components";
@@ -38,7 +36,7 @@ const SparksNavButton = ({ spark = {} }) => {
       >
         <AccordionTrigger>
           <div className={style.container}>
-            <Type tag="div" className={style.title}>
+            <Type tag="div" className={style.title} body2>
               {spark?.title}
             </Type>
             <div
@@ -90,7 +88,9 @@ const SparksNavButton = ({ spark = {} }) => {
             to={viewBoardRoute(spark?.belongsTo?.name, spark?.id, board?.id)}
             exact
           >
-            <Type tag="div">{board?.name}</Type>
+            <Type tag="div" body2>
+              {board?.name}
+            </Type>
           </NavButton>
         ))}
       </AccordionContent>

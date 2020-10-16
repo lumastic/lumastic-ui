@@ -7,14 +7,15 @@ import classNames from "../../helpers/classNames";
 import { useUser } from "../../hooks";
 import {
   Bell,
+  ChatExclamation,
+  Compass,
+  Gear,
   Home,
   Logo,
   LogoText,
+  LogOut,
   MagnifyingGlass,
-  ChatExclamation,
-  Sparks,
-  Gear,
-  LogOut
+  Sparks
 } from "../../icons";
 import {
   exploreRoute,
@@ -32,7 +33,6 @@ import { Signature } from "../../templates";
 import { Divider } from "../Divider";
 import { IconButton } from "../IconButton";
 import { Link } from "../Link";
-import { List } from "../List";
 import { MenuItem } from "../Menu";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { PopupMenu } from "../PopupMenu";
@@ -73,7 +73,7 @@ const AppBar = ({ className }) => {
           <div className={style.navbutton}>
             <NavIconButton
               to={exploreRoute}
-              icon={<MagnifyingGlass />}
+              icon={<Compass />}
               name="EXPLORE"
             />
           </div>
@@ -124,7 +124,10 @@ const AppBar = ({ className }) => {
                 </MenuItem>
               </Link>
               <Divider />
-              <Link button to="/feedback">
+              <Link
+                button
+                to={{ pathname: "/feedback", state: { modal: true } }}
+              >
                 <MenuItem>
                   <Signature>
                     <Type color="grey">
