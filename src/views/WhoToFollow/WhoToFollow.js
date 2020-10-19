@@ -4,11 +4,10 @@ import { Avatar, Card, IconButton, Label, List, Type } from "../../components";
 import { Signature } from "../../templates";
 import { Plus } from "../../icons";
 import style from "./WhoToFollow.scss";
-import classNames from "../../helpers/classNames";
 
 const WhoToFollow = ({
   users = [],
-  followHandler = () => alert("Followed")
+  followHandler = id => alert("Followed", id)
 }) => (
   <Card>
     <List>
@@ -16,7 +15,7 @@ const WhoToFollow = ({
       {users.map((user, index) => (
         <div className={style.wrapper} key={user?.id || index}>
           <Signature>
-            <Avatar size="big" />
+            <Avatar src={user?.avatarURL} size="big" />
             <div>
               <Type body2>{user?.name}</Type>
               <Type color="grey" setSize="0.7rem">
