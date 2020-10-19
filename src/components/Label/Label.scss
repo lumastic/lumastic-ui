@@ -5,8 +5,11 @@
   margin-bottom: 0.25rem;
   .label-text {
     flex-grow: 1;
+    white-space: nowrap;
   }
   .label-action {
+    white-space: nowrap;
+    margin-left: var(--spacing-med);
     flex-grow: 0;
   }
 }

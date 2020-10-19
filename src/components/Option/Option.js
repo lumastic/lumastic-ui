@@ -7,6 +7,12 @@ const Option = ({ children, name }) => {
 
   useEffect(() => {
     if (setOptions) setOptions(state => ({ ...state, [name]: children }));
+
+    return () =>
+      setOptions(state => {
+        delete state[name];
+        return { ...state };
+      });
   }, [setOptions, name, children]);
 
   return <></>;

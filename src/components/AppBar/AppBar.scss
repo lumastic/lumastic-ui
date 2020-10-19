@@ -4,7 +4,10 @@
 .appbar {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 2fr 6fr minmax(4fr, min-content);
+  grid-template-columns: minmax(min-content, 280px) auto minmax(
+      min-content,
+      280px
+    );
   column-gap: var(--spacing-small);
   align-items: center;
   width: 100%;
@@ -81,6 +84,7 @@
 
 @media (max-width: $tablet) {
   .appbar {
+    grid-template-columns: minmax(min-content, 280px) auto;
     padding: var(--spacing-small);
     .logo-container {
       .text {

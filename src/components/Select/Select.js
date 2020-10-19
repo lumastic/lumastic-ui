@@ -26,6 +26,7 @@ const Select = ({
   const { register, setValue, errors } = useInputContext();
   const [selected, setSelected] = useState(defaultValue);
   const [options, setOptions] = useState([]);
+
   const triggerRef = useRef();
 
   const contextValue = useMemo(() => ({ selected, setSelected, setOptions }), [
@@ -40,7 +41,8 @@ const Select = ({
 
   useEffect(() => {
     if (selected && setValue) setValue(name, selected, true);
-  }, [selected, setValue, name]);
+    if (selected && !options[selected]) setValue(name, "", true);
+  }, [selected, setValue, name, options]);
 
   useEffect(() => {
     // console.log("Select onchange", selected);

@@ -1,6 +1,6 @@
 import { defaultPressValue } from "pressdk";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { useUser } from "../..";
 import {
@@ -26,6 +26,16 @@ const postSchema = yup.object().shape({
   spark: yup.string().required("This field is required")
 });
 
+const ProgressBoardSelect = ({ progressBoards }) => (
+  <Select name="progressBoardId" small placeholder="Share with...">
+    {progressBoards?.map((board, key) => (
+      <Option name={board?.id} key={board?.id || key}>
+        <Type body2>{board?.id}</Type>
+      </Option>
+    ))}
+  </Select>
+);
+
 const PostForm = ({
   onSubmit,
   sparks = [],
@@ -35,6 +45,7 @@ const PostForm = ({
 }) => {
   const user = useUser();
   const [reset, toggle] = useReset();
+  const [progressBoards, setProgressBoards] = useState([]);
   if (sparks.length === 0)
     return (
       <>
@@ -65,7 +76,7 @@ const PostForm = ({
       onSubmit={handleSubmit}
       defaultValues={{
         content: JSON.stringify(defaultPressValue()),
-        spark: sparks[0]?.id,
+        spark: sparks.length === 1 && sparks[0]?.id,
         ...defaultValues
       }}
       className={style.form}
@@ -77,6 +88,11 @@ const PostForm = ({
           name="spark"
           organization={user}
           sparks={sparks}
+          onChange={sparkId =>
+            setProgressBoards(
+              sparks.find(spark => spark?.id === sparkId)?.progressBoards
+            )
+          }
         />
       )}
       {sparks.length === 1 && (
@@ -94,11 +110,7 @@ const PostForm = ({
       />
       <div className={style.bottom}>
         <div className={style.left}>
-          <Select name="progressBoardId" small placeholder="Share with...">
-            <Option name="progress">
-              <Type body2>Share progress</Type>
-            </Option>
-          </Select>
+          <ProgressBoardSelect progressBoards={progressBoards} />
         </div>
         <div className={style.right}>
           <Button type="submit" variant="contained" {...buttonProps}>
