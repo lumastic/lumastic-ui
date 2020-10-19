@@ -40,8 +40,13 @@ const Select = ({
   }, [register, name]);
 
   useEffect(() => {
-    if (selected && setValue) setValue(name, selected, true);
-    if (selected && !options[selected]) setValue(name, "", true);
+    if (setValue) {
+      if (!options[selected]) {
+        setValue(name, "", true);
+      } else if (selected) {
+        setValue(name, selected, true);
+      }
+    }
   }, [selected, setValue, name, options]);
 
   useEffect(() => {

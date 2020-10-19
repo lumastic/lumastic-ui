@@ -61,7 +61,7 @@ const AppBar = ({ className }) => {
       <div className={style["mainbtns-container"]}>
         <div className={style.mainbtns}>
           <div className={style.navbutton}>
-            <NavIconButton to={homeRoute} exact icon={<Home />} name="HOME" />
+            <NavIconButton to={homeRoute} icon={<Home />} name="HOME" />
           </div>
           <div className={style.navbutton}>
             <NavIconButton
