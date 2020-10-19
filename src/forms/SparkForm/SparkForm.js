@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import {
   Button,
@@ -26,85 +26,95 @@ const SparkForm = ({
   license = false,
   onSubmit,
   defaultValues = {}
-}) => (
-  <Form
-    onSubmit={onSubmit}
-    validationSchema={sparkSchema}
-    defaultValues={{
-      visibility: "Public",
-      belongsTo: organizations[0]?.id,
-      ...defaultValues
-    }}
-  >
-    <div className={style.header}>
-      <div>
-        <Label>Owner</Label>
-        {organizations.length > 1 ? (
-          <OrgSelect
-            name="belongsTo"
-            defaultValue={organizations[0]?.id}
-            organizations={organizations}
-          />
-        ) : (
-          <>
-            <OrgSignature
-              organization={organizations[0]}
-              user={
-                organizations[0]?.isUserOrganization &&
-                organizations[0]?.createdBy
+}) => {
+  const [organization, setOrganization] = useState(organizations[0]);
+  return (
+    <Form
+      onSubmit={onSubmit}
+      validationSchema={sparkSchema}
+      defaultValues={{
+        visibility: "Public",
+        belongsTo: organizations[0]?.id,
+        ...defaultValues
+      }}
+    >
+      <div className={style.header}>
+        <div>
+          <Label>Owner</Label>
+          {organizations.length > 1 ? (
+            <OrgSelect
+              name="belongsTo"
+              defaultValue={organizations[0]?.id}
+              organizations={organizations}
+              onChange={id =>
+                setOrganization(organizations?.find(org => org?.id === id))
               }
             />
-            <TextInput name="belongsTo" hidden />
-          </>
-        )}
+          ) : (
+            <>
+              <OrgSignature
+                organization={organizations[0]}
+                user={
+                  organizations[0]?.isUserOrganization &&
+                  organizations[0]?.createdBy
+                }
+              />
+              <TextInput name="belongsTo" hidden />
+            </>
+          )}
+        </div>
+        <div>
+          <Label>Title</Label>
+          <TextInput name="title" placeholder="Give it a title..." />
+        </div>
       </div>
+
       <div>
-        <Label>Title</Label>
-        <TextInput name="title" placeholder="Give it a title..." />
+        <Label>Description</Label>
+        <TextInput
+          name="description"
+          placeholder="Describe what you're working on..."
+        />
       </div>
-    </div>
 
-    <div>
-      <Label>Description</Label>
-      <TextInput
-        name="description"
-        placeholder="Describe what you're working on..."
-      />
-    </div>
-
-    <RadioInput name="visibility" value="Public">
-      <Type>
-        <Users /> Open
-      </Type>
-      <Type body2 color="grey">
-        Anyone can see this spark. You choose who can collaborate.
-      </Type>
-    </RadioInput>
-    <RadioInput name="visibility" value="Private" disabled={!license}>
-      <Type color={license ? null : "grey"}>
-        <Stealth /> Stealth
-      </Type>
-      <Type body2 color="grey">
-        {license
-          ? "You control who can see and collaborate on this spark."
-          : "You need a pro membership to create stealth sparks."}
-      </Type>
-      {license || (
-        <Link to={upgradeRoute}>
-          <Signature>
-            <Type underline>🚀</Type>
-            <Type underline color="primary">
-              Upgrade now!
-            </Type>
-          </Signature>
-        </Link>
-      )}
-    </RadioInput>
-    <Button variant="contained" type="submit">
-      Save
-    </Button>
-  </Form>
-);
+      <RadioInput name="visibility" value="Public">
+        <Type>
+          <Users /> Open
+        </Type>
+        <Type body2 color="grey">
+          Anyone can see this spark. You choose who can collaborate.
+        </Type>
+      </RadioInput>
+      <RadioInput
+        name="visibility"
+        value="Private"
+        disabled={!organization?.isLicensed}
+      >
+        <Type color={organization?.isLicensed ? null : "grey"}>
+          <Stealth /> Stealth
+        </Type>
+        <Type body2 color="grey">
+          {organization?.isLicensed
+            ? "You control who can see and collaborate on this spark."
+            : "You need a pro membership to create stealth sparks."}
+        </Type>
+        {organization?.isLicensed || (
+          <Link to={upgradeRoute}>
+            <Signature>
+              <Type underline>🚀</Type>
+              <Type underline color="primary">
+                Upgrade now!
+              </Type>
+            </Signature>
+          </Link>
+        )}
+      </RadioInput>
+      <Button variant="contained" type="submit">
+        Save
+      </Button>
+    </Form>
+  );
+};
 
 SparkForm.propTypes = {
   organizations: PropTypes.array,
