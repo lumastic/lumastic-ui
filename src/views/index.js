@@ -18,3 +18,4 @@ export * from "./SparkInfo";
 export * from "./SparkNavBar";
 export * from "./SparkPeople";
 export * from "./UserCard";
+export * from "./WhoToFollow";

@@ -41,7 +41,7 @@ const Select = ({
 
   useEffect(() => {
     if (setValue) {
-      if (!options[selected]) {
+      if (selected && !options[selected]) {
         setValue(name, "", true);
       } else if (selected) {
         setValue(name, selected, true);

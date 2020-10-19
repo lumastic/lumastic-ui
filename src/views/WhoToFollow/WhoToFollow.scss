@@ -1,0 +1,6 @@
+.wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto min-content;
+  column-gap: var(--spacing-med);
+}

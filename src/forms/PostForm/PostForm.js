@@ -7,14 +7,13 @@ import {
   Button,
   Form,
   Link,
+  Option,
   PressInput,
   Select,
   TextInput,
-  Type,
-  Option,
-  Divider
+  Type
 } from "../../components";
-import { parseContent, findMentions } from "../../helpers";
+import { findMentions, parseContent } from "../../helpers";
 import { useReset } from "../../hooks";
 import { PaperAirplane } from "../../icons";
 import { createSparkRoute } from "../../routes";
@@ -25,16 +24,6 @@ const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
   spark: yup.string().required("This field is required")
 });
-
-const ProgressBoardSelect = ({ progressBoards }) => (
-  <Select name="progressBoardId" small placeholder="Share with...">
-    {progressBoards?.map((board, key) => (
-      <Option name={board?.id} key={board?.id || key}>
-        <Type body2>{board?.id}</Type>
-      </Option>
-    ))}
-  </Select>
-);
 
 const PostForm = ({
   onSubmit,
@@ -110,7 +99,13 @@ const PostForm = ({
       />
       <div className={style.bottom}>
         <div className={style.left}>
-          <ProgressBoardSelect progressBoards={progressBoards} />
+          <Select name="progressBoardId" small placeholder="Share with...">
+            {progressBoards?.map((board, key) => (
+              <Option name={board?.id} key={board?.id || key}>
+                <Type body2>{board?.id}</Type>
+              </Option>
+            ))}
+          </Select>
         </div>
         <div className={style.right}>
           <Button type="submit" variant="contained" {...buttonProps}>
