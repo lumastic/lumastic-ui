@@ -10,7 +10,7 @@ import {
   TextInput,
   Type
 } from "../../components";
-import { Stealth, Users } from "../../icons";
+import { Stealth, UserLock, Users } from "../../icons";
 import { upgradeRoute } from "../../routes";
 import { OrgSelect, OrgSignature, Signature } from "../../templates";
 import style from "./SparkForm.scss";
@@ -91,12 +91,12 @@ const SparkForm = ({
         disabled={!organization?.isLicensed}
       >
         <Type color={organization?.isLicensed ? null : "grey"}>
-          <Stealth /> Stealth
+          <UserLock /> Private
         </Type>
         <Type body2 color="grey">
           {organization?.isLicensed
             ? "You control who can see and collaborate on this spark."
-            : "You need a pro membership to create stealth sparks."}
+            : "You need a pro membership to create private sparks."}
         </Type>
         {organization?.isLicensed || (
           <Link to={upgradeRoute}>
