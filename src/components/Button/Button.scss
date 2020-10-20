@@ -192,7 +192,7 @@
       cursor: unset;
     }
     &.contained {
-      background-color: lightness(var(--font-light-color), 1.05);
+      background-color: var(--bg-color-hover);
     }
   }
 }

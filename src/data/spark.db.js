@@ -38,7 +38,8 @@ export const spark2 = {
     { id: 1, name: "Notes" },
     { id: 2, name: "Ideas" },
     { id: 3, name: "Crafting" }
-  ]
+  ],
+  progressBoards: [{ id: 1, name: "Open" }]
 };
 
 export const spark3 = {

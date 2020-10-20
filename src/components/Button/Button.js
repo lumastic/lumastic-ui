@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import style from "./Button.scss";
 import classNames from "../../helpers/classNames";
 import { useInputContext } from "../../helpers/useInputContext";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 const Button = forwardRef(
   (
@@ -35,13 +36,17 @@ const Button = forwardRef(
           { [style.shadow]: shadow }
         )}
         onClick={onClick}
-        disabled={disabled || formState?.isSubmitting}
+        disabled={formState?.isSubmitting || disabled}
         type={type || "button"}
         data-testid="button"
         ref={ref}
         {...rest}
       >
-        {children}
+        {formState?.isSubmitting ? (
+          <LoadingSpinner white={variant === "contained"} small />
+        ) : (
+          children
+        )}
       </button>
     );
   }

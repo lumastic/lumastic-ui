@@ -85,6 +85,15 @@ export const createPostRoute = {
   state: { modal: true }
 };
 
+// PROGRESS BOARD ROUTES
+export const createProgressBoard = (
+  orgName = ":orgName",
+  sparkId = ":sparkId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}/create/bubble`,
+  state: { modal: true }
+});
+
 export const viewPostRoute = (
   orgName = ":orgName",
   sparkId = ":sparkId",

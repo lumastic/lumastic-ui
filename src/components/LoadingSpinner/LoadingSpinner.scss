@@ -1,10 +1,11 @@
 @import "../../styles/functions.scss";
-.loadingspinner {
+
+.loading-spinner {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   &:after,
   &:before {
     content: "";
@@ -15,22 +16,37 @@
   }
   &:after {
     position: absolute;
-    top: -0.25rem;
-    left: -0.25rem;
-    border: 0.25rem solid transparent;
+
+    top: -0.15rem;
+    left: -0.15rem;
+    border: 0.15rem solid transparent;
     border-top-color: var(--secondary-color);
-    border-bottom-color: var(--accent-color);
+    // border-bottom-color: var(--accent-color);
     animation: spinny 0.75s linear infinite;
+  }
+  &.white {
+    &:after {
+      border-top-color: white;
+    }
+  }
+  &.small {
+    width: 1.125rem;
+    height: 1.125rem;
+    &:after,
+    &:before {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
   }
 }
 @keyframes spinny {
   0% {
-    transform: rotate(0deg) scale(1);
+    transform: rotate(0deg);
   }
   50% {
-    transform: rotate(180deg) scale(1.2);
+    transform: rotate(180deg);
   }
   100% {
-    transform: rotate(360deg) scale(1);
+    transform: rotate(360deg);
   }
 }

@@ -15,6 +15,7 @@ const Select = ({
   placeholder,
   name = "select",
   small = false,
+  right = false,
   compact = false,
   children,
   className,
@@ -66,8 +67,8 @@ const Select = ({
         <Popup
           onOpen={onOpen}
           onClose={onClose}
-          anchor={{ v: "top", h: "left" }}
-          transform={{ v: "top", h: "left" }}
+          anchor={{ v: "top", h: right ? "right" : "left" }}
+          transform={{ v: "top", h: right ? "right" : "left" }}
         >
           <PopupTrigger>
             <div
@@ -79,7 +80,7 @@ const Select = ({
             >
               {options[selected] || (
                 <div className={style.label}>
-                  <Type body2={small}>{placeholder}</Type>
+                  <Type body3={small}>{placeholder}</Type>
                 </div>
               )}
               <div
@@ -120,6 +121,7 @@ Select.propTypes = {
   children: PropTypes.node,
   defaultValue: PropTypes.any,
   small: PropTypes.bool,
+  right: PropTypes.bool,
   compact: PropTypes.bool,
   addOption: PropTypes.node,
   name: PropTypes.string,

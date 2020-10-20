@@ -6,7 +6,9 @@ import { useUser } from "../..";
 import {
   Button,
   Form,
+  Label,
   Link,
+  MenuItem,
   Option,
   PressInput,
   Select,
@@ -15,14 +17,19 @@ import {
 } from "../../components";
 import { findMentions, parseContent } from "../../helpers";
 import { useReset } from "../../hooks";
-import { PaperAirplane } from "../../icons";
-import { createSparkRoute } from "../../routes";
-import { SparkCrumbs, SparkSelectCrumbs } from "../../templates";
+import { PaperAirplane, Plus } from "../../icons";
+import {
+  createSparkRoute,
+  createProgressBoard,
+  upgradeRoute
+} from "../../routes";
+import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";
 import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
-  spark: yup.string().required("This field is required")
+  spark: yup.string().required("This field is required"),
+  progressBoardId: yup.string().required("This field is required")
 });
 
 const PostForm = ({
@@ -34,6 +41,7 @@ const PostForm = ({
 }) => {
   const user = useUser();
   const [reset, toggle] = useReset();
+  const [selectedSpark, setSpark] = useState();
   const [progressBoards, setProgressBoards] = useState([]);
   if (sparks.length === 0)
     return (
@@ -73,21 +81,22 @@ const PostForm = ({
     >
       {sparks.length > 1 && (
         <SparkSelectCrumbs
-          small
           name="spark"
           organization={user}
           sparks={sparks}
-          onChange={sparkId =>
+          onChange={sparkId => {
+            setSpark(sparks.find(spark => spark?.id === sparkId));
             setProgressBoards(
               sparks.find(spark => spark?.id === sparkId)?.progressBoards
-            )
-          }
+            );
+          }}
         />
       )}
       {sparks.length === 1 && (
         <>
           <SparkCrumbs small spark={sparks[0]} organization={user} />
           <TextInput name="spark" hidden />
+          <TextInput name="progressBoardId" hidden />
         </>
       )}
 
@@ -96,24 +105,78 @@ const PostForm = ({
         reset={reset}
         name="content"
         placeholder="What's on your mind..."
+        className={style.content}
+        big
       />
-      <div className={style.bottom}>
-        <div className={style.left}>
-          <Select name="progressBoardId" small placeholder="Share with...">
-            {progressBoards?.map((board, key) => (
-              <Option name={board?.id} key={board?.id || key}>
-                <Type body2>{board?.id}</Type>
+      <div className={style.right}>
+        {selectedSpark &&
+          (selectedSpark?.belongsTo?.isLicensed ? (
+            <Select
+              name="progressBoardId"
+              small
+              placeholder="Share with..."
+              right
+              addOption={
+                <Link
+                  button
+                  to={createProgressBoard(
+                    selectedSpark?.belongsTo?.name,
+                    selectedSpark?.id
+                  )}
+                >
+                  <MenuItem>
+                    <Signature>
+                      <Type body3>
+                        <Plus />
+                      </Type>
+                      <Type body3>New Bubble</Type>
+                    </Signature>
+                  </MenuItem>
+                </Link>
+              }
+            >
+              {progressBoards?.map((board, key) => (
+                <Option name={board?.id} key={board?.id || key}>
+                  <Type body3>{board?.name}</Type>
+                </Option>
+              ))}
+            </Select>
+          ) : (
+            <Select
+              name="progressBoardId"
+              small
+              right
+              placeholder="Share with..."
+              defaultValue="everyone"
+              addOption={
+                <Link button to={upgradeRoute}>
+                  <MenuItem>
+                    <Signature>
+                      <Type body3>🚀</Type>
+                      <div>
+                        <Type body3>Share privately</Type>
+                        <Type color="grey" setSize="0.7rem">
+                          Upgrade your membership
+                        </Type>
+                      </div>
+                    </Signature>
+                  </MenuItem>
+                </Link>
+              }
+            >
+              <Option name="everyone">
+                <Signature>
+                  <Type body3>📣</Type>
+                  <Type body3>Public</Type>
+                </Signature>
               </Option>
-            ))}
-          </Select>
-        </div>
-        <div className={style.right}>
-          <Button type="submit" variant="contained" {...buttonProps}>
-            <PaperAirplane />
-            {buttonLabel}
-          </Button>
-        </div>
+            </Select>
+          ))}
       </div>
+      <Button type="submit" variant="contained" {...buttonProps}>
+        <PaperAirplane />
+        {buttonLabel}
+      </Button>
     </Form>
   );
 };
