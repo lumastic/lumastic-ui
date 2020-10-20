@@ -18,20 +18,7 @@
   box-shadow: var(--box-shadow-low);
   padding: 0 var(--spacing-big);
   box-sizing: border-box;
-  .logo-container {
-    display: flex;
-    align-items: center;
-    font-size: 1.25rem;
-    height: 100%;
-    .symbol,
-    .text {
-      color: var(--primary-color);
-      display: inline-flex;
-    }
-    .symbol {
-      margin-right: var(--spacing-small);
-    }
-  }
+
   .mainbtns-container {
     display: flex;
     flex-direction: row;

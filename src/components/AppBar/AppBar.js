@@ -11,7 +11,7 @@ import {
   Compass,
   Gear,
   Home,
-  Logo,
+  Symbol,
   LogoText,
   LogOut,
   MagnifyingGlass,
@@ -33,6 +33,7 @@ import { Signature } from "../../templates";
 import { Divider } from "../Divider";
 import { IconButton } from "../IconButton";
 import { Link } from "../Link";
+import { Logo } from "../Logo";
 import { MenuItem } from "../Menu";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { PopupMenu } from "../PopupMenu";
@@ -50,14 +51,7 @@ const AppBar = ({ className }) => {
       className={classNames(className, style.appbar)}
       data-testid="appbar"
     >
-      <div className={style["logo-container"]}>
-        <span className={style.symbol}>
-          <Logo />
-        </span>
-        <span className={style.text}>
-          <LogoText />
-        </span>
-      </div>
+      <Logo />
       <div className={style["mainbtns-container"]}>
         <div className={style.mainbtns}>
           <div className={style.navbutton}>
