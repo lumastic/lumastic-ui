@@ -17,5 +17,6 @@ export * from "./SparkSelect";
 export * from "./SparkSelectCrumbs";
 export * from "./SparkSignature";
 export * from "./SparksNav";
+export * from "./TabNav";
 export * from "./Tag";
 export * from "./TagSignature";

@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import style from "./Container.scss";
 import classNames from "../../helpers/classNames";
 
-const Container = ({ children, className, maxWidth }) => (
+const Container = ({ children, className, maxWidth, ...rest }) => (
   <div
     className={classNames(className, style.container)}
     data-testid="container"
     style={{ maxWidth }}
+    {...rest}
   >
     {children}
   </div>

@@ -1,7 +1,23 @@
 #### Basic Usage
 
 ```jsx
-<Logo>Logo</Logo>
+<Logo />
+```
+
+`stacked`
+
+```jsx
+<Logo stacked />
+```
+
+`white`
+
+```jsx
+<div
+  style={{ backgroundColor: "black", padding: "1rem", borderRadius: "0.5rem" }}
+>
+  <Logo white stacked />
+</div>
 ```
 
 Source:

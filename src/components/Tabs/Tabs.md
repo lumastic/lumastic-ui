@@ -10,9 +10,15 @@ import { TabHeader, Tab, TabPanel } from ".";
       Disabled
     </Tab>
   </TabHeader>
-  <TabPanel name="posts">Posts panel</TabPanel>
-  <TabPanel name="sparks">Sparks panel</TabPanel>
-  <TabPanel name="disabled">Disabled panel</TabPanel>
+  <TabPanel name="posts">
+    <div>Posts panel</div>
+  </TabPanel>
+  <TabPanel name="sparks">
+    <div>Sparks panel</div>
+  </TabPanel>
+  <TabPanel name="disabled">
+    <div>Disabled panel</div>
+  </TabPanel>
 </Tabs>;
 ```
 

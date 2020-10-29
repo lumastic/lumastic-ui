@@ -5,9 +5,11 @@
   width: 100%;
   // max-width: 100%;
   display: grid;
-  grid-template-columns: minmax(min-content, 280px) auto;
   grid-template-rows: max-content auto;
   gap: var(--spacing-big);
+}
+.sidebar-layout {
+  grid-template-columns: minmax(min-content, 280px) auto;
   grid-template-areas:
     "appbar appbar"
     "navigation main";

@@ -29,3 +29,9 @@
     background-color: var(--bg-color);
   }
 }
+
+@media (min-width: $tablet) {
+  .mobilenav {
+    display: none;
+  }
+}

@@ -1,11 +1,5 @@
 @import "../../styles/sizes.scss";
 
-@media (min-width: $tablet) {
-  .mobile {
-    display: none;
-  }
-}
-
 @media (max-width: $tablet) {
   .sidebar {
     display: none;

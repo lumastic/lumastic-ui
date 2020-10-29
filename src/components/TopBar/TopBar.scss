@@ -1,0 +1,42 @@
+@import "../../styles/functions";
+
+.topbar {
+  &.test {
+    position: absolute;
+  }
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  min-height: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-light);
+  box-shadow: var(--box-shadow-low);
+  z-index: 999;
+  padding: 0 var(--spacing-big);
+  .items {
+    flex-grow: 1;
+    display: grid;
+    column-gap: var(--spacing-small);
+    align-items: center;
+    justify-content: end;
+    grid-auto-flow: column;
+  }
+  .link {
+    text-decoration: none;
+    display: inline-block;
+    padding: var(--spacing-small) var(--spacing-med);
+    color: var(--font-color);
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    &:hover {
+      background-color: alpha(var(--bg-color), 0.5);
+    }
+    &:active,
+    &.active {
+      background-color: var(--bg-color);
+    }
+  }
+}

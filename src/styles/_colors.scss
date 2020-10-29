@@ -23,7 +23,7 @@
   --accent-hue: 44;
   @include defineColorHSL(--accent-color, var(--accent-hue), 92%, 70%);
   @include defineColorHSL(--accent-color-light, var(--accent-hue), 18%, 90%);
-  @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 80%);
+  @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 50%);
 
   @include defineColorHSL(--font-color, 0, 0%, 0%);
   @include defineColorHSL(--font-secondary-color, 0, 0%, 43%);
@@ -67,13 +67,12 @@
   @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 98%);
   @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 98%);
 
-  @include defineColorHSL(--accent-color, var(--primary-hue), 12%, 5%);
-  @include defineColorHSL(--accent-color-light, var(--accent-hue), 92%, 10%);
-  @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 0%);
-
   @include defineColorHSL(--font-color, 0, 0%, 90%);
   @include defineColorHSL(--font-secondary-color, 0, 0%, 70%);
   @include defineColorHSL(--font-light-color, 0, 0%, 50%);
+
+  @include defineColorHSL(--red-color, 0, 58%, 70%);
+  @include defineColorHSL(--green-color, 130, 53%, 70%);
 
   @include defineColorHSL(--bg-color, 220, 6%, 10%);
   @include defineColorHSL(--bg-color-light, 0, 0%, 18%);

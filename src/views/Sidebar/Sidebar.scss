@@ -13,7 +13,7 @@
   .bottomlinks {
     display: grid;
     align-items: center;
-    grid-template-columns: auto min-content;
+    grid-template-columns: auto max-content;
     padding-bottom: var(--spacing-med);
   }
 }

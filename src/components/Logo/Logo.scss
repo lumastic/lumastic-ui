@@ -1,14 +1,27 @@
 .logo-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  font-size: 1.25rem;
   height: 100%;
   .symbol,
   .text {
+    font-size: 1.25em;
     color: var(--primary-color);
     display: inline-flex;
   }
   .symbol {
-    margin-right: var(--spacing-small);
+    margin-right: var(--spacing-med);
+  }
+  &.stacked {
+    flex-direction: column;
+    .symbol {
+      font-size: 1.5em;
+      margin-right: 0;
+    }
+  }
+  &.white {
+    .symbol,
+    .text {
+      color: whitesmoke;
+    }
   }
 }

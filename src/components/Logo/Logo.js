@@ -4,8 +4,14 @@ import { LogoText, Symbol } from "../../icons";
 import style from "./Logo.scss";
 import classNames from "../../helpers/classNames";
 
-const Logo = ({ children, className, ...rest }) => (
-  <div className={style["logo-container"]}>
+const Logo = ({ white, stacked }) => (
+  <div
+    className={classNames(
+      style["logo-container"],
+      { [style.white]: white },
+      { [style.stacked]: stacked }
+    )}
+  >
     <span className={style.symbol}>
       <Symbol />
     </span>
@@ -16,8 +22,8 @@ const Logo = ({ children, className, ...rest }) => (
 );
 
 Logo.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  white: PropTypes.bool,
+  stacked: PropTypes.bool
 };
 
 export { Logo };

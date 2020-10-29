@@ -6,7 +6,6 @@ import style from "./Nav.scss";
 
 const Nav = ({ sparks, version = "", organizations }) => (
   <>
-    <MobileNav className={style.mobile} />
     <Sidebar
       className={style.sidebar}
       sparks={sparks}
