@@ -1,6 +1,6 @@
 import { defaultPressValue } from "pressdk";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useUser } from "../..";
 import {
@@ -68,6 +68,7 @@ const PostForm = ({
       alert(JSON.stringify(data));
     }
   };
+
   return (
     <Form
       onSubmit={handleSubmit}

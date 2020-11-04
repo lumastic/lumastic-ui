@@ -6,7 +6,6 @@ export * from "./NewBoardDialog";
 export * from "./NewPostCard";
 export * from "./NotificationCard";
 export * from "./OrgDialog";
-export * from "./PageAppBar";
 export * from "./PostDialog";
 export * from "./PostView";
 export * from "./ProfileHeader";
