@@ -122,6 +122,7 @@ const SearchSelect = ({
               </div>
             ))}
         </div>
+
         <div className={style.search}>
           <input
             type="search"

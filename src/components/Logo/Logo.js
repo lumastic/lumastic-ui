@@ -4,13 +4,14 @@ import { LogoText, Symbol } from "../../icons";
 import style from "./Logo.scss";
 import classNames from "../../helpers/classNames";
 
-const Logo = ({ white, stacked }) => (
+const Logo = ({ white, stacked, ...rest }) => (
   <div
     className={classNames(
       style["logo-container"],
       { [style.white]: white },
       { [style.stacked]: stacked }
     )}
+    {...rest}
   >
     <span className={style.symbol}>
       <Symbol />

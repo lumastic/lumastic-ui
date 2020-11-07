@@ -45,10 +45,10 @@ const BubbleForm = ({
         <TextInput name="name" placeholder="Bubble name..." />
       </div>
       <div>
-        <Label>Share With</Label>
+        <Label>Share With:</Label>
         <SearchSelect
           name="collaborators"
-          placeholder="Add people or organizations..."
+          placeholder="Invite to bubble..."
           onSearch={onSearchOrgs}
           renderResult={({ name, avatarURL }) => (
             <Signature>

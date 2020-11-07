@@ -1,12 +1,11 @@
 import { defaultPressValue } from "pressdk";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { useUser } from "../..";
 import {
   Button,
   Form,
-  Label,
   Link,
   MenuItem,
   Option,
@@ -19,8 +18,8 @@ import { findMentions, parseContent } from "../../helpers";
 import { useReset } from "../../hooks";
 import { PaperAirplane, Plus } from "../../icons";
 import {
-  createSparkRoute,
   createProgressBoard,
+  createSparkRoute,
   upgradeRoute
 } from "../../routes";
 import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";

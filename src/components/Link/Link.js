@@ -19,7 +19,10 @@ const Link = ({
       <RouterLink
         to={location => ({
           ...toObj,
-          state: { ...toObj?.state, from: location }
+          state: {
+            ...toObj?.state,
+            from: location?.state?.modal ? location?.state?.from : location
+          }
         })}
         className={classNames(
           style.link,
@@ -43,7 +46,12 @@ const Link = ({
         if (c.props.onClick) c.props.onClick(e);
         history.push({
           ...toObj,
-          state: { ...toObj?.state, from: history.location }
+          state: {
+            ...toObj?.state,
+            from: history?.location?.state?.modal
+              ? history?.location?.state?.from
+              : history?.location
+          }
         });
       }
     })

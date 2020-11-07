@@ -51,7 +51,9 @@ const AppBar = ({ className }) => {
       className={classNames(className, style.appbar)}
       data-testid="appbar"
     >
-      <Logo />
+      <Link to="/" button inline>
+        <Logo />
+      </Link>
       <div className={style["mainbtns-container"]}>
         <div className={style.mainbtns}>
           <div className={style.navbutton}>

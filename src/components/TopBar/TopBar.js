@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import classNames from "../../helpers/classNames";
+import { Link } from "../Link";
 import { Logo } from "../Logo";
 import style from "./TopBar.scss";
 
@@ -24,7 +25,10 @@ const TopBar = ({ children, className, test }) => (
     className={classNames(className, style.topbar, { [style.test]: test })}
     data-testid="topbar"
   >
-    <Logo />
+    <Link to="/" button inline>
+      <Logo />
+    </Link>
+
     <div className={style.items}>{children}</div>
   </nav>
 );
