@@ -5,14 +5,14 @@
   align-items: center;
   .avatar {
     &:not(:first-child) {
-      margin-left: -var(--spacing-small);
+      margin-left: calc(-1 * var(--spacing-small));
       border: 2px solid var(--bg-color-light);
       border-radius: 50%;
     }
     display: inline-flex;
   }
   .more {
-    margin-left: -var(--spacing-small);
+    margin-left: calc(-1 * var(--spacing-small));
     display: inline-flex;
     align-items: center;
     justify-content: center;
