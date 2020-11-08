@@ -17,7 +17,7 @@ import classNames from "../../helpers/classNames";
 const BubbleForm = ({
   onSubmit,
   defaultValues = {},
-  buttonLabel = "New Bubble",
+  buttonLabel = "Create",
   buttonProps = {},
   onSearchOrgs,
   className
@@ -42,13 +42,13 @@ const BubbleForm = ({
     >
       <div>
         <Label>Name</Label>
-        <TextInput name="name" placeholder="Bubble name..." />
+        <TextInput name="name" placeholder="e.g. Mentors" />
       </div>
       <div>
-        <Label>Share With:</Label>
+        <Label>In This Bubble:</Label>
         <SearchSelect
           name="collaborators"
-          placeholder="Invite to bubble..."
+          placeholder="Add to bubble..."
           onSearch={onSearchOrgs}
           renderResult={({ name, avatarURL }) => (
             <Signature>
