@@ -1,9 +1,17 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-import { Divider, Link, List, NavButton, Type } from "../../components";
+import {
+  Divider,
+  Link,
+  List,
+  NavButton,
+  Type,
+  Label,
+  Avatar
+} from "../../components";
 import classNames from "../../helpers/classNames";
-import { upgradeRoute } from "../../routes";
+import { profileRoute, upgradeRoute } from "../../routes";
 import { Signature, SparksNav } from "../../templates";
 import style from "./Sidebar.scss";
 
@@ -11,6 +19,24 @@ const Sidebar = ({ className, version, sparks = [], organizations = [] }) => (
   <Scrollbars autoHide>
     <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
       <SparksNav sparks={sparks} organizations={organizations} />
+      {organizations.length > 1 && (
+        <>
+          <Divider />
+          <Label className={style.label}>My Organizations</Label>
+          {organizations.map(
+            org =>
+              !org?.isUserOrganization && (
+                <NavButton exact to={profileRoute(org?.name)}>
+                  <Signature>
+                    <Avatar size="small" src={org?.avatarURL} />
+                    <Type body2>{org?.name}</Type>
+                  </Signature>
+                </NavButton>
+              )
+          )}
+        </>
+      )}
+
       <Divider />
       <NavButton>
         <Signature>

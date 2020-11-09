@@ -1,6 +1,6 @@
 import { defaultPressValue } from "pressdk";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useUser } from "../..";
 import {
@@ -27,7 +27,6 @@ import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
-  spark: yup.string().required("This field is required"),
   progressBoardId: yup.string().required("This field is required")
 });
 
@@ -36,12 +35,20 @@ const PostForm = ({
   sparks = [],
   defaultValues = {},
   buttonLabel = "Post",
-  buttonProps = {}
+  buttonProps = {},
+  edit
 }) => {
   const user = useUser();
   const [reset, toggle] = useReset();
   const [selectedSpark, setSpark] = useState();
   const [progressBoards, setProgressBoards] = useState([]);
+  useEffect(() => {
+    if (sparks.length === 1) {
+      setSpark(sparks[0]);
+      setProgressBoards(sparks[0]?.progressBoards);
+    }
+  }, [sparks]);
+
   if (sparks.length === 0)
     return (
       <>
@@ -73,13 +80,17 @@ const PostForm = ({
       onSubmit={handleSubmit}
       defaultValues={{
         content: JSON.stringify(defaultPressValue()),
-        spark: sparks.length === 1 && sparks[0]?.id,
         ...defaultValues
       }}
       className={style.form}
       validationSchema={postSchema}
     >
-      {sparks.length > 1 && (
+      {sparks.length === 1 ? (
+        <>
+          <SparkCrumbs spark={sparks[0]} user={user} />
+          <TextInput name="progressBoardId" hidden />
+        </>
+      ) : (
         <SparkSelectCrumbs
           name="spark"
           organization={user}
@@ -92,13 +103,6 @@ const PostForm = ({
           }}
         />
       )}
-      {sparks.length === 1 && (
-        <>
-          <SparkCrumbs small spark={sparks[0]} organization={user} />
-          <TextInput name="spark" hidden />
-          <TextInput name="progressBoardId" hidden />
-        </>
-      )}
 
       <PressInput
         defaultValue={parseContent(defaultValues?.content)}
@@ -109,14 +113,14 @@ const PostForm = ({
         big
       />
       <div className={style.right}>
-        {selectedSpark &&
-          (selectedSpark?.belongsTo?.isLicensed ? (
-            <Select
-              name="progressBoardId"
-              small
-              placeholder="Share with..."
-              right
-              addOption={
+        {selectedSpark && !edit && (
+          <Select
+            name="progressBoardId"
+            small
+            placeholder="Share with..."
+            right
+            addOption={
+              selectedSpark?.belongsTo?.isLicensed ? (
                 <Link
                   button
                   to={createProgressBoard(
@@ -133,22 +137,7 @@ const PostForm = ({
                     </Signature>
                   </MenuItem>
                 </Link>
-              }
-            >
-              {progressBoards?.map((board, key) => (
-                <Option name={board?.id} key={board?.id || key}>
-                  <Type body3>{board?.name}</Type>
-                </Option>
-              ))}
-            </Select>
-          ) : (
-            <Select
-              name="progressBoardId"
-              small
-              right
-              placeholder="Share with..."
-              defaultValue="everyone"
-              addOption={
+              ) : (
                 <Link button to={upgradeRoute}>
                   <MenuItem>
                     <Signature>
@@ -162,16 +151,16 @@ const PostForm = ({
                     </Signature>
                   </MenuItem>
                 </Link>
-              }
-            >
-              <Option name="everyone">
-                <Signature>
-                  <Type body3>📣</Type>
-                  <Type body3>Public</Type>
-                </Signature>
+              )
+            }
+          >
+            {progressBoards?.map((board, key) => (
+              <Option name={board?.id} key={board?.id || key}>
+                <Type body3>{board?.name}</Type>
               </Option>
-            </Select>
-          ))}
+            ))}
+          </Select>
+        )}
       </div>
       <Button type="submit" variant="contained" {...buttonProps}>
         <PaperAirplane />
@@ -186,7 +175,8 @@ PostForm.propTypes = {
   onSubmit: PropTypes.func,
   defaultValues: PropTypes.object,
   buttonProps: PropTypes.object,
-  buttonLabel: PropTypes.string
+  buttonLabel: PropTypes.string,
+  edit: PropTypes.bool
 };
 
 export { PostForm };

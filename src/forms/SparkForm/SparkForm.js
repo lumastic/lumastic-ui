@@ -21,13 +21,9 @@ const sparkSchema = yup.object().shape({
   description: yup.string(),
   visibility: yup.string().required("This field is required")
 });
-const SparkForm = ({
-  organizations = [],
-  license = false,
-  onSubmit,
-  defaultValues = {}
-}) => {
+const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
   const [organization, setOrganization] = useState(organizations[0]);
+  console.log(organizations);
   return (
     <Form
       onSubmit={onSubmit}
@@ -118,7 +114,6 @@ const SparkForm = ({
 
 SparkForm.propTypes = {
   organizations: PropTypes.array,
-  license: PropTypes.bool,
   onSubmit: PropTypes.func,
   defaultValues: PropTypes.object
 };
