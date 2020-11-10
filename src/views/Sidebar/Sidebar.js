@@ -26,7 +26,7 @@ const Sidebar = ({ className, version, sparks = [], organizations = [] }) => (
           {organizations.map(
             org =>
               !org?.isUserOrganization && (
-                <NavButton exact to={profileRoute(org?.name)}>
+                <NavButton to={profileRoute(org?.name)}>
                   <Signature>
                     <Avatar size="small" src={org?.avatarURL} />
                     <Type body2>{org?.name}</Type>

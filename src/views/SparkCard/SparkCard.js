@@ -8,7 +8,16 @@ import { profileRoute, viewSparkRoute } from "../../routes";
 import style from "./SparkCard.scss";
 
 const SparkCard = ({ spark = {} }) => (
-  <Card className={style.glow}>
+  <Card>
+    {spark?.headerURL && (
+      <div
+        className={style.header}
+        style={{
+          backgroundImage: `url("${spark?.headerURL}")`
+        }}
+      />
+    )}
+
     <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
       <Type h4>{spark.title}</Type>
     </Link>

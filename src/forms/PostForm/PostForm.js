@@ -119,6 +119,7 @@ const PostForm = ({
             small
             placeholder="Share with..."
             right
+            defaultValue={progressBoards[0]?.id}
             addOption={
               selectedSpark?.belongsTo?.isLicensed ? (
                 <Link

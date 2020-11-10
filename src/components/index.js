@@ -38,6 +38,7 @@ export * from "./RichInput";
 export * from "./Search";
 export * from "./Select";
 export * from "./Slideshow";
+export * from "./Table";
 export * from "./Tabs";
 export * from "./TextInput";
 export * from "./Timeline";
