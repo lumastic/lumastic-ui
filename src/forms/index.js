@@ -1,3 +1,4 @@
+export * from "./AddMemberForm";
 export * from "./BoardForm";
 export * from "./BubbleForm";
 export * from "./CommentForm";

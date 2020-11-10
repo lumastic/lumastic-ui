@@ -1,0 +1,6 @@
+.addmemberform {
+  display: grid;
+  grid-template-columns: auto max-content;
+  align-items: center;
+  grid-gap: var(--spacing-small);
+}

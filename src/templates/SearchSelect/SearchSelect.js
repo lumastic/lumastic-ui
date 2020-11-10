@@ -87,6 +87,7 @@ const SearchSelect = ({
 
   const clickHandler = result => {
     setSelected({ type: "add", payload: result });
+    inputRef?.current?.reset();
     inputRef?.current?.focus();
   };
 

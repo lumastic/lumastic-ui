@@ -18,7 +18,7 @@ const SparkCard = ({ spark = {} }) => (
       />
     )}
 
-    <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
+    <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)}>
       <Type h4>{spark.title}</Type>
     </Link>
     <Type
