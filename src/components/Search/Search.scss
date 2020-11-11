@@ -8,7 +8,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--spacing-small);
   transition: all 0.2s ease-in-out;
-  background-color: var(--bg-color-light);
+  background-color: transparent;
   &:focus-within {
     border-color: var(--primary-color-dark);
     .search-icon {

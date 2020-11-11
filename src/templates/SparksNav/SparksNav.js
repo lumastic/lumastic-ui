@@ -15,6 +15,7 @@ import {
   createBoardRoute,
   createOrganizationRoute,
   createSparkRoute,
+  editSparkRoute,
   viewBoardRoute,
   viewSparkRoute
 } from "../../routes";
@@ -53,9 +54,14 @@ const SparksNavButton = ({ spark = {} }) => {
                   onClose={() => setShowing(false)}
                   position="right"
                 >
-                  <MenuItem>
-                    <Type body2>Edit</Type>
-                  </MenuItem>
+                  <Link
+                    button
+                    to={editSparkRoute(spark?.belongsTo?.name, spark?.id)}
+                  >
+                    <MenuItem onClick={e => e.stopPropagation()}>
+                      <Type body2>Edit</Type>
+                    </MenuItem>
+                  </Link>
                   <MenuItem>
                     <Type body2 color="grey">
                       Archive
