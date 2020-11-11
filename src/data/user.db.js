@@ -3,7 +3,10 @@ export const drew = {
   name: "Drew Lytle",
   username: "drew",
   avatarURL: "https://cdn.lumastic.com/JZVSX-_0-cjfvunruwok0owvcxfjc1ln",
-  isLicensed: true
+  isLicensed: true,
+  userProfile: {
+    bio: "This is a bio from Drew "
+  }
 };
 
 export const keith = {

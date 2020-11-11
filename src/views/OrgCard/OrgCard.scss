@@ -1,0 +1,13 @@
+.header {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: end;
+  grid-gap: var(--spacing-med);
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.bio {
+  margin-top: var(--spacing-small);
+}

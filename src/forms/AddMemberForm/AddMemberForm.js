@@ -34,7 +34,7 @@ const AddMemberForm = ({
     >
       <SearchSelect
         name="membersToAdd"
-        placeholder="Search people..."
+        placeholder="Invite people..."
         onSearch={onSearchOrgs}
         renderResult={({ name, avatarURL }) => (
           <Signature>

@@ -5,6 +5,7 @@ export * from "./Nav";
 export * from "./NewBoardDialog";
 export * from "./NewPostCard";
 export * from "./NotificationCard";
+export * from "./OrgCard";
 export * from "./OrgDialog";
 export * from "./PostDialog";
 export * from "./PostView";

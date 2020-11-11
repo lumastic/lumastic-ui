@@ -9,7 +9,8 @@ const Logo = ({ white, stacked, ...rest }) => (
     className={classNames(
       style["logo-container"],
       { [style.white]: white },
-      { [style.stacked]: stacked }
+      { [style.stacked]: stacked },
+      { [style.cursor]: rest?.onClick }
     )}
     {...rest}
   >
