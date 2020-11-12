@@ -9,7 +9,7 @@ import {
   Breadcrumbs
 } from "../../components";
 import { DragDropProvider } from "../../hooks";
-import { profileRoute } from "../../routes";
+import { profileRoute, viewSparkRoute } from "../../routes";
 import { BoardCard } from "../../templates";
 
 const Board = ({ board = {}, mode = "free" }) => (
@@ -20,7 +20,7 @@ const Board = ({ board = {}, mode = "free" }) => (
           <Avatar size="big" src={board?.spark?.belongsTo?.avatarURL} />
         </Link>
         <Link
-          to={profileRoute(board?.spark?.belongsTo?.name, board?.spark?.id)}
+          to={viewSparkRoute(board?.spark?.belongsTo?.name, board?.spark?.id)}
           inline
         >
           <Type h4>{board?.spark?.title}</Type>
