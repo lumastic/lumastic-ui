@@ -42,7 +42,7 @@ const Button = forwardRef(
         ref={ref}
         {...rest}
       >
-        {formState?.isSubmitting ? (
+        {formState?.isSubmitting && type === "submit" ? (
           <LoadingSpinner white={variant === "contained"} small />
         ) : (
           children
