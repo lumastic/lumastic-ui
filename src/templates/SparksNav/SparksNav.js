@@ -62,11 +62,16 @@ const SparksNavButton = ({ spark = {} }) => {
                       <Type body2>Edit</Type>
                     </MenuItem>
                   </Link>
-                  <MenuItem>
+                  {/* <MenuItem
+                    onClick={e => {
+                      e.stopPropagation();
+                      archiveSpark();
+                    }}
+                  >
                     <Type body2 color="grey">
                       Archive
                     </Type>
-                  </MenuItem>
+                  </MenuItem> */}
                 </MoreMenu>
               </div>
             </div>
@@ -159,9 +164,12 @@ const SparksNav = ({ sparks = [], organizations = [], className, ...rest }) => {
           </Type>
         </Signature>
       </NavButton>
-      {sparkList?.map((spark, index) => (
-        <SparksNavButton spark={spark} key={spark?.id || index} />
-      ))}
+      {sparkList?.map(
+        (spark, index) =>
+          spark?.status !== "Deleted" && (
+            <SparksNavButton spark={spark} key={spark?.id || index} />
+          )
+      )}
     </div>
   );
 };
@@ -173,6 +181,7 @@ SparksNavButton.propTypes = {
 SparksNav.propTypes = {
   sparks: PropTypes.array,
   organizations: PropTypes.array,
+
   className: PropTypes.string
 };
 

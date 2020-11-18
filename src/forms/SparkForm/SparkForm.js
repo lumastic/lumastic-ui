@@ -23,7 +23,7 @@ const sparkSchema = yup.object().shape({
 });
 const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
   const [organization, setOrganization] = useState(organizations[0]);
-  console.log(organizations);
+  // console.log(organizations);
   return (
     <Form
       onSubmit={onSubmit}

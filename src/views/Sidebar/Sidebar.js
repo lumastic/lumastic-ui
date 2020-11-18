@@ -15,10 +15,20 @@ import { profileRoute, upgradeRoute } from "../../routes";
 import { Signature, SparksNav } from "../../templates";
 import style from "./Sidebar.scss";
 
-const Sidebar = ({ className, version, sparks = [], organizations = [] }) => (
+const Sidebar = ({
+  className,
+  version,
+  sparks = [],
+  organizations = [],
+  archiveSpark
+}) => (
   <Scrollbars autoHide>
     <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
-      <SparksNav sparks={sparks} organizations={organizations} />
+      <SparksNav
+        sparks={sparks}
+        organizations={organizations}
+        archiveSpark={archiveSpark}
+      />
       {organizations.length > 1 && (
         <>
           <Divider />
@@ -84,7 +94,8 @@ Sidebar.propTypes = {
   version: PropTypes.string,
   className: PropTypes.string,
   sparks: PropTypes.array,
-  organizations: PropTypes.array
+  organizations: PropTypes.array,
+  archiveSpark: PropTypes.func
 };
 
 export { Sidebar };

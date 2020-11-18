@@ -47,7 +47,8 @@
   .dialog {
     max-width: unset;
     border-radius: 0;
-    height: 100vh;
+    // top: 0;
+    height: 100%;
     margin: 0;
   }
 }
