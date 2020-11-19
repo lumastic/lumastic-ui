@@ -42,7 +42,11 @@ const ProgressPost = ({
             <Avatar src={post?.createdBy?.avatarURL} size="big" />
           ) : (
             <Badge
-              render={<Avatar src={spark?.belongsTo?.avatarURL} size="badge" />}
+              render={
+                <Link to={profileRoute(spark?.belongsTo?.name)} inline>
+                  <Avatar src={spark?.belongsTo?.avatarURL} size="badge" />
+                </Link>
+              }
             >
               <Avatar src={post?.createdBy?.avatarURL} size="big" />
             </Badge>
