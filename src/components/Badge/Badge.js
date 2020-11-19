@@ -1,7 +1,7 @@
-import React, { createElement } from "react";
 import PropTypes from "prop-types";
-import style from "./Badge.scss";
+import React from "react";
 import classNames from "../../helpers/classNames";
+import style from "./Badge.scss";
 
 const Badge = ({
   children,

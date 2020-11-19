@@ -9,7 +9,8 @@ import {
   Link,
   MenuItem,
   Type,
-  Tooltip
+  Tooltip,
+  Badge
 } from "../../components";
 import { CommentForm } from "../../forms";
 import { parseContent, classNames } from "../../helpers";
@@ -37,7 +38,15 @@ const ProgressPost = ({
     <Card className={classNames(style.progresspost, className)}>
       <div className={style.postheader}>
         <Link to={profileRoute(post?.createdBy?.username)} inline>
-          <Avatar src={post?.createdBy?.avatarURL} size="big" />
+          {spark?.belongsTo?.isUserOrganization ? (
+            <Avatar src={post?.createdBy?.avatarURL} size="big" />
+          ) : (
+            <Badge
+              render={<Avatar src={spark?.belongsTo?.avatarURL} size="badge" />}
+            >
+              <Avatar src={post?.createdBy?.avatarURL} size="big" />
+            </Badge>
+          )}
         </Link>
         <div className={style.info}>
           <Breadcrumbs>
@@ -52,28 +61,38 @@ const ProgressPost = ({
               </Type>
             </Link>
           </Breadcrumbs>
-          <Tooltip
-            postition="top"
-            label={formatTime({
-              time: post.createdAt || post.time,
-              fullDate: true,
-              withTime: true
-            })}
-          >
-            <Type
-              color="grey"
-              className={style.time}
-              tag="div"
-              caption
-              setSize="0.7rem"
+          <div>
+            {!spark?.belongsTo?.isUserOrganization && (
+              <Link inline to={profileRoute(spark?.belongsTo?.name)}>
+                <Type color="grey" tag="div" caption setSize="0.7rem">
+                  {spark?.belongsTo?.name}
+                  {" • "}
+                </Type>
+              </Link>
+            )}
+            <Tooltip
+              postition="top"
+              label={formatTime({
+                time: post.createdAt || post.time,
+                fullDate: true,
+                withTime: true
+              })}
             >
-              {`${spark?.visibility ||
-                post?.spark?.visibility ||
-                "Public"} • ${formatTime({
-                time: post.createdAt || post.time
-              })}`}
-            </Type>
-          </Tooltip>
+              <Type
+                color="grey"
+                className={style.time}
+                tag="div"
+                caption
+                setSize="0.7rem"
+              >
+                {`${spark?.visibility ||
+                  post?.spark?.visibility ||
+                  "Public"} • ${formatTime({
+                  time: post.createdAt || post.time
+                })}`}
+              </Type>
+            </Tooltip>
+          </div>
         </div>
         {isAuthor && (
           <div className={style.menu}>

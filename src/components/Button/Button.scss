@@ -136,12 +136,12 @@
       }
     }
     &.accent {
-      background-color: var(--accent-color);
+      background-color: var(--accent-color-dark);
       &:hover {
-        background-color: lightness(var(--accent-color), 1.1);
+        background-color: lightness(var(--accent-color-dark), 1.1);
       }
       &:active {
-        background-color: lightness(var(--accent-color), 1.05);
+        background-color: lightness(var(--accent-color-dark), 1.05);
       }
     }
     &.red {

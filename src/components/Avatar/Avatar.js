@@ -25,7 +25,7 @@ const Avatar = ({
 Avatar.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
-  size: PropTypes.oneOf(["normal", "big", "small"]),
+  size: PropTypes.oneOf(["normal", "big", "small", "badge"]),
   shadow: PropTypes.bool,
   setSize: PropTypes.string,
   className: PropTypes.string

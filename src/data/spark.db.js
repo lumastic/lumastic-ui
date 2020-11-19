@@ -1,3 +1,4 @@
+import { lumastic } from "./org.db";
 import { drew, keith, atishay } from "./user.db";
 
 export const spark1 = {
@@ -44,9 +45,9 @@ export const spark2 = {
 
 export const spark3 = {
   id: "3",
-  title: "Atishay's spark",
-  createdBy: atishay,
-  belongsTo: atishay,
+  title: "Lumastic spark",
+  createdBy: keith,
+  belongsTo: lumastic,
   description:
     "This is a spark description.  It cannot contain rich text and it must be less than 240 characters. This makes for better share-ability and also makes sure that the user doesn't write an essay about their project.",
   tags: [{ name: "Woodworking" }, { name: "Baking" }, { name: "Hacking" }],

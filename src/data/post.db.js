@@ -1,10 +1,12 @@
 import { drew, keith, atishay } from "./user.db";
 import { drewComment, keithComment } from "./comment.db";
+import { spark3 } from "./spark.db";
 
 export const postWithComments = {
   content: "This is a post with comments",
   createdBy: keith,
   comments: [drewComment, keithComment],
+  spark: spark3,
   reactions: [
     {
       id: 1,
