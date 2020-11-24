@@ -42,37 +42,33 @@ const Sidebar = ({
           organizations={organizations}
           archiveSpark={archiveSpark}
         />
-        {organizations.length > 1 && (
-          <>
-            <Divider />
-            <Label
-              className={style.label}
-              right={
-                <Tooltip position="top" label="New Organization">
-                  <Link to={createOrganizationRoute}>
-                    <IconButton color="grey">
-                      <Plus />
-                    </IconButton>
-                  </Link>
-                </Tooltip>
-              }
-            >
-              My Organizations
-            </Label>
-            {organizations.map(
-              org =>
-                !org?.isUserOrganization && (
-                  <NavButton to={profileRoute(org?.name)}>
-                    <Signature>
-                      <Avatar size="small" src={org?.avatarURL} />
-                      <Type body2>{org?.name}</Type>
-                    </Signature>
-                  </NavButton>
-                )
-            )}
-          </>
+        <Divider />
+        <Label
+          className={style.label}
+          right={
+            <Tooltip position="top" label="New Organization">
+              <Link to={createOrganizationRoute}>
+                <IconButton color="grey">
+                  <Plus />
+                </IconButton>
+              </Link>
+            </Tooltip>
+          }
+        >
+          My Organizations
+        </Label>
+        {organizations.map(
+          org =>
+            !org?.isUserOrganization && (
+              <NavButton to={profileRoute(org?.name)}>
+                <Signature>
+                  <Avatar size="small" src={org?.avatarURL} />
+                  <Type body2>{org?.name}</Type>
+                </Signature>
+              </NavButton>
+            )
         )}
-
+        )}
         <Divider />
         <NavButton>
           <Signature>
@@ -94,7 +90,6 @@ const Sidebar = ({
             </Signature>
           </NavButton>
         )}
-
         <List>
           <Divider />
           <Link inline to="/terms">
