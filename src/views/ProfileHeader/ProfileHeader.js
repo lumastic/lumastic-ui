@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Avatar, Button, Type, Link } from "../../components";
+import { Avatar, Button, Type, Link, ProStamp } from "../../components";
 import style from "./ProfileHeader.scss";
 import classNames from "../../helpers/classNames";
 import { orgSettingsRoute, settingsRoute } from "../../routes";
@@ -71,7 +71,8 @@ const ProfileHeader = ({
         <Type h3 style={{ lineHeight: 1 }}>
           {organization?.isUserOrganization
             ? organization?.createdBy?.name
-            : organization?.name}
+            : organization?.name}{" "}
+          {organization?.isLicensed && <ProStamp />}
         </Type>
         <Type color="grey" gutterBottom>
           {`@${organization?.name}`}
