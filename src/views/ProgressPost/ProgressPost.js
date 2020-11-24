@@ -10,7 +10,8 @@ import {
   MenuItem,
   Type,
   Tooltip,
-  Badge
+  Badge,
+  ProStamp
 } from "../../components";
 import { CommentForm } from "../../forms";
 import { parseContent, classNames } from "../../helpers";
@@ -56,7 +57,8 @@ const ProgressPost = ({
           <Breadcrumbs>
             <Link to={profileRoute(post?.createdBy?.username)} inline>
               <Type tag="div" body2>
-                {post?.createdBy?.name}
+                {post?.createdBy?.name}{" "}
+                {post?.createdBy?.userProfile?.isLicensed && <ProStamp />}
               </Type>
             </Link>
             <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
