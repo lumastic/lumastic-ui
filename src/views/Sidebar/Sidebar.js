@@ -47,8 +47,8 @@ const Sidebar = ({
           className={style.label}
           right={
             <Tooltip position="top" label="New Organization">
-              <Link to={createOrganizationRoute}>
-                <IconButton color="grey">
+              <Link to={createOrganizationRoute} button>
+                <IconButton color="grey" className={style.plusBtn}>
                   <Plus />
                 </IconButton>
               </Link>

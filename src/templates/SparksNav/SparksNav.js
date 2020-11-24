@@ -83,7 +83,10 @@ const SparksNavButton = ({ spark = {} }) => {
           className={style["space-label"]}
           right={
             <Tooltip position="top" label="New Space">
-              <Link to={createBoardRoute(spark?.belongsTo?.name, spark?.id)}>
+              <Link
+                to={createBoardRoute(spark?.belongsTo?.name, spark?.id)}
+                button
+              >
                 <IconButton color="grey">
                   <Plus />
                 </IconButton>
