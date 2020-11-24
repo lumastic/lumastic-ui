@@ -31,9 +31,7 @@ const SparkCard = ({ spark = {} }) => (
       <Link to={profileRoute(spark?.belongsTo?.name)} inline>
         {spark?.belongsTo?.name}
       </Link>
-      {` • ${spark?.progressBoards[0]?.progressUpdates?.length || 0} posts • ${
-        spark?.visibility
-      }`}
+      {` • ${spark?.visibility}`}
     </Type>
     <Type tag="div">
       <PressRenderer
