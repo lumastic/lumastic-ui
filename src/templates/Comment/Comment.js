@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { PressRenderer } from "pressdk";
-import { Avatar, Link, Type, Tooltip } from "../../components";
+import { Avatar, Link, Type, Tooltip, ProStamp } from "../../components";
 import formatTime from "../../helpers/formatTime";
 import style from "./Comment.scss";
 import { parseContent } from "../../helpers";
@@ -18,7 +18,8 @@ const Comment = ({ comment = {}, createdBy = {} }) => (
     <div className={style.content}>
       <Link to={profileRoute(createdBy.username)} inline>
         <Type color="grey" caption setSize="0.7rem">
-          {createdBy.name} •{" "}
+          {createdBy.name} {createdBy?.userProfile?.isLicensed && <ProStamp />}{" "}
+          •{" "}
           <Tooltip
             postition="top"
             label={formatTime({ time: comment.createdAt, fullDate: true })}
