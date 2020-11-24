@@ -100,7 +100,9 @@ const OrgForm = ({
   validate = false,
   customValidation,
   imageUploadHandler,
-  buttonLabel = "SAVE"
+  buttonLabel = "SAVE",
+  create,
+  edit
 }) => (
   <Form
     onSubmit={onSubmit}
@@ -108,18 +110,23 @@ const OrgForm = ({
     validationSchema={validate && (customValidation || orgSchema)}
   >
     <div className={style.container}>
-      <div className={style.avatar}>
-        <AvatarEdit
-          imageUploadHandler={imageUploadHandler}
-          initialURL={defaultValues.avatarURL}
-        />
-      </div>
+      {!create && (
+        <div className={style.avatar}>
+          <AvatarEdit
+            imageUploadHandler={imageUploadHandler}
+            initialURL={defaultValues.avatarURL}
+          />
+        </div>
+      )}
 
       <List className={style.text}>
-        <div>
-          <Label>Name</Label>
-          <TextInput name="name" placeholder="Name..." />
-        </div>
+        {!edit && (
+          <div>
+            <Label>Name</Label>
+            <TextInput name="name" placeholder="Name..." />
+          </div>
+        )}
+
         <div>
           <Label>Bio</Label>
           <TextInput name="bio" placeholder="Short description ..." />
@@ -139,7 +146,9 @@ OrgForm.propTypes = {
   defaultValues: PropTypes.object,
   imageUploadHandler: PropTypes.func,
   customValidation: PropTypes.object,
-  buttonLabel: PropTypes.string
+  buttonLabel: PropTypes.string,
+  create: PropTypes.bool,
+  edit: PropTypes.bool
 };
 
 export { OrgForm };
