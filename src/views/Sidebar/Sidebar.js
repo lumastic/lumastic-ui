@@ -57,7 +57,7 @@ const Sidebar = ({
         >
           My Organizations
         </Label>
-        {organizations.map(
+        {organizations?.map(
           org =>
             !org?.isUserOrganization && (
               <NavButton to={profileRoute(org?.name)}>
@@ -67,7 +67,6 @@ const Sidebar = ({
                 </Signature>
               </NavButton>
             )
-        )}
         )}
         <Divider />
         <NavButton>
