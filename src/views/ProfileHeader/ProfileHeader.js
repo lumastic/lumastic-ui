@@ -46,6 +46,7 @@ const ProfileHeader = ({
       <div className={style.hero}>
         <img
           src={
+            organization?.createdBy?.headerURL ||
             organization?.headerURL ||
             "https://cdn.lumastic.com/media/v1/pages/demo/Header.png"
           }
