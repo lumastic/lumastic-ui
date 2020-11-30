@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import style from "./List.scss";
 import classNames from "../../helpers/classNames";
 
-const List = ({ children, className }) => (
-  <div className={classNames(className, style.list)} data-testid="list">
+const List = ({ children, className, ...rest }) => (
+  <div
+    className={classNames(className, style.list)}
+    data-testid="list"
+    {...rest}
+  >
     {children}
   </div>
 );
