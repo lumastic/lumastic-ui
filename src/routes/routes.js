@@ -4,6 +4,7 @@ export const homeRoute = "/home";
 export const logoutRoute = "/logout";
 
 export const upgradeRoute = "/pro";
+export const helpRoute = "/help";
 export const notificationsRoute = "/notifications";
 
 /**

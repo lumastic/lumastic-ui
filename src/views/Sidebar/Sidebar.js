@@ -16,6 +16,7 @@ import { Plus } from "../../icons";
 import classNames from "../../helpers/classNames";
 import {
   createOrganizationRoute,
+  helpRoute,
   profileRoute,
   upgradeRoute
 } from "../../routes";
@@ -69,13 +70,13 @@ const Sidebar = ({
             )
         )}
         <Divider />
-        <NavButton>
+        <NavButton to={helpRoute}>
           <Signature>
             <Type body2>👋</Type>
             <Type body2>Getting Started</Type>
           </Signature>
         </NavButton>
-        <NavButton>
+        <NavButton to="/guidelines">
           <Signature>
             <Type body2>📓</Type>
             <Type body2>Community Guidelines</Type>
