@@ -15,21 +15,22 @@ import style from "./WhoToFollow.scss";
 import { profileRoute } from "../../routes";
 
 const WhoToFollow = ({
-  users = [],
+  users = [], // Users is actually an array of Orgs
   followHandler = id => alert("Followed", id)
 }) => (
   <Card>
-    <Label>Who TO Follow</Label>
     <List>
+      <Label>Who TO Follow</Label>
+
       {users.map((user, index) => (
         <div className={style.wrapper} key={user?.id || index}>
-          <Link to={profileRoute(user?.username)}>
+          <Link to={profileRoute(user?.name)}>
             <Signature>
               <Avatar src={user?.avatarURL} size="big" />
               <div>
-                <Type body2>{user?.name}</Type>
+                <Type body2>{user?.displayName || user?.name}</Type>
                 <Type color="grey" setSize="0.7rem">
-                  @{user?.username}
+                  @{user?.name}
                 </Type>
               </div>
             </Signature>
