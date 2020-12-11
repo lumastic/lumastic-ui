@@ -4,7 +4,13 @@ import { LoadingSpinner } from "..";
 import style from "./Main.scss";
 import classNames from "../../helpers/classNames";
 
-const Main = ({ children, className, loading = false, twothirds = false }) => (
+const Main = ({
+  children,
+  className,
+  loading = false,
+  twothirds = false,
+  ...rest
+}) => (
   <main
     className={classNames(
       className,
@@ -13,6 +19,7 @@ const Main = ({ children, className, loading = false, twothirds = false }) => (
       { [style.twothirds]: !loading && twothirds }
     )}
     data-testid="main"
+    {...rest}
   >
     {loading ? <LoadingSpinner className={style.spinner} /> : children}
   </main>
