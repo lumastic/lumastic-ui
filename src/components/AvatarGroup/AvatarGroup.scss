@@ -3,6 +3,7 @@
 .avatargroup {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   .avatar {
     &:not(:first-child) {
       margin-left: calc(-1 * var(--spacing-small));
