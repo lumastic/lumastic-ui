@@ -41,7 +41,12 @@ import { Type } from "../Type";
 import style from "./AppBar.scss";
 
 const AppBar = ({ className }) => {
-  const { avatarURL, username, name } = useUser();
+  const {
+    avatarURL,
+    username,
+    name,
+    userProfile: { isLicensed } = {}
+  } = useUser();
   const history = useHistory();
   const onSearch = searchString => {
     history.push(searchRoute(searchString));
@@ -139,19 +144,21 @@ const AppBar = ({ className }) => {
                 </MenuItem>
               </Link>
 
-              <Link button to="/pro">
-                <MenuItem>
-                  <Signature>
-                    <Type>🚀</Type>
-                    <div>
-                      <Type body2>Upgrade your membership</Type>
-                      <Type color="grey" setSize="0.7rem">
-                        Get more out of Lumastic
-                      </Type>
-                    </div>
-                  </Signature>
-                </MenuItem>
-              </Link>
+              {!isLicensed && (
+                <Link button to="/pro">
+                  <MenuItem>
+                    <Signature>
+                      <Type>🚀</Type>
+                      <div>
+                        <Type body2>Upgrade your membership</Type>
+                        <Type color="grey" setSize="0.7rem">
+                          Get more out of Lumastic
+                        </Type>
+                      </div>
+                    </Signature>
+                  </MenuItem>
+                </Link>
+              )}
               <Divider />
               <Link button to={settingsRoute()}>
                 <MenuItem>
