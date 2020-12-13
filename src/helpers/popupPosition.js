@@ -67,6 +67,11 @@ const popupPosition = (anchor, transform, trig, popup) => {
   } else if (popWidth + popLeft > window.innerWidth) {
     popLeft -= popWidth + trigX - window.innerWidth + 20;
   }
+  if (popTop <= 0 && trigY !== 0) {
+    popTop = 0;
+  } else if (popHeight + popTop > window.innerHeight) {
+    popTop -= popHeight + trigY - window.innerHeight + 20;
+  }
   // console.log(popLeft);
   return [popTop, popLeft];
 };
