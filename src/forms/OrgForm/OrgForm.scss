@@ -2,6 +2,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: min-content auto;
+  grid-template-areas: "avatar text";
   column-gap: 1.5rem;
 }
 
@@ -25,4 +26,8 @@
 }
 .avatar {
   margin-top: -3rem;
+  grid-area: avatar;
+}
+.text {
+  grid-area: text;
 }
