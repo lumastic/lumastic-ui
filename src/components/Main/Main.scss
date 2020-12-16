@@ -5,6 +5,7 @@
   // background-color: var(--bg-color);
   // padding: 0 var(--spacing-big) 0 0;
   overflow-y: auto;
+  padding-bottom: 2rem;
   &.loading {
     overflow: hidden;
     display: flex;
