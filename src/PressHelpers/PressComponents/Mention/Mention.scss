@@ -19,14 +19,15 @@
   padding: var(--spacing-small) var(--spacing-med);
   display: flex;
   align-items: center;
+  background-color: var(--bg-color-light);
   .avatar {
     margin-right: var(--spacing-med);
   }
   &:hover {
     cursor: pointer;
-    background-color: lightness(var(--bg-color, lightgray), 1.05);
+    background-color: var(--bg-color-hover);
   }
   &.selected {
-    background-color: lightgray;
+    background-color: var(--bg-color-active);
   }
 }

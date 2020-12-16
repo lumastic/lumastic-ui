@@ -34,7 +34,8 @@ const EmbedLink = ({ value = {}, onChange, callbacks = {}, readOnly }) => {
               <div
                 className={style.img}
                 style={{
-                  backgroundImage: `url(${image || `${base}${favicon}`})`
+                  backgroundImage: `url(${image ||
+                    (favicon?.[0] === "/" ? `${base}${favicon}` : favicon)})`
                 }}
               />
               <div className={style["text-container"]}>
