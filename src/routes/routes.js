@@ -139,5 +139,5 @@ export const findRoute = {
   state: { modal: true }
 };
 
-export const searchRoute = (searchString = ":searchString") =>
-  `/explore/${searchString}`;
+export const searchRoute = (searchString = "") =>
+  `/explore?search=${searchString}`;

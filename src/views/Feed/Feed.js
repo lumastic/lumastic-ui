@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { LoadingSpinner } from "../../components";
 import classNames from "../../helpers/classNames";
 import style from "./Feed.scss";
