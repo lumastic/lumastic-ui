@@ -21,7 +21,8 @@
   }
   > main {
     grid-area: main;
-    padding: var(--spacing-big) var(--spacing-big) 0 0;
+    padding-top: var(--spacing-big);
+    padding-right: var(--spacing-big);
     margin-top: calc(var(--spacing-big) * -1);
   }
 }
