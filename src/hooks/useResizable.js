@@ -1,10 +1,10 @@
-import { useEffect, Ref } from "react";
+import { useEffect } from "react";
 import { calcPixelString } from "../helpers";
 
 export const useResizable =
   /**
    *
-   * @param {{ref:Ref, handle:{}, onResizeStart: ()=>void, onResize:()=>void, onResizeEnd:({dimension:{width:number, height:number}})=>void}} param0
+   * @param {{ref:{}, handle:{}, onResizeStart: ()=>void, onResize:()=>void, onResizeEnd:({dimension:{width:number, height:number}})=>void}} param0
    */
   ({ ref, handle, onResizeStart, onResize, onResizeEnd } = {}) => {
     const resizableRef = ref;
