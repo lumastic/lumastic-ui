@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { memo, useEffect, useRef, useState } from "react";
 import { FormContext, useForm } from "react-hook-form";
 import { MoreMenu } from "..";
-import { Card, Divider, MenuItem, PressInput, Type } from "../../components";
+import { Card, MenuItem, PressInput, Type } from "../../components";
 import { parseContent } from "../../helpers";
 import classNames from "../../helpers/classNames";
 import { useDraggable, useDroppable, useResizable } from "../../hooks";
@@ -10,10 +10,10 @@ import { Resize } from "../../icons";
 import { useBoard } from "../../views";
 import style from "./BoardCard.scss";
 
-const BoardCard = memo(({ children, className, card = {}, block = false }) => {
+const BoardCard = memo(({ className, card = {}, block = false }) => {
   const cardRef = useRef(null);
   const resizeHandle = useRef(null);
-  const { canEdit, setActiveCard, updateCard, setUpdateCanvas } = useBoard();
+  const { canEdit, updateCard, setUpdateCanvas } = useBoard();
   const formMethods = useForm();
   const [absolute, setAbsolute] = useState(!block);
   const [optionsOpen, setOptionsOpen] = useState(false);
@@ -35,12 +35,17 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   };
   useDroppable({ ref: cardRef, onDrop, disable: card.parentCard });
 
+  /**
+   *  processes the ending of resize of a card on a board
+   * @param {{dimension:{width: number, height:number}}} param0
+   */
   const onResizeEnd = ({ dimension }) => {
     if (updateCard)
       updateCard(card.id, {
         location: { x: card.x, y: card.y, z: card.z, ...dimension }
       });
   };
+
   useResizable({
     ref: cardRef,
     handle: resizeHandle,
