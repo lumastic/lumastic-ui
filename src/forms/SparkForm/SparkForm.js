@@ -22,8 +22,11 @@ const sparkSchema = yup.object().shape({
   visibility: yup.string().required("This field is required")
 });
 const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
-  const [organization, setOrganization] = useState(organizations[0]);
-  // console.log(organizations);
+  const [organization, setOrganization] = useState(
+    organizations?.find(org => org?.id === defaultValues?.belongsTo) ||
+      organizations[0]
+  );
+  // console.log(defaultValues, organizations);
   return (
     <Form
       onSubmit={onSubmit}
@@ -40,7 +43,7 @@ const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
           {organizations.length > 1 ? (
             <OrgSelect
               name="belongsTo"
-              defaultValue={organizations[0]?.id}
+              defaultValue={defaultValues?.belongsTo || organizations[0]?.id}
               organizations={organizations}
               onChange={id =>
                 setOrganization(organizations?.find(org => org?.id === id))

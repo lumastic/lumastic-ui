@@ -9,7 +9,13 @@ import style from "./NewPostCard.scss";
 const NewPostCard = ({ defaultSpark }) => {
   const { avatarURL, name } = useUser();
   return (
-    <Link button to={{ ...createPostRoute, params: { spark: defaultSpark } }}>
+    <Link
+      button
+      to={{
+        ...createPostRoute,
+        search: defaultSpark && `?spark=${defaultSpark}`
+      }}
+    >
       <Card className={style.card}>
         <Signature>
           <Avatar src={avatarURL} size="big" />

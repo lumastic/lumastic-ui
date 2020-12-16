@@ -95,6 +95,7 @@ const PostForm = ({
           name="spark"
           organization={user}
           sparks={sparks}
+          defaultValue={defaultValues?.spark}
           onChange={sparkId => {
             setSpark(sparks.find(spark => spark?.id === sparkId));
             setProgressBoards(
