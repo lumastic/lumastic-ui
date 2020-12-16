@@ -1,14 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Avatar, Card, Link, Type } from "../../components";
 import { useUser } from "../../hooks";
 import { createPostRoute } from "../../routes";
 import { Signature } from "../../templates";
 import style from "./NewPostCard.scss";
 
-const NewPostCard = () => {
+const NewPostCard = ({ defaultSpark }) => {
   const { avatarURL, name } = useUser();
   return (
-    <Link button to={createPostRoute}>
+    <Link button to={{ ...createPostRoute, params: { spark: defaultSpark } }}>
       <Card className={style.card}>
         <Signature>
           <Avatar src={avatarURL} size="big" />
@@ -21,6 +22,8 @@ const NewPostCard = () => {
   );
 };
 
-NewPostCard.propTypes = {};
+NewPostCard.propTypes = {
+  defaultSpark: PropTypes.string
+};
 
 export { NewPostCard };
