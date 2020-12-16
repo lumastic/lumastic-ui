@@ -196,3 +196,11 @@
     }
   }
 }
+
+[data-theme="dark"] {
+  .button {
+    &.contained {
+      background-color: var(--bg-color-light);
+    }
+  }
+}
