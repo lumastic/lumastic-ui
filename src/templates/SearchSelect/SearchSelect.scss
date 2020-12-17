@@ -48,6 +48,7 @@
     overflow-x: hidden;
     background-color: var(--bg-color-light);
     position: absolute;
+    z-index: 9997;
     max-height: 200px;
     // margin-top: 0.2rem;
     top: 100%;

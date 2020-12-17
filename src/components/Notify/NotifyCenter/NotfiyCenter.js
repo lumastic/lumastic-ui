@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useReducer, useMemo } from "react";
+import React, { useReducer, useMemo, useState } from "react";
 import NotifyContext from "./NotifyContext";
 import { Notify } from "..";
 import { Modal } from "../../Modal";
@@ -21,10 +21,12 @@ const NotifyCenter = ({ children, initialNotifications = [] }) => {
     notifyReducer,
     initialNotifications
   );
+  const [newUnread, setNewUnread] = useState(false);
 
-  const notifyCenterValue = useMemo(() => ({ notifyDispatch }), [
-    notifyDispatch
-  ]);
+  const notifyCenterValue = useMemo(
+    () => ({ notifyDispatch, newUnread, setNewUnread }),
+    [notifyDispatch]
+  );
 
   return (
     <NotifyContext.Provider value={notifyCenterValue}>

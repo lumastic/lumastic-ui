@@ -30,11 +30,13 @@ import {
   viewSparkRoute
 } from "../../routes";
 import { Signature } from "../../templates";
+import { Badge } from "../Badge";
 import { Divider } from "../Divider";
 import { IconButton } from "../IconButton";
 import { Link } from "../Link";
 import { Logo } from "../Logo";
 import { MenuItem } from "../Menu";
+import { useNotify } from "../Notify";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { PopupMenu } from "../PopupMenu";
 import { Type } from "../Type";
@@ -47,6 +49,7 @@ const AppBar = ({ className }) => {
     name,
     userProfile: { isLicensed } = {}
   } = useUser();
+  const { newUnread } = useNotify();
   const history = useHistory();
   const onSearch = searchString => {
     history.push(searchRoute(searchString));
@@ -81,7 +84,11 @@ const AppBar = ({ className }) => {
           <div className={style.navbutton}>
             <NavIconButton
               to={notificationsRoute}
-              icon={<Bell />}
+              icon={
+                <Badge off={!newUnread} color="secondary">
+                  <Bell />
+                </Badge>
+              }
               name="NOTIFICATIONS"
             />
           </div>
