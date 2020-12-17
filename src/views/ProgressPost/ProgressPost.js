@@ -34,7 +34,7 @@ const ProgressPost = ({
   className
 }) => {
   const { id } = useUser();
-  const isAuthor = post?.createdBy?.id === id;
+  const isAdmin = spark?.belongsTo?.owners?.find(owner => owner?.id === id);
   return (
     <Card className={classNames(style.progresspost, className)}>
       <div className={style.postheader}>
@@ -100,7 +100,7 @@ const ProgressPost = ({
             </Tooltip>
           </div>
         </div>
-        {isAuthor && (
+        {isAdmin && (
           <div className={style.menu}>
             <MoreMenu position="right">
               <Link

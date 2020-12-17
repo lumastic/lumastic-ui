@@ -11,3 +11,11 @@
 .bio {
   margin-top: var(--spacing-small);
 }
+.orgcard {
+  position: relative;
+}
+.menu {
+  position: absolute;
+  top: var(--spacing-med);
+  right: var(--spacing-small);
+}

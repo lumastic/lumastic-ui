@@ -1,11 +1,19 @@
-import React from "react";
 import PropTypes from "prop-types";
-import style from "./OrgCard.scss";
+import React from "react";
+import { Avatar, Card, Link, Type } from "../../components";
 import classNames from "../../helpers/classNames";
-import { Avatar, Card, Link, List, Type } from "../../components";
 import { profileRoute } from "../../routes";
+import { MoreMenu } from "../../templates";
+import style from "./OrgCard.scss";
 
-const OrgCard = ({ className, user, organization, noBio, ...rest }) => (
+const OrgCard = ({
+  className,
+  user,
+  organization,
+  noBio,
+  options,
+  ...rest
+}) => (
   <Card
     className={classNames(className, style.orgcard)}
     data-testid="orgcard"
@@ -36,6 +44,11 @@ const OrgCard = ({ className, user, organization, noBio, ...rest }) => (
         <Type>{organization?.bio || user?.userProfile?.bio}</Type>
       </div>
     )}
+    {options && (
+      <div className={style.menu}>
+        <MoreMenu position="right">{options}</MoreMenu>
+      </div>
+    )}
   </Card>
 );
 
@@ -43,7 +56,8 @@ OrgCard.propTypes = {
   organization: PropTypes.object,
   user: PropTypes.object,
   noBio: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  options: PropTypes.func
 };
 
 export { OrgCard };
