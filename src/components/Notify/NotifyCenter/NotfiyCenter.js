@@ -25,7 +25,7 @@ const NotifyCenter = ({ children, initialNotifications = [] }) => {
 
   const notifyCenterValue = useMemo(
     () => ({ notifyDispatch, newUnread, setNewUnread }),
-    [notifyDispatch]
+    [notifyDispatch, newUnread, setNewUnread]
   );
 
   return (
