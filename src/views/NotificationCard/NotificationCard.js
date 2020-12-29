@@ -20,8 +20,8 @@ import style from "./NotificationCard.scss";
 const NotificationCard = ({
   notification = {},
   className,
-  onRead = () => console.log("Read"),
-  onUnread = () => console.log("Unread")
+  onRead,
+  onUnread
 }) => {
   const {
     actor,
