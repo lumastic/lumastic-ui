@@ -1,6 +1,7 @@
 export * from "./ArrowDown";
 export * from "./Bell";
 export * from "./ChatExclamation";
+export * from "./Checkmark";
 export * from "./Chevron";
 export * from "./Compass";
 export * from "./Copy";

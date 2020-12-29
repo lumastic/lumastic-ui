@@ -1,20 +1,36 @@
 import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
-import { Avatar, Card, Link, Type } from "../../components";
+import {
+  Avatar,
+  Button,
+  Card,
+  IconButton,
+  Link,
+  Tooltip,
+  Type
+} from "../../components";
 import { formatTime, parseContent } from "../../helpers";
 import classNames from "../../helpers/classNames";
+import { Checkmark } from "../../icons";
 import { Mention, pressComponents, Tag } from "../../PressHelpers";
 import { profileRoute, viewPostRoute, viewSparkRoute } from "../../routes";
 import style from "./NotificationCard.scss";
 
-const NotificationCard = ({ notification = {}, className }) => {
+const NotificationCard = ({
+  notification = {},
+  className,
+  onRead = () => console.log("Read"),
+  onUnread = () => console.log("Unread")
+}) => {
   const {
     actor,
+    id,
     entity_id,
     entity_type,
     spark,
     post_ref_id,
+    read,
     content,
     createdAt
   } = notification;
@@ -45,35 +61,69 @@ const NotificationCard = ({ notification = {}, className }) => {
     <Card className={classNames(className, style.notificationcard)}>
       <Avatar src={actor?.avatarURL} size="big" />
       <div className={style.info}>
-        <Type tag="div">
-          <Link inline to={profileRoute(actor?.name)}>
-            <b>
-              {actor?.isUserProfile
-                ? actor?.createdBy?.name?.split(" ")[0]
-                : actor?.name}
-            </b>
-          </Link>{" "}
-          {action}{" "}
-          <Link
-            inline
-            to={viewPostRoute(
-              spark?.belongsTo?.name,
-              spark?.id,
-              post_ref_id || entity_id
-            )}
-          >
-            <b>{label}</b>
-          </Link>
-        </Type>
-        <Type color="grey" tag="div" caption setSize="0.7rem">
-          <Link inline to={viewSparkRoute(spark?.belongsTo?.name, spark?.id)}>
-            {spark?.title}
-          </Link>
-          {spark && ` • `}
-          {formatTime({
-            time: createdAt
-          })}
-        </Type>
+        <div className={style.toprow}>
+          <div>
+            <Type tag="div">
+              <Link inline to={profileRoute(actor?.name)}>
+                <b>
+                  {actor?.isUserProfile
+                    ? actor?.createdBy?.name?.split(" ")[0]
+                    : actor?.name}
+                </b>
+              </Link>{" "}
+              {action}{" "}
+              <Link
+                inline
+                to={viewPostRoute(
+                  spark?.belongsTo?.name,
+                  spark?.id,
+                  post_ref_id || entity_id
+                )}
+              >
+                <b>{label}</b>
+              </Link>
+            </Type>
+            <Type color="grey" tag="div" caption setSize="0.7rem">
+              <Link
+                inline
+                to={viewSparkRoute(spark?.belongsTo?.name, spark?.id)}
+              >
+                {spark?.title}
+              </Link>
+              {spark && ` • `}
+              {formatTime({
+                time: createdAt
+              })}
+            </Type>
+          </div>
+          {onRead && !read && (
+            <div>
+              <Tooltip label="Mark as read" position="left">
+                <IconButton
+                  size="small"
+                  variant="contained"
+                  onClick={() => onRead(id)}
+                >
+                  <Checkmark />
+                </IconButton>
+              </Tooltip>
+            </div>
+          )}
+          {onUnread && read && (
+            <div>
+              <Tooltip label="Mark unread" position="left">
+                <IconButton
+                  size="small"
+                  color="grey"
+                  onClick={() => onUnread(id)}
+                >
+                  <Checkmark />
+                </IconButton>
+              </Tooltip>
+            </div>
+          )}
+        </div>
+
         {content && (
           <Type className={style.content} tag="div">
             <PressRenderer
@@ -91,7 +141,9 @@ const NotificationCard = ({ notification = {}, className }) => {
 
 NotificationCard.propTypes = {
   notification: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  onRead: PropTypes.func,
+  onUnread: PropTypes.func
 };
 
 export { NotificationCard };
