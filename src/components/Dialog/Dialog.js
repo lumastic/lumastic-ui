@@ -1,11 +1,11 @@
-import React, { useRef, createContext } from "react";
 import PropTypes from "prop-types";
-import { Modal } from "../Modal";
-import { IconButton } from "../IconButton";
-import { Times } from "../../icons/Times";
-import style from "./Dialog.scss";
+import React, { createContext, useRef } from "react";
 import classNames from "../../helpers/classNames";
 import { useOffclick } from "../../hooks";
+import { Times } from "../../icons/Times";
+import { IconButton } from "../IconButton";
+import { Modal } from "../Modal";
+import style from "./Dialog.scss";
 
 const DialogContext = createContext();
 
