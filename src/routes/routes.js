@@ -131,7 +131,7 @@ export const viewBoardRoute = (
 // EXPLORE ROUTE
 export const exploreRoute = "/explore";
 
-export const tagRoute = (tagName = ":tagName") => `/expore/tag/${tagName}`;
+export const tagRoute = (tagName = ":tagName") => `/tag/${tagName}`;
 
 // SEARCH ROUTE
 export const findRoute = {

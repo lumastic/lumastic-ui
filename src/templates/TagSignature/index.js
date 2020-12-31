@@ -1,1 +1,1 @@
-export { TagSignature } from "./TagSignature";
+export { TagChip } from "./TagChip";
