@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import PropTypes from "prop-types";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { LoadingSpinner } from "../../components";
 import classNames from "../../helpers/classNames";
 import style from "./Feed.scss";
@@ -10,7 +10,7 @@ const Feed = ({
   className,
   loadMore = async () => {
     await new Promise(r => setTimeout(r, 3000));
-    console.log("Loaded");
+    // console.log("Loaded");
   },
   scrollContainerId,
   ...rest

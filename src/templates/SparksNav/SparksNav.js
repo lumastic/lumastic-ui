@@ -12,6 +12,7 @@ import {
 import classNames from "../../helpers/classNames";
 import { Plus } from "../../icons";
 import {
+  archiveSparkRoute,
   createBoardRoute,
   createOrganizationRoute,
   createSparkRoute,
@@ -62,16 +63,16 @@ const SparksNavButton = ({ spark = {} }) => {
                       <Type body2>Edit</Type>
                     </MenuItem>
                   </Link>
-                  {/* <MenuItem
-                    onClick={e => {
-                      e.stopPropagation();
-                      archiveSpark();
-                    }}
+                  <Link
+                    button
+                    to={archiveSparkRoute(spark?.belongsTo?.name, spark?.id)}
                   >
-                    <Type body2 color="grey">
-                      Archive
-                    </Type>
-                  </MenuItem> */}
+                    <MenuItem onClick={e => e.stopPropagation()}>
+                      <Type body2 color="red">
+                        Archive
+                      </Type>
+                    </MenuItem>
+                  </Link>
                 </MoreMenu>
               </div>
             </div>

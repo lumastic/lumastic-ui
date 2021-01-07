@@ -34,6 +34,7 @@ const Tag = ({ tag = {}, className, isFollowing, onFollow, onUnfollow }) => {
                 size="small"
                 color="light"
                 onClick={() => setFollowing(false)}
+                disabled={!onUnfollow}
               >
                 <Times />
               </IconButton>
@@ -43,6 +44,7 @@ const Tag = ({ tag = {}, className, isFollowing, onFollow, onUnfollow }) => {
               <IconButton
                 variant="contained"
                 size="small"
+                disabled={!onFollow}
                 onClick={() => setFollowing(true)}
               >
                 <Plus />

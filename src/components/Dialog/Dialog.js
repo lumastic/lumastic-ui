@@ -30,7 +30,7 @@ const Dialog = ({
       <DialogContext.Provider value={{ isShowing, hide }}>
         <div className={style["dialog-modal"]}>
           <div className={style["dialog-cover"]} />
-          <div className={style["dialog-area"]} onClick={offClick}>
+          <div className={style["dialog-area"]}>
             <div
               className={classNames(className, style.dialog)}
               data-testid="dialog"

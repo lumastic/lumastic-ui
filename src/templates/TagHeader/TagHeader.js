@@ -36,13 +36,21 @@ const TagHeader = ({
       <div className={style.button}>
         {following ? (
           <Tooltip label="Unfollow">
-            <IconButton color="light" onClick={onUnfollow}>
+            <IconButton
+              color="light"
+              onClick={onUnfollow}
+              disabled={!onUnfollow}
+            >
               <Times />
             </IconButton>
           </Tooltip>
         ) : (
           <Tooltip label="Follow">
-            <IconButton variant="contained" onClick={onFollow}>
+            <IconButton
+              variant="contained"
+              onClick={onFollow}
+              disabled={!onFollow}
+            >
               <Plus />
             </IconButton>
           </Tooltip>

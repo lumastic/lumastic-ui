@@ -188,7 +188,7 @@
     border: none;
     &:hover,
     &:active {
-      background-color: unset;
+      background-color: unset !important;
       cursor: unset;
     }
     &.contained {

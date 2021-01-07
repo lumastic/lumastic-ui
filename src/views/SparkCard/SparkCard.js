@@ -1,6 +1,7 @@
 import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
+import { TagChip } from "../..";
 import { Card, Type, Link } from "../../components";
 import { parseContent } from "../../helpers";
 import { pressComponents } from "../../PressHelpers";
@@ -33,12 +34,21 @@ const SparkCard = ({ spark = {} }) => (
       </Link>
       {` • ${spark?.visibility}`}
     </Type>
-    <Type tag="div">
-      <PressRenderer
-        components={pressComponents}
-        value={parseContent(spark?.description)}
-      />
+
+    <Type tag="div" gutterBottom>
+      {spark?.description && (
+        <PressRenderer
+          components={pressComponents}
+          value={parseContent(spark?.description)}
+        />
+      )}
     </Type>
+
+    <div>
+      {spark?.tags?.slice(0, 4).map((tag, key) => (
+        <TagChip tag={tag} key={key} />
+      ))}
+    </div>
   </Card>
 );
 

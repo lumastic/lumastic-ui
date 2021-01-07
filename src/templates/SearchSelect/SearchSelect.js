@@ -19,6 +19,7 @@ const SearchSelect = ({
   defaultValue = [],
   onChange,
   onSearch,
+  resultHandler = result => result,
   className,
   placeholder,
   renderResult,
@@ -112,8 +113,8 @@ const SearchSelect = ({
       <div className={style.searchbox}>
         <div className={style.selected}>
           {renderSelection &&
-            selected?.map(selection => (
-              <div className={style.selection}>
+            selected?.map((selection, key) => (
+              <div className={style.selection} key={selection?.id || key}>
                 {createElement(renderSelection, {
                   ...selection,
                   onRemove: () => {
@@ -146,8 +147,8 @@ const SearchSelect = ({
                   key={result?.id || index}
                   role="button"
                   tabIndex={0}
-                  onKeyDown={e => handleEnter(e, result)}
-                  onClick={() => clickHandler(result)}
+                  onKeyDown={e => handleEnter(e, resultHandler(result))}
+                  onClick={() => clickHandler(resultHandler(result))}
                 >
                   {createElement(renderResult, { ...result })}
                 </div>
@@ -164,6 +165,7 @@ SearchSelect.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onSearch: PropTypes.func,
+  resultHandler: PropTypes.func,
   name: PropTypes.string,
   renderResult: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),

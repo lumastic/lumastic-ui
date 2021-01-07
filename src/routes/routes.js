@@ -79,6 +79,14 @@ export const editSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") => ({
   state: { modal: true }
 });
 
+export const archiveSparkRoute = (
+  orgName = ":orgName",
+  sparkId = ":sparkId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}`,
+  search: `?archive=true`
+});
+
 // POST ROUTES
 
 export const createPostRoute = {
@@ -131,7 +139,7 @@ export const viewBoardRoute = (
 // EXPLORE ROUTE
 export const exploreRoute = "/explore";
 
-export const tagRoute = (tagName = ":tagName") => `/tag/${tagName}`;
+export const tagRoute = (tagName = ":tagName") => `/topic/${tagName}`;
 
 // SEARCH ROUTE
 export const findRoute = {

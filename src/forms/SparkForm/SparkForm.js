@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import {
   Button,
@@ -10,9 +10,15 @@ import {
   TextInput,
   Type
 } from "../../components";
-import { Stealth, UserLock, Users } from "../../icons";
+import { Hashtag, Stealth, UserLock, Users } from "../../icons";
 import { upgradeRoute } from "../../routes";
-import { OrgSelect, OrgSignature, Signature } from "../../templates";
+import {
+  OrgSelect,
+  OrgSignature,
+  SearchSelect,
+  Signature,
+  TagChip
+} from "../../templates";
 import style from "./SparkForm.scss";
 
 const sparkSchema = yup.object().shape({
@@ -21,12 +27,20 @@ const sparkSchema = yup.object().shape({
   description: yup.string(),
   visibility: yup.string().required("This field is required")
 });
-const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
-  const [organization, setOrganization] = useState(
-    organizations?.find(org => org?.id === defaultValues?.belongsTo) ||
-      organizations[0]
-  );
-  // console.log(defaultValues, organizations);
+const SparkForm = ({
+  organizations = [],
+  onSubmit,
+  defaultValues = {},
+  onSearchTags,
+  tagResultHandler
+}) => {
+  const [organization, setOrganization] = useState(organizations[0]);
+  useEffect(() => {
+    setOrganization(
+      organizations?.find(org => org?.id === defaultValues?.belongsTo)
+    );
+  }, [defaultValues, organizations]);
+  // console.log(organization);
   return (
     <Form
       onSubmit={onSubmit}
@@ -63,7 +77,7 @@ const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
           )}
         </div>
         <div>
-          <Label>Title</Label>
+          <Label>Working Title</Label>
           <TextInput name="title" placeholder="Give it a title..." />
         </div>
       </div>
@@ -90,12 +104,12 @@ const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
         disabled={!organization?.isLicensed}
       >
         <Type color={organization?.isLicensed ? null : "grey"}>
-          <UserLock /> Private
+          <Stealth /> Stealth
         </Type>
         <Type body2 color="grey">
           {organization?.isLicensed
             ? "You control who can see and collaborate on this spark."
-            : "You need a pro membership to create private sparks."}
+            : "You need a pro membership to create stealth sparks."}
         </Type>
         {organization?.isLicensed || (
           <Link to={upgradeRoute}>
@@ -108,6 +122,25 @@ const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
           </Link>
         )}
       </RadioInput>
+      <div>
+        <Label>Tags</Label>
+        <SearchSelect
+          name="tags"
+          placeholder="Tag some topics..."
+          onSearch={onSearchTags}
+          resultHandler={tagResultHandler}
+          renderResult={tag => (
+            <Signature>
+              <Hashtag />
+              <Type body2>{tag?.name}</Type>
+            </Signature>
+          )}
+          renderSelection={({ onRemove, ...rest }) => (
+            <TagChip tag={{ ...rest }} onRemove={onRemove} disableLink />
+          )}
+          defaultValue={defaultValues?.tags}
+        />
+      </div>
       <Button variant="contained" type="submit">
         Save
       </Button>
@@ -118,7 +151,9 @@ const SparkForm = ({ organizations = [], onSubmit, defaultValues = {} }) => {
 SparkForm.propTypes = {
   organizations: PropTypes.array,
   onSubmit: PropTypes.func,
-  defaultValues: PropTypes.object
+  defaultValues: PropTypes.object,
+  onSearchTags: PropTypes.func,
+  tagResultHandler: PropTypes.func
 };
 
 export { SparkForm };

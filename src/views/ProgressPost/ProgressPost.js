@@ -136,7 +136,7 @@ const ProgressPost = ({
         />
       </Type>
       <div className={style.postreactions}>
-        {post.reactions?.map((reaction, key) => (
+        {/* {post.reactions?.map((reaction, key) => (
           <Reaction
             reaction={reaction}
             onClick={reactionClick}
@@ -149,7 +149,7 @@ const ProgressPost = ({
             recommended={recommendReactions}
             onSelect={reactionSelect}
           />
-        ) : null}
+        ) : null} */}
       </div>
       {(post.comments || canComment) && (
         <div className={style.comments}>
