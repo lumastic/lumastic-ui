@@ -11,7 +11,8 @@ const AddMemberForm = ({
   buttonLabel = "Add Members",
   onSubmit,
   buttonProps = {},
-  onSearchOrgs
+  onSearchOrgs,
+  disabled
 }) => {
   const [reset, toggle] = useReset();
 
@@ -51,7 +52,7 @@ const AddMemberForm = ({
         )}
         reset={reset}
       />
-      <Button type="submit" {...buttonProps}>
+      <Button type="submit" {...buttonProps} disabled={disabled}>
         {buttonLabel}
       </Button>
     </Form>
@@ -63,7 +64,8 @@ AddMemberForm.propTypes = {
   buttonLabel: PropTypes.string,
   onSubmit: PropTypes.func,
   buttonProps: PropTypes.object,
-  onSearchOrgs: PropTypes.func
+  onSearchOrgs: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
 export { AddMemberForm };

@@ -9,3 +9,4 @@ export * from "./PostForm";
 export * from "./SearchForm";
 export * from "./SignupForm";
 export * from "./SparkForm";
+export * from "./TeamForm";
