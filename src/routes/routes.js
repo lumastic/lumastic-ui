@@ -48,12 +48,15 @@ export const createOrganizationRoute = {
   state: { modal: true }
 };
 
-export const createTeam = (orgId = ":orgId") => ({
+export const createTeamRoute = (orgId = ":orgId") => ({
   pathname: `/create/team/${orgId}`,
   state: { modal: true }
 });
 
-export const editTeam = (orgId = ":orgId", billingOrgId = ":billingOrgId") => ({
+export const editTeamRoute = (
+  orgId = ":orgId",
+  billingOrgId = ":billingOrgId"
+) => ({
   pathname: `/edit/team/${orgId}/${billingOrgId}`,
   state: { modal: true }
 });
