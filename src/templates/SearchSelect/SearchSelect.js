@@ -24,6 +24,7 @@ const SearchSelect = ({
   placeholder,
   renderResult,
   renderSelection,
+  maxSelected,
   reset
 }) => {
   // TODO: useCallback to the searchFunc
@@ -133,6 +134,7 @@ const SearchSelect = ({
             onChange={searchHandler}
             onFocus={searchHandler}
             onKeyDown={handleEsc}
+            disabled={selected?.length >= maxSelected}
           />
         </div>
       </div>
@@ -169,7 +171,8 @@ SearchSelect.propTypes = {
   name: PropTypes.string,
   renderResult: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  reset: PropTypes.bool
+  reset: PropTypes.bool,
+  maxSelected: PropTypes.number
 };
 
 export { SearchSelect };
