@@ -38,7 +38,7 @@ const TagHeader = ({
           <Tooltip label="Unfollow">
             <IconButton
               color="light"
-              onClick={onUnfollow}
+              onClick={() => onUnfollow(tag?.id)}
               disabled={!onUnfollow}
             >
               <Times />
@@ -48,7 +48,7 @@ const TagHeader = ({
           <Tooltip label="Follow">
             <IconButton
               variant="contained"
-              onClick={onFollow}
+              onClick={() => onFollow(tag?.id)}
               disabled={!onFollow}
             >
               <Plus />

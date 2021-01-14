@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes, { number } from "prop-types";
-import style from "./TeamForm.scss";
+import * as yup from "yup";
 import classNames from "../../helpers/classNames";
 import { useReset } from "../../hooks";
 import {
@@ -12,7 +12,15 @@ import {
   TextInput,
   Type
 } from "../../components";
-import { SearchSelect, Signature } from "../../templates";
+import { OrgSignature, SearchSelect, Signature } from "../../templates";
+import style from "./TeamForm.scss";
+
+const teamSchema = yup.object().shape({
+  licenses: yup
+    .string()
+    .matches(/^\d+$/, "Licenses should be a number")
+    .required("This field is required")
+});
 
 const TeamForm = ({
   onSubmit,
@@ -35,7 +43,7 @@ const TeamForm = ({
         };
         if (onSubmit) {
           await onSubmit(
-            { team: data?.team[0], licenses: parseInt(data?.licenses) },
+            { team: data?.team?.[0], licenses: parseInt(data?.licenses) },
             e,
             rest
           );
@@ -47,34 +55,39 @@ const TeamForm = ({
         team: [],
         ...defaultValues
       }}
+      validationSchema={teamSchema}
     >
       <div>
         <Label>Team:</Label>
-        <SearchSelect
-          name="team"
-          placeholder="Search organizations..."
-          onSearch={onSearchOrgs}
-          onChange={onChangeTeam}
-          maxSelected={1}
-          renderResult={({ name, avatarURL }) => (
-            <Signature>
-              <Avatar src={avatarURL} size="small" />
-              <Type body2>{name}</Type>
-            </Signature>
-          )}
-          renderSelection={({ name, avatarURL, onRemove }) => (
-            <Chip
-              symbol={<Avatar src={avatarURL} size="small" />}
-              label={name}
-              onRemove={onRemove}
-            />
-          )}
-          reset={reset}
-        />
+        {defaultValues?.team ? (
+          <OrgSignature organization={defaultValues?.team} />
+        ) : (
+          <SearchSelect
+            name="team"
+            placeholder="Find an organization..."
+            onSearch={onSearchOrgs}
+            onChange={onChangeTeam}
+            maxSelected={1}
+            renderResult={({ name, avatarURL }) => (
+              <Signature>
+                <Avatar src={avatarURL} size="small" />
+                <Type body2>{name}</Type>
+              </Signature>
+            )}
+            renderSelection={({ name, avatarURL, onRemove }) => (
+              <Chip
+                symbol={<Avatar src={avatarURL} size="small" />}
+                label={name}
+                onRemove={onRemove}
+              />
+            )}
+            reset={reset}
+          />
+        )}
       </div>
       <div>
-        <Label>Licenses</Label>
-        <TextInput name="licenses" placeholder="How many licenses?" />
+        <Label>Seats</Label>
+        <TextInput name="licenses" placeholder="How many seats?" />
       </div>
       <Button size="small" variant="contained" type="submit" {...buttonProps}>
         {buttonLabel}
