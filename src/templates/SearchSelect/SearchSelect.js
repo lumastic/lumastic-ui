@@ -34,7 +34,9 @@ const SearchSelect = ({
 
   const selectReducer = (oldValue, action) => {
     const newVal = [...oldValue];
-    const index = newVal.findIndex(x => x.id === action?.payload?.id);
+    const index = newVal.findIndex(
+      x => x.id === action?.payload?.id || x.name === action?.payload?.name
+    );
 
     switch (action.type) {
       case "add":

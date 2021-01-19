@@ -12,12 +12,13 @@ import {
   Tooltip,
   IconButton
 } from "../../components";
-import { Plus } from "../../icons";
+import { Hashtag, Plus } from "../../icons";
 import classNames from "../../helpers/classNames";
 import {
   createOrganizationRoute,
   helpRoute,
   profileRoute,
+  tagRoute,
   upgradeRoute
 } from "../../routes";
 import { Signature, SparksNav } from "../../templates";
@@ -29,6 +30,7 @@ const Sidebar = ({
   version,
   sparks = [],
   organizations = [],
+  topics = [],
   archiveSpark
 }) => {
   const user = useUser();
@@ -68,7 +70,17 @@ const Sidebar = ({
                 </Signature>
               </NavButton>
             )
-        )}
+        )}{" "}
+        <Divider />
+        <Label className={style.label}>Topics</Label>
+        {topics?.map(tag => (
+          <NavButton to={tagRoute(tag?.name)}>
+            <Signature>
+              <Hashtag />
+              <Type body2>{tag?.name}</Type>
+            </Signature>
+          </NavButton>
+        ))}
         <Divider />
         <NavButton to={helpRoute}>
           <Signature>
@@ -120,6 +132,7 @@ Sidebar.propTypes = {
   className: PropTypes.string,
   sparks: PropTypes.array,
   organizations: PropTypes.array,
+  topics: PropTypes.array,
   archiveSpark: PropTypes.func
 };
 
