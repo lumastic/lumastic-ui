@@ -18,29 +18,19 @@ const OrgSelect = ({
   onClose,
   avatarsOnly = false,
   asFilter = false
-}) => {
-  const { avatarURL } = useUser();
-  return (
-    <Select
-      defaultValue={defaultValue}
-      name={name}
-      small={small}
-      addOption={addOption}
-      onChange={onChange}
-      onOpen={onOpen}
-      onClose={onClose}
-      className={classNames(className, style.select)}
-      compact={avatarsOnly}
-    >
-      {asFilter && (
-        <Option name="all">
-          <Signature>
-            <Avatar src={avatarURL} setSize="1.25rem" />
-            {!avatarsOnly && <Type>My Sparks</Type>}
-          </Signature>
-        </Option>
-      )}
-      {/* {asFilter && (
+}) => (
+  <Select
+    defaultValue={defaultValue}
+    name={name}
+    small={small}
+    addOption={addOption}
+    onChange={onChange}
+    onOpen={onOpen}
+    onClose={onClose}
+    className={classNames(className, style.select)}
+    compact={avatarsOnly}
+  >
+    {/* {asFilter && (
         <Option name="collab">
           <Signature>
             <Avatar src={avatarURL} setSize="1.25rem" />
@@ -48,17 +38,16 @@ const OrgSelect = ({
           </Signature>
         </Option>
       )} */}
-      {organizations.map((org = {}, index) => (
-        <Option name={org.id} key={org.id || index}>
-          <Signature>
-            <Avatar src={org.avatarURL} setSize="1.25rem" />
-            {!avatarsOnly && <Type>{org.name}</Type>}
-          </Signature>
-        </Option>
-      ))}
-    </Select>
-  );
-};
+    {organizations.map((org = {}, index) => (
+      <Option name={org.id} key={org.id || index}>
+        <Signature>
+          <Avatar src={org.avatarURL} setSize="1.25rem" />
+          {!avatarsOnly && <Type>{org?.displayName || org?.name}</Type>}
+        </Signature>
+      </Option>
+    ))}
+  </Select>
+);
 
 OrgSelect.propTypes = {
   className: PropTypes.string,

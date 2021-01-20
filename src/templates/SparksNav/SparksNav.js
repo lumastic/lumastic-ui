@@ -117,15 +117,13 @@ const SparksNavButton = ({ spark = {}, isOwner }) => {
 };
 
 const SparksNav = ({ sparks = [], organizations = [], className, ...rest }) => {
-  const [org, setOrg] = useState("all");
+  const [org, setOrg] = useState(
+    organizations?.find(organization => organization?.isUserOrganization)?.id
+  );
   const [sparkList, setSparks] = useState(sparks);
   const { id } = useUser();
   useEffect(() => {
-    if (org === "all") {
-      setSparks(sparks);
-    } else {
-      setSparks(sparks.filter(spark => spark?.belongsTo?.id === org));
-    }
+    setSparks(sparks.filter(spark => spark?.belongsTo?.id === org));
   }, [org, sparks]);
   const onOrgChange = orgId => {
     setOrg(orgId);
