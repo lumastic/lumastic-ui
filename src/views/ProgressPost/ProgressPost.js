@@ -3,24 +3,23 @@ import PropTypes from "prop-types";
 import React from "react";
 import {
   Avatar,
+  Badge,
   Breadcrumbs,
   Card,
   Divider,
   Link,
   MenuItem,
-  Type,
+  ProStamp,
   Tooltip,
-  Badge,
-  ProStamp
+  Type
 } from "../../components";
 import { CommentForm } from "../../forms";
-import { parseContent, classNames } from "../../helpers";
+import { classNames, parseContent } from "../../helpers";
 import formatTime from "../../helpers/formatTime";
 import { useUser } from "../../hooks";
-import { pressComponents, Mention, Tag } from "../../PressHelpers";
+import { Mention, pressComponents, Tag } from "../../PressHelpers";
 import { editPostRoute, profileRoute, viewSparkRoute } from "../../routes";
-import { AddEmoji, Comment, MoreMenu, Reaction } from "../../templates";
-import recommendReactions from "./helpers/recommendReactions.json";
+import { Comment, MoreMenu } from "../../templates";
 import style from "./ProgressPost.scss";
 
 const ProgressPost = ({

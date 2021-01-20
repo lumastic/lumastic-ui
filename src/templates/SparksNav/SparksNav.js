@@ -10,6 +10,7 @@ import {
   Type
 } from "../../components";
 import classNames from "../../helpers/classNames";
+import { useUser } from "../../hooks";
 import { Plus } from "../../icons";
 import {
   archiveSparkRoute,
@@ -26,7 +27,7 @@ import { OrgSelect } from "../OrgSelect";
 import { Signature } from "../Signature";
 import style from "./SparksNav.scss";
 
-const SparksNavButton = ({ spark = {} }) => {
+const SparksNavButton = ({ spark = {}, isOwner }) => {
   const [menuShowing, setShowing] = useState(false);
 
   return (
@@ -63,16 +64,18 @@ const SparksNavButton = ({ spark = {} }) => {
                       <Type body2>Edit</Type>
                     </MenuItem>
                   </Link>
-                  <Link
-                    button
-                    to={archiveSparkRoute(spark?.belongsTo?.name, spark?.id)}
-                  >
-                    <MenuItem onClick={e => e.stopPropagation()}>
-                      <Type body2 color="red">
-                        Archive
-                      </Type>
-                    </MenuItem>
-                  </Link>
+                  {isOwner && (
+                    <Link
+                      button
+                      to={archiveSparkRoute(spark?.belongsTo?.name, spark?.id)}
+                    >
+                      <MenuItem onClick={e => e.stopPropagation()}>
+                        <Type body2 color="red">
+                          Archive
+                        </Type>
+                      </MenuItem>
+                    </Link>
+                  )}
                 </MoreMenu>
               </div>
             </div>
@@ -116,6 +119,7 @@ const SparksNavButton = ({ spark = {} }) => {
 const SparksNav = ({ sparks = [], organizations = [], className, ...rest }) => {
   const [org, setOrg] = useState("all");
   const [sparkList, setSparks] = useState(sparks);
+  const { id } = useUser();
   useEffect(() => {
     if (org === "all") {
       setSparks(sparks);
@@ -168,18 +172,27 @@ const SparksNav = ({ sparks = [], organizations = [], className, ...rest }) => {
           </Type>
         </Signature>
       </NavButton>
-      {sparkList?.map(
-        (spark, index) =>
+      {sparkList?.map((spark, index) => {
+        const isOwner = spark?.belongsTo?.owners?.find(
+          person => person?.id === id
+        );
+        return (
           spark?.status !== "Deleted" && (
-            <SparksNavButton spark={spark} key={spark?.id || index} />
+            <SparksNavButton
+              spark={spark}
+              key={spark?.id || index}
+              isOwner={isOwner}
+            />
           )
-      )}
+        );
+      })}
     </div>
   );
 };
 
 SparksNavButton.propTypes = {
-  spark: PropTypes.object
+  spark: PropTypes.object,
+  isOwner: PropTypes.bool
 };
 
 SparksNav.propTypes = {
