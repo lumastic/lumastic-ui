@@ -9,7 +9,7 @@
     justify-content: center;
     .avatar-container {
       position: relative;
-      margin-bottom: 0.5rem;
+      margin-bottom: var(--spacing-small);
       .button {
         position: absolute;
         left: 75%;

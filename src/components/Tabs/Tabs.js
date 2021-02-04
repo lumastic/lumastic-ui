@@ -1,52 +1,39 @@
 import PropTypes from "prop-types";
-import React, { Children, useState } from "react";
+import React, { Children, cloneElement } from "react";
 import { Route, Switch } from "react-router-dom";
+import { classNames } from "../../helpers";
 import { TabContext } from "./Tab/TabContext";
 import { TabPanel } from "./TabPanel";
-import { classNames } from "../../helpers";
 import style from "./Tabs.scss";
 
-const Tabs = ({
-  children,
-  className,
-  initialTab,
-  baseRoute,
-  vertical = false
-}) => {
-  const [activeTab, changeTab] = useState(initialTab);
+const Tabs = ({ children, className, asNav, initialTab, baseRoute }) => {
   const tabProviderValue = {
-    activeTab,
-    changeTab,
+    asNav,
     path: baseRoute,
     initialTab
   };
   const childArray = Children.toArray(children);
-  const header = childArray[0];
+  const header = cloneElement(childArray[0], { asNav });
   const panels = childArray.slice(1, childArray.length);
   return (
-    <div
-      className={classNames(style.tabs, className, {
-        [style.vertical]: vertical
-      })}
-    >
-      <TabContext.Provider value={tabProviderValue}>
-        {header}
-        <Switch>
-          {panels.map(panel => (
-            <Route
-              key={panel?.props?.name}
-              path={
-                initialTab === panel?.props?.name
-                  ? baseRoute
-                  : `${baseRoute}/${panel?.props?.name}`
-              }
-              exact={initialTab === panel?.props?.name}
-              render={() => <TabPanel {...panel?.props} />}
-            />
-          ))}
-        </Switch>
-      </TabContext.Provider>
-    </div>
+    <TabContext.Provider value={tabProviderValue}>
+      <div className={classNames(style.tabs, className)}>{header}</div>
+
+      <Switch>
+        {panels.map(panel => (
+          <Route
+            key={panel?.props?.name}
+            path={
+              initialTab === panel?.props?.name
+                ? baseRoute
+                : `${baseRoute}/${panel?.props?.name}`
+            }
+            exact={initialTab === panel?.props?.name}
+            render={() => <TabPanel {...panel?.props} />}
+          />
+        ))}
+      </Switch>
+    </TabContext.Provider>
   );
 };
 
@@ -54,7 +41,7 @@ Tabs.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   initialTab: PropTypes.string,
-  vertical: PropTypes.bool,
+  asNav: PropTypes.bool,
   baseRoute: PropTypes.string
 };
 

@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import style from "./Signature.scss";
 import classNames from "../../helpers/classNames";
 
-const Signature = ({ children, className }) => {
+const Signature = ({ children, className, ...rest }) => {
   const twoChildren = Children.toArray(children);
   return (
     <div
       className={classNames(className, style.signature)}
       data-testid="signature"
+      {...rest}
     >
       <div className={style["sig-seal"]}>{twoChildren[0]}</div>
       <div className={style["sig-text"]}>{twoChildren[1]}</div>

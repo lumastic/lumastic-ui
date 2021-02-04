@@ -1,25 +1,25 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .textinput {
-  font-family: $bodyFont;
+  font-family: var(--body-font);
+  color: var(--font-color);
   background-color: inherit;
   font-style: normal;
   font-size: 1em;
   border: none;
-  border-bottom: 1px solid $grey;
+  border-bottom: 1px solid var(--font-light-color);
   transition: all 0.2s ease-in-out;
   width: 100%;
   padding: 0.3rem 0;
   &.error {
-    border-color: $red;
+    border-color: var(--red-color);
   }
   &:focus {
     outline: none;
-    border-color: $primaryDark;
+    border-color: var(--primary-color-dark);
   }
   &:hover:not(:focus) {
     outline: none;
-    border-color: $greyText;
+    border-color: var(--font-secondary-color);
   }
 }

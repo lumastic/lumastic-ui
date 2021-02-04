@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .reaction {
   display: inline-flex;
@@ -7,7 +7,7 @@
     font-size: 0.8rem;
   }
   &:focus {
-    outline: 1px dotted $secondaryLight;
+    outline: 1px dotted var(--secondary-color-light);
   }
   .chip {
     &.reactable {
@@ -18,19 +18,27 @@
 
       &:not(.reacted) {
         &:hover {
-          background-color: rgba-to-rgb(rgba($greyDark, 0.3));
+          background-color: rgba-to-rgb(
+            alpha(var(--font-secondary-color), 0.3)
+          );
         }
         &:active {
-          background-color: rgba-to-rgb(rgba($greyDark, 0.5));
+          background-color: rgba-to-rgb(
+            alpha(var(--font-secondary-color), 0.5)
+          );
         }
       }
 
       &.reacted {
         &:hover {
-          background-color: rgba-to-rgb(rgba($secondaryLight, 0.6));
+          background-color: rgba-to-rgb(
+            alpha(var(--secondary-color-light), 0.6)
+          );
         }
         &:active {
-          background-color: rgba-to-rgb(rgba($secondaryLight, 0.8));
+          background-color: rgba-to-rgb(
+            alpha(var(--secondary-color-light), 0.8)
+          );
         }
       }
     }

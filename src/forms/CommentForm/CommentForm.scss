@@ -3,12 +3,12 @@
   align-items: flex-start;
   padding-bottom: 0.25rem;
   grid-template-columns: min-content auto min-content;
-  column-gap: 0.75rem;
+  column-gap: var(--spacing-med);
   .input {
     flex-grow: 1;
   }
   .avatar {
-    // margin-right: 0.5rem;
+    // margin-right: var(--spacing-small);
     margin-top: 0.45rem;
   }
   .button {

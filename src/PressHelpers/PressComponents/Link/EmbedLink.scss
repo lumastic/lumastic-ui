@@ -2,7 +2,7 @@
 
 .link {
   border-radius: 5px;
-  border: 1px solid $grey;
+  border: 1px solid var(--font-light-color);
   .loading {
     width: 100%;
     display: flex;
@@ -11,7 +11,7 @@
     padding: 1rem;
   }
   &.focused {
-    border: 2px solid $secondary;
+    border: 2px solid var(--secondary-color);
   }
   overflow: hidden;
   position: relative;
@@ -20,13 +20,13 @@
     transition: background-color 0.2s ease-in-out;
     &:hover {
       cursor: pointer;
-      background-color: lighten($grey, 20%);
+      // background-color: lighten(var(--font-light-color), 1.2);
     }
     &:focus {
-      background-color: lighten($secondary, 20%);
+      background-color: lightness(var(--secondary-color), 1.2);
     }
     &:active {
-      background-color: lighten($secondary, 20%);
+      background-color: lightness(var(--secondary-color), 1.2);
     }
   }
   .container {

@@ -13,8 +13,8 @@ const NewBoardDialog = ({ onSubmit, defaultValues = {} }) => {
   };
   return (
     <Dialog isShowing={location.pathname.includes("/create/board")} hide={hide}>
-      <Type h2 align="center" gutterBottom>
-        Create Board
+      <Type h4 align="center" gutterBottom>
+        Create Space
       </Type>
       <BoardForm onSubmit={onSubmit} defaultValues={defaultValues} />
     </Dialog>

@@ -1,9 +1,13 @@
 .notificationcard {
   display: grid;
   grid-template-columns: min-content auto;
-  column-gap: 0.75rem;
+  column-gap: var(--spacing-med);
   align-items: start;
   .content {
-    margin-top: 0.5rem;
+    margin-top: var(--spacing-small);
+  }
+  .toprow {
+    display: grid;
+    grid-template-columns: auto max-content;
   }
 }

@@ -1,7 +1,7 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .slash {
   display: inline-flex;
-  color: $greyDark;
+  color: var(--font-secondary-color);
   margin: 0 0.5em;
 }

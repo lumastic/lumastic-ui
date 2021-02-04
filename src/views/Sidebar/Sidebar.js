@@ -1,152 +1,138 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
-  Label,
+  Divider,
   Link,
-  MenuItem,
+  List,
   NavButton,
-  Popup,
-  PopupContent,
-  PopupMenu,
-  PopupTrigger,
-  Type
+  Type,
+  Label,
+  Avatar,
+  Tooltip,
+  IconButton
 } from "../../components";
+import { Hashtag, Plus } from "../../icons";
 import classNames from "../../helpers/classNames";
 import {
-  Bell,
-  Home,
-  Logo,
-  LogoText,
-  MagnifyingGlass,
-  Plus,
-  PostPlus,
-  SparkPlus
-} from "../../icons";
-import {
-  createPostRoute,
-  createSparkRoute,
-  exploreRoute,
-  homeRoute,
-  notificationsRoute,
-  createOrganizationRoute
+  createOrganizationRoute,
+  feedbackRoute,
+  helpRoute,
+  profileRoute,
+  tagRoute,
+  upgradeRoute
 } from "../../routes";
-import { Signature, SparksNav, OrgSelect } from "../../templates";
+import { Signature, SparksNav } from "../../templates";
 import style from "./Sidebar.scss";
+import { useUser } from "../../hooks";
 
-const Sidebar = ({ className, version, sparks = [], organizations = [] }) => {
-  const [org, setOrg] = useState("all");
-  const [sparkList, setSparks] = useState(sparks);
-  useEffect(() => {
-    if (org === "all") {
-      setSparks(sparks);
-    } else {
-      setSparks(sparks.filter(spark => spark?.belongsTo?.id === org));
-    }
-  }, [org, sparks]);
-  const onOrgChange = orgId => {
-    setOrg(orgId);
-  };
+const Sidebar = ({
+  className,
+  version,
+  sparks = [],
+  collaboratorSparks = [],
+  organizations = [],
+  topics = [],
+  archiveSpark
+}) => {
+  const user = useUser();
   return (
-    <nav className={classNames(className, style.sidebar)} data-testid="sidebar">
-      <div className={style["logo-container"]}>
-        <div className={style.logo}>
-          <span className={style.symbol}>
-            <Logo />
-          </span>
-          <span className={style.text}>
-            <LogoText />
-          </span>
-        </div>
-        <div className={style.links}>
-          <Link to="/version">
-            <Type caption>v{version}</Type>
-          </Link>
-        </div>
-      </div>
-      <div className={style["main-btns"]}>
-        <NavButton to={homeRoute} exact>
-          <Type tag="div" h4 className={style.type} setSize="1.1rem">
-            <Home /> Home
-          </Type>
-        </NavButton>
-        <NavButton to={exploreRoute}>
-          <Type tag="div" h4 className={style.type} setSize="1.1rem">
-            <MagnifyingGlass /> Explore
-          </Type>
-        </NavButton>
-        <Popup
-          anchor={{ v: "top", h: "left" }}
-          transform={{ v: "top", h: "left" }}
-          className={style.popup}
-        >
-          <PopupTrigger className={style.trigger}>
-            <NavButton>
-              <Type tag="div" h4 className={style.type} setSize="1.1rem">
-                <Plus /> Create
-              </Type>
-            </NavButton>
-          </PopupTrigger>
-          <PopupContent render={PopupMenu}>
-            <Link button to={createSparkRoute}>
-              <MenuItem>
-                <Signature>
-                  <SparkPlus />
-                  <Type>New Spark</Type>
-                </Signature>
-              </MenuItem>
-            </Link>
-            <Link button to={createPostRoute}>
-              <MenuItem>
-                <Signature>
-                  <PostPlus />
-                  <Type>New Post</Type>
-                </Signature>
-              </MenuItem>
-            </Link>
-          </PopupContent>
-        </Popup>
-        <NavButton to={notificationsRoute} exact>
-          <Type tag="div" h4 className={style.type} setSize="1.1rem">
-            <Bell /> Notifications
-          </Type>
-        </NavButton>
-      </div>
-      <div className={style.sparks}>
-        <OrgSelect
-          organizations={organizations}
-          asFilter
-          small
-          defaultValue="all"
-          onChange={onOrgChange}
-          addOption={
-            <Link button to={createOrganizationRoute}>
-              <MenuItem>
-                <Signature>
-                  <Type>
-                    <Plus />
-                  </Type>
-                  <Type>New Organization</Type>
-                </Signature>
-              </MenuItem>
-            </Link>
-          }
-        />
-
-        <div className={style.sparksnav}>
-          <SparksNav sparks={sparkList} />
-        </div>
-      </div>
-      <NavButton
-        to={createSparkRoute}
-        exact
-        path={createSparkRoute.pathname}
-        className={style.newbtn}
+    <Scrollbars autoHide>
+      <nav
+        className={classNames(className, style.sidebar)}
+        data-testid="sidebar"
       >
-        <Type body2 tag="div" color="primary" className={style.type}>
-          <Plus /> <b>NEW SPARK</b>
-        </Type>
-      </NavButton>
-    </nav>
+        <SparksNav
+          sparks={sparks}
+          collaboratorSparks={collaboratorSparks}
+          organizations={organizations}
+          archiveSpark={archiveSpark}
+        />
+        <Divider />
+        <Label
+          className={style.label}
+          right={
+            <Tooltip position="top" label="New Organization">
+              <Link to={createOrganizationRoute} button>
+                <IconButton color="grey" className={style.plusBtn}>
+                  <Plus />
+                </IconButton>
+              </Link>
+            </Tooltip>
+          }
+        >
+          My Organizations
+        </Label>
+        {organizations?.map(
+          org =>
+            !org?.isUserOrganization && (
+              <NavButton to={profileRoute(org?.name)}>
+                <Signature>
+                  <Avatar size="small" src={org?.avatarURL} />
+                  <Type body2>{org?.name}</Type>
+                </Signature>
+              </NavButton>
+            )
+        )}{" "}
+        <Divider />
+        <Label className={style.label}>Topics</Label>
+        {topics?.map(tag => (
+          <NavButton to={tagRoute(tag?.name)}>
+            <Signature>
+              <Hashtag />
+              <Type body2>{tag?.name}</Type>
+            </Signature>
+          </NavButton>
+        ))}
+        <Divider />
+        <NavButton to={helpRoute}>
+          <Signature>
+            <Type body2>👋</Type>
+            <Type body2>Getting Started</Type>
+          </Signature>
+        </NavButton>
+        <NavButton to="/guidelines">
+          <Signature>
+            <Type body2>📓</Type>
+            <Type body2>Community Guidelines</Type>
+          </Signature>
+        </NavButton>
+        <NavButton to={feedbackRoute} exact>
+          <Signature>
+            <Type body2>📣</Type>
+            <Type body2>Send Us Feedback</Type>
+          </Signature>
+        </NavButton>
+        {!user?.userProfile?.isLicensed && (
+          <NavButton to={upgradeRoute}>
+            <Signature>
+              <Type body2>🚀</Type>
+              <Type body2>Upgrade membership</Type>
+            </Signature>
+          </NavButton>
+        )}
+        <List>
+          <Divider />
+          <Link inline to="/terms">
+            <Type caption color="grey">
+              Terms & Conditions
+            </Type>
+          </Link>
+          <div className={style.bottomlinks}>
+            <Link inline to="/about">
+              <Type caption color="grey">
+                About Us
+              </Type>
+            </Link>
+            <Link inline to="/version">
+              <Type caption color="grey">
+                {version}
+              </Type>
+            </Link>
+          </div>
+        </List>
+      </nav>
+    </Scrollbars>
   );
 };
 
@@ -154,7 +140,10 @@ Sidebar.propTypes = {
   version: PropTypes.string,
   className: PropTypes.string,
   sparks: PropTypes.array,
-  organizations: PropTypes.array
+  collaboratorSparks: PropTypes.array,
+  organizations: PropTypes.array,
+  topics: PropTypes.array,
+  archiveSpark: PropTypes.func
 };
 
 export { Sidebar };

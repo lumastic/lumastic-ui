@@ -1,0 +1,32 @@
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  .symbol,
+  .text {
+    font-size: 1.25em;
+    color: var(--primary-color);
+    display: inline-flex;
+  }
+  .symbol {
+    margin-right: var(--spacing-med);
+  }
+  &.stacked {
+    flex-direction: column;
+    .symbol {
+      font-size: 1.5em;
+      margin-right: 0;
+    }
+  }
+  &.white {
+    .symbol,
+    .text {
+      color: whitesmoke;
+    }
+  }
+  &.cursor {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

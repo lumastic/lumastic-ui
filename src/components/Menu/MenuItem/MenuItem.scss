@@ -1,23 +1,31 @@
 @import "../../../styles/colors.scss";
 
 .menuitem {
-  padding: 0.5rem 1.25rem;
+  padding: var(--spacing-small) 1.25rem;
   transition: all 0.2s ease-in-out;
   border: none;
   background-color: transparent;
   box-sizing: border-box;
+  margin: calc(var(--spacing-small) / 4) 0;
+  border-radius: 0.5rem;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:focus {
-    outline: 1px dotted $secondaryLight;
-    background-color: lighten($greyLight, 15%);
+    outline: 1px dotted var(--secondary-color-light);
+    background-color: var(--bg-color-hover);
   }
   &:hover {
-    background-color: lighten($greyLight, 18%);
+    background-color: var(--bg-color-hover);
     cursor: pointer;
   }
   &:active {
-    background-color: lighten($greyLight, 12%);
+    background-color: var(--bg-color-active);
   }
   &.active {
-    background-color: rgba($secondaryLight, 0.2);
+    background-color: alpha(var(--secondary-color-light), 0.2);
   }
 }

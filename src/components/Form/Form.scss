@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .form {
   display: grid;
@@ -7,13 +7,13 @@
   row-gap: 1rem;
 }
 .general {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--spacing-med);
 }
 .debugger {
   background-color: white;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  border: 1px solid $greyLight;
+  padding: var(--spacing-med);
+  border-radius: var(--spacing-small);
+  border: 1px solid var(--font-light-color);
   pre {
     font-size: 0.875rem;
     margin: 0;

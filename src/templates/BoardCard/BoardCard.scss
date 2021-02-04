@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .wrapper {
   position: absolute;
@@ -18,8 +18,8 @@
       display: block;
     }
     .options {
-      right: 0.5rem;
-      top: 0.5rem;
+      right: var(--spacing-small);
+      top: var(--spacing-small);
     }
   }
   .options {
@@ -40,7 +40,7 @@
     transition: opacity 100ms ease-in-out;
     padding: 0.05rem 0.25rem;
     box-sizing: border-box;
-    color: $greyLight;
+    color: var(--font-light-color);
     font-size: 0.7rem;
     &:hover {
       cursor: nwse-resize;

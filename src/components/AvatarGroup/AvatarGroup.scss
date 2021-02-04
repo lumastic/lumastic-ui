@@ -1,28 +1,29 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .avatargroup {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   .avatar {
     &:not(:first-child) {
-      margin-left: -0.5rem;
-      border: 2px solid $backgroundLight;
+      margin-left: calc(-1 * var(--spacing-small));
+      border: 2px solid var(--bg-color);
       border-radius: 50%;
     }
     display: inline-flex;
   }
   .more {
-    margin-left: -0.5rem;
+    margin-left: calc(-1 * var(--spacing-small));
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: var(--spacing-small);
     overflow: hidden;
-    height: 0.5rem;
-    width: 0.5rem;
+    height: var(--spacing-small);
+    width: var(--spacing-small);
 
-    border: 2px solid $backgroundLight;
+    border: 2px solid var(--bg-color);
     border-radius: 50%;
-    background-color: $greyLight;
+    background-color: var(--font-light-color);
   }
 }

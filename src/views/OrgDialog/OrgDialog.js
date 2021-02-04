@@ -18,7 +18,7 @@ const OrgDialog = ({
   };
   return (
     <Dialog isShowing={isShowing} hide={hide}>
-      <Type h2 align="center" gutterBottom>
+      <Type h3 align="center" gutterBottom>
         {title}
       </Type>
       <OrgForm

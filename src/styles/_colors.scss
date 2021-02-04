@@ -1,0 +1,88 @@
+@import "functions";
+
+:root {
+  --primary-hue: 209;
+  @include defineColorHSL(--primary-color, var(--primary-hue), 87%, 21%);
+  @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 40%);
+  @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 11%);
+
+  @include defineColorHSL(--secondary-color, var(--primary-hue), 100%, 50%);
+  @include defineColorHSL(
+    --secondary-color-light,
+    var(--primary-hue),
+    100%,
+    75%
+  );
+  @include defineColorHSL(
+    --secondary-color-dark,
+    var(--primary-hue),
+    100%,
+    35%
+  );
+
+  --accent-hue: 44;
+  @include defineColorHSL(--accent-color, var(--accent-hue), 92%, 70%);
+  @include defineColorHSL(--accent-color-light, var(--accent-hue), 18%, 90%);
+  @include defineColorHSL(--accent-color-dark, var(--accent-hue), 92%, 50%);
+
+  @include defineColorHSL(--font-color, 0, 0%, 0%);
+  @include defineColorHSL(--font-secondary-color, 0, 0%, 43%);
+  @include defineColorHSL(--font-light-color, 0, 0%, 56%);
+
+  @include defineColorHSL(--bg-color, 0, 0%, 95%);
+  @include defineColorHSL(--bg-color-light, 0, 0%, 100%);
+  @include defineColorHSL(--bg-color-dark, 0, 0%, 0%);
+  @include defineColorHSL(--border-color, 0, 0%, 80%);
+
+  @include defineColorHSL(--red-color, 0, 58%, 49%);
+
+  @include defineColorHSL(--green-color, 130, 53%, 41%);
+
+  --box-shadow-high: 0 8px 40px rgba(0, 0, 0, 0.25),
+    0 4px 16px rgba(0, 0, 0, 0.1);
+  --box-shadow-med: 0 2px 6px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+  --box-shadow-low: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+  --bg-color-hover: hsla(
+    var(--font-light-color-h),
+    var(--font-light-color-s),
+    var(--font-light-color-l),
+    0.25
+  );
+  --bg-color-active: hsla(
+    var(--font-light-color-h),
+    var(--font-light-color-s),
+    var(--font-light-color-l),
+    0.5
+  );
+}
+
+[data-theme="dark"] {
+  @include defineColorHSL(
+    --primary-color,
+    var(--primary-hue),
+    87%,
+    98%
+  ); // Make it white
+  @include defineColorHSL(--primary-color-light, var(--primary-hue), 87%, 98%);
+  @include defineColorHSL(--primary-color-dark, var(--primary-hue), 87%, 98%);
+
+  @include defineColorHSL(--font-color, 0, 0%, 90%);
+  @include defineColorHSL(--font-secondary-color, 0, 0%, 70%);
+  @include defineColorHSL(--font-light-color, 0, 0%, 50%);
+
+  @include defineColorHSL(--red-color, 0, 58%, 70%);
+  @include defineColorHSL(--green-color, 130, 53%, 70%);
+
+  @include defineColorHSL(--bg-color, 220, 6%, 10%);
+  @include defineColorHSL(--bg-color-light, 0, 0%, 18%);
+  @include defineColorHSL(--bg-color-dark, 220, 6%, 10%);
+
+  color: var(--font-color);
+  background-color: var(--bg-color);
+}
+
+html {
+  color: var(--font-color);
+  background-color: var(--bg-color);
+}

@@ -3,9 +3,8 @@
 ```jsx
 import { Nav } from "../../views";
 import { AppBar, Main } from "../../components";
-<AppLayout>
+<AppLayout withSidebar>
   <Nav />
-  <AppBar>Test Appbar</AppBar>
   <Main>Test</Main>
 </AppLayout>;
 ```

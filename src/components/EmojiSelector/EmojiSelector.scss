@@ -1,10 +1,10 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .emojiselector {
   width: 250px;
-  background-color: $backgroundLight;
+  background-color: var(--bg-color-light);
   .search {
-    padding: 0.5rem;
+    padding: var(--spacing-small);
     .search-box {
       padding-top: 0;
       padding-bottom: 0;
@@ -21,7 +21,7 @@
   }
   .label {
     text-transform: capitalize;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem var(--spacing-small);
   }
   .recommended {
     padding: 0.1rem 0.25rem;
@@ -37,22 +37,22 @@
       border-radius: 6px;
       transition: background-color 0.2s ease-in-out;
       &:hover {
-        background-color: rgba($greyLight, 0.5);
+        background-color: alpha(var(--font-light-color), 0.5);
         cursor: pointer;
       }
       &:focus {
-        outline: 1px dotted $secondaryLight;
+        outline: 1px dotted var(--secondary-color-light);
       }
       &:active {
-        background-color: $greyLight;
+        background-color: var(--font-light-color);
       }
     }
   }
   .selection {
     display: flex;
     align-items: flex-start;
-    padding: 0.25rem 0.5rem;
-    border-top: 1px solid $greyLight;
+    padding: 0.25rem var(--spacing-small);
+    border-top: 1px solid var(--font-light-color);
     .selected-emoji {
       font-size: 1.75rem;
       margin-right: 1rem;

@@ -1,0 +1,21 @@
+.tagheader {
+  display: block;
+  background-position: center;
+  background-size: cover;
+  border: none;
+  box-sizing: border-box;
+
+  .push {
+    display: flex;
+    align-items: center;
+    .name {
+      flex-grow: 1;
+      padding-bottom: var(--spacing-med);
+    }
+    .button {
+      padding-right: var(--spacing-small);
+      display: inline-flex;
+      flex-grow: 0;
+    }
+  }
+}

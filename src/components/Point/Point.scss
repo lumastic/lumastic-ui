@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .point {
   display: inline-block;
@@ -19,24 +19,24 @@
   &.border {
     width: 1.5em;
     height: 1.5em;
-    background-color: $background;
+    background-color: var(--bg-color);
   }
   &.primary {
-    color: $primary;
+    color: var(--primary-color);
   }
   &.light {
-    color: $secondaryLight;
+    color: var(--secondary-color-light);
   }
   &.red {
-    color: $red;
+    color: var(--red-color);
   }
   &.green {
-    color: $green;
+    color: var(--green-color);
   }
   &.grey {
-    color: $greyDark;
+    color: var(--font-secondary-color);
   }
   &.small {
-    font-size: 0.5rem;
+    font-size: var(--spacing-small);
   }
 }

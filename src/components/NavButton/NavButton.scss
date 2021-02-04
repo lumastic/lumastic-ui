@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .navbutton {
   padding: 0;
@@ -7,34 +7,42 @@
   box-sizing: border-box;
   width: 100%;
   border: none;
+  color: var(--font-color);
+  margin: calc(var(--spacing-small) / 4) 0;
+  &:first-child-of {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:focus {
     outline: none;
     .container {
-      outline: 1px solid $secondaryLight;
+      outline: 1px solid var(--secondary-color-light);
     }
   }
   &:hover {
     cursor: pointer;
     .container {
-      background-color: lighten($greyLight, 15%);
+      background-color: var(--bg-color-hover);
     }
   }
   &:active {
     .container {
-      background-color: lighten($greyLight, 5%);
+      background-color: alpha(var(--font-light-color), 0.5);
     }
   }
   &.active {
     .container {
-      background-color: rgba($greyLight, 0.4);
+      background-color: alpha(var(--accent-color), 0.6);
     }
   }
   .container {
     transition: background-color 100ms ease-in-out;
     display: flex;
     align-items: center;
-    padding: 0.5rem 0.75rem;
-    // border-radius: 8px;
+    padding: var(--spacing-small) var(--spacing-med);
+    border-radius: var(--spacing-small);
   }
 
   /* // ICON: DEFAULT */

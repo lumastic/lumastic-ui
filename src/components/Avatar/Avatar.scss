@@ -1,7 +1,7 @@
 .avatar {
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 50%;
   overflow: hidden;
   &.big {
@@ -9,6 +9,10 @@
     height: 2.25rem;
   }
   &.small {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &.badge {
     width: 1rem;
     height: 1rem;
   }

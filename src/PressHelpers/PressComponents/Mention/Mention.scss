@@ -3,11 +3,11 @@
 .mention {
   display: inline-block;
   text-decoration: none;
-  color: $primaryDark;
+  color: var(--primary-color-dark);
   font-size: 0.9em;
   padding: 0.1em 0.25em;
   border-radius: 0.25rem;
-  background-color: rgba($primary, 0.2);
+  background-color: alpha(var(--primary-color), 0.2);
   &:hover {
     text-decoration: underline;
     text-decoration-color: inherit;
@@ -16,17 +16,18 @@
 }
 
 .item {
-  padding: 0.5rem 0.75rem;
+  padding: var(--spacing-small) var(--spacing-med);
   display: flex;
   align-items: center;
+  background-color: var(--bg-color-light);
   .avatar {
-    margin-right: 0.75rem;
+    margin-right: var(--spacing-med);
   }
   &:hover {
     cursor: pointer;
-    background-color: lighten(lightgray, 5%);
+    background-color: var(--bg-color-hover);
   }
   &.selected {
-    background-color: lightgray;
+    background-color: var(--bg-color-active);
   }
 }

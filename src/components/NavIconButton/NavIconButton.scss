@@ -1,39 +1,82 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 @import "../../styles/sizes.scss";
 
 .naviconbutton {
   display: inline-flex;
-  padding: 0;
+  flex-direction: column;
+  padding: 0.25rem var(--spacing-small);
   align-items: center;
   justify-content: center;
-  border: none;
-  border-radius: 50%;
   font-size: 1.5rem;
-  width: 1.75em;
-  height: 1.75em;
+  width: 100%;
   background-color: transparent;
-  color: lighten($secondary, 15%);
   transition: all 100ms ease-in-out;
+  color: var(--font-light-color);
+  border: none;
+  border-bottom: 2px solid transparent;
+  .name {
+    white-space: nowrap;
+    font-size: var(--spacing-med);
+  }
   &:focus {
-    outline: 1px dotted lighten($secondary, 15%);
+    outline: 1px dotted lightness(var(--secondary-color), 1.15);
   }
   &:hover {
     cursor: pointer;
   }
   &:hover:not(.active) {
-    background-color: rgba($backgroundLight, 0.25);
+    border-bottom: 2px solid alpha(var(--primary-color), 0.75);
+    color: alpha(var(--primary-color), 0.75);
   }
   &:active:not(.active) {
-    background-color: rgba($backgroundLight, 0.5);
+    border-bottom: 2px solid alpha(var(--primary-color), 0.9);
+    color: alpha(var(--primary-color), 0.9);
   }
   &.active {
-    background-color: $backgroundLight;
-    color: $primary;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+  &.mobile {
+    color: white;
+    border-radius: var(--spacing-small);
+    border-bottom: unset !important;
+    &:focus {
+      outline: 1px dotted lightness(var(--secondary-color), 1.15);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover:not(.active) {
+      background-color: alpha(var(--bg-color-light), 0.25);
+      color: white;
+    }
+    &:active:not(.active) {
+      background-color: alpha(var(--bg-color-light), 0.5);
+    }
+    &.active {
+      background-color: var(--bg-color-light);
+      color: var(--primary-color);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
   }
 }
+
 @media (max-width: $tablet) {
   .naviconbutton {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
+    min-width: 3.5rem;
+    .name {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .naviconbutton {
+    font-size: 1.5rem;
+    .name {
+      display: inline-flex;
+      font-size: var(--spacing-small);
+    }
   }
 }

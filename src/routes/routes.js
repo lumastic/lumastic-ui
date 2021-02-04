@@ -4,6 +4,7 @@ export const homeRoute = "/home";
 export const logoutRoute = "/logout";
 
 export const upgradeRoute = "/pro";
+export const helpRoute = "/help";
 export const notificationsRoute = "/notifications";
 
 /**
@@ -19,6 +20,11 @@ export const createRoute = {
 
 // USER ROUTES
 export const profileRoute = (orgName = ":orgName") => `/${orgName}`;
+
+export const feedbackRoute = {
+  pathname: "/feedback",
+  state: { modal: true }
+};
 
 export const settingsRoute = ({
   account,
@@ -46,6 +52,19 @@ export const createOrganizationRoute = {
   pathname: "/create/organization",
   state: { modal: true }
 };
+
+export const createTeamRoute = (orgId = ":orgId") => ({
+  pathname: `/create/team/${orgId}`,
+  state: { modal: true }
+});
+
+export const editTeamRoute = (
+  orgId = ":orgId",
+  billingOrgId = ":billingOrgId"
+) => ({
+  pathname: `/edit/team/${orgId}/${billingOrgId}`,
+  state: { modal: true }
+});
 
 export const orgSettingsRoute = (
   orgName = ":orgName",
@@ -78,12 +97,41 @@ export const editSparkRoute = (orgName = ":orgName", sparkId = ":sparkId") => ({
   state: { modal: true }
 });
 
+export const archiveSparkRoute = (
+  orgName = ":orgName",
+  sparkId = ":sparkId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}`,
+  search: `?archive=true`
+});
+
 // POST ROUTES
 
 export const createPostRoute = {
   pathname: "/create/post",
   state: { modal: true }
 };
+
+// PROGRESS BOARD ROUTES
+export const createProgressBoard = (
+  orgName = ":orgName",
+  sparkId = ":sparkId"
+) => ({
+  pathname: `${baseSparkRoute(orgName, sparkId)}/create/bubble`,
+  state: { modal: true }
+});
+
+export const editProgressBoard = (
+  orgName = ":orgName",
+  sparkId = ":sparkId",
+  progressBoardId = ":progressBoardId"
+) => ({
+  pathname: `${baseSparkRoute(
+    orgName,
+    sparkId
+  )}/edit/bubble/${progressBoardId}`,
+  state: { modal: true }
+});
 
 export const viewPostRoute = (
   orgName = ":orgName",
@@ -121,7 +169,7 @@ export const viewBoardRoute = (
 // EXPLORE ROUTE
 export const exploreRoute = "/explore";
 
-export const tagRoute = (tagName = ":tagName") => `/expore/tag/${tagName}`;
+export const tagRoute = (tagName = ":tagName") => `/topic/${tagName}`;
 
 // SEARCH ROUTE
 export const findRoute = {
@@ -129,5 +177,5 @@ export const findRoute = {
   state: { modal: true }
 };
 
-export const searchRoute = (searchString = ":searchString") =>
-  `/explore/${searchString}`;
+export const searchRoute = (searchString = "") =>
+  `/explore?search=${searchString}`;

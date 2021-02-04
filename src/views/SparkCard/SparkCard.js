@@ -1,6 +1,7 @@
 import { PressRenderer } from "pressdk";
 import PropTypes from "prop-types";
 import React from "react";
+import { TagChip } from "../..";
 import { Card, Type, Link } from "../../components";
 import { parseContent } from "../../helpers";
 import { pressComponents } from "../../PressHelpers";
@@ -8,8 +9,17 @@ import { profileRoute, viewSparkRoute } from "../../routes";
 import style from "./SparkCard.scss";
 
 const SparkCard = ({ spark = {} }) => (
-  <Card className={style.glow}>
-    <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
+  <Card>
+    {spark?.headerURL && (
+      <div
+        className={style.header}
+        style={{
+          backgroundImage: `url("${spark?.headerURL}")`
+        }}
+      />
+    )}
+
+    <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)}>
       <Type h4>{spark.title}</Type>
     </Link>
     <Type
@@ -22,14 +32,23 @@ const SparkCard = ({ spark = {} }) => (
       <Link to={profileRoute(spark?.belongsTo?.name)} inline>
         {spark?.belongsTo?.name}
       </Link>
-      {` • ${spark?.progressBoards[0]?.progressUpdates?.length} posts • ${spark?.visibility}`}
+      {` • ${spark?.visibility}`}
     </Type>
-    <Type tag="div">
-      <PressRenderer
-        components={pressComponents}
-        value={parseContent(spark?.description)}
-      />
+
+    <Type tag="div" gutterBottom>
+      {spark?.description && (
+        <PressRenderer
+          components={pressComponents}
+          value={parseContent(spark?.description)}
+        />
+      )}
     </Type>
+
+    <div>
+      {spark?.tags?.slice(0, 4).map((tag, key) => (
+        <TagChip tag={tag} key={key} />
+      ))}
+    </div>
   </Card>
 );
 

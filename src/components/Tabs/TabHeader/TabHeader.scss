@@ -5,9 +5,8 @@ $tabBorderSize: 2px;
   display: flex;
   align-items: center;
   flex-direction: row;
-  border-bottom: $tabBorderSize solid $greyLight;
   flex-wrap: wrap;
-  margin-bottom: 0.75rem;
+  // margin-bottom: var(--spacing-med);
   > a {
     flex-grow: 0;
   }
@@ -19,4 +18,10 @@ $tabBorderSize: 2px;
   &.right {
     justify-content: flex-end;
   }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

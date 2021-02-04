@@ -1,7 +1,7 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 // Colors
-$bg-color: $background;
-$dot-color: darken($backgroundDark, 5%);
+$bg-color: var(--bg-color);
+$dot-color: lightness(var(--bg-color), 0.9);
 // Dimensions
 $dot-size: 2px;
 $dot-space: 16px;

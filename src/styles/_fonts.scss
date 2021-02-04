@@ -1,0 +1,13 @@
+@import url("https://use.typekit.net/frt5uuv.css");
+
+:root {
+  --body-font: open-sans, sans-serif;
+  --header-font: atten-round-new, open-sans, sans-serif;
+  --base-font-size: 1rem;
+  --font-size-14: 0.875rem;
+  --font-size-12: var(--spacing-med);
+}
+
+html {
+  font-family: var(--body-font);
+}

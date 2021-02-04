@@ -3,22 +3,23 @@ import PropTypes from "prop-types";
 import React from "react";
 import {
   Avatar,
+  Badge,
   Breadcrumbs,
   Card,
   Divider,
   Link,
   MenuItem,
-  Type,
-  Tooltip
+  ProStamp,
+  Tooltip,
+  Type
 } from "../../components";
 import { CommentForm } from "../../forms";
-import { parseContent, classNames } from "../../helpers";
+import { classNames, parseContent } from "../../helpers";
 import formatTime from "../../helpers/formatTime";
 import { useUser } from "../../hooks";
-import { pressComponents, Mention, Tag } from "../../PressHelpers";
+import { Mention, pressComponents, Tag } from "../../PressHelpers";
 import { editPostRoute, profileRoute, viewSparkRoute } from "../../routes";
-import { AddEmoji, Comment, MoreMenu, Reaction } from "../../templates";
-import recommendReactions from "./helpers/recommendReactions.json";
+import { Comment, MoreMenu } from "../../templates";
 import style from "./ProgressPost.scss";
 
 const ProgressPost = ({
@@ -32,18 +33,33 @@ const ProgressPost = ({
   className
 }) => {
   const { id } = useUser();
-  const isAuthor = post?.createdBy?.id === id;
+  const isAdmin =
+    post?.createdBy?.id === id ||
+    spark?.belongsTo?.owners?.find(owner => owner?.id === id);
   return (
     <Card className={classNames(style.progresspost, className)}>
       <div className={style.postheader}>
         <Link to={profileRoute(post?.createdBy?.username)} inline>
-          <Avatar src={post?.createdBy?.avatarURL} size="big" />
+          {spark?.belongsTo?.isUserOrganization ? (
+            <Avatar src={post?.createdBy?.avatarURL} size="big" />
+          ) : (
+            <Badge
+              render={
+                <Link to={profileRoute(spark?.belongsTo?.name)} inline>
+                  <Avatar src={spark?.belongsTo?.avatarURL} size="badge" />
+                </Link>
+              }
+            >
+              <Avatar src={post?.createdBy?.avatarURL} size="big" />
+            </Badge>
+          )}
         </Link>
         <div className={style.info}>
           <Breadcrumbs>
             <Link to={profileRoute(post?.createdBy?.username)} inline>
               <Type tag="div" body2>
-                {post?.createdBy?.name}
+                {post?.createdBy?.name}{" "}
+                {post?.createdBy?.userProfile?.isLicensed && <ProStamp />}
               </Type>
             </Link>
             <Link to={viewSparkRoute(spark?.belongsTo?.name, spark.id)} inline>
@@ -52,30 +68,40 @@ const ProgressPost = ({
               </Type>
             </Link>
           </Breadcrumbs>
-          <Tooltip
-            postition="top"
-            label={formatTime({
-              time: post.createdAt || post.time,
-              fullDate: true,
-              withTime: true
-            })}
-          >
-            <Type
-              color="grey"
-              className={style.time}
-              tag="div"
-              caption
-              setSize="0.7rem"
+          <div>
+            {!spark?.belongsTo?.isUserOrganization && (
+              <Link inline to={profileRoute(spark?.belongsTo?.name)}>
+                <Type color="grey" tag="div" caption setSize="0.7rem">
+                  {spark?.belongsTo?.name}
+                  {" • "}
+                </Type>
+              </Link>
+            )}
+            <Tooltip
+              postition="top"
+              label={formatTime({
+                time: post.createdAt || post.time,
+                fullDate: true,
+                withTime: true
+              })}
             >
-              {`${spark?.visibility ||
-                post?.spark?.visibility ||
-                "Public"} • ${formatTime({
-                time: post.createdAt || post.time
-              })}`}
-            </Type>
-          </Tooltip>
+              <Type
+                color="grey"
+                className={style.time}
+                tag="div"
+                caption
+                setSize="0.7rem"
+              >
+                {`${spark?.visibility ||
+                  post?.spark?.visibility ||
+                  "Public"} • ${formatTime({
+                  time: post.createdAt || post.time
+                })}`}
+              </Type>
+            </Tooltip>
+          </div>
         </div>
-        {isAuthor && (
+        {isAdmin && (
           <div className={style.menu}>
             <MoreMenu position="right">
               <Link
@@ -111,7 +137,7 @@ const ProgressPost = ({
         />
       </Type>
       <div className={style.postreactions}>
-        {post.reactions?.map((reaction, key) => (
+        {/* {post.reactions?.map((reaction, key) => (
           <Reaction
             reaction={reaction}
             onClick={reactionClick}
@@ -124,7 +150,7 @@ const ProgressPost = ({
             recommended={recommendReactions}
             onSelect={reactionSelect}
           />
-        ) : null}
+        ) : null} */}
       </div>
       {(post.comments || canComment) && (
         <div className={style.comments}>

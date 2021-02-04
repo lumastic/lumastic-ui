@@ -7,18 +7,27 @@ import { Type } from "../../Type";
 import style from "./Tab.scss";
 
 const Tab = ({ children, name, className, disabled }) => {
-  const { initialTab, path } = useContext(TabContext);
+  const { initialTab, path, asNav } = useContext(TabContext);
 
   return (
     <NavLink
       to={!disabled && (initialTab === name ? path : `${path}/${name}`)}
       exact
-      className={classNames(className, style.tab, {
-        [style.disabled]: disabled
-      })}
+      className={classNames(
+        className,
+        style.tab,
+        {
+          [style.disabled]: disabled
+        },
+        {
+          [style.navbutton]: asNav
+        }
+      )}
       activeClassName={style.active}
     >
-      <Type body2>{children}</Type>
+      <Type body2 headerFont>
+        {children}
+      </Type>
     </NavLink>
   );
 };

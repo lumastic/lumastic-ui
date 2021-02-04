@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .tooltip-element {
   display: inline-flex;
@@ -14,8 +14,8 @@
 .tooltip {
   border-radius: 6px;
   padding: 0.2rem 0.7rem;
-  color: $lightText;
-  background-color: $tooltipBackground;
+  color: lightness(var(--font-light-color), 1.75);
+  background-color: alpha(var(--bg-color-dark), 0.8);
   &::after {
     content: " ";
     position: absolute;
@@ -26,24 +26,28 @@
     left: 50%;
     margin-left: -5px;
     bottom: 100%;
-    border-color: transparent transparent $tooltipBackground transparent;
+    border-color: transparent transparent alpha(var(--bg-color-dark), 0.8)
+      transparent;
   }
   &.top::after {
     left: 50%;
     margin-left: -5px;
     top: 100%;
-    border-color: $tooltipBackground transparent transparent transparent;
+    border-color: alpha(var(--bg-color-dark), 0.8) transparent transparent
+      transparent;
   }
   &.right::after {
     top: 50%;
     right: 100%;
     margin-top: -5px;
-    border-color: transparent $tooltipBackground transparent transparent;
+    border-color: transparent alpha(var(--bg-color-dark), 0.8) transparent
+      transparent;
   }
   &.left::after {
     top: 50%;
     left: 100%;
     margin-top: -5px;
-    border-color: transparent transparent transparent $tooltipBackground;
+    border-color: transparent transparent transparent
+      alpha(var(--bg-color-dark), 0.8);
   }
 }

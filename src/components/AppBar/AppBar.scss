@@ -1,21 +1,85 @@
-@import "../../styles/colors.scss";
+@use "../../styles/colors.scss" as *;
 @import "../../styles/sizes.scss";
 
 .appbar {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: minmax(min-content, 280px) auto minmax(
+      min-content,
+      280px
+    );
+  column-gap: var(--spacing-small);
   align-items: center;
   width: 100%;
-  height: min-content;
-  flex-direction: row;
+  height: auto;
   top: 0;
-  background-color: $backgroundLight;
-  border-bottom: 1px solid $greyLight;
-  padding: 0.25rem 1rem;
+  z-index: 1000;
+  background-color: var(--bg-color-light);
+  box-shadow: var(--box-shadow-low);
+  padding: 0 var(--spacing-big);
   box-sizing: border-box;
+
+  .mainbtns-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .mainbtns {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      max-width: 32rem;
+      width: 100%;
+      .navbutton {
+        width: 25%;
+      }
+    }
+  }
+  .menu-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    .menu-items {
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: var(--spacing-med);
+      align-items: center;
+      max-width: 19rem;
+    }
+  }
+}
+
+.searchBtn {
+  display: none;
+}
+
+@media (max-width: $mobile) {
+  .appbar {
+    .search {
+      display: none;
+    }
+    .searchBtn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
 }
 
 @media (max-width: $tablet) {
   .appbar {
-    padding: 0.25rem 0.5rem;
+    grid-template-columns: minmax(min-content, 280px) auto;
+    padding: var(--spacing-small);
+    .logo-container {
+      .text {
+        display: inline-flex;
+      }
+    }
+    .mainbtns-container {
+      display: none;
+    }
   }
 }

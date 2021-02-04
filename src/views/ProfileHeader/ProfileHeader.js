@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Avatar, Button, Type, Link } from "../../components";
+import { Avatar, Button, Type, Link, ProStamp } from "../../components";
 import style from "./ProfileHeader.scss";
 import classNames from "../../helpers/classNames";
-import { settingsRoute } from "../../routes";
+import { orgSettingsRoute, settingsRoute } from "../../routes";
 
 const ProfileHeader = ({
   className,
@@ -28,9 +28,13 @@ const ProfileHeader = ({
     );
   }
   if (isOrgOwner) {
-    action = (
+    action = organization.isUserOrganization ? (
       <Link button to={settingsRoute()}>
         <Button variant="outlined">Edit Profile</Button>
+      </Link>
+    ) : (
+      <Link button to={orgSettingsRoute(organization.name)}>
+        <Button variant="outlined">Settings</Button>
       </Link>
     );
   }
@@ -64,10 +68,11 @@ const ProfileHeader = ({
         <div className={style.action}>{action}</div>
       </div>
       <div className={style.info}>
-        <Type h4 style={{ lineHeight: 1 }}>
+        <Type h3 style={{ lineHeight: 1 }}>
           {organization?.isUserOrganization
             ? organization?.createdBy?.name
-            : organization?.name}
+            : organization?.name}{" "}
+          {organization?.isLicensed && <ProStamp />}
         </Type>
         <Type color="grey" gutterBottom>
           {`@${organization?.name}`}

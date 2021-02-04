@@ -1,23 +1,46 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Canvas, Viewport } from "../../components";
+import {
+  Canvas,
+  Viewport,
+  Type,
+  Link,
+  Avatar,
+  Breadcrumbs
+} from "../../components";
 import { DragDropProvider } from "../../hooks";
+import { profileRoute, viewSparkRoute } from "../../routes";
 import { BoardCard } from "../../templates";
 
-const Board = ({ cards = [], mode = "free" }) => (
+const Board = ({ board = {}, mode = "free" }) => (
   <DragDropProvider>
     <Viewport>
+      <Breadcrumbs>
+        <Link to={profileRoute(board?.spark?.belongsTo?.name)} inline>
+          <Avatar size="big" src={board?.spark?.belongsTo?.avatarURL} />
+        </Link>
+        <Link
+          to={viewSparkRoute(board?.spark?.belongsTo?.name, board?.spark?.id)}
+          inline
+        >
+          <Type h4>{board?.spark?.title}</Type>
+        </Link>
+        <Type h4>{board?.name}</Type>
+      </Breadcrumbs>
+
       <Canvas>
-        {cards?.map((card, index) => (
-          <BoardCard key={card?.id || index} card={card} />
-        ))}
+        {board?.cards
+          ?.filter(card => !card.archived)
+          ?.map((card, index) => (
+            <BoardCard key={card?.id || index} card={card} />
+          ))}
       </Canvas>
     </Viewport>
   </DragDropProvider>
 );
 
 Board.propTypes = {
-  cards: PropTypes.array,
+  board: PropTypes.object,
   mode: PropTypes.bool
 };
 

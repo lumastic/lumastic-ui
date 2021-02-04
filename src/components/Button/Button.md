@@ -10,8 +10,8 @@
 #### `colors`
 
 ```jsx padded
-<Button variant={"contained"}>Primary</Button>
-<Button color={"secondary"} variant={"contained"}>Secondary</Button>
+<Button variant={"contained"}>Default</Button>
+<Button color={"primary"} variant={"contained"}>Primary</Button>
 <Button color={"red"} variant={"contained"}>red</Button>
 <Button color={"green"} variant={"contained"}>Green</Button>
 <Button color={"yellow"} variant={"contained"}>Yellow</Button>

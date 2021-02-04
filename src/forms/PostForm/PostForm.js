@@ -1,26 +1,33 @@
 import { defaultPressValue } from "pressdk";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useUser } from "../..";
 import {
   Button,
   Form,
   Link,
+  MenuItem,
+  Option,
   PressInput,
+  Select,
   TextInput,
   Type
 } from "../../components";
-import { parseContent, findMentions } from "../../helpers";
+import { findMentions, parseContent } from "../../helpers";
 import { useReset } from "../../hooks";
-import { PaperAirplane } from "../../icons";
-import { createSparkRoute } from "../../routes";
-import { SparkCrumbs, SparkSelectCrumbs } from "../../templates";
+import { PaperAirplane, Plus } from "../../icons";
+import {
+  createProgressBoard,
+  createSparkRoute,
+  upgradeRoute
+} from "../../routes";
+import { Signature, SparkCrumbs, SparkSelectCrumbs } from "../../templates";
 import style from "./PostForm.scss";
 
 const postSchema = yup.object().shape({
   content: yup.string().required("This field is required"),
-  spark: yup.string().required("This field is required")
+  progressBoardId: yup.string().required("This field is required")
 });
 
 const PostForm = ({
@@ -28,10 +35,20 @@ const PostForm = ({
   sparks = [],
   defaultValues = {},
   buttonLabel = "Post",
-  buttonProps = {}
+  buttonProps = {},
+  edit
 }) => {
   const user = useUser();
   const [reset, toggle] = useReset();
+  const [selectedSpark, setSpark] = useState();
+  const [progressBoards, setProgressBoards] = useState([]);
+  useEffect(() => {
+    if (sparks.length === 1) {
+      setSpark(sparks[0]);
+      setProgressBoards(sparks[0]?.progressBoards);
+    }
+  }, [sparks]);
+
   if (sparks.length === 0)
     return (
       <>
@@ -57,30 +74,36 @@ const PostForm = ({
       alert(JSON.stringify(data));
     }
   };
+
   return (
     <Form
       onSubmit={handleSubmit}
       defaultValues={{
         content: JSON.stringify(defaultPressValue()),
-        spark: sparks[0]?.id,
+        spark: sparks.length === 1 && sparks[0]?.id,
         ...defaultValues
       }}
       className={style.form}
       validationSchema={postSchema}
     >
-      {sparks.length > 1 && (
+      {sparks.length === 1 ? (
+        <>
+          <SparkCrumbs spark={sparks[0]} user={user} />
+          <TextInput name="spark" hidden />
+        </>
+      ) : (
         <SparkSelectCrumbs
-          small
           name="spark"
           organization={user}
           sparks={sparks}
+          defaultValue={defaultValues?.spark}
+          onChange={sparkId => {
+            setSpark(sparks.find(spark => spark?.id === sparkId));
+            setProgressBoards(
+              sparks.find(spark => spark?.id === sparkId)?.progressBoards
+            );
+          }}
         />
-      )}
-      {sparks.length === 1 && (
-        <>
-          <SparkCrumbs small spark={sparks[0]} organization={user} />
-          <TextInput name="spark" hidden />
-        </>
       )}
 
       <PressInput
@@ -88,42 +111,65 @@ const PostForm = ({
         reset={reset}
         name="content"
         placeholder="What's on your mind..."
+        className={style.content}
+        big
       />
-      <div className={style.bottom}>
-        <div className={style.left}>
-          {/* <Select
-            name="type"
+      <div className={style.right}>
+        {edit && <TextInput name="progressBoardId" hidden />}
+        {selectedSpark && !edit && (
+          <Select
+            name="progressBoardId"
             small
-            placeholder="Select a spark..."
-            defaultValue="progress"
+            placeholder="Share with..."
+            right
+            defaultValue={progressBoards[0]?.id}
+            addOption={
+              selectedSpark?.belongsTo?.isLicensed ? (
+                <Link
+                  button
+                  to={createProgressBoard(
+                    selectedSpark?.belongsTo?.name,
+                    selectedSpark?.id
+                  )}
+                >
+                  <MenuItem>
+                    <Signature>
+                      <Type body3>
+                        <Plus />
+                      </Type>
+                      <Type body3>New Bubble</Type>
+                    </Signature>
+                  </MenuItem>
+                </Link>
+              ) : (
+                <Link button to={upgradeRoute}>
+                  <MenuItem>
+                    <Signature>
+                      <Type body3>🚀</Type>
+                      <div>
+                        <Type body3>Share privately</Type>
+                        <Type color="grey" setSize="0.7rem">
+                          Upgrade your membership
+                        </Type>
+                      </div>
+                    </Signature>
+                  </MenuItem>
+                </Link>
+              )
+            }
           >
-            <Option name="progress">
-              <Signature>
-                <Point />
-                <Type body2>Share progress</Type>
-              </Signature>
-            </Option>
-            <Option name="issue">
-              <Signature>
-                <Point color="red" />
-                <Type body2>Ask for help</Type>
-              </Signature>
-            </Option>
-            <Option name="resolved">
-              <Signature>
-                <Point color="green" />
-                <Type body2>Mark as solved</Type>
-              </Signature>
-            </Option>
-          </Select> */}
-        </div>
-        <div className={style.right}>
-          <Button type="submit" {...buttonProps}>
-            <PaperAirplane />
-            {buttonLabel}
-          </Button>
-        </div>
+            {progressBoards?.map((board, key) => (
+              <Option name={board?.id} key={board?.id || key}>
+                <Type body3>{board?.name}</Type>
+              </Option>
+            ))}
+          </Select>
+        )}
       </div>
+      <Button type="submit" variant="contained" {...buttonProps}>
+        <PaperAirplane />
+        {buttonLabel}
+      </Button>
     </Form>
   );
 };
@@ -133,7 +179,8 @@ PostForm.propTypes = {
   onSubmit: PropTypes.func,
   defaultValues: PropTypes.object,
   buttonProps: PropTypes.object,
-  buttonLabel: PropTypes.string
+  buttonLabel: PropTypes.string,
+  edit: PropTypes.bool
 };
 
 export { PostForm };

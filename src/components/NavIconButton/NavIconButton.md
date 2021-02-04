@@ -14,12 +14,8 @@ import { MobileNav } from "../../views";
 
 ```jsx
 import { Sparks } from "../../icons";
-import { MobileNav } from "../../views";
-<MobileNav>
-  <NavIconButton active>
-    <Sparks />
-  </NavIconButton>
-</MobileNav>;
+import { AppBar } from "..";
+<AppBar />;
 ```
 
 Source:

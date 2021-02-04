@@ -2,7 +2,11 @@ export const drew = {
   id: 1,
   name: "Drew Lytle",
   username: "drew",
-  avatarURL: "https://cdn.lumastic.com/JZVSX-_0-cjfvunruwok0owvcxfjc1ln"
+  avatarURL: "https://cdn.lumastic.com/JZVSX-_0-cjfvunruwok0owvcxfjc1ln",
+  isLicensed: true,
+  userProfile: {
+    bio: "This is a bio from Drew "
+  }
 };
 
 export const keith = {

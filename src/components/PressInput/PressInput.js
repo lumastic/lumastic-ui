@@ -21,6 +21,7 @@ const PressInput = ({
   name = "pressinput",
   reset,
   readOnly,
+  big,
   className
 }) => {
   const { register, setValue, errors } = useInputContext();
@@ -38,7 +39,7 @@ const PressInput = ({
   const onChange = value => {
     if (setValue) setValue(name, JSON.stringify(value));
   };
-  // console.log(defaultValue);
+  // console.log(defaultVa5lue);
   return (
     <>
       {errors && errors[name] && (
@@ -51,7 +52,7 @@ const PressInput = ({
         data-testid="pressinput"
       >
         <PressProvider initialValue={defaultValue} reset={reset}>
-          <Type tag="div">
+          <Type tag="div" setSize={big && "1.125rem"}>
             <Press
               placeholder={placeholder || "Start writing..."}
               onChange={onChange}
@@ -76,6 +77,7 @@ PressInput.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   reset: PropTypes.bool,
+  big: PropTypes.bool,
   readOnly: PropTypes.bool,
   className: PropTypes.string
 };

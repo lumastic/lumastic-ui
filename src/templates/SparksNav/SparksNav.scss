@@ -1,10 +1,14 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .showing {
   display: flex;
 }
 
 .sparksnav {
+  min-height: 0;
+  // flex-grow: 1;
+  display: grid;
+  grid-template-rows: min-content auto;
   .navbtn {
     &:hover {
       .btns {
@@ -17,6 +21,10 @@
     align-items: center;
     .title {
       flex-grow: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 20ch;
     }
     .btns {
       display: none;
@@ -27,13 +35,17 @@
       align-items: center;
       .btn {
         display: inline-flex;
-        margin-right: 0.75rem;
+        // margin-right: 0.25rem;
       }
     }
   }
   .boards {
-    margin-left: 0.8rem;
-    // border-left: 1px solid $greyLight;
+    margin-left: 1.5rem;
+    // border-left: 1px solid var(--font-light-color);
+    .space-label {
+      margin-left: 0.8rem;
+      padding-right: var(--spacing-med);
+    }
     box-sizing: border-box;
   }
 }

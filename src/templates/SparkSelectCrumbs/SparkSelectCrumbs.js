@@ -17,7 +17,7 @@ const SparkSelectCrumbs = ({
   <Breadcrumbs>
     <Link to={profileRoute(organization.name)} inline>
       <Tooltip position="top" label={organization.name || "Organization Name"}>
-        <Avatar src={organization.avatarURL} />
+        <Avatar src={organization.avatarURL} size="big" />
       </Tooltip>
     </Link>
     <SparkSelect

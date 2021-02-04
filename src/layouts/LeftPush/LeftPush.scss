@@ -4,7 +4,7 @@
   align-items: center;
   grid-auto-flow: column;
   column-gap: 1rem;
-  grid-template-columns: auto min-content;
+  grid-template-columns: auto max-content;
 }
 
 @media (max-width: $tablet) {

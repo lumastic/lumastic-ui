@@ -1,0 +1,1 @@
+export { ProStamp } from "./ProStamp";

@@ -9,6 +9,7 @@
 <Type body2>Body2</Type>
 <Type caption>Caption</Type>
 <Type overline>Overline</Type>
+<Type underline>Underline</Type>
 ```
 
 #### `color`

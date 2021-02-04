@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState
 } from "react";
-import { Modal } from "../../components";
+import { Modal, Type } from "../../components";
 import { classNames } from "../../helpers";
 import { useInputContext } from "../../helpers/useInputContext";
 import { useOffclick } from "../../hooks";
@@ -19,10 +19,12 @@ const SearchSelect = ({
   defaultValue = [],
   onChange,
   onSearch,
+  resultHandler = result => result,
   className,
   placeholder,
   renderResult,
   renderSelection,
+  maxSelected,
   reset
 }) => {
   // TODO: useCallback to the searchFunc
@@ -32,7 +34,9 @@ const SearchSelect = ({
 
   const selectReducer = (oldValue, action) => {
     const newVal = [...oldValue];
-    const index = newVal.findIndex(x => x.id === action?.payload?.id);
+    const index = newVal.findIndex(
+      x => x.id === action?.payload?.id || x.name === action?.payload?.name
+    );
 
     switch (action.type) {
       case "add":
@@ -87,6 +91,7 @@ const SearchSelect = ({
 
   const clickHandler = result => {
     setSelected({ type: "add", payload: result });
+    if (inputRef?.current) inputRef.current.value = "";
     inputRef?.current?.focus();
   };
 
@@ -107,52 +112,61 @@ const SearchSelect = ({
   };
 
   return (
-    <div className={classNames(style.container, className)}>
-      <div className={style.searchbox}>
-        <div className={style.selected}>
-          {renderSelection &&
-            selected?.map(selection => (
-              <div className={style.selection}>
-                {createElement(renderSelection, {
-                  ...selection,
-                  onRemove: () => {
-                    setSelected({ type: "remove", payload: selection });
-                  }
-                })}
-              </div>
-            ))}
-        </div>
-        <div className={style.search}>
-          <input
-            type="search"
-            placeholder={placeholder}
-            ref={inputRef}
-            onChange={searchHandler}
-            onFocus={searchHandler}
-            onKeyDown={handleEsc}
-          />
-        </div>
-      </div>
-      <Modal isShowing={isShowing} disablePortal>
-        <div className={style.results} ref={resultsRef}>
-          {renderResult &&
-            results
-              ?.filter(result => !selected?.includes(result))
-              ?.map((result, index) => (
-                <div
-                  className={style.result}
-                  key={result?.id || index}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={e => handleEnter(e, result)}
-                  onClick={() => clickHandler(result)}
-                >
-                  {createElement(renderResult, { ...result })}
+    <>
+      {/* {errors && errors[name] && (
+        <Type caption color="red">
+          {errors[name]?.message}
+        </Type>
+      )} */}
+      <div className={classNames(style.container, className)}>
+        <div className={style.searchbox}>
+          <div className={style.selected}>
+            {renderSelection &&
+              selected?.map((selection, key) => (
+                <div className={style.selection} key={selection?.id || key}>
+                  {createElement(renderSelection, {
+                    ...selection,
+                    onRemove: () => {
+                      setSelected({ type: "remove", payload: selection });
+                    }
+                  })}
                 </div>
               ))}
+          </div>
+
+          <div className={style.search}>
+            <input
+              type="search"
+              placeholder={placeholder}
+              ref={inputRef}
+              onChange={searchHandler}
+              onFocus={searchHandler}
+              onKeyDown={handleEsc}
+              disabled={maxSelected && selected?.length >= maxSelected}
+            />
+          </div>
         </div>
-      </Modal>
-    </div>
+        <Modal isShowing={isShowing} disablePortal>
+          <div className={style.results} ref={resultsRef}>
+            {renderResult &&
+              results
+                ?.filter(result => !selected?.includes(result))
+                ?.map((result, index) => (
+                  <div
+                    className={style.result}
+                    key={result?.id || index}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => handleEnter(e, resultHandler(result))}
+                    onClick={() => clickHandler(resultHandler(result))}
+                  >
+                    {createElement(renderResult, { ...result })}
+                  </div>
+                ))}
+          </div>
+        </Modal>
+      </div>
+    </>
   );
 };
 
@@ -162,10 +176,12 @@ SearchSelect.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onSearch: PropTypes.func,
+  resultHandler: PropTypes.func,
   name: PropTypes.string,
   renderResult: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  reset: PropTypes.bool
+  reset: PropTypes.bool,
+  maxSelected: PropTypes.number
 };
 
 export { SearchSelect };

@@ -13,8 +13,10 @@
     flex-grow: 0;
     display: inline-flex;
     transition: transform 100ms ease-in-out;
+    margin-right: var(--spacing-med);
+    transform: rotate(-90deg);
     &.rotate {
-      transform: rotate(180deg);
+      transform: rotate(0deg);
     }
   }
 }

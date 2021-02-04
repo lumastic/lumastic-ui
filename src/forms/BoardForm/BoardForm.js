@@ -17,7 +17,7 @@ const BoardForm = ({ onSubmit, defaultValues = {} }) => (
   >
     <div>
       <Label>Name</Label>
-      <TextInput name="name" placeholder="Board name..." />
+      <TextInput name="name" placeholder="Space name..." />
     </div>
     <Button variant="contained" type="submit">
       Save

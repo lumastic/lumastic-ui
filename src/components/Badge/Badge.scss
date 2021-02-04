@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .badged {
   position: relative;
@@ -7,24 +7,24 @@
     position: absolute;
     display: inline-flex;
     &.circle {
-      width: 0.5rem;
-      height: 0.5rem;
+      width: var(--spacing-small);
+      height: var(--spacing-small);
       border-radius: 50%;
     }
     &.border {
-      border: 2px solid $backgroundLight;
+      border: 2px solid var(--bg-color-light);
     }
     &.green {
-      background-color: $green;
+      background-color: var(--green-color);
     }
     &.red {
-      background-color: $red;
+      background-color: var(--red-color);
     }
     &.yellow {
-      background-color: $yellow;
+      background-color: var(--accent-color);
     }
     &.secondary {
-      background-color: $secondary;
+      background-color: var(--secondary-color);
     }
     &.top {
       top: -0.4vh;

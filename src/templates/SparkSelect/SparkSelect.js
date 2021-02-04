@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Option, Select, Type } from "../../components";
+import { Lock } from "../../icons";
+import { LeftPush } from "../../layouts";
 
 const SparkSelect = ({
   sparks = [],
@@ -26,9 +28,16 @@ const SparkSelect = ({
       (spark, key) =>
         spark && (
           <Option key={spark?.id || key} name={spark?.id || key}>
-            <Type body2={small} tag="div">
-              {spark.title}
-            </Type>
+            <LeftPush>
+              <Type body2={small} tag="div">
+                {spark.title}
+              </Type>
+              {spark?.visibility === "Private" && (
+                <Type caption color="grey">
+                  <Lock />
+                </Type>
+              )}
+            </LeftPush>
           </Option>
         )
     )}

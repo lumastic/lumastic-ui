@@ -1,12 +1,12 @@
-@import "../../styles/colors.scss";
+@import "../../styles/functions.scss";
 
 .chip {
   display: inline-flex;
   align-items: center;
-  border-radius: 0.75rem;
-  color: $primary;
-  background-color: rgba-to-rgb(rgba($primary, 0.2));
-  padding-right: 0.5rem;
+  border-radius: var(--spacing-med);
+  color: var(--primary-color);
+  background-color: alpha(var(--secondary-color), 0.2);
+  padding-right: var(--spacing-small);
   .symbol {
     display: inline-flex;
     padding-left: 0.25rem;
@@ -17,13 +17,13 @@
   }
   .label {
     display: inline-flex;
-    padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+    padding: 0.25rem 0.25rem 0.25rem var(--spacing-small);
   }
   .remove {
-    margin-left: 0.5rem;
+    margin-left: var(--spacing-small);
   }
   &.grey {
-    color: $greyText;
-    background-color: rgba-to-rgb(rgba($greyDark, 0.2));
+    color: var(--font-secondary-color);
+    background-color: alpha(var(--font-secondary-color), 0.2);
   }
 }
