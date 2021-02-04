@@ -36,8 +36,8 @@ const Button = forwardRef(
           { [style.shadow]: shadow }
         )}
         onClick={onClick}
-        disabled={formState?.isSubmitting || disabled}
-        type={type || "button"}
+        disabled={(type === "submit" && formState?.isSubmitting) || disabled}
+        type={type}
         data-testid="button"
         ref={ref}
         {...rest}

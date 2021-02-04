@@ -31,17 +31,19 @@ const Dialog = ({
         <div className={style["dialog-modal"]}>
           <div className={style["dialog-cover"]} />
           <div className={style["dialog-area"]}>
-            <div
-              className={classNames(className, style.dialog)}
-              data-testid="dialog"
-              ref={ref}
-            >
-              <div className={style["dialog-close"]}>
-                <IconButton color="grey" onClick={() => hide()}>
-                  <Times />
-                </IconButton>
+            <div className={style["dialog-scroll"]}>
+              <div
+                className={classNames(className, style.dialog)}
+                data-testid="dialog"
+                ref={ref}
+              >
+                <div className={style["dialog-close"]}>
+                  <IconButton color="grey" onClick={() => hide()}>
+                    <Times />
+                  </IconButton>
+                </div>
+                {children}
               </div>
-              {children}
             </div>
           </div>
         </div>

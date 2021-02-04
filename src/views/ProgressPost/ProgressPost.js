@@ -33,7 +33,9 @@ const ProgressPost = ({
   className
 }) => {
   const { id } = useUser();
-  const isAdmin = spark?.belongsTo?.owners?.find(owner => owner?.id === id);
+  const isAdmin =
+    post?.createdBy?.id === id ||
+    spark?.belongsTo?.owners?.find(owner => owner?.id === id);
   return (
     <Card className={classNames(style.progresspost, className)}>
       <div className={style.postheader}>

@@ -36,9 +36,11 @@ const SparkForm = ({
 }) => {
   const [organization, setOrganization] = useState(organizations[0]);
   useEffect(() => {
-    setOrganization(
-      organizations?.find(org => org?.id === defaultValues?.belongsTo)
-    );
+    if (defaultValues?.belongsTo) {
+      setOrganization(
+        organizations?.find(org => org?.id === defaultValues?.belongsTo)
+      );
+    }
   }, [defaultValues, organizations]);
   // console.log(organization);
   return (

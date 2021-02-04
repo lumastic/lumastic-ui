@@ -16,6 +16,7 @@ import { Hashtag, Plus } from "../../icons";
 import classNames from "../../helpers/classNames";
 import {
   createOrganizationRoute,
+  feedbackRoute,
   helpRoute,
   profileRoute,
   tagRoute,
@@ -29,6 +30,7 @@ const Sidebar = ({
   className,
   version,
   sparks = [],
+  collaboratorSparks = [],
   organizations = [],
   topics = [],
   archiveSpark
@@ -42,6 +44,7 @@ const Sidebar = ({
       >
         <SparksNav
           sparks={sparks}
+          collaboratorSparks={collaboratorSparks}
           organizations={organizations}
           archiveSpark={archiveSpark}
         />
@@ -94,6 +97,12 @@ const Sidebar = ({
             <Type body2>Community Guidelines</Type>
           </Signature>
         </NavButton>
+        <NavButton to={feedbackRoute} exact>
+          <Signature>
+            <Type body2>📣</Type>
+            <Type body2>Send Us Feedback</Type>
+          </Signature>
+        </NavButton>
         {!user?.userProfile?.isLicensed && (
           <NavButton to={upgradeRoute}>
             <Signature>
@@ -131,6 +140,7 @@ Sidebar.propTypes = {
   version: PropTypes.string,
   className: PropTypes.string,
   sparks: PropTypes.array,
+  collaboratorSparks: PropTypes.array,
   organizations: PropTypes.array,
   topics: PropTypes.array,
   archiveSpark: PropTypes.func

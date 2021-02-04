@@ -80,6 +80,7 @@ const PostForm = ({
       onSubmit={handleSubmit}
       defaultValues={{
         content: JSON.stringify(defaultPressValue()),
+        spark: sparks.length === 1 && sparks[0]?.id,
         ...defaultValues
       }}
       className={style.form}
@@ -88,7 +89,7 @@ const PostForm = ({
       {sparks.length === 1 ? (
         <>
           <SparkCrumbs spark={sparks[0]} user={user} />
-          <TextInput name="progressBoardId" hidden />
+          <TextInput name="spark" hidden />
         </>
       ) : (
         <SparkSelectCrumbs
@@ -114,6 +115,7 @@ const PostForm = ({
         big
       />
       <div className={style.right}>
+        {edit && <TextInput name="progressBoardId" hidden />}
         {selectedSpark && !edit && (
           <Select
             name="progressBoardId"

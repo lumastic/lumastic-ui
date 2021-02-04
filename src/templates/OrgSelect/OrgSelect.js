@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Select, Option, Avatar, Type } from "../../components";
+import React from "react";
 import { Signature } from "..";
+import { Avatar, Option, Select, Type } from "../../components";
+import classNames from "../../helpers/classNames";
 import { useUser } from "../../hooks";
 import style from "./OrgSelect.scss";
-import classNames from "../../helpers/classNames";
 
 const OrgSelect = ({
   className,
@@ -18,36 +18,39 @@ const OrgSelect = ({
   onClose,
   avatarsOnly = false,
   asFilter = false
-}) => (
-  <Select
-    defaultValue={defaultValue}
-    name={name}
-    small={small}
-    addOption={addOption}
-    onChange={onChange}
-    onOpen={onOpen}
-    onClose={onClose}
-    className={classNames(className, style.select)}
-    compact={avatarsOnly}
-  >
-    {/* {asFilter && (
+}) => {
+  const { avatarURL } = useUser();
+  return (
+    <Select
+      defaultValue={defaultValue}
+      name={name}
+      small={small}
+      addOption={addOption}
+      onChange={onChange}
+      onOpen={onOpen}
+      onClose={onClose}
+      className={classNames(className, style.select)}
+      compact={avatarsOnly}
+    >
+      {organizations.map((org = {}, index) => (
+        <Option name={org.id} key={org.id || index}>
+          <Signature>
+            <Avatar src={org.avatarURL} setSize="1.25rem" />
+            {!avatarsOnly && <Type>{org?.displayName || org?.name}</Type>}
+          </Signature>
+        </Option>
+      ))}
+      {asFilter && (
         <Option name="collab">
           <Signature>
             <Avatar src={avatarURL} setSize="1.25rem" />
             {!avatarsOnly && <Type>Collaborating</Type>}
           </Signature>
         </Option>
-      )} */}
-    {organizations.map((org = {}, index) => (
-      <Option name={org.id} key={org.id || index}>
-        <Signature>
-          <Avatar src={org.avatarURL} setSize="1.25rem" />
-          {!avatarsOnly && <Type>{org?.displayName || org?.name}</Type>}
-        </Signature>
-      </Option>
-    ))}
-  </Select>
-);
+      )}
+    </Select>
+  );
+};
 
 OrgSelect.propTypes = {
   className: PropTypes.string,

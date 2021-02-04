@@ -116,15 +116,23 @@ const SparksNavButton = ({ spark = {}, isOwner }) => {
   );
 };
 
-const SparksNav = ({ sparks = [], organizations = [], className, ...rest }) => {
-  const [org, setOrg] = useState(
-    organizations?.find(organization => organization?.isUserOrganization)?.id
-  );
+const SparksNav = ({
+  sparks = [],
+  collaboratorSparks = [],
+  organizations = [],
+  className,
+  ...rest
+}) => {
+  const [org, setOrg] = useState({});
   const [sparkList, setSparks] = useState(sparks);
   const { id } = useUser();
   useEffect(() => {
-    setSparks(sparks.filter(spark => spark?.belongsTo?.id === org));
-  }, [org, sparks]);
+    if (org === "collab") {
+      setSparks(collaboratorSparks);
+    } else {
+      setSparks(sparks.filter(spark => spark?.belongsTo?.id === org));
+    }
+  }, [org, sparks, collaboratorSparks]);
   const onOrgChange = orgId => {
     setOrg(orgId);
   };
@@ -138,7 +146,10 @@ const SparksNav = ({ sparks = [], organizations = [], className, ...rest }) => {
         organizations={organizations}
         asFilter
         small
-        defaultValue="all"
+        defaultValue={
+          organizations?.find(organization => organization?.isUserOrganization)
+            ?.id
+        }
         onChange={onOrgChange}
         addOption={
           <Link button to={createOrganizationRoute}>
@@ -195,6 +206,7 @@ SparksNavButton.propTypes = {
 
 SparksNav.propTypes = {
   sparks: PropTypes.array,
+  collaboratorSparks: PropTypes.array,
   organizations: PropTypes.array,
 
   className: PropTypes.string

@@ -21,6 +21,11 @@ export const createRoute = {
 // USER ROUTES
 export const profileRoute = (orgName = ":orgName") => `/${orgName}`;
 
+export const feedbackRoute = {
+  pathname: "/feedback",
+  state: { modal: true }
+};
+
 export const settingsRoute = ({
   account,
   security,
@@ -113,6 +118,18 @@ export const createProgressBoard = (
   sparkId = ":sparkId"
 ) => ({
   pathname: `${baseSparkRoute(orgName, sparkId)}/create/bubble`,
+  state: { modal: true }
+});
+
+export const editProgressBoard = (
+  orgName = ":orgName",
+  sparkId = ":sparkId",
+  progressBoardId = ":progressBoardId"
+) => ({
+  pathname: `${baseSparkRoute(
+    orgName,
+    sparkId
+  )}/edit/bubble/${progressBoardId}`,
   state: { modal: true }
 });
 

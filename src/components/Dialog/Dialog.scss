@@ -26,6 +26,13 @@
   align-items: center;
   z-index: 9998;
 }
+.dialog-scroll {
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  max-width: 500px;
+  overflow-x: hidden;
+}
 .dialog {
   position: relative;
   background-color: var(--bg-color-light);
@@ -34,7 +41,7 @@
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: var(--spacing-small);
   padding: 1rem;
-  margin: -7rem 1rem 0;
+  // margin: -7rem 1rem 0;
   width: 100%;
   max-width: 500px;
 }

@@ -11,14 +11,13 @@ import {
   Compass,
   Gear,
   Home,
-  Symbol,
-  LogoText,
   LogOut,
   MagnifyingGlass,
   Sparks
 } from "../../icons";
 import {
   exploreRoute,
+  feedbackRoute,
   homeRoute,
   logoutRoute,
   mySparksRoute,
@@ -132,10 +131,7 @@ const AppBar = ({ className }) => {
                 </MenuItem>
               </Link>
               <Divider />
-              <Link
-                button
-                to={{ pathname: "/feedback", state: { modal: true } }}
-              >
+              <Link button to={feedbackRoute}>
                 <MenuItem>
                   <Signature>
                     <Type color="grey">

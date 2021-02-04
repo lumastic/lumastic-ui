@@ -44,7 +44,8 @@
     main {
       position: fixed;
       box-sizing: border-box;
-      padding: 60px var(--spacing-small) 0;
+      padding-top: 60px;
+      padding-right: var(--spacing-small);
       margin-top: unset;
       top: 0;
       right: 0;
