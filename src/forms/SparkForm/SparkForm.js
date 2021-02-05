@@ -122,7 +122,7 @@ const SparkForm = ({
           </Link>
         )}
       </RadioInput>
-      <div className="tags">
+      <div>
         <Label>Tags</Label>
         <SearchSelect
           name="tags"
