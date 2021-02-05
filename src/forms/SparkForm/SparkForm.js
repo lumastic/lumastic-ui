@@ -83,7 +83,6 @@ const SparkForm = ({
           <TextInput name="title" placeholder="Give it a title..." />
         </div>
       </div>
-
       <div>
         <Label>Description</Label>
         <TextInput
@@ -91,7 +90,6 @@ const SparkForm = ({
           placeholder="Describe what you're working on..."
         />
       </div>
-
       <RadioInput name="visibility" value="Public">
         <Type>
           <Users /> Open

@@ -4,25 +4,26 @@
   display: block;
   position: relative;
   .searchbox {
-    display: grid;
-    grid-template-columns: max-content minmax(5rem, auto);
-    column-gap: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 0.3rem 0;
     border-bottom: 1px solid var(--border-color);
     // border-radius: 6px;
     .selected {
       display: flex;
+      flex-wrap: wrap;
       flex-direction: row;
       align-items: center;
       .selection {
         &:not(:last-child) {
           margin-right: 0.25rem;
         }
+        margin-bottom: 0.25rem;
       }
     }
     .search {
-      flex-grow: 1;
+      width: 100%;
       color: var(--font-color);
       input {
         font-family: var(--body-font);
