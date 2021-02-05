@@ -53,7 +53,6 @@ const SparkForm = ({
         ...defaultValues
       }}
     >
-      testing on sarah's computer
       <div className={style.header}>
         <div>
           <Label>Owner</Label>
