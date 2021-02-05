@@ -53,6 +53,7 @@ const SparkForm = ({
         ...defaultValues
       }}
     >
+      testing on sarah's computer
       <div className={style.header}>
         <div>
           <Label>Owner</Label>
@@ -83,7 +84,6 @@ const SparkForm = ({
           <TextInput name="title" placeholder="Give it a title..." />
         </div>
       </div>
-
       <div>
         <Label>Description</Label>
         <TextInput
@@ -91,7 +91,6 @@ const SparkForm = ({
           placeholder="Describe what you're working on..."
         />
       </div>
-
       <RadioInput name="visibility" value="Public">
         <Type>
           <Users /> Open
@@ -124,7 +123,7 @@ const SparkForm = ({
           </Link>
         )}
       </RadioInput>
-      <div>
+      <div className="tags">
         <Label>Tags</Label>
         <SearchSelect
           name="tags"
