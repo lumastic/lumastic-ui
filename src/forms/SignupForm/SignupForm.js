@@ -23,19 +23,23 @@ const SignupForm = ({ onSubmit }) => (
   >
     <div>
       <Label>Your Name</Label>
-      <TextInput name="name" placeholder="Harry Potter" />
+      <TextInput name="name" placeholder="Abed Nadir" />
     </div>
     <div>
       <Label>Username</Label>
-      <TextInput name="username" placeholder="hpotter" />
+      <TextInput name="username" placeholder="inspector_spacetime" />
     </div>
     <div>
       <Label>Email</Label>
-      <TextInput name="email" placeholder="harry@hogwarts.edu" />
+      <TextInput name="email" placeholder="abed@troyandabedinthemorning.biz" />
     </div>
     <div>
       <Label>Password</Label>
-      <TextInput name="password" type="password" placeholder="i l0ve g1nny!!" />
+      <TextInput
+        name="password"
+        type="password"
+        placeholder="buTTered n00dlez!"
+      />
     </div>
     <Button variant="contained" type="submit">
       Sign Up
