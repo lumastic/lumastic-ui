@@ -18,12 +18,16 @@ const LoginForm = ({ className, onSubmit }) => (
   >
     <div>
       <Label>Username or Email</Label>
-      <TextInput name="email" placeholder="harry@hogwarts.edu" />
+      <TextInput name="email" placeholder="abed@troyandabedinthemorning.biz" />
     </div>
 
     <div>
       <Label>Password</Label>
-      <TextInput name="password" type="password" placeholder="i l0ve g1nny!!" />
+      <TextInput
+        name="password"
+        type="password"
+        placeholder="buTTered n00dlez!"
+      />
     </div>
 
     <Button variant="contained" type="submit">
