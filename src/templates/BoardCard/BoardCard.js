@@ -12,40 +12,10 @@ import style from "./BoardCard.scss";
 
 const BoardCard = memo(({ children, className, card = {}, block = false }) => {
   const cardRef = useRef(null);
-  const resizeHandle = useRef(null);
-  const { canEdit, setActiveCard, updateCard, setUpdateCanvas } = useBoard();
+  const { canEdit, updateCard } = useBoard();
   const formMethods = useForm();
-  const [absolute, setAbsolute] = useState(!block);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [edit, setEdit] = useState(false);
-
-  useEffect(() => {
-    if (setUpdateCanvas) setUpdateCanvas(o => !o);
-  }, [setUpdateCanvas]);
-
-  useDraggable({
-    ref: cardRef,
-    draggingClass: style.hover,
-    onDragStart: () => setAbsolute(true),
-    disable: edit
-  });
-
-  const onDrop = () => {
-    console.log("Create stack");
-  };
-  useDroppable({ ref: cardRef, onDrop, disable: card.parentCard });
-
-  const onResizeEnd = ({ dimension }) => {
-    if (updateCard)
-      updateCard(card.id, {
-        location: { x: card.x, y: card.y, z: card.z, ...dimension }
-      });
-  };
-  useResizable({
-    ref: cardRef,
-    handle: resizeHandle,
-    onResizeEnd
-  });
 
   const onRightClick = e => {
     e.stopPropagation();
@@ -78,27 +48,7 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
     }
   };
   return (
-    <div
-      className={classNames(
-        style.wrapper,
-        { [style.block]: !absolute },
-        {
-          droppable: !card.parentCard
-        }
-      )}
-      style={
-        absolute
-          ? {
-              left: `${card.x}px`,
-              top: `${card.y}px`,
-              width: `${card.width}px`,
-              height: `${card.height}px`
-            }
-          : null
-      }
-      ref={cardRef}
-      id={card.id}
-    >
+    <div ref={cardRef} id={card.id} className={style.wrapper}>
       <FormContext {...formMethods}>
         <Card
           className={classNames(className, style["board-card"])}
@@ -107,7 +57,6 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
           onClick={() => {
             if (canEdit && !edit) setEdit(true);
           }}
-          onDoubleClick={e => e.stopPropagation()}
           onKeyDown={e => {
             if (e.metaKey && e.keyCode === 13) {
               e.target.blur();
@@ -118,12 +67,9 @@ const BoardCard = memo(({ children, className, card = {}, block = false }) => {
             <PressInput
               name="content"
               defaultValue={parseContent(card?.content)}
-              readOnly={!canEdit}
+              // readOnly={!canEdit}
             />
           </Type>
-          <div className={style.resize} ref={resizeHandle}>
-            {absolute && <Resize />}
-          </div>
         </Card>
       </FormContext>
 

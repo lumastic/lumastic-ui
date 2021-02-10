@@ -1,27 +1,17 @@
 @import "../../styles/functions.scss";
 
 .wrapper {
-  position: absolute;
-  &.hover {
-    z-index: 500;
-    > .board-card {
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
-    }
+  position: relative;
+
+  .board-card {
+    display: block;
+    min-height: 8rem;
   }
-  &:not(.block) {
-    min-height: min-content;
-    display: table;
+  .options {
+    right: var(--spacing-small);
+    top: var(--spacing-small);
   }
-  &.block {
-    position: relative;
-    .board-card {
-      display: block;
-    }
-    .options {
-      right: var(--spacing-small);
-      top: var(--spacing-small);
-    }
-  }
+
   .options {
     opacity: 0;
     transition: opacity 100ms ease-in-out;
@@ -32,32 +22,9 @@
       opacity: 1;
     }
   }
-  .resize {
-    position: absolute;
-    opacity: 0;
-    bottom: 0rem;
-    right: 0rem;
-    transition: opacity 100ms ease-in-out;
-    padding: 0.05rem 0.25rem;
-    box-sizing: border-box;
-    color: var(--font-light-color);
-    font-size: 0.7rem;
-    &:hover {
-      cursor: nwse-resize;
-    }
-  }
   &:hover {
-    .options,
-    .resize {
+    .options {
       opacity: 1;
     }
   }
-}
-
-.board-card {
-  touch-action: none;
-  box-sizing: border-box;
-  transition: box-shadow 300ms ease-in-out;
-  width: 100%;
-  height: 100%;
 }
