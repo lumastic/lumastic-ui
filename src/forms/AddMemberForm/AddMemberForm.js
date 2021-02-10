@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./AddMemberForm.scss";
 import classNames from "../../helpers/classNames";
-import { Button, Form, Avatar, Type, Chip } from "../../components";
+import { Button, Form, Avatar, Type, Chip, Label } from "../../components";
 import { Signature, SearchSelect } from "../../templates";
 import { useReset } from "../../hooks";
 
@@ -33,26 +33,35 @@ const AddMemberForm = ({
         }
       }}
     >
-      <SearchSelect
-        name="membersToAdd"
-        placeholder="Invite people..."
-        onSearch={onSearchOrgs}
-        renderResult={({ name, avatarURL }) => (
-          <Signature>
-            <Avatar src={avatarURL} size="small" />
-            <Type body2>{name}</Type>
-          </Signature>
-        )}
-        renderSelection={({ name, avatarURL, onRemove }) => (
-          <Chip
-            symbol={<Avatar src={avatarURL} size="small" />}
-            label={name}
-            onRemove={onRemove}
-          />
-        )}
-        reset={reset}
-      />
-      <Button type="submit" {...buttonProps} disabled={disabled}>
+      <div>
+        <Label>Members to Add</Label>
+        <SearchSelect
+          name="membersToAdd"
+          placeholder="Invite people..."
+          onSearch={onSearchOrgs}
+          renderResult={({ name, avatarURL }) => (
+            <Signature>
+              <Avatar src={avatarURL} size="small" />
+              <Type body2>{name}</Type>
+            </Signature>
+          )}
+          renderSelection={({ name, avatarURL, onRemove }) => (
+            <Chip
+              symbol={<Avatar src={avatarURL} size="small" />}
+              label={name}
+              onRemove={onRemove}
+            />
+          )}
+          reset={reset}
+        />
+      </div>
+
+      <Button
+        variant="contained"
+        type="submit"
+        {...buttonProps}
+        disabled={disabled}
+      >
         {buttonLabel}
       </Button>
     </Form>

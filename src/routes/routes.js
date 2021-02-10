@@ -66,6 +66,11 @@ export const editTeamRoute = (
   state: { modal: true }
 });
 
+export const addOrganizationMembersRoute = (orgName = ":orgName") => ({
+  pathname: `/${orgName}/members/add`,
+  state: { modal: true }
+});
+
 export const orgSettingsRoute = (
   orgName = ":orgName",
   { members, security, sparks, billing, developer } = {}
