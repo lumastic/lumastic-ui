@@ -62,7 +62,7 @@ const AddMemberForm = ({
         {...buttonProps}
         disabled={disabled}
       >
-        {buttonLabel}
+        `` {buttonLabel}
       </Button>
     </Form>
   );
