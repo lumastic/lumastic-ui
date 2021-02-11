@@ -6,11 +6,17 @@ import PopupContext from "./PopupContext";
 import { PopupEscape } from "./PopupEscape";
 import style from "../Popup.scss";
 
-const PopupContent = ({ children, className, render, ...props }) => {
+const PopupContent = ({
+  children,
+  className,
+  render,
+  disablePortal = true,
+  ...props
+}) => {
   const { isShowing, setPopup } = useContext(PopupContext);
 
   return (
-    <Modal isShowing={isShowing} disablePortal>
+    <Modal isShowing={isShowing} disablePortal={disablePortal}>
       <div className={style["popup-content"]} ref={ref => setPopup(ref)}>
         {render ? (
           createElement(render, { children, ...props })
@@ -26,7 +32,8 @@ const PopupContent = ({ children, className, render, ...props }) => {
 PopupContent.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  render: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+  render: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  disablePortal: PropTypes.bool
 };
 
 export { PopupContent };

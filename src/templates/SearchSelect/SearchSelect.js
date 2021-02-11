@@ -131,15 +131,6 @@ const SearchSelect = ({
     inputRef?.current?.focus();
   };
 
-  const handleEnter = (e, result) => {
-    if (e.key === "Escape") {
-      // toggle(false);
-    }
-    if (e.keyCode === 13) {
-      clickHandler(result);
-    }
-  };
-
   return (
     <>
       {/* {errors && errors[name] && (
@@ -177,7 +168,11 @@ const SearchSelect = ({
               disabled={maxSelected && selected?.length >= maxSelected}
             />
           </div>
-          <PopupContent render={PopupMenu} triggerEl={inputRef}>
+          <PopupContent
+            render={PopupMenu}
+            triggerEl={inputRef}
+            disablePortal={false}
+          >
             {!results?.filter(result => !selected?.includes(result)).length && (
               <Type caption color="grey">
                 No results found

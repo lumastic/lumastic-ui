@@ -50,6 +50,7 @@ const PopupMenu = ({ children, className, triggerEl, ...rest }) => {
           break;
       }
     }
+    // handle enter on dropdown (menuItem)
   };
 
   useEffect(() => {
