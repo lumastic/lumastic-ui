@@ -6,14 +6,14 @@ import PopupContext from "./PopupContext";
 import { PopupEscape } from "./PopupEscape";
 import style from "../Popup.scss";
 
-const PopupContent = ({ children, className, render }) => {
+const PopupContent = ({ children, className, render, ...props }) => {
   const { isShowing, setPopup } = useContext(PopupContext);
 
   return (
     <Modal isShowing={isShowing} disablePortal>
       <div className={style["popup-content"]} ref={ref => setPopup(ref)}>
         {render ? (
-          createElement(render, { children })
+          createElement(render, { children, ...props })
         ) : (
           <div className={classNames(className, style.popup)}>{children}</div>
         )}
