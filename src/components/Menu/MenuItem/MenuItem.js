@@ -14,6 +14,7 @@ const MenuItem = ({ children, className, onClick, active, ...rest }) => {
 
   const handleEnter = e => {
     if (e.keyCode === 13) {
+      e.preventDefault();
       clickHandler(e);
     }
   };
