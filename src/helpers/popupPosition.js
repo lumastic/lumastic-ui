@@ -1,13 +1,32 @@
+function bodyBox(el) {
+  const rect = el.getBoundingClientRect();
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  return {
+    top: rect.top + scrollTop,
+    left: rect.left + scrollLeft,
+    height: rect.height,
+    width: rect.width
+  };
+}
+
+function offsetBox(el) {
+  const rect = el.getBoundingClientRect();
+  return {
+    top: el.offsetTop,
+    left: el.offsetLeft,
+    height: rect.height,
+    width: rect.width
+  };
+}
+
 const popupPosition = (anchor, transform, trig, popup) => {
   const { height: popHeight, width: popWidth } = popup.getBoundingClientRect();
-  const {
-    height: trigHeight,
-    width: trigWidth
-    // x: trigX2
-  } = trig.getBoundingClientRect();
-  const trigX = trig.offsetLeft;
-  const trigY = trig.offsetTop;
-  // console.log(trigX);
+  // console.log(popHeight, popWidth);
+  // console.log("Popparams", { height: popHeight, width: popWidth });
+  const { height: trigHeight, width: trigWidth, left: trigX, top: trigY } =
+    popup?.parentElement?.nodeName === "BODY" ? bodyBox(trig) : offsetBox(trig);
+  // console.log("Offsetbox", offsetBox(trig));
   let popTop;
   let popLeft;
   switch (anchor.v) {
@@ -36,7 +55,6 @@ const popupPosition = (anchor, transform, trig, popup) => {
     default:
       break;
   }
-  // console.log("after anchor", popLeft);
   switch (transform.v) {
     case "top":
       break;
@@ -61,18 +79,12 @@ const popupPosition = (anchor, transform, trig, popup) => {
     default:
       break;
   }
-  // console.log("after transformß", popLeft);
   if (popLeft <= 0 && trigX !== 0) {
     popLeft = 0;
   } else if (popWidth + popLeft > window.innerWidth) {
     popLeft -= popWidth + trigX - window.innerWidth + 20;
   }
-  if (popTop <= 0 && trigY !== 0) {
-    popTop = 0;
-  } else if (popHeight + popTop > window.innerHeight) {
-    popTop -= popHeight + trigY - window.innerHeight + 20;
-  }
-  // console.log(popLeft);
+  console.log("Final Position", { top: popTop, left: popLeft });
   return [popTop, popLeft];
 };
 

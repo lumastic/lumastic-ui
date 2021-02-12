@@ -34,7 +34,6 @@ const Checkbox = ({
         className={classNames(style.checkbox, { [style.checked]: checked })}
         type="button"
         onClick={() => {
-          console.log("got here");
           setCheck(old => !old);
         }}
       >

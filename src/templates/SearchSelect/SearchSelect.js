@@ -1,18 +1,67 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-expressions */
 import PropTypes from "prop-types";
 import React, {
   createElement,
+  useCallback,
   useEffect,
   useReducer,
   useRef,
   useState
 } from "react";
-import { Modal, Type } from "../../components";
+import {
+  MenuItem,
+  Popup,
+  PopupContent,
+  PopupMenu,
+  PopupTrigger,
+  Type
+} from "../../components";
 import { classNames } from "../../helpers";
 import { useInputContext } from "../../helpers/useInputContext";
-import { useOffclick } from "../../hooks";
-import useModal from "../../hooks/useModal";
 import style from "./SearchSelect.scss";
+
+const SearchSelectInput = ({
+  toggle,
+  setTrigger,
+  placeholder,
+  inputRef,
+  disabled,
+  onSearch,
+  setResults
+}) => {
+  const searchHandler = async e => {
+    if (onSearch) {
+      setResults(await onSearch(e?.target?.value));
+    }
+    if (e?.target?.value === "") {
+      toggle(false); // if value in searchSelect is blank, don't show dropdown results
+    } else {
+      toggle(true); // if value is not blank, show dropdown
+    }
+  };
+
+  const handleEsc = e => {
+    if (e.key === "Escape") {
+      inputRef?.current?.blur();
+      // toggle(false);
+    }
+  };
+
+  return (
+    <div className={style.search} ref={ref => setTrigger(ref)}>
+      <input
+        type="search"
+        placeholder={placeholder}
+        ref={inputRef}
+        onChange={searchHandler}
+        // onFocus={e => searchHandler(e, toggle)}
+        onKeyDown={handleEsc}
+        disabled={disabled}
+      />
+    </div>
+  );
+};
 
 const SearchSelect = ({
   name = "searchselect",
@@ -29,8 +78,6 @@ const SearchSelect = ({
 }) => {
   // TODO: useCallback to the searchFunc
   const { register, setValue, errors } = useInputContext();
-
-  const [isShowing, toggle] = useModal();
 
   const selectReducer = (oldValue, action) => {
     const newVal = [...oldValue];
@@ -61,10 +108,7 @@ const SearchSelect = ({
   }, [reset]);
 
   const [results, setResults] = useState([]);
-  const resultsRef = useRef();
   const inputRef = useRef();
-
-  useOffclick(resultsRef, toggle);
 
   useEffect(() => {
     if (register) register({ name });
@@ -78,38 +122,14 @@ const SearchSelect = ({
     if (onChange) onChange(selected);
   }, [selected]);
 
-  const searchHandler = async e => {
-    if (onSearch) {
-      setResults(await onSearch(e?.target?.value));
-    }
-    if (e?.target?.value === "") {
-      toggle(false);
-    } else {
-      toggle(true);
-    }
-  };
-
-  const clickHandler = result => {
-    setSelected({ type: "add", payload: result });
-    if (inputRef?.current) inputRef.current.value = "";
-    inputRef?.current?.focus();
-  };
-
-  const handleEnter = (e, result) => {
-    if (e.key === "Escape") {
-      toggle(false);
-    }
-    if (e.keyCode === 13) {
-      clickHandler(result);
-    }
-  };
-
-  const handleEsc = e => {
-    if (e.key === "Escape") {
-      inputRef?.current?.blur();
-      toggle(false);
-    }
-  };
+  const clickHandler = useCallback(
+    result => {
+      setSelected({ type: "add", payload: resultHandler(result) });
+      if (inputRef?.current) inputRef.current.value = "";
+      inputRef?.current?.focus();
+    },
+    [setSelected, inputRef, resultHandler]
+  );
 
   return (
     <>
@@ -119,52 +139,59 @@ const SearchSelect = ({
         </Type>
       )} */}
       <div className={classNames(style.container, className)}>
-        <div className={style.searchbox}>
-          <div className={style.selected}>
-            {renderSelection &&
-              selected?.map((selection, key) => (
-                <div className={style.selection} key={selection?.id || key}>
-                  {createElement(renderSelection, {
-                    ...selection,
-                    onRemove: () => {
-                      setSelected({ type: "remove", payload: selection });
-                    }
-                  })}
-                </div>
-              ))}
-          </div>
+        <Popup
+          className={style["popup-container"]}
+          anchor={{ v: "bottom", h: "left" }}
+          transform={{ v: "top", h: "left" }}
+        >
+          <div className={style.searchbox}>
+            <div className={style.selected}>
+              {renderSelection &&
+                selected?.map((selection, key) => (
+                  <div className={style.selection} key={selection?.id || key}>
+                    {createElement(renderSelection, {
+                      ...selection,
+                      onRemove: () => {
+                        setSelected({ type: "remove", payload: selection });
+                      }
+                    })}
+                  </div>
+                ))}
+            </div>
 
-          <div className={style.search}>
-            <input
-              type="search"
+            <PopupTrigger
+              render={SearchSelectInput}
+              onSearch={onSearch}
+              setResults={setResults}
               placeholder={placeholder}
-              ref={inputRef}
-              onChange={searchHandler}
-              onFocus={searchHandler}
-              onKeyDown={handleEsc}
+              inputRef={inputRef}
               disabled={maxSelected && selected?.length >= maxSelected}
             />
           </div>
-        </div>
-        <Modal isShowing={isShowing} disablePortal>
-          <div className={style.results} ref={resultsRef}>
+          <PopupContent
+            render={PopupMenu}
+            triggerEl={inputRef}
+            disablePortal={false}
+          >
+            {!results?.filter(result => !selected?.includes(result)).length && (
+              <Type caption color="grey">
+                No results found
+              </Type>
+            )}
             {renderResult &&
               results
                 ?.filter(result => !selected?.includes(result))
                 ?.map((result, index) => (
-                  <div
+                  <MenuItem
                     className={style.result}
                     key={result?.id || index}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={e => handleEnter(e, resultHandler(result))}
-                    onClick={() => clickHandler(resultHandler(result))}
+                    onClick={() => clickHandler(result)}
                   >
                     {createElement(renderResult, { ...result })}
-                  </div>
+                  </MenuItem>
                 ))}
-          </div>
-        </Modal>
+          </PopupContent>
+        </Popup>
       </div>
     </>
   );

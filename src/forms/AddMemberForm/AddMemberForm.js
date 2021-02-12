@@ -39,10 +39,15 @@ const AddMemberForm = ({
           name="membersToAdd"
           placeholder="Invite people..."
           onSearch={onSearchOrgs}
-          renderResult={({ name, avatarURL }) => (
+          renderResult={({ name, avatarURL, username }) => (
             <Signature>
               <Avatar src={avatarURL} size="small" />
-              <Type body2>{name}</Type>
+              <div>
+                <Type body2>{name}</Type>
+                <Type color="grey" caption>
+                  @{username}
+                </Type>
+              </div>
             </Signature>
           )}
           renderSelection={({ name, avatarURL, onRemove }) => (

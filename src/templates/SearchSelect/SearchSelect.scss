@@ -44,15 +44,6 @@
   }
   .results {
     width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
-    overflow-x: hidden;
-    background-color: var(--bg-color-light);
-    position: absolute;
-    z-index: 9997;
-    max-height: 200px;
-    // margin-top: 0.2rem;
-    top: 100%;
 
     .result {
       padding: var(--spacing-small) var(--spacing-med);
@@ -63,4 +54,8 @@
       }
     }
   }
+}
+
+.popup-container {
+  display: unset;
 }

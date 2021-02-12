@@ -13,7 +13,7 @@ const RightClickMenu = ({
   toggle
 }) => {
   const menuRef = useRef();
-  useOffclick(menuRef, toggle);
+  useOffclick([menuRef], toggle);
 
   return (
     <Modal isShowing={isShowing}>

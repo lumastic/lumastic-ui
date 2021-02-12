@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "../../helpers/classNames";
 import useModal from "../../hooks/useModal";
@@ -16,29 +16,29 @@ const Popup = ({
   onClose
 }) => {
   const [trigger, setTrigger] = useState(null);
-  const [popup, setPopup] = useState(null);
+  const popup = useRef();
   const [isShowing, toggle] = useModal(false);
   const popContainer = useRef();
   const popoverProviderValue = {
-    setPopup,
+    popup,
     setTrigger,
     isShowing,
     toggle
   };
 
-  useOffclick(popContainer, toggle);
+  useOffclick([popup, popContainer], toggle);
 
   useEffect(() => {
-    if (popup && trigger) {
+    if (popup?.current && trigger) {
       const [popTop, popLeft] = popupPosition(
         anchor,
         transform,
         trigger,
-        popup
+        popup.current
       );
-      popup.style.top = `${popTop}px`;
-      popup.style.left = `${popLeft}px`;
-      popup.style.opacity = 1;
+      popup.current.style.top = `${popTop}px`;
+      popup.current.style.left = `${popLeft}px`;
+      popup.current.style.opacity = 1;
     }
   }, [isShowing, anchor, transform, trigger, popup]);
 
