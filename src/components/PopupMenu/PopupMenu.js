@@ -47,6 +47,8 @@ const PopupMenu = ({ children, className, triggerEl, ...rest }) => {
         default:
           break;
       }
+    } else if (triggerEl?.current) {
+      triggerEl.current.focus();
     }
     // handle enter on dropdown (menuItem)
   };
