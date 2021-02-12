@@ -13,8 +13,8 @@ function bodyBox(el) {
 function offsetBox(el) {
   const rect = el.getBoundingClientRect();
   return {
-    top: rect.top + rect.offsetTop,
-    left: rect.left + rect.offsetLeft,
+    top: el.offsetTop,
+    left: el.offsetLeft,
     height: rect.height,
     width: rect.width
   };
@@ -22,10 +22,11 @@ function offsetBox(el) {
 
 const popupPosition = (anchor, transform, trig, popup) => {
   const { height: popHeight, width: popWidth } = popup.getBoundingClientRect();
-
+  // console.log(popHeight, popWidth);
+  // console.log("Popparams", { height: popHeight, width: popWidth });
   const { height: trigHeight, width: trigWidth, left: trigX, top: trigY } =
     popup?.parentElement?.nodeName === "BODY" ? bodyBox(trig) : offsetBox(trig);
-
+  // console.log("Offsetbox", offsetBox(trig));
   let popTop;
   let popLeft;
   switch (anchor.v) {
@@ -83,6 +84,7 @@ const popupPosition = (anchor, transform, trig, popup) => {
   } else if (popWidth + popLeft > window.innerWidth) {
     popLeft -= popWidth + trigX - window.innerWidth + 20;
   }
+  console.log("Final Position", { top: popTop, left: popLeft });
   return [popTop, popLeft];
 };
 

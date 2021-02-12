@@ -3,6 +3,7 @@
 import PropTypes from "prop-types";
 import React, {
   createElement,
+  useCallback,
   useEffect,
   useReducer,
   useRef,
@@ -125,11 +126,15 @@ const SearchSelect = ({
     if (onChange) onChange(selected);
   }, [selected]);
 
-  const clickHandler = result => {
-    setSelected({ type: "add", payload: result });
-    if (inputRef?.current) inputRef.current.value = "";
-    inputRef?.current?.focus();
-  };
+  const clickHandler = useCallback(
+    result => {
+      console.log("in clickHandler SearchSelect");
+      setSelected({ type: "add", payload: resultHandler(result) });
+      if (inputRef?.current) inputRef.current.value = "";
+      inputRef?.current?.focus();
+    },
+    [setSelected, inputRef, resultHandler]
+  );
 
   return (
     <>
@@ -185,7 +190,7 @@ const SearchSelect = ({
                   <MenuItem
                     className={style.result}
                     key={result?.id || index}
-                    onClick={() => clickHandler(resultHandler(result))}
+                    onClick={() => clickHandler(result)}
                   >
                     {createElement(renderResult, { ...result })}
                   </MenuItem>

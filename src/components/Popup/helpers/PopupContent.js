@@ -13,11 +13,11 @@ const PopupContent = ({
   disablePortal = true,
   ...props
 }) => {
-  const { isShowing, setPopup } = useContext(PopupContext);
+  const { isShowing, popup } = useContext(PopupContext);
 
   return (
     <Modal isShowing={isShowing} disablePortal={disablePortal}>
-      <div className={style["popup-content"]} ref={ref => setPopup(ref)}>
+      <div className={style["popup-content"]} ref={popup}>
         {render ? (
           createElement(render, { children, ...props })
         ) : (

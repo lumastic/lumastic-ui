@@ -8,6 +8,8 @@ const MenuItem = ({ children, className, onClick, active, ...rest }) => {
   const { toggle } = useContext(PopupContext);
 
   const clickHandler = e => {
+    e.stopPropagation();
+    console.log("in clickHandler MenuItem");
     if (onClick) onClick(e);
     if (toggle) toggle();
   };
