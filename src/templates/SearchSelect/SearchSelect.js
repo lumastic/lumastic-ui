@@ -35,23 +35,19 @@ const SearchSelectInput = ({
       setResults(await onSearch(e?.target?.value));
     }
     if (e?.target?.value === "") {
-      console.log("in if");
       toggle(false); // if value in searchSelect is blank, don't show dropdown results
     } else {
-      console.log("in else");
       toggle(true); // if value is not blank, show dropdown
     }
   };
 
   const handleEsc = e => {
     if (e.key === "Escape") {
-      console.log("Escape");
       inputRef?.current?.blur();
       // toggle(false);
     }
   };
 
-  console.log("re-render");
   return (
     <div className={style.search} ref={ref => setTrigger(ref)}>
       <input
@@ -128,7 +124,6 @@ const SearchSelect = ({
 
   const clickHandler = useCallback(
     result => {
-      console.log("in clickHandler SearchSelect");
       setSelected({ type: "add", payload: resultHandler(result) });
       if (inputRef?.current) inputRef.current.value = "";
       inputRef?.current?.focus();

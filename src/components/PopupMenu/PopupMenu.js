@@ -38,12 +38,10 @@ const PopupMenu = ({ children, className, triggerEl, ...rest }) => {
       switch (e.key) {
         case "ArrowUp":
           e.preventDefault();
-          console.log(prevEl);
           if (prevEl) prevEl.focus();
           break;
         case "ArrowDown":
           e.preventDefault();
-          console.log(nextEl);
           if (nextEl) nextEl.focus();
           break;
         default:
