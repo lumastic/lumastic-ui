@@ -6,7 +6,8 @@ module.exports = {
     index: "./src/index.js",
     "icons/index": "./src/icons",
     "routes/index": "./src/routes",
-    "helpers/index": "./src/helpers"
+    "helpers/index": "./src/helpers",
+    "hooks/index": "./src/hooks"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
