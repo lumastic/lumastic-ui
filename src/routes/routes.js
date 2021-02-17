@@ -26,6 +26,11 @@ export const feedbackRoute = {
   state: { modal: true }
 };
 
+export const sendInviteRoute = {
+  pathname: "/invite",
+  state: { modal: true }
+};
+
 export const settingsRoute = ({
   account,
   security,
