@@ -1,8 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import style from "./Container.scss";
 import classNames from "../../helpers/classNames";
 
+/**
+ * A component that contains the width of content on a page
+ * @param {Object} props
+ * @param {*} props.children Children of the container
+ * @param {string} props.className Custom class you can add to the container
+ * @param {string} props.maxWidth Changes the max-width of the container
+ */
 const Container = ({ children, className, maxWidth, ...rest }) => (
   <div
     className={classNames(className, style.container)}
@@ -13,11 +19,5 @@ const Container = ({ children, className, maxWidth, ...rest }) => (
     {children}
   </div>
 );
-
-Container.propTypes = {
-  children: PropTypes.node,
-  maxWidth: PropTypes.string,
-  className: PropTypes.string
-};
 
 export { Container };
