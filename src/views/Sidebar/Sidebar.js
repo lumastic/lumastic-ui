@@ -112,7 +112,7 @@ const Sidebar = ({
             </Signature>
           </NavButton>
         )}
-        <NavButton to={sendInviteRoute}>
+        <NavButton to={sendInviteRoute} exact>
           <Signature>
             <Type color="grey">
               <PaperAirplane />
