@@ -8,7 +8,7 @@ import style from "./Alert.scss";
  * @param {Object} props
  * @param {*} props.children Children of the component
  * @param {string} props.className Custom class you can add to the component
- * @param {("error", "warning", "success", "info)} props.severity The type of alert - defaults to "info"
+ * @param {{severity:("error", "warning", "success", "info)}} props.severity
  * * @param {("filled", "outlined", "normal")} props.variant The styling of the alert - defaults to "normal"
  */
 const Alert = ({
@@ -32,8 +32,14 @@ const Alert = ({
 );
 
 Alert.propTypes = {
+  /**
+   * Alert text.
+   */
   children: PropTypes.node,
   className: PropTypes.string,
+  /**
+   * Alert severity
+   */
   severity: PropTypes.oneOf(["error", "warning", "success", "info"]),
   variant: PropTypes.oneOf(["filled", "outlined", "normal"])
 };
