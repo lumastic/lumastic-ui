@@ -12,12 +12,13 @@ import {
   Tooltip,
   IconButton
 } from "../../components";
-import { Hashtag, Plus } from "../../icons";
+import { Hashtag, Plus, PaperAirplane } from "../../icons";
 import classNames from "../../helpers/classNames";
 import {
   createOrganizationRoute,
   feedbackRoute,
   helpRoute,
+  sendInviteRoute,
   profileRoute,
   tagRoute,
   upgradeRoute
@@ -107,10 +108,18 @@ const Sidebar = ({
           <NavButton to={upgradeRoute}>
             <Signature>
               <Type body2>🚀</Type>
-              <Type body2>Upgrade membership</Type>
+              <Type body2>Upgrade Membership</Type>
             </Signature>
           </NavButton>
         )}
+        <NavButton to={sendInviteRoute}>
+          <Signature>
+            <Type color="grey">
+              <PaperAirplane />
+            </Type>
+            <Type body2>Invite Friends to Join</Type>
+          </Signature>
+        </NavButton>
         <List>
           <Divider />
           <Link inline to="/terms">

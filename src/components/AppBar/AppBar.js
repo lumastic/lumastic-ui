@@ -8,11 +8,13 @@ import { useUser } from "../../hooks";
 import {
   Bell,
   ChatExclamation,
+  Chevron,
   Compass,
   Gear,
   Home,
   LogOut,
   MagnifyingGlass,
+  PaperAirplane,
   Sparks
 } from "../../icons";
 import {
@@ -24,6 +26,7 @@ import {
   notificationsRoute,
   profileRoute,
   searchRoute,
+  sendInviteRoute,
   settingsRoute,
   viewBoardRoute,
   viewSparkRoute
@@ -162,6 +165,21 @@ const AppBar = ({ className }) => {
                   </MenuItem>
                 </Link>
               )}
+              <Link button to={sendInviteRoute}>
+                <MenuItem>
+                  <Signature>
+                    <Type color="grey">
+                      <PaperAirplane />
+                    </Type>
+                    <div>
+                      <Type body2>Send an invite</Type>
+                      <Type color="grey" setSize="0.7rem">
+                        Invite a friend to join Lumastic
+                      </Type>
+                    </div>
+                  </Signature>
+                </MenuItem>
+              </Link>
               <Divider />
               <Link button to={settingsRoute()}>
                 <MenuItem>
