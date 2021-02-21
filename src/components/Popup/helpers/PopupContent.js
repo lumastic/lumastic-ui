@@ -19,7 +19,7 @@ const PopupContent = ({
     <Modal isShowing={isShowing} disablePortal={disablePortal}>
       <div className={style["popup-content"]} ref={popup}>
         {render ? (
-          createElement(render, { children, ...props })
+          createElement(render, { children, className, ...props })
         ) : (
           <div className={classNames(className, style.popup)}>{children}</div>
         )}
