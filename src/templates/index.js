@@ -3,6 +3,7 @@ export * from "./AddEmoji";
 export * from "./BoardCard";
 export * from "./BoardSelect";
 export * from "./Comment";
+export * from "./Feed";
 export * from "./LabeledList";
 export * from "./LoadingScreen";
 export * from "./MoreMenu";
