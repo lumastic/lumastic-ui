@@ -119,7 +119,7 @@ const AppBar = ({ className }) => {
             <PopupTrigger>
               <Avatar setSize="1.75rem" src={avatarURL} />
             </PopupTrigger>
-            <PopupContent render={PopupMenu}>
+            <PopupContent render={PopupMenu} className={style["avatar-popup"]}>
               <Link button to={profileRoute(username)}>
                 <MenuItem>
                   <Signature>
