@@ -17,7 +17,8 @@
     "test": "jest --watch",
     "cp:package": "cp -rf package.json dist",
     "yalc": "yarn build:prod && cd dist && yalc push",
-    "dist": "yarn build:prod && cd dist && yarn publish"
+    "dist": "yarn build:prod && cd dist && yarn publish",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "Headfake Digital, LLC",
