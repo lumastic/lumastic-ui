@@ -33,6 +33,7 @@ const Form = ({
         </Alert>
       )}
       <form
+        data-testid="form"
         className={className || style.form}
         onSubmit={methods.handleSubmit(submitHandler)}
         onKeyDown={e => {

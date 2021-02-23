@@ -5,7 +5,7 @@ import { Avatar, Type, Tooltip, Link } from "../../components";
 import { profileRoute } from "../../routes";
 
 const OrgSignature = ({ organization = {}, user = {}, small = false }) => (
-  <Signature>
+  <Signature data-testid="orgsignature">
     <Link to={profileRoute(user.username || organization.name)} inline>
       <Tooltip label={user.name || organization.name} position="top">
         <Avatar

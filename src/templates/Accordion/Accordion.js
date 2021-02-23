@@ -12,7 +12,10 @@ const Accordion = ({ children }) => {
   const [isShowing, toggle] = useModal();
 
   return (
-    <AccordionContext.Provider value={{ isShowing, toggle }}>
+    <AccordionContext.Provider
+      value={{ isShowing, toggle }}
+      data-testid="accordian"
+    >
       {children}
     </AccordionContext.Provider>
   );

@@ -7,7 +7,7 @@ import classNames from "../../helpers/classNames";
 
 const Nav = ({ sparks, version = "", organizations }) => (
   <>
-    <MobileNav className={style.mobile} />
+    <MobileNav data-testid="nav" className={style.mobile} />
     <Sidebar
       className={style.sidebar}
       sparks={sparks}

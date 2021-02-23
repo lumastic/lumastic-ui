@@ -31,7 +31,10 @@ const SparkPeople = ({
 }) => {
   const [reset, toggle] = useReset();
   return (
-    <Card className={classNames(className, style.sparkinfo)}>
+    <Card
+      className={classNames(className, style.sparkinfo)}
+      data-testid="sparkpeople"
+    >
       <List>
         <div>
           <Label>{`${spark.collaborators?.length} Collaborators`}</Label>

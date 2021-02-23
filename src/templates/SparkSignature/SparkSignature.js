@@ -5,7 +5,7 @@ import { Spark } from "../../icons";
 import { Signature } from "../Signature";
 
 const SparkSignature = ({ spark = {}, small = false }) => (
-  <Signature>
+  <Signature data-testid="sparksignature">
     <Type body2={small}>{spark.icon || <Spark />}</Type>
     <Type body2={small}>{spark.title}</Type>
   </Signature>

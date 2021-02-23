@@ -6,11 +6,13 @@ import { BoardCard } from "../../templates";
 
 const Board = ({ cards = [], mode = "free" }) => (
   <DragDropProvider>
-    <Viewport>
+    <Viewport data-testid="board">
       <Canvas>
-        {cards?.map((card, index) => (
-          <BoardCard key={card?.id || index} card={card} />
-        ))}
+        {cards?.map(
+          (card, index) =>
+            card &&
+            !card?.archived && <BoardCard key={card?.id || index} card={card} />
+        )}
       </Canvas>
     </Viewport>
   </DragDropProvider>

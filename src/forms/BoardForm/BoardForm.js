@@ -14,6 +14,7 @@ const BoardForm = ({ onSubmit, defaultValues = {} }) => (
     onSubmit={onSubmit}
     defaultValues={defaultValues}
     validationSchema={boardSchema}
+    data-testid="boardform"
   >
     <div>
       <Label>Name</Label>

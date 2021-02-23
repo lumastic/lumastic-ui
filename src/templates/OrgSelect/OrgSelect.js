@@ -22,6 +22,7 @@ const OrgSelect = ({
   const { avatarURL } = useUser();
   return (
     <Select
+      data-testid="orgselect"
       defaultValue={defaultValue}
       name={name}
       small={small}

@@ -19,7 +19,7 @@ const SparkDialog = ({
     history.push(location.state?.from || homeRoute);
   };
   return (
-    <Dialog isShowing={isShowing} hide={hide}>
+    <Dialog isShowing={isShowing} hide={hide} data-testid="sparkdialog">
       <Type h2 align="center" gutterBottom>
         {title}
       </Type>

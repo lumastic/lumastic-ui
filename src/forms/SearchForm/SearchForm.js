@@ -12,7 +12,11 @@ const SearchForm = ({ className, onSearch, placeholder }) => {
     if (onSearch) onSearch(searchString);
   };
   return (
-    <form onSubmit={searchHandler} className={className}>
+    <form
+      onSubmit={searchHandler}
+      className={className}
+      data-testid="searchform"
+    >
       <Search onChange={handleValueChange} placeholder={placeholder} />
     </form>
   );

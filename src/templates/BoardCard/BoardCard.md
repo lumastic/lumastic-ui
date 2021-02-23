@@ -22,26 +22,6 @@
 />
 ```
 
-#### Archived card
-
-```jsx
-<BoardCard
-  block
-  card={{
-    id: "ck354foyadlhe08901ue22g07",
-    content: "",
-    type: "Card",
-    archived: true,
-    x: 480,
-    y: 516,
-    z: 4,
-    width: 300,
-    height: 960,
-    __typename: "Card"
-  }}
-/>
-```
-
 #### Broken Card
 
 ```jsx
@@ -60,7 +40,7 @@
 
 #### Fixed - Broken Card
 
-````jsx
+```jsx
 <BoardCard
   card={{
     content: JSON.stringify([
@@ -72,7 +52,7 @@
     ])
   }}
 />
-``
+```
 
 #### Youtube content
 
@@ -84,7 +64,7 @@
       '[{"id":675776893448,"name":"type","value":[{"name":"default","children":[{"text":"Lumberjocks Video"}]}]},{"id":2719519280,"name":"yt","value":{"link":"https://www.youtube.com/embed/2JJCXXQqAIk"}},{"id":861852389263,"name":"type","value":[{"name":"default","children":[{}]}]},{"id":242572017073,"name":"link","value":{"url":"https://www.lumberjocks.com/projects/181330","base":"www.lumberjocks.com","image":"http://lumberjocks.com/assets/pictures/projects/903266-97x65.jpg","title":"Mobile Base For A Dutch Tool Chest - by CarterR @ LumberJocks.com ~ woodworking community"}}]'
   }}
 />
-````
+```
 
 ```jsx
 <BoardCard

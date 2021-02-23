@@ -15,6 +15,7 @@ const LoginForm = ({ className, onSubmit }) => (
     onSubmit={onSubmit}
     validationSchema={loginSchema}
     className={style.form}
+    data-testid="loginform"
   >
     <div>
       <Label>Username or Email</Label>

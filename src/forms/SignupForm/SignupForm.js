@@ -20,6 +20,7 @@ const SignupForm = ({ onSubmit }) => (
     onSubmit={onSubmit}
     validationSchema={signupSchema}
     className={style.form}
+    data-testid="signupform"
   >
     <div>
       <Label>Your Name</Label>
