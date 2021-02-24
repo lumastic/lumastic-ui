@@ -41,7 +41,14 @@ const Checkbox = ({
           <Checkmark />
         </div>
       </button>
-      <input id={id} checked={checked} name={name} type="checkbox" hidden />
+      <input
+        id={id}
+        checked={checked}
+        name={name}
+        type="checkbox"
+        hidden
+        {...rest}
+      />
     </div>
   );
 };
