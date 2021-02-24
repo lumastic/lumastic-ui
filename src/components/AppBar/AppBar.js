@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Avatar, NavIconButton } from "..";
-import { SearchForm } from "../../forms";
 import classNames from "../../helpers/classNames";
 import { useUser } from "../../hooks";
 import {
@@ -99,11 +98,7 @@ const AppBar = ({ className }) => {
 
       <div className={style["menu-container"]}>
         <div className={style["menu-items"]}>
-          <SearchForm
-            placeholder="Search..."
-            className={style.search}
-            onSearch={onSearch}
-          />
+          {/* Search Was Here */}
           <div className={style.searchBtn}>
             <Link button to={exploreRoute}>
               <IconButton color="grey" size="big">

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { useDroppable, useRightClick } from "../../hooks";
-import { useBoard } from "../../views";
 import { calcPixelString } from "../../helpers";
 import { RightClickMenu } from "../../templates";
 import { MenuItem } from "../Menu";
@@ -19,7 +18,7 @@ const Canvas = ({ children, className, size = {} }) => {
     activeCard,
     setActiveCard,
     setSelectedCards
-  } = useBoard();
+  } = {};
   // console.log("Canvas Rerender");
   const onDrop = ({ element, extras }) => {
     const { translate } = extras;

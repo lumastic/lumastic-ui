@@ -2,12 +2,10 @@
 
 ```jsx
 import { Sparks } from "../../icons";
-import { MobileNav } from "../../views";
-<MobileNav>
-  <NavIconButton>
-    <Sparks />
-  </NavIconButton>
-</MobileNav>;
+
+<NavIconButton>
+  <Sparks />
+</NavIconButton>;
 ```
 
 #### `active`
