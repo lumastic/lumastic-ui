@@ -84,7 +84,6 @@ const popupPosition = (anchor, transform, trig, popup) => {
   } else if (popWidth + popLeft > window.innerWidth) {
     popLeft -= popWidth + trigX - window.innerWidth + 20;
   }
-  console.log("Final Position", { top: popTop, left: popLeft });
   return [popTop, popLeft];
 };
 
