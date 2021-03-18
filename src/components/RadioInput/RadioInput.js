@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 import style from "./RadioInput.scss";
 import classNames from "../../helpers/classNames";
 

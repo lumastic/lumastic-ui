@@ -1,4 +1,5 @@
 export { useUser, UserProvider } from "./useUser";
+export * from "./useInputContext";
 export * from "./useDragDrop";
 export * from "./useRightClick";
 export * from "./touch";

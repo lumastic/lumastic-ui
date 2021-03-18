@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import style from "./Checkbox.scss";
 import classNames from "../../helpers/classNames";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 import { Checkmark } from "../../icons";
 
 const Checkbox = React.memo(

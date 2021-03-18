@@ -3,7 +3,8 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { FormContext, useForm } from "react-hook-form";
-import { Type, Alert } from "..";
+import { Type } from "../Type";
+import { Alert } from "../Alert";
 import style from "./Form.scss";
 
 const defaultSubmit = (data, e, rest) => {

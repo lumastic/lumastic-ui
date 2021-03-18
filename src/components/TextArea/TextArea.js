@@ -1,7 +1,7 @@
 import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import PropTypes from "prop-types";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 import { Type } from "..";
 import style from "./TextArea.scss";
 import classNames from "../../helpers/classNames";
