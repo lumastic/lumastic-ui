@@ -1,5 +1,4 @@
 export * from "./Alert";
-export * from "./AppBar";
 export * from "./Avatar";
 export * from "./AvatarGroup";
 export * from "./Badge";

@@ -12,8 +12,6 @@ import { Sparks } from "../../icons";
 
 ```jsx
 import { Sparks } from "../../icons";
-import { AppBar } from "..";
-<AppBar />;
 ```
 
 Source:
