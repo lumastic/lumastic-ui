@@ -55,7 +55,7 @@ export const useResizable =
               element: resizable,
               dimension: {
                 width: Math.round(width),
-                height: Math.rount(height)
+                height: Math.round(height)
               },
               message: "Resize ended"
             });

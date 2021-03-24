@@ -1,1 +1,0 @@
-export { SparkSignature } from "./SparkSignature";

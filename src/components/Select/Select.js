@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Children, useEffect, useMemo, useRef, useState } from "react";
 import classNames from "../../helpers/classNames";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 import { ArrowDown } from "../../icons/ArrowDown";
 import { Popup, PopupContent, PopupTrigger } from "../Popup";
 import { Type } from "../Type";

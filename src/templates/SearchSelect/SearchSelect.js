@@ -18,7 +18,8 @@ import {
   Type
 } from "../../components";
 import { classNames } from "../../helpers";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
+
 import style from "./SearchSelect.scss";
 
 const SearchSelectInput = ({

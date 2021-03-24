@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Controller } from "react-hook-form";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 
 const InputController = ({ as, ...rest }) => {
   const { control } = useInputContext();

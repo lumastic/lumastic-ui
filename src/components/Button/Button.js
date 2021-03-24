@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import style from "./Button.scss";
 import classNames from "../../helpers/classNames";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 import { LoadingSpinner } from "../LoadingSpinner";
 
 const Button = forwardRef(
