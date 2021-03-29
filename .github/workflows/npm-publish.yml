@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 12
       - name: Build package
-        run: npm ci
+        run: yarn install --frozen-lockfile
 #      tests have not been created for this branch as of v1.2
 #       - name: Test package
 #         run: npm test
@@ -39,8 +39,8 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - name: Build package
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Publish package
-        run: npm publish
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_REGISTRTY_TOKEN}}
