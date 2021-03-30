@@ -2,9 +2,10 @@
 
 .card {
   padding: var(--spacing-med);
-  box-shadow: var(--box-shadow-low);
+  // box-shadow: var(--box-shadow-low);
   border-radius: var(--spacing-small);
   background-color: var(--bg-color-light);
+  border: 1px solid var(--border-color);
   .no-side-padding {
     padding-left: 0;
     padding-right: 0;
