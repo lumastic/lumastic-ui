@@ -4,7 +4,7 @@
 .naviconbutton {
   display: inline-flex;
   flex-direction: column;
-  padding: 0.25rem var(--spacing-small);
+  padding: 0.75rem;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
@@ -14,6 +14,7 @@
   color: var(--font-light-color);
   border: none;
   border-bottom: 2px solid transparent;
+  border-radius: 100%;
   .name {
     white-space: nowrap;
     font-size: var(--spacing-med);
@@ -25,16 +26,15 @@
     cursor: pointer;
   }
   &:hover:not(.active) {
-    border-bottom: 2px solid alpha(var(--primary-color), 0.75);
-    color: alpha(var(--primary-color), 0.75);
+    background-color: var(--font-light-color);
+    color: white;
   }
-  &:active:not(.active) {
-    border-bottom: 2px solid alpha(var(--primary-color), 0.9);
-    color: alpha(var(--primary-color), 0.9);
-  }
-  &.active {
-    border-bottom: 2px solid var(--primary-color);
-    color: var(--primary-color);
+
+  &.active,
+  &:active {
+    border-bottom: none;
+    color: white;
+    background-color: var(--primary-color);
   }
   &.mobile {
     color: white;
@@ -61,10 +61,13 @@
   }
 }
 
+.icon {
+  display: contents;
+}
+
 @media (max-width: $tablet) {
   .naviconbutton {
     font-size: 1.75rem;
-    min-width: 3.5rem;
     .name {
       display: none;
     }

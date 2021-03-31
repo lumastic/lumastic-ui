@@ -10,6 +10,16 @@
 </List>
 ```
 
+```jsx
+import { HorizontalList } from "./examples/HorizontalList.js";
+<HorizontalList />;
+```
+
+```jsx
+import { LabeledList } from "./examples/LabeledList.js";
+<LabeledList />;
+```
+
 Source:
 
 ```js { "file": "./List.js" }
