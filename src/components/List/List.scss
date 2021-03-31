@@ -2,4 +2,28 @@
   display: grid;
   grid-auto-flow: row;
   row-gap: var(--spacing-med);
+  overflow: scroll;
+
+  &.horizontal {
+    grid-auto-flow: column;
+    column-gap: var(--spacing-med);
+    border-bottom: 1px solid var(--border-color);
+    div {
+      min-width: 300px;
+      word-break: break-word;
+      box-sizing: border-box;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listContainer {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: var(--spacing-med);
 }
