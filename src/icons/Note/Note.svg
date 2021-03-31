@@ -1,1 +1,8 @@
-<svg id="Note" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Note" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<path id="Icon_awesome-sticky-note" d="M21.1,19.7H29V4.4C29,3.7,28.3,3,27.6,3c0,0,0,0,0,0H4.4C3.7,3,3,3.7,3,4.4c0,0,0,0,0,0v23.1
+	C3,28.3,3.7,29,4.4,29c0,0,0,0,0,0h15.3v-7.9C19.7,20.3,20.3,19.7,21.1,19.7z M28.5,22.9l-5.7,5.7c-0.3,0.3-0.6,0.4-1,0.4h-0.3v-7.4
+	H29v0.4C29,22.3,28.8,22.6,28.5,22.9z"/>
+</svg>
