@@ -1,0 +1,46 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Publish lumastic-ui Node.js Package
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build lumastic-ui
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Build package
+        run: yarn install --frozen-lockfile
+#      tests have not been created for this branch as of v1.2
+#       - name: Test package
+#         run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: Build package
+        run: yarn install --frozen-lockfile
+      - name: Publish package
+        run: yarn dist
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_REGISTRTY_TOKEN}}

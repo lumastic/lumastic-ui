@@ -7,11 +7,8 @@
 #### `recommended`
 
 ```jsx
-import recommendedReactions from "../../views/ProgressPost/helpers/recommendReactions.json";
-<EmojiSelector
-  onSelect={emoji => alert(JSON.stringify(emoji))}
-  recommended={recommendedReactions}
-/>;
+// import recommendedReactions from "../../views/ProgressPost/helpers/recommendReactions.json";
+<EmojiSelector onSelect={emoji => alert(JSON.stringify(emoji))} />
 ```
 
 Source:

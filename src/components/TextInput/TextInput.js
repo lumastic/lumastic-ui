@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useInputContext } from "../../helpers/useInputContext";
+import { useInputContext } from "../../hooks";
 import { Type } from "..";
 import style from "./TextInput.scss";
 import classNames from "../../helpers/classNames";
