@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import { Type } from "../Type";
 import style from "./NavIconButton.scss";
 import classNames from "../../helpers/classNames";
+import { IconButton } from "../IconButton";
 
 const NavIconButton = ({
   children,
@@ -20,23 +21,15 @@ const NavIconButton = ({
     path={to}
     exact={exact}
     children={({ match, history }) => (
-      <button
-        className={classNames(
-          className,
-          style.naviconbutton,
-          {
-            [style.active]: to && match
-          },
-          { [style.mobile]: mobile }
-        )}
-        data-testid="naviconbutton"
+      <IconButton
+        className={classNames(className, style.naviconbutton)}
+        color={to && match ? "primary" : "grey"}
+        variant={to && match && "contained"}
+        setSize="1.25rem"
         onClick={() => to && history.push(typeof to === "string" ? to : to[0])}
       >
-        <div className={style.icon}>{icon}</div>
-        <Type className={style.name} overline align="center">
-          {name}
-        </Type>
-      </button>
+        {icon}
+      </IconButton>
     )}
   />
 );

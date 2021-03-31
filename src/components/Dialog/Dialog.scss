@@ -18,24 +18,29 @@
 }
 .dialog-area {
   position: fixed;
-  top: 5rem;
+  top: 0;
   left: 0;
+  z-index: 9998;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 9998;
-}
-.dialog-scroll {
-  width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-  max-width: 550px;
-  overflow-x: hidden;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  box-sizing: border-box;
 }
 .dialog {
   position: relative;
+  // min-height: 100%;
+  width: 100%;
+  max-width: 700px;
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+}
+.dialog-header {
+  padding: 0.75rem 0.5rem;
+}
+.dialog-card {
   background-color: var(--bg-color-light);
   // border: 1px solid var(--font-light-color);
   box-sizing: border-box;
@@ -44,19 +49,38 @@
   padding: 1rem;
   // margin: -7rem 1rem 0;
   width: 100%;
-  max-width: 550px;
+  // max-width: 550px;
 }
 .dialog-close {
-  position: absolute;
+  position: fixed;
   top: 1rem;
-  right: 1rem;
+  right: 2rem;
+  z-index: 9999;
 }
 @media (max-width: $mobile) {
+  .dialog-close {
+    top: 1rem;
+    right: 1rem;
+  }
+  .dialog-header {
+    display: none;
+  }
   .dialog {
     max-width: unset;
     border-radius: 0;
     // top: 0;
     height: 100%;
     margin: 0;
+    padding-bottom: 0;
+  }
+  .dialog-card {
+    max-width: unset;
+    border-radius: 0;
+    // top: 0;
+    min-height: 100%;
+    margin: 0;
+  }
+  .dialog-cover {
+    background-color: var(--bg-color-light);
   }
 }
