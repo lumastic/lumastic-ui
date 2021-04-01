@@ -2,12 +2,13 @@
   display: grid;
   grid-auto-flow: row;
   row-gap: var(--spacing-med);
-  overflow: scroll;
 
   &.horizontal {
     grid-auto-flow: column;
     column-gap: var(--spacing-med);
     border-bottom: 1px solid var(--border-color);
+    overflow-x: scroll;
+
     div {
       min-width: 300px;
       word-break: break-word;
