@@ -30,7 +30,11 @@ const Dialog = ({
           <div className={style["dialog-cover"]} />
           <div className={style["dialog-area"]}>
             <div className={style["dialog-close"]}>
-              <IconButton color="grey" onClick={() => hide()}>
+              <IconButton
+                color="grey"
+                onClick={() => hide()}
+                buttonClass={style["close-btn"]}
+              >
                 <Times />
               </IconButton>
             </div>
