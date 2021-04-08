@@ -7,7 +7,7 @@
     grid-auto-flow: column;
     column-gap: var(--spacing-med);
     border-bottom: 1px solid var(--border-color);
-    overflow-x: scroll;
+    overflow-x: auto;
 
     div {
       min-width: 300px;

@@ -1,3 +1,4 @@
+export * from "./ArrowBack";
 export * from "./ArrowDown";
 export * from "./Bell";
 export * from "./Boards";
@@ -43,4 +44,5 @@ export * from "./Times";
 export * from "./Trash";
 export * from "./UserGear";
 export * from "./UserLock";
+export * from "./UserPlus";
 export * from "./Users";

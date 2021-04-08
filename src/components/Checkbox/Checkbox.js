@@ -14,21 +14,14 @@ const Checkbox = React.memo(
     onChange,
     disabled
   }) => {
-    const { register, setValue, errors } = useInputContext();
+    const { register } = useInputContext();
     const [checked, setCheck] = useState(defaultCheck);
 
     useEffect(() => {
-      if (register) register({ name });
-    }, [register, name]);
-
-    useEffect(() => {
-      setCheck(defaultCheck);
-    }, [defaultCheck]);
-
-    useEffect(() => {
-      if (setValue && !disabled) setValue(name, checked, true);
-      if (onChange && !disabled) onChange(checked);
-    }, [checked, setValue, name, onChange, disabled]);
+      if (onChange) {
+        onChange(checked);
+      }
+    }, [checked]);
 
     return (
       <div
@@ -47,7 +40,19 @@ const Checkbox = React.memo(
             <Checkmark />
           </div>
         </button>
-        <input id={id} checked={checked} name={name} type="checkbox" hidden />
+        <input
+          id={id}
+          checked={checked}
+          value={checked}
+          disabled={disabled}
+          name={name}
+          type="checkbox"
+          ref={register}
+          onChange={e => {
+            setCheck(e.target.checked);
+          }}
+          hidden
+        />
       </div>
     );
   }
