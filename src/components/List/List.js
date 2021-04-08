@@ -18,13 +18,13 @@ const List = ({
     {...rest}
   >
     {(label || action) && (
-      <div className={classNames(className, style.topbar)}>
-        <Label className={classNames(className, style.label)}>{label}</Label>
-        <div className={classNames(className, style.action)}>{action}</div>
+      <div className={style.topbar}>
+        <Label className={style.label}>{label}</Label>
+        <div className={style.action}>{action}</div>
       </div>
     )}
     <div
-      className={classNames(className, style.list, {
+      className={classNames(style.list, {
         [style.horizontal]: horizontal
       })}
     >

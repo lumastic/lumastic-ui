@@ -11,7 +11,8 @@ const Chip = ({ className, color = "primary", symbol, label, onRemove }) => (
     className={classNames(className, style.chip, style[color])}
     data-testid="chip"
   >
-    <div className={style.symbol}>{symbol}</div>
+    {symbol && <div className={style.symbol}>{symbol}</div>}
+
     <div className={style.label}>
       <Type body2 tag="div">
         {label}
