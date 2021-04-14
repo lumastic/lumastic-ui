@@ -1,30 +1,22 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
 export const useOffclick = (refs = [], displayHandler) => {
-  const [clickedOff, setClickedOff] = useState(false);
-
   const handleOffclick = useCallback(
     e => {
       if (!refs[0]?.current || !e.target) return;
-
+      console.log(refs[0]?.current);
+      console.log(e.target);
       if (!refs.find(ref => ref?.current.contains(e.target))) {
         if (displayHandler) displayHandler(false);
-
-        setClickedOff(true);
       }
     },
     [refs, displayHandler]
   );
 
   useEffect(() => {
-    window.addEventListener("mousedown", handleOffclick);
-    window.addEventListener("touchstart", handleOffclick);
+    window.addEventListener("click", handleOffclick);
     return () => {
-      window.removeEventListener("mousedown", handleOffclick);
-      window.removeEventListener("touchstart", handleOffclick);
-      setClickedOff(false);
+      window.removeEventListener("click", handleOffclick);
     };
   }, []);
-
-  return clickedOff;
 };

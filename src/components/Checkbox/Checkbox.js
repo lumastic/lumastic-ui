@@ -23,6 +23,10 @@ const Checkbox = React.memo(
       }
     }, [checked]);
 
+    useEffect(() => {
+      setCheck(defaultCheck);
+    }, [defaultCheck]);
+
     return (
       <div
         className={classNames(className, style["checkbox-container"])}

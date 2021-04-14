@@ -37,9 +37,10 @@ const Form = ({
         className={className || style.form}
         onSubmit={methods.handleSubmit(submitHandler)}
         onKeyDown={e => {
-          if (e.metaKey && e.keyCode === 13) {
+          if (e.metaKey && e.key === "Enter") {
             methods.handleSubmit(submitHandler)(e);
           }
+          console.log("Hello from form keyboard listener");
         }}
       >
         {children}

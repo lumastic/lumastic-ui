@@ -31,16 +31,19 @@ const SearchSelectInput = ({
   onSearch,
   setResults
 }) => {
-  const searchHandler = async e => {
-    if (onSearch) {
-      setResults(await onSearch(e?.target?.value));
-    }
-    if (e?.target?.value === "") {
-      toggle(false); // if value in searchSelect is blank, don't show dropdown results
-    } else {
-      toggle(true); // if value is not blank, show dropdown
-    }
-  };
+  const searchHandler = useCallback(
+    async e => {
+      if (onSearch) {
+        setResults(await onSearch(e?.target?.value));
+      }
+      if (e?.target?.value === "" || disabled) {
+        toggle(false); // if value in searchSelect is blank, don't show dropdown results
+      } else {
+        toggle(true); // if value is not blank, show dropdown
+      }
+    },
+    [toggle, setResults, onSearch, disabled]
+  );
 
   const handleEsc = e => {
     if (e.key === "Escape") {
@@ -50,13 +53,16 @@ const SearchSelectInput = ({
   };
 
   return (
-    <div className={style.search} ref={ref => setTrigger(ref)}>
+    <div
+      className={classNames(style.search, { [style.disabled]: disabled })}
+      ref={ref => setTrigger(ref)}
+    >
       <input
         type="search"
         placeholder={placeholder}
         ref={inputRef}
         onChange={searchHandler}
-        // onFocus={e => searchHandler(e, toggle)}
+        onFocus={searchHandler}
         onKeyDown={handleEsc}
         disabled={disabled}
       />
@@ -85,7 +91,6 @@ const SearchSelect = ({
     const index = newVal.findIndex(
       x => x.id === action?.payload?.id || x.name === action?.payload?.name
     );
-
     switch (action.type) {
       case "add":
         newVal.push(action?.payload);
@@ -116,8 +121,9 @@ const SearchSelect = ({
   }, [register, name]);
 
   useEffect(() => {
-    if (selected && setValue) setValue(name, selected, true);
-  }, [selected, setValue, name]);
+    if (selected && setValue)
+      setValue(name, maxSelected === 1 ? selected?.[0] : selected, true);
+  }, [selected, setValue, name, maxSelected]);
 
   useEffect(() => {
     if (onChange) onChange(selected);
@@ -127,9 +133,11 @@ const SearchSelect = ({
     result => {
       setSelected({ type: "add", payload: resultHandler(result) });
       if (inputRef?.current) inputRef.current.value = "";
-      inputRef?.current?.focus();
+      if (maxSelected !== selected?.length + 1) {
+        inputRef?.current?.focus();
+      }
     },
-    [setSelected, inputRef, resultHandler]
+    [setSelected, inputRef, resultHandler, selected, maxSelected]
   );
 
   return (
@@ -139,20 +147,28 @@ const SearchSelect = ({
           {errors[name]?.message}
         </Type>
       )} */}
-      <div className={classNames(style.container, className)}>
+      <div
+        className={classNames(style.container, className)}
+        // ref={containerRef}
+      >
         <Popup
           className={style["popup-container"]}
           anchor={{ v: "bottom", h: "left" }}
           transform={{ v: "top", h: "left" }}
         >
-          <div className={style.searchbox}>
+          <div
+            className={classNames(style.searchbox, {
+              [style.onlyone]: maxSelected === 1
+            })}
+          >
             <div className={style.selected}>
               {renderSelection &&
                 selected?.map((selection, key) => (
                   <div className={style.selection} key={selection?.id || key}>
                     {createElement(renderSelection, {
                       ...selection,
-                      onRemove: () => {
+                      onRemove: e => {
+                        e?.stopPropagation();
                         setSelected({ type: "remove", payload: selection });
                       }
                     })}
@@ -164,7 +180,7 @@ const SearchSelect = ({
               render={SearchSelectInput}
               onSearch={onSearch}
               setResults={setResults}
-              placeholder={placeholder}
+              placeholder={!(maxSelected === selected?.length) && placeholder}
               inputRef={inputRef}
               disabled={maxSelected && selected?.length >= maxSelected}
             />
@@ -196,20 +212,6 @@ const SearchSelect = ({
       </div>
     </>
   );
-};
-
-SearchSelect.propTypes = {
-  defaultValue: PropTypes.array,
-  className: PropTypes.string,
-  placeholder: PropTypes.string,
-  onChange: PropTypes.func,
-  onSearch: PropTypes.func,
-  resultHandler: PropTypes.func,
-  name: PropTypes.string,
-  renderResult: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  renderSelection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  reset: PropTypes.bool,
-  maxSelected: PropTypes.number
 };
 
 export { SearchSelect };

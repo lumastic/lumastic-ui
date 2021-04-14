@@ -21,14 +21,17 @@ const Dialog = ({
   header
 }) => {
   const ref = useRef();
-  useOffclick([ref], hide);
+  // useOffclick([ref], hide);
+  const offClick = e => {
+    if (e.currentTarget === e.target) hide();
+  };
   return (
     <Modal isShowing={isShowing} disablePortal={disablePortal}>
       {/* DialogContext allows componenets to get it's properties i.e. a submit button should hide the modal */}
       <DialogContext.Provider value={{ isShowing, hide }}>
         <div className={style["dialog-modal"]}>
           <div className={style["dialog-cover"]} />
-          <div className={style["dialog-area"]}>
+          <div className={style["dialog-area"]} onClick={offClick}>
             <div className={style["dialog-close"]}>
               <IconButton
                 color="grey"

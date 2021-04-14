@@ -19,6 +19,7 @@
         &:not(:last-child) {
           margin-right: 0.25rem;
         }
+        display: flex;
         margin-bottom: 0.25rem;
       }
     }
@@ -39,6 +40,21 @@
         &:focus {
           outline: none;
         }
+      }
+      &.disabled {
+        // display: none;
+      }
+    }
+    &.onlyone {
+      .selected {
+        flex-wrap: unset;
+        .selection {
+          margin-bottom: 0;
+        }
+      }
+      .search {
+        width: 0;
+        flex-grow: 1;
       }
     }
   }
