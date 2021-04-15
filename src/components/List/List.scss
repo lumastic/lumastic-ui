@@ -9,8 +9,9 @@
     border-bottom: 1px solid var(--border-color);
     overflow-x: auto;
 
-    div {
-      min-width: 300px;
+    > div,
+    > button {
+      min-width: fit-content;
       word-break: break-word;
       box-sizing: border-box;
       margin-bottom: 0.5rem;

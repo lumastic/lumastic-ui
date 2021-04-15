@@ -20,3 +20,11 @@
     }
   }
 }
+
+.textTrigger {
+  background: transparent;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}

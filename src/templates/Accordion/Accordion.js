@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { createContext, useContext } from "react";
 import PropTypes from "prop-types";
 import classNames from "../../helpers/classNames";
 import useModal from "../../hooks/useModal";
-import { IconButton } from "../../components";
+import { Button, IconButton } from "../../components";
 import { Gear, Chevron, ArrowDown } from "../../icons";
 import style from "./Accordion.scss";
 
@@ -36,6 +37,28 @@ const AccordionTrigger = ({ children, className }) => {
   );
 };
 
+const AccordionTextTrigger = ({ children, className }) => {
+  const { isShowing, toggle } = useContext(AccordionContext);
+  const onClick = e => {
+    e.stopPropagation();
+    toggle();
+  };
+  return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className={classNames(style.trigger, style.textTrigger, className)}
+      onClick={onClick}
+    >
+      <div className={classNames(style.button, { [style.rotate]: isShowing })}>
+        <IconButton size="small" color="grey">
+          <ArrowDown />
+        </IconButton>
+      </div>
+      <div className={style.text}>{children}</div>
+    </div>
+  );
+};
+
 const AccordionContent = ({ children, className }) => {
   const { isShowing } = useContext(AccordionContext);
   if (isShowing) {
@@ -59,4 +82,10 @@ AccordionTrigger.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string
 };
-export { Accordion, AccordionTrigger, AccordionContent };
+
+AccordionTextTrigger.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string
+};
+
+export { Accordion, AccordionTrigger, AccordionContent, AccordionTextTrigger };
