@@ -66,7 +66,8 @@ Button.propTypes = {
     "yellow",
     "accent",
     "grey",
-    "light"
+    "light",
+    "white"
   ]),
   fullWidth: PropTypes.bool,
   size: PropTypes.oneOf(["big", "small"]),

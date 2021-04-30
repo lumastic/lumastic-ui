@@ -18,7 +18,8 @@ const Dialog = ({
   isShowing = false,
   hide = () => alert("Dialog Close"),
   disablePortal = false,
-  header
+  header,
+  colorBackground = false
 }) => {
   const ref = useRef();
   // useOffclick([ref], hide);
@@ -33,13 +34,23 @@ const Dialog = ({
           <div className={style["dialog-cover"]} />
           <div className={style["dialog-area"]} onClick={offClick}>
             <div className={style["dialog-close"]}>
-              <IconButton
-                color="grey"
-                onClick={() => hide()}
-                buttonClass={style["close-btn"]}
-              >
-                <Times />
-              </IconButton>
+              {colorBackground ? (
+                <IconButton
+                  color="white"
+                  onClick={() => hide()}
+                  buttonClass={style["close-btn"]}
+                >
+                  <Times />
+                </IconButton>
+              ) : (
+                <IconButton
+                  color="grey"
+                  onClick={() => hide()}
+                  buttonClass={style["close-btn"]}
+                >
+                  <Times />
+                </IconButton>
+              )}
             </div>
             <div className={style.dialog} data-testid="dialog" ref={ref}>
               <div className={style["dialog-header"]}>
@@ -64,7 +75,8 @@ Dialog.propTypes = {
   isShowing: PropTypes.bool,
   hide: PropTypes.func,
   disablePortal: PropTypes.bool,
-  header: PropTypes.node
+  header: PropTypes.node,
+  colorBackground: PropTypes.bool
 };
 
 export { Dialog };
