@@ -69,10 +69,11 @@ const Select = ({
           onClose={onClose}
           anchor={{ v: "top", h: right ? "right" : "left" }}
           transform={{ v: "top", h: right ? "right" : "left" }}
+          className={className}
         >
           <PopupTrigger>
             <div
-              className={classNames(className, style.select, {
+              className={classNames(style.select, {
                 [style.error]: errors && errors[name]
               })}
               data-testid="select"
