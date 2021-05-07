@@ -96,6 +96,9 @@
       background-color: alpha(var(--bg-color-light), 0.4);
     }
   }
+  &.white {
+    color: white;
+  }
   /* // VARIANT: OUTLINED */
   &.outlined {
     border: 1px solid;

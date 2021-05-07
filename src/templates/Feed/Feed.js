@@ -46,8 +46,13 @@ const Feed = ({
         ref={ref}
         {...rest}
       >
-        <Timeline className={style.timeline} />
-        <div className={style["feed-items"]}>{children}</div>
+        {/* if there are feed items, display them */}
+        {children[0].length > 0 && (
+          <>
+            <Timeline className={style.timeline} />
+            <div className={style["feed-items"]}>{children}</div>
+          </>
+        )}
       </div>
       {loadingMore && (
         <div className={style.loading}>
