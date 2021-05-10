@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import PropTypes from "prop-types";
 import React, { useEffect, useRef, useState } from "react";
-import { LoadingSpinner } from "../../components";
+import { LoadingSpinner, Timeline } from "../../components";
 import classNames from "../../helpers/classNames";
 import style from "./Feed.scss";
 
@@ -39,19 +39,27 @@ const Feed = ({
     };
   }, [loadMore, ref, setLoading, scrollContainerId]);
   return (
-    <div
-      className={classNames(className, style.feed)}
-      data-testid="feed"
-      ref={ref}
-      {...rest}
-    >
-      {children}
+    <>
+      <div
+        className={classNames(className, style.feed)}
+        data-testid="feed"
+        ref={ref}
+        {...rest}
+      >
+        {/* if there are feed items, display them */}
+        {children[0].length > 0 && (
+          <>
+            <Timeline className={style.timeline} />
+            <div className={style["feed-items"]}>{children}</div>
+          </>
+        )}
+      </div>
       {loadingMore && (
         <div className={style.loading}>
           <LoadingSpinner />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

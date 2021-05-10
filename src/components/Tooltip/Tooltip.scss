@@ -7,6 +7,7 @@
   position: fixed;
   opacity: 0;
   transition: opacity 200ms ease-in-out 300ms;
+  z-index: 9998;
   &.no-delay {
     transition-delay: 0s;
   }

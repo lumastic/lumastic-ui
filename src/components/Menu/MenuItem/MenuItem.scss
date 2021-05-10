@@ -1,4 +1,4 @@
-@import "../../../styles/colors.scss";
+@import "../../../styles/functions";
 
 .menuitem {
   padding: var(--spacing-small) 1.25rem;
@@ -8,6 +8,11 @@
   box-sizing: border-box;
   margin: calc(var(--spacing-small) / 4) 0;
   border-radius: 0.5rem;
+
+  &.notLink:hover {
+    cursor: default;
+    background-color: transparent;
+  }
   &:first-child {
     margin-top: 0;
   }

@@ -4,7 +4,14 @@ import style from "./MenuItem.scss";
 import classNames from "../../../helpers/classNames";
 import PopupContext from "../../Popup/helpers/PopupContext";
 
-const MenuItem = ({ children, className, onClick, active, ...rest }) => {
+const MenuItem = ({
+  children,
+  className,
+  onClick,
+  active,
+  notLink = false,
+  ...rest
+}) => {
   const { toggle } = useContext(PopupContext);
 
   const clickHandler = e => {
@@ -24,9 +31,14 @@ const MenuItem = ({ children, className, onClick, active, ...rest }) => {
     <div
       tabIndex={0}
       role="button"
-      className={classNames(className, style.menuitem, {
-        [style.active]: active
-      })}
+      className={classNames(
+        className,
+        style.menuitem,
+        {
+          [style.active]: active
+        },
+        { [style.notLink]: notLink }
+      )}
       data-testid="menuitem"
       onClick={clickHandler}
       onKeyDown={handleEnter}
@@ -42,7 +54,8 @@ MenuItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   onClick: PropTypes.func,
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  notLink: PropTypes.bool
 };
 
 export { MenuItem };
