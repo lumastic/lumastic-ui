@@ -40,7 +40,6 @@ const Form = ({
           if (e.metaKey && e.key === "Enter") {
             methods.handleSubmit(submitHandler)(e);
           }
-          console.log("Hello from form keyboard listener");
         }}
       >
         {children}
