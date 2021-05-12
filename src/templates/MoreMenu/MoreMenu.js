@@ -12,6 +12,7 @@ const MoreMenu = ({
   position = "left",
   onOpen,
   onClose,
+  disablePortal,
   ...rest
 }) => (
   <Popup
@@ -25,7 +26,9 @@ const MoreMenu = ({
         <EllipsisV />
       </IconButton>
     </PopupTrigger>
-    <PopupContent render={PopupMenu}>{children}</PopupContent>
+    <PopupContent disablePortal={disablePortal} render={PopupMenu}>
+      {children}
+    </PopupContent>
   </Popup>
 );
 
@@ -35,7 +38,8 @@ MoreMenu.propTypes = {
   position: PropTypes.oneOf(["left", "right"]),
   setSize: PropTypes.string,
   onOpen: PropTypes.func,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  disablePortal: PropTypes.bool
 };
 
 export { MoreMenu };
