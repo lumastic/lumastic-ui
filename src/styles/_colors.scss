@@ -71,8 +71,10 @@
   @include defineColorHSL(--green-color, 130, 53%, 70%);
 
   @include defineColorHSL(--bg-color, 220, 6%, 10%);
+  @include defineColorHSL(--bg-color-secondary, var(--primary-hue), 5%, 14%);
   @include defineColorHSL(--bg-color-light, 0, 0%, 18%);
   @include defineColorHSL(--bg-color-dark, 220, 6%, 10%);
+  @include defineColorHSL(--border-color, 0, 0%, 70%);
 
   color: var(--font-color);
   background-color: var(--bg-color);
