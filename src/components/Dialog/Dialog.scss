@@ -97,3 +97,16 @@
     background-color: var(--bg-color-light);
   }
 }
+
+[data-theme="dark"] {
+  .dialog-cover {
+    background-image: linear-gradient(
+      to bottom,
+      var(--bg-color),
+      var(--bg-color-dark)
+    );
+  }
+  .close-btn {
+    color: unset;
+  }
+}
