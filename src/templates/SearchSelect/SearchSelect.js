@@ -121,7 +121,7 @@ const SearchSelect = ({
   }, [register, name]);
 
   useEffect(() => {
-    if (selected && setValue)
+    if (selected.length > 0 && setValue)
       setValue(name, maxSelected === 1 ? selected?.[0] : selected, true);
   }, [selected, setValue, name, maxSelected]);
 
