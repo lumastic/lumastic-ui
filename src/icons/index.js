@@ -24,6 +24,7 @@ export * from "./Home";
 export * from "./Icon";
 export * from "./Image";
 export * from "./Lamp";
+export * from "./LinkIcon";
 export * from "./Location";
 export * from "./Lock";
 export * from "./LogoText";
